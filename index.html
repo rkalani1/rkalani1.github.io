@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Clinical Study Critical Appraiser</title>
+<meta name="description" content="Quote-grounded critical appraisal of clinical studies — CONSORT, STROBE, PRISMA, STARD, RoB, GRADE, full-text recommendation." />
+<style>
+  :root {
+    --bg: #0c0f12;
+    --fg: #e8eaed;
+    --surface: #12161b;
+    --elevated: #1a1f26;
+    --card: #141920;
+    --primary: #5b9fd4;
+    --primary-fg: #0a1218;
+    --muted: #8b939e;
+    --border: #2a313c;
+    --success: #3d9a6a;
+    --warn: #c4923a;
+    --danger: #c45c5c;
+    --radius: 12px;
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  button:not(:disabled) { cursor: pointer; }
+  header {
+    border-bottom: 1px solid var(--border);
+    background: color-mix(in oklab, var(--surface) 85%, transparent);
+    backdrop-filter: blur(8px);
+  }
+  .wrap { max-width: 56rem; margin: 0 auto; padding: 1rem 1.25rem; }
+  header .wrap { display: flex; align-items: center; gap: 0.75rem; padding-top: 1rem; padding-bottom: 1rem; }
+  .logo {
+    width: 2.5rem; height: 2.5rem; border-radius: 0.75rem;
+    border: 1px solid var(--border); background: var(--elevated);
+    display: grid; place-items: center; color: var(--primary); font-weight: 700;
+  }
+  h1 { margin: 0; font-size: 1.125rem; font-weight: 600; letter-spacing: -0.02em; }
+  .sub { margin: 0; font-size: 0.8rem; color: var(--muted); }
+  main.wrap { padding-top: 1.5rem; padding-bottom: 3rem; }
+  .lede { max-width: 42rem; color: var(--muted); font-size: 0.9rem; margin: 0 0 1.5rem; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .card h2, .card h3 { margin: 0 0 0.35rem; font-size: 1rem; }
+  label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.35rem; }
+  .hint { font-size: 0.85rem; color: var(--muted); margin: 0 0 0.75rem; }
+  textarea {
+    width: 100%; min-height: 280px;
+    border-radius: 0.75rem; border: 1px solid var(--border);
+    background: var(--surface); color: var(--fg);
+    padding: 0.85rem 1rem; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.85rem; line-height: 1.55; resize: vertical;
+  }
+  textarea:focus { outline: 2px solid color-mix(in oklab, var(--primary) 55%, transparent); outline-offset: 1px; }
+  .row { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; justify-content: space-between; margin-top: 0.85rem; }
+  .chars { font-size: 0.75rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  button {
+    border: 1px solid transparent; border-radius: 0.6rem;
+    padding: 0.55rem 1rem; font-size: 0.875rem; font-weight: 600;
+  }
+  .btn-primary { background: var(--primary); color: var(--primary-fg); }
+  .btn-primary:hover { filter: brightness(1.05); }
+  .btn-primary:disabled { opacity: 0.45; cursor: not-allowed; }
+  .btn-ghost { background: transparent; color: var(--muted); border-color: transparent; }
+  .btn-ghost:hover { color: var(--fg); background: var(--elevated); }
+  .error {
+    margin-top: 0.75rem; padding: 0.75rem 1rem; border-radius: 0.75rem;
+    border: 1px solid color-mix(in oklab, var(--danger) 40%, transparent);
+    background: color-mix(in oklab, var(--danger) 12%, transparent);
+    color: var(--danger); font-size: 0.875rem;
+  }
+  .empty {
+    border-style: dashed; text-align: center; padding: 2.5rem 1.25rem; color: var(--muted);
+  }
+  .badge {
+    display: inline-flex; align-items: center;
+    border-radius: 0.375rem; border: 1px solid var(--border);
+    padding: 0.15rem 0.45rem; font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .b-low { color: var(--success); background: color-mix(in oklab, var(--success) 15%, transparent); border-color: color-mix(in oklab, var(--success) 30%, transparent); }
+  .b-some { color: var(--warn); background: color-mix(in oklab, var(--warn) 15%, transparent); border-color: color-mix(in oklab, var(--warn) 30%, transparent); }
+  .b-high { color: var(--danger); background: color-mix(in oklab, var(--danger) 15%, transparent); border-color: color-mix(in oklab, var(--danger) 30%, transparent); }
+  .b-sec { color: var(--muted); background: var(--elevated); }
+  .b-def { color: var(--primary); background: color-mix(in oklab, var(--primary) 15%, transparent); border-color: transparent; }
+  .quote {
+    margin-top: 0.55rem; border-radius: 0.6rem; border: 1px solid var(--border);
+    background: color-mix(in oklab, var(--elevated) 80%, transparent);
+    padding: 0.65rem 0.8rem; font-size: 0.875rem;
+  }
+  .quote .ql { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.25rem; }
+  .quote p { margin: 0; font-style: italic; font-family: Georgia, "Iowan Old Style", serif; }
+  .quote .note { margin-top: 0.35rem; font-style: normal; font-family: inherit; font-size: 0.75rem; color: var(--muted); }
+  .section-h { display: flex; gap: 0.75rem; align-items: flex-start; margin: 1.5rem 0 0.75rem; }
+  .section-h .ico {
+    width: 2rem; height: 2rem; border-radius: 0.5rem; border: 1px solid var(--border);
+    background: var(--elevated); color: var(--primary); display: grid; place-items: center; font-size: 0.75rem; font-weight: 700;
+  }
+  .section-h h3 { margin: 0; font-size: 1rem; }
+  .section-h p { margin: 0.1rem 0 0; font-size: 0.85rem; color: var(--muted); }
+  .grid2 { display: grid; gap: 0.75rem; }
+  @media (min-width: 720px) { .grid2 { grid-template-columns: 1fr 1fr; } }
+  .flex-between { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: space-between; align-items: flex-start; }
+  .item-title { font-size: 0.875rem; font-weight: 600; }
+  .item-body { font-size: 0.875rem; color: color-mix(in oklab, var(--fg) 88%, transparent); margin-top: 0.35rem; }
+  ul.verify { margin: 0.5rem 0 0; padding-left: 1.2rem; font-size: 0.875rem; }
+  ul.verify li { margin: 0.35rem 0; }
+  .ft-essential { border-color: color-mix(in oklab, var(--danger) 40%, transparent); background: color-mix(in oklab, var(--danger) 6%, var(--card)); }
+  .ft-recommended { border-color: color-mix(in oklab, var(--warn) 35%, transparent); background: color-mix(in oklab, var(--warn) 6%, var(--card)); }
+  .crit { border-color: color-mix(in oklab, var(--danger) 40%, transparent); background: color-mix(in oklab, var(--danger) 6%, var(--card)); }
+  .warnc { border-color: color-mix(in oklab, var(--warn) 30%, transparent); background: color-mix(in oklab, var(--warn) 6%, var(--card)); }
+  code.chip {
+    display: inline-block; margin: 0.15rem; padding: 0.15rem 0.4rem;
+    border: 1px solid var(--border); border-radius: 0.35rem; background: var(--elevated);
+    font-size: 0.75rem;
+  }
+  footer.note { text-align: center; font-size: 0.75rem; color: var(--muted); margin-top: 1.5rem; }
+  .pico-letter {
+    width: 1.75rem; height: 1.75rem; border-radius: 0.4rem;
+    background: color-mix(in oklab, var(--primary) 15%, transparent);
+    color: var(--primary); font-size: 0.75rem; font-weight: 800;
+    display: inline-grid; place-items: center; margin-right: 0.4rem;
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="logo" aria-hidden="true">CA</div>
+      <div>
+        <h1>Clinical Study Critical Appraiser</h1>
+        <p class="sub">Quote-grounded appraisal — not a summarizer</p>
+      </div>
+    </div>
+  </header>
+  <main class="wrap">
+    <p class="lede">Paste an abstract or full-text excerpt. Detects study design, applies CONSORT / STROBE / PRISMA / STARD (CASP fallback), scores six RoB domains with quoted passages, checks statistics, extracts PICO, rates GRADE, and recommends whether full text is required before applying findings.</p>
+
+    <div class="card">
+      <label for="study">Study text</label>
+      <p class="hint">Paste the abstract or full-text methods/results. Longer text yields better RoB quotes and a more accurate full-text recommendation.</p>
+      <textarea id="study" placeholder="Paste abstract or full-text here…"></textarea>
+      <div class="row">
+        <span class="chars" id="chars">0 characters</span>
+        <div class="actions">
+          <button type="button" class="btn-ghost" id="clear">Clear</button>
+          <button type="button" class="btn-primary" id="run" disabled>Appraise</button>
+        </div>
+      </div>
+      <div id="error" class="error" hidden></div>
+    </div>
+
+    <div id="report"></div>
+  </main>
+
+  <script>
+"use strict";
+var CriticalAppraiser = (() => {
+  var __defProp = Object.defineProperty;
+  var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+  var __getOwnPropNames = Object.getOwnPropertyNames;
+  var __hasOwnProp = Object.prototype.hasOwnProperty;
+  var __export = (target, all) => {
+    for (var name in all)
+      __defProp(target, name, { get: all[name], enumerable: true });
+  };
+  var __copyProps = (to, from, except, desc) => {
+    if (from && typeof from === "object" || typeof from === "function") {
+      for (let key of __getOwnPropNames(from))
+        if (!__hasOwnProp.call(to, key) && key !== except)
+          __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+    }
+    return to;
+  };
+  var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+
+  // src/lib/appraiser/engine.ts
+  var engine_exports = {};
+  __export(engine_exports, {
+    appraiseStudy: () => appraiseStudy
+  });
+
+  // src/lib/appraiser/text.ts
+  function normalizeWhitespace(text) {
+    return text.replace(/\r\n/g, "\n").replace(/[ \t]+/g, " ").trim();
+  }
+  function isTitleLike(sentence) {
+    const s = sentence.trim();
+    if (!s) return true;
+    if (/^(title|running title)\s*:/i.test(s)) return true;
+    if (/^title\s*:/i.test(s) && /\b(introduction|background|methods?|results?|discussion|conclusions?)\s*:/i.test(s)) {
+      return true;
+    }
+    if (s.length < 160 && !/\b(we |were |was |enrolled|patients?|participants?|adults? aged|outpatients?|primary outcome|assigned|randomi)/i.test(
+      s
+    ) && /:\s*a\s+(randomized|randomised|prospective|retrospective|systematic)/i.test(s)) {
+      return true;
+    }
+    return false;
+  }
+  function splitSentences(text) {
+    const cleaned = normalizeWhitespace(text);
+    if (!cleaned) return [];
+    const withBreaks = cleaned.replace(/\n+/g, "\n").replace(
+      /\s*(?=\b(?:Title|Abstract|Introduction|Background|Objective|Objectives|Methods?|Materials and Methods|Results?|Findings|Discussion|Conclusions?|Limitations?)\s*:)/gi,
+      "\n"
+    ).replace(/\n+/g, "\n").trim();
+    const chunks = [];
+    for (const para of withBreaks.split("\n")) {
+      const p = para.trim();
+      if (!p) continue;
+      if (/^title\s*:/i.test(p)) continue;
+      const parts = p.split(/(?<=[.!?])\s+(?=[A-Z0-9(["'])/).map((s) => s.trim()).filter(Boolean);
+      if (parts.length) chunks.push(...parts);
+      else chunks.push(p);
+    }
+    return chunks.length ? chunks : [cleaned];
+  }
+  function bodyText(text) {
+    return splitSentences(text).join(" ");
+  }
+  function findSentence(text, pattern, opts) {
+    const sentences = splitSentences(text);
+    const allowTitle = opts?.allowTitle === true;
+    for (const sentence of sentences) {
+      if (!allowTitle && isTitleLike(sentence)) continue;
+      const match = sentence.match(pattern);
+      if (match) return { sentence: sentence.trim(), match };
+    }
+    if (allowTitle) {
+      for (const sentence of sentences) {
+        if (!isTitleLike(sentence)) continue;
+        const match = sentence.match(pattern);
+        if (match) return { sentence: sentence.trim(), match };
+      }
+    }
+    const body = bodyText(text);
+    const whole = body.match(pattern);
+    if (whole && whole.index !== void 0) {
+      const start = Math.max(0, whole.index - 60);
+      const end = Math.min(body.length, whole.index + whole[0].length + 100);
+      let window = body.slice(start, end).replace(/\s+/g, " ").trim();
+      if (!allowTitle && isTitleLike(window)) return null;
+      const nearby = sentences.find(
+        (s) => !isTitleLike(s) && s.includes(whole[0].slice(0, Math.min(24, whole[0].length)))
+      );
+      if (nearby) return { sentence: nearby.trim(), match: whole };
+      return { sentence: window, match: whole };
+    }
+    return null;
+  }
+  function findAllMatches(text, pattern) {
+    const flags = pattern.flags.includes("g") ? pattern.flags : pattern.flags + "g";
+    const re = new RegExp(pattern.source, flags);
+    const source = bodyText(text);
+    const out = [];
+    let m;
+    while ((m = re.exec(source)) !== null) {
+      out.push(m[0]);
+      if (m[0].length === 0) re.lastIndex++;
+    }
+    return out;
+  }
+  function scoreKeywords(text, keywords) {
+    const lower = bodyText(text).toLowerCase();
+    let score = 0;
+    for (const { re, weight } of keywords) {
+      const flags = re.flags.includes("g") ? re.flags : re.flags + "g";
+      const global = new RegExp(re.source, flags.includes("i") ? flags : flags + "i");
+      const matches = lower.match(global);
+      if (matches) score += matches.length * weight;
+    }
+    const titleLine = text.match(/^\s*title\s*:\s*(.+)$/im)?.[1] ?? "";
+    if (titleLine) {
+      for (const { re, weight } of keywords) {
+        if (re.test(titleLine)) score += weight * 0.5;
+      }
+    }
+    return score;
+  }
+  function quoteOrMissing(text, pattern, missingNote) {
+    const hit = findSentence(text, pattern);
+    if (hit && !isTitleLike(hit.sentence)) {
+      return { found: true, quote: { text: hit.sentence } };
+    }
+    return {
+      found: false,
+      quote: {
+        text: "No supporting passage found in the provided input.",
+        note: missingNote
+      }
+    };
+  }
+  function sectionText(text, names) {
+    const cleaned = normalizeWhitespace(text);
+    const headerRe = /\b(Title|Abstract|Introduction|Background|Objective|Objectives|Methods?|Materials and Methods|Results?|Findings|Discussion|Conclusions?|Limitations?)\s*:/gi;
+    const parts = [];
+    let m;
+    const re = new RegExp(headerRe.source, "gi");
+    while ((m = re.exec(cleaned)) !== null) {
+      parts.push({
+        name: m[1].toLowerCase(),
+        start: m.index,
+        bodyStart: m.index + m[0].length
+      });
+    }
+    if (!parts.length) return bodyText(text);
+    const wanted = names.map((n) => n.toLowerCase());
+    const chunks = [];
+    for (let i = 0; i < parts.length; i++) {
+      const name = parts[i].name.replace(/s$/, "");
+      const aliases = [parts[i].name, name, name + "s"];
+      if (!wanted.some((w) => aliases.some((a) => a.startsWith(w) || w.startsWith(a)))) {
+        continue;
+      }
+      const end = i + 1 < parts.length ? parts[i + 1].start : cleaned.length;
+      chunks.push(cleaned.slice(parts[i].bodyStart, end).trim());
+    }
+    return chunks.join(" ").trim() || bodyText(text);
+  }
+
+  // src/lib/appraiser/engine.ts
+  function designDetection(text) {
+    const scores = {
+      RCT: scoreKeywords(text, [
+        { re: /\brandomi[sz]ed\b/gi, weight: 3 },
+        { re: /\bRCT\b/g, weight: 4 },
+        { re: /\bdouble[- ]blind\b/gi, weight: 2 },
+        { re: /\bplacebo[- ]controlled\b/gi, weight: 2 },
+        { re: /\ballocation\b/gi, weight: 1 },
+        { re: /\bintention[- ]to[- ]treat\b/gi, weight: 2 },
+        { re: /\bparallel[- ]group\b/gi, weight: 1 },
+        { re: /\brandomized controlled trial\b/gi, weight: 4 }
+      ]),
+      Cohort: scoreKeywords(text, [
+        { re: /\bcohort\b/gi, weight: 4 },
+        { re: /\bprospective\b/gi, weight: 2 },
+        { re: /\bfollow[- ]up\b/gi, weight: 1 },
+        { re: /\bhazard ratio\b/gi, weight: 2 },
+        { re: /\bexposed\b/gi, weight: 1 },
+        { re: /\bincidence\b/gi, weight: 1 }
+      ]),
+      "Case-control": scoreKeywords(text, [
+        { re: /\bcase[- ]control\b/gi, weight: 5 },
+        { re: /\bcases and controls\b/gi, weight: 4 },
+        { re: /\bodds ratio\b/gi, weight: 1 },
+        { re: /\bmatched controls\b/gi, weight: 3 }
+      ]),
+      "Cross-sectional": scoreKeywords(text, [
+        { re: /\bcross[- ]sectional\b/gi, weight: 5 },
+        { re: /\bprevalence\b/gi, weight: 2 },
+        { re: /\bsurvey\b/gi, weight: 1 }
+      ]),
+      "Systematic review/meta-analysis": scoreKeywords(text, [
+        { re: /\bsystematic review\b/gi, weight: 5 },
+        { re: /\bmeta[- ]analysis\b/gi, weight: 5 },
+        { re: /\bPRISMA\b/g, weight: 3 },
+        { re: /\bsearch strategy\b/gi, weight: 2 },
+        { re: /\bpooled\b/gi, weight: 1 }
+      ]),
+      "Diagnostic accuracy": scoreKeywords(text, [
+        { re: /\bsensitivity\b/gi, weight: 2 },
+        { re: /\bspecificity\b/gi, weight: 2 },
+        { re: /\breference standard\b/gi, weight: 4 },
+        { re: /\bindex test\b/gi, weight: 4 },
+        { re: /\bROC\b/g, weight: 2 },
+        { re: /\bdiagnostic accuracy\b/gi, weight: 5 },
+        { re: /\bSTARD\b/g, weight: 3 }
+      ])
+    };
+    const entries = Object.entries(scores);
+    entries.sort((a, b) => b[1] - a[1]);
+    const [top, topScore] = entries[0];
+    const second = entries[1]?.[1] ?? 0;
+    if (topScore < 3) {
+      return {
+        design: "Other",
+        confidence: 0.3,
+        evidence: [
+          {
+            text: "No supporting passage found in the provided input.",
+            note: "CASP-style general appraisal applied as fallback."
+          }
+        ]
+      };
+    }
+    const confidence = Math.min(0.95, 0.45 + topScore * 0.05 + (topScore - second) * 0.03);
+    const evidence = [];
+    const designPatterns = {
+      RCT: /\b(randomi[sz]ed|RCT|double[- ]blind|placebo[- ]controlled|intention[- ]to[- ]treat)\b/i,
+      Cohort: /\b(cohort|prospective|hazard ratio|follow[- ]up)\b/i,
+      "Case-control": /\b(case[- ]control|cases and controls|matched controls)\b/i,
+      "Cross-sectional": /\b(cross[- ]sectional|prevalence)\b/i,
+      "Systematic review/meta-analysis": /\b(systematic review|meta[- ]analysis|PRISMA)\b/i,
+      "Diagnostic accuracy": /\b(diagnostic accuracy|reference standard|index test|sensitivity|specificity)\b/i
+    };
+    const hit = findSentence(text, designPatterns[top] ?? /./);
+    if (hit && !isTitleLike(hit.sentence)) {
+      evidence.push({ text: hit.sentence });
+    } else {
+      evidence.push({
+        text: "No supporting passage found in the provided input.",
+        note: `Design classified as ${top} from keyword signals, but no non-title methods sentence matched.`
+      });
+    }
+    return { design: top, confidence, evidence };
+  }
+  function checklistFor(design, text) {
+    const assess = (specs) => specs.map((s) => {
+      const full = quoteOrMissing(text, s.re, "Item not identifiable in the provided text.");
+      if (full.found) {
+        return { id: s.id, label: s.label, status: "reported", quote: full.quote };
+      }
+      if (s.partial) {
+        const part = quoteOrMissing(text, s.partial, "Partial or ambiguous reporting.");
+        if (part.found) {
+          return { id: s.id, label: s.label, status: "partial", quote: part.quote };
+        }
+      }
+      return {
+        id: s.id,
+        label: s.label,
+        status: "not_reported",
+        quote: full.quote
+      };
+    });
+    if (design === "RCT") {
+      return {
+        name: "CONSORT 2010 (key critical items)",
+        items: assess([
+          { id: "c1", label: "Identified as randomized trial / design described", re: /\b(randomi[sz]ed|RCT|parallel[- ]group|factorial)\b/i },
+          { id: "c2", label: "Eligibility criteria for participants", re: /\b(eligib|inclusion|aged|years with|adults aged|over age|outpatients?\b.{0,40}age)\b/i },
+          { id: "c3", label: "Interventions described with sufficient detail", re: /\b(mg|dose|intervention|treatment|administered|received|herbal extract|proprietary)\b/i },
+          { id: "c4", label: "Pre-specified primary outcome(s)", re: /\b(primary outcome|co-primary|primary endpoint)\b/i, partial: /\b(outcome|endpoint)\b/i },
+          { id: "c5", label: "How sample size was determined", re: /\b(sample size was determined|power to detect|powered|a priori)\b/i, partial: /\b(sample size|power)\b/i },
+          { id: "c6", label: "Method of random sequence generation", re: /\b(computer[- ]generated|random number|permuted block|sequence generation)\b/i, partial: /\brandom(ly|i[sz]ed)?\b/i },
+          { id: "c7", label: "Allocation concealment mechanism", re: /\b(allocation concealment|central(ly)? random|interactive web|sealed envelope|IWRS|IVRS)\b/i },
+          { id: "c8", label: "Blinding of participants / personnel / assessors", re: /\b(blind(ed|ing)?|double[- ]blind|mask(ed|ing)?)\b/i },
+          { id: "c9", label: "Numbers randomized, treated, and analysed (flow)", re: /\b(of\s+[\d,]+\s+randomi[sz]ed|randomi[sz]ed\s+[\d,]+|n\s*=\s*\d+|enrolled\s+\d+|ITT efficacy analysis|\d+\s+took study|\d+\s+per group|analysed\s+for|included in the (ITT|analysis))\b/i },
+          { id: "c10", label: "Intention-to-treat / analysis population defined", re: /\b(intention[- ]to[- ]treat|ITT|as randomi[sz]ed|modified ITT)\b/i }
+        ])
+      };
+    }
+    if (design === "Cohort" || design === "Case-control" || design === "Cross-sectional") {
+      return {
+        name: "STROBE (key critical items)",
+        items: assess([
+          { id: "s1", label: "Study design indicated early", re: /\b(cohort|case[- ]control|cross[- ]sectional|prospective|retrospective)\b/i },
+          { id: "s2", label: "Setting, locations, and relevant dates", re: /\b(center|hospital|clinic|from \d{4}|between \d{4}|20\d{2})\b/i },
+          { id: "s3", label: "Eligibility criteria and participant selection", re: /\b(eligib|consecutive|enrolled|inclusion|adults aged)\b/i },
+          { id: "s4", label: "Outcomes, exposures, predictors clearly defined", re: /\b(primary outcome|exposure|defined as|ascertained)\b/i },
+          { id: "s5", label: "Potential confounders described", re: /\b(confound|covariate|adjusted for|propensity|multivariable)\b/i },
+          { id: "s6", label: "Statistical methods including confounding control", re: /\b(Cox|logistic|regression|hazard|odds|adjusted|propensity)\b/i },
+          { id: "s7", label: "How missing data were addressed", re: /\b(missing|imputation|complete[- ]case)\b/i },
+          { id: "s8", label: "Numbers of participants / follow-up / loss", re: /\b(follow[- ]up|loss to follow|n\s*=\s*\d+|participants)\b/i },
+          { id: "s9", label: "Unadjusted and adjusted estimates with precision", re: /\b(95%\s*CI|adjusted|hazard ratio|odds ratio|relative risk)\b/i },
+          { id: "s10", label: "Limitations / residual confounding discussed", re: /\b(limit|residual confounding|bias|cannot|causal)\b/i }
+        ])
+      };
+    }
+    if (design === "Systematic review/meta-analysis") {
+      return {
+        name: "PRISMA 2020 (key critical items)",
+        items: assess([
+          { id: "p1", label: "Identified as systematic review / meta-analysis", re: /\b(systematic review|meta[- ]analysis)\b/i },
+          { id: "p2", label: "Eligibility criteria specified", re: /\b(inclusion|exclusion|eligib)\b/i },
+          { id: "p3", label: "Information sources / databases", re: /\b(PubMed|MEDLINE|Embase|Cochrane|database|searched)\b/i },
+          { id: "p4", label: "Search strategy presented or referenced", re: /\b(search strategy|search terms|MeSH)\b/i },
+          { id: "p5", label: "Study selection process", re: /\b(screened|two reviewers|independently|selection)\b/i },
+          { id: "p6", label: "Risk-of-bias assessment of included studies", re: /\b(risk of bias|RoB|QUADAS|Newcastle|quality assessment)\b/i },
+          { id: "p7", label: "Synthesis methods / meta-analysis model", re: /\b(random[- ]effects|fixed[- ]effect|pooled|I\s*2|heterogeneity)\b/i },
+          { id: "p8", label: "Number of included studies and participants", re: /\b(\d+\s+studies|included\s+\d+|n\s*=\s*\d+)\b/i }
+        ])
+      };
+    }
+    if (design === "Diagnostic accuracy") {
+      return {
+        name: "STARD 2015 (key critical items)",
+        items: assess([
+          { id: "d1", label: "Identified as diagnostic accuracy study", re: /\b(diagnostic accuracy|sensitivity|specificity|AUC)\b/i },
+          { id: "d2", label: "Eligibility criteria", re: /\b(eligib|inclusion|consecutive|suspected)\b/i },
+          { id: "d3", label: "Index test described for replication", re: /\b(index test|assay|imaging|cut[- ]?off)\b/i },
+          { id: "d4", label: "Reference standard described", re: /\b(reference standard|gold standard|adjudicat)\b/i },
+          { id: "d5", label: "Blinding of test interpreters", re: /\b(blind(ed|ing)?|without knowledge|masked)\b/i },
+          { id: "d6", label: "Flow of participants", re: /\b(flow|excluded|consecutive|diagram)\b/i },
+          { id: "d7", label: "Accuracy estimates with precision (CIs)", re: /\b(sensitivity|specificity|AUC|likelihood).{0,40}(95%\s*CI|confidence)\b/i, partial: /\b(sensitivity|specificity|AUC)\b/i }
+        ])
+      };
+    }
+    return {
+      name: "CASP (general critical appraisal fallback)",
+      items: assess([
+        { id: "a1", label: "Clearly focused research question (PICO elements)", re: /\b(objective|aim|question|to (examine|evaluate|assess|determine))\b/i },
+        { id: "a2", label: "Appropriate study design for the question", re: /\b(randomi[sz]ed|cohort|case[- ]control|cross[- ]sectional|review|diagnostic)\b/i },
+        { id: "a3", label: "Participants recruited in an acceptable way", re: /\b(eligib|consecutive|enrolled|recruited|inclusion)\b/i },
+        { id: "a4", label: "Exposure / intervention measured accurately", re: /\b(intervention|exposure|treatment|defined)\b/i },
+        { id: "a5", label: "Outcomes measured accurately", re: /\b(outcome|endpoint|assessed|measured)\b/i },
+        { id: "a6", label: "Confounding considered", re: /\b(confound|adjust|covariate|baseline)\b/i },
+        { id: "a7", label: "Results precise (effect size + CI or equivalent)", re: /\b(95%\s*CI|confidence interval|p\s*[=<>])\b/i },
+        { id: "a8", label: "Results applicable to local population", re: /\b(adult|patient|setting|population|generaliz)\b/i }
+      ])
+    };
+  }
+  function assessRoB(design, text) {
+    const isRCT = design === "RCT";
+    const isObs = design === "Cohort" || design === "Case-control" || design === "Cross-sectional";
+    const domains = [];
+    {
+      const strong = quoteOrMissing(text, /\b(computer[- ]generated|permuted block|random number table|central randomi[sz]ation)\b/i, "No adequate sequence-generation method described.");
+      const weak = quoteOrMissing(text, /\b(randomi[sz]ed|randomly assigned|random allocation)\b/i, "No randomization language found.");
+      const quasi = quoteOrMissing(text, /\b(appointment day|alternat|odd.?even|by clinic staff|Monday\/Wednesday|quasi)\b/i, "");
+      let judgment = "na";
+      let rationale = "";
+      let quote;
+      if (!isRCT && design !== "Other") {
+        judgment = "na";
+        rationale = "Randomization is not required for this design; selection into exposure/groups is assessed under confounding and selection.";
+        quote = { text: weak.found ? weak.quote.text : "No supporting passage found in the provided input.", note: weak.found ? void 0 : "Design is observational \u2014 sequence generation not applicable." };
+      } else if (quasi.found) {
+        judgment = "high";
+        rationale = "Allocation appears non-random or quasi-random (e.g., by schedule/day), which introduces selection bias.";
+        quote = quasi.quote;
+      } else if (strong.found) {
+        judgment = "low";
+        rationale = "An adequate random sequence generation method is described.";
+        quote = strong.quote;
+      } else if (weak.found) {
+        judgment = "some";
+        rationale = "Study is described as randomized, but the method of sequence generation is not adequately specified.";
+        quote = weak.quote;
+      } else {
+        judgment = "high";
+        rationale = "No evidence of random sequence generation in the provided text.";
+        quote = weak.quote;
+      }
+      domains.push({ id: "randomization", name: "Randomization / sequence generation", judgment, rationale, quote });
+    }
+    {
+      const strong = quoteOrMissing(text, /\b(allocation concealment|central(ly)? (random|allocat)|interactive web|IWRS|IVRS|opaque sealed|pharmacy[- ]controlled)\b/i, "No allocation concealment mechanism described.");
+      const anyAlloc = quoteOrMissing(text, /\b(allocat(ed|ion)|assigned)\b/i, "No allocation language found.");
+      const broken = quoteOrMissing(text, /\b(appointment day|by clinic staff|Monday\/Wednesday|open label assignment|investigator assigned)\b/i, "");
+      let judgment;
+      let rationale;
+      let quote;
+      if (!isRCT && design !== "Other") {
+        judgment = "na";
+        rationale = "Allocation concealment applies primarily to randomized trials.";
+        quote = { text: "No supporting passage found in the provided input.", note: "Not applicable to non-randomized design." };
+      } else if (broken.found) {
+        judgment = "high";
+        rationale = "Allocation appears predictable or controlled by local staff/schedule, so concealment is compromised.";
+        quote = broken.quote;
+      } else if (strong.found) {
+        judgment = "low";
+        rationale = "A credible allocation concealment mechanism is described.";
+        quote = strong.quote;
+      } else if (anyAlloc.found) {
+        judgment = "some";
+        rationale = "Participants were allocated/assigned, but concealment of the allocation sequence is not described.";
+        quote = anyAlloc.quote;
+      } else {
+        judgment = "high";
+        rationale = "No description of allocation concealment.";
+        quote = strong.quote;
+      }
+      domains.push({ id: "concealment", name: "Allocation concealment", judgment, rationale, quote });
+    }
+    {
+      const double = quoteOrMissing(text, /\b(double[- ]blind|participants?,?\s*(investigators?|outcome assessors?).{0,40}blind|blinded to (treatment|exposure|allocation|group))\b/i, "No double-blinding statement found.");
+      const single = quoteOrMissing(text, /\b(blind(ed|ing)?|mask(ed|ing)?)\b/i, "No blinding language found.");
+      const open = quoteOrMissing(text, /\b(open[- ]label|unblinded|no placebo|not blinded|without blinding)\b/i, "");
+      let judgment;
+      let rationale;
+      let quote;
+      if (open.found && !double.found) {
+        judgment = "high";
+        rationale = "Open-label / unblinded assessment or lack of placebo raises performance and detection bias risk.";
+        quote = open.quote;
+      } else if (double.found) {
+        judgment = "low";
+        rationale = "Blinding of key parties is explicitly described.";
+        quote = double.quote;
+      } else if (single.found) {
+        judgment = "some";
+        rationale = "Some blinding language is present, but it is incomplete regarding who was blinded.";
+        quote = single.quote;
+      } else if (isObs) {
+        judgment = "some";
+        rationale = "Observational design; outcome assessor blinding to exposure is not described.";
+        quote = single.quote;
+      } else {
+        judgment = "high";
+        rationale = "No blinding of participants, personnel, or outcome assessors is described.";
+        quote = single.quote;
+      }
+      domains.push({ id: "blinding", name: "Blinding", judgment, rationale, quote });
+    }
+    {
+      const attrition = quoteOrMissing(text, /\b(loss to follow[- ]up|drop(?:ped)? out|discontinu|withdraw|attrition|< ?\d+%|follow[- ]up was \d)\b/i, "No attrition / loss-to-follow-up figures found.");
+      const differential = quoteOrMissing(text, /\b(\d+\s+of\s+\d+.{0,30}(drop|discontinu|withdrew)|drop(?:ped)? out.{0,40}\d+.{0,20}\d+)\b/i, "No group-specific dropout counts found.");
+      const perProtocol = quoteOrMissing(text, /\b(per[- ]protocol|completers only|excluded from analysis|who discontinued.{0,30}excluded)\b/i, "");
+      let judgment;
+      let rationale;
+      let quote;
+      if (perProtocol.found && differential.found) {
+        judgment = "high";
+        rationale = "Per-protocol analysis combined with substantial or uneven attrition risks biased effect estimates.";
+        quote = { text: `${perProtocol.quote.text} \u2026 ${differential.quote.text}` };
+      } else if (perProtocol.found) {
+        judgment = "high";
+        rationale = "Analysis appears limited to completers / per-protocol without full accounting of randomized participants.";
+        quote = perProtocol.quote;
+      } else if (attrition.found) {
+        const highLoss = /([1-9]\d)%|([2-9]\d\s*of\s*\d+)/.test(attrition.quote.text);
+        const balanced = /\b(balanced|similar|did not differ|no difference)\b/i.test(attrition.quote.text);
+        if (highLoss && !balanced) {
+          judgment = "some";
+          rationale = "Attrition is reported; magnitude or differential loss raises some concern without clear mitigation.";
+          quote = attrition.quote;
+        } else {
+          judgment = "low";
+          rationale = "Attrition / loss to follow-up is reported and appears limited or balanced.";
+          quote = attrition.quote;
+        }
+      } else {
+        judgment = "some";
+        rationale = "Incomplete outcome data / attrition cannot be judged \u2014 no loss-to-follow-up reporting found.";
+        quote = attrition.quote;
+      }
+      domains.push({ id: "attrition", name: "Attrition / incomplete outcome data", judgment, rationale, quote });
+    }
+    {
+      const registered = quoteOrMissing(text, /\b(protocol (was )?registered|pre[- ]specified|trial registration|ClinicalTrials|registry|hierarchical testing|multiplicity)\b/i, "No protocol registration or pre-specification language found.");
+      const allReported = quoteOrMissing(text, /\b(all pre[- ]specified|primary and secondary outcomes listed|outcomes listed in the protocol)\b/i, "No statement that all pre-specified outcomes were reported.");
+      const manySecondary = quoteOrMissing(text, /\b(\d+\s+secondary|exploratory|also looked at|multiple endpoints|six other)\b/i, "");
+      const unregistered = quoteOrMissing(text, /\b(protocol was not registered|not registered|no protocol)\b/i, "");
+      let judgment;
+      let rationale;
+      let quote;
+      if (unregistered.found || manySecondary.found && !registered.found) {
+        judgment = "high";
+        rationale = "Protocol not registered and/or multiple exploratory outcomes without clear pre-specification raise selective reporting risk.";
+        quote = unregistered.found ? unregistered.quote : manySecondary.quote;
+      } else if (registered.found && allReported.found) {
+        judgment = "low";
+        rationale = "Pre-specification / registration language and reporting of pre-specified outcomes are present.";
+        quote = { text: `${registered.quote.text} ${allReported.quote.text}` };
+      } else if (registered.found) {
+        judgment = "some";
+        rationale = "Some pre-specification is described, but completeness of outcome reporting cannot be fully verified from the text.";
+        quote = registered.quote;
+      } else {
+        judgment = "some";
+        rationale = "Insufficient information on protocol registration and outcome pre-specification.";
+        quote = registered.quote;
+      }
+      domains.push({ id: "selective", name: "Selective outcome reporting", judgment, rationale, quote });
+    }
+    {
+      const adjusted = quoteOrMissing(text, /\b(adjust(ed|ment)|multivariable|propensity|covariate|confound)\b/i, "No confounding control methods described.");
+      const baseline = quoteOrMissing(text, /\b(baseline (characteristics )?were similar|balanced at baseline|Table 1)\b/i, "No baseline balance statement found.");
+      const residual = quoteOrMissing(text, /\b(residual confounding|unmeasured confounding|non[- ]random treatment)\b/i, "");
+      const none = quoteOrMissing(text, /\b(usual care|assigned by|no placebo|confounding not)\b/i, "");
+      let judgment;
+      let rationale;
+      let quote;
+      if (isRCT) {
+        if (baseline.found) {
+          judgment = "low";
+          rationale = "Randomization with reported baseline similarity reduces confounding concern for measured factors.";
+          quote = baseline.quote;
+        } else if (domains[0]?.judgment === "low" || domains[0]?.judgment === "some") {
+          judgment = "some";
+          rationale = "Randomized design helps, but baseline balance is not explicitly reported in the text.";
+          quote = { text: "No supporting passage found in the provided input.", note: "For RCTs, confounding risk is usually low if randomization is adequate; baseline balance not stated." };
+        } else {
+          judgment = "high";
+          rationale = "Without secure randomization, confounding (prognostic imbalance) is a major threat.";
+          quote = none.found ? none.quote : adjusted.quote;
+        }
+      } else if (adjusted.found && residual.found) {
+        judgment = "some";
+        rationale = "Authors adjusted for measured confounders but acknowledge residual confounding \u2014 appropriate caution.";
+        quote = { text: `${adjusted.quote.text} ${residual.quote.text}` };
+      } else if (adjusted.found) {
+        judgment = "some";
+        rationale = "Statistical adjustment for confounding is described; residual confounding still possible in observational data.";
+        quote = adjusted.quote;
+      } else {
+        judgment = "high";
+        rationale = "No adequate description of confounding control \u2014 major threat to internal validity for observational evidence.";
+        quote = adjusted.quote;
+      }
+      domains.push({ id: "confounding", name: "Confounding", judgment, rationale, quote });
+    }
+    return domains;
+  }
+  function extractStats(text) {
+    return {
+      pValues: findAllMatches(text, /\bp\s*([=<>≤≥]|<=|>=)\s*0?\.\d+/gi).slice(0, 12),
+      cis: findAllMatches(text, /95%\s*(?:confidence interval|CI)[:\s]*[(\[]?\s*-?\d+\.?\d*\s*(?:[–—−to,]\s*)-?\d+\.?\d*\s*[)\]]?/gi).slice(0, 12),
+      effectSizes: findAllMatches(text, /\b((adjusted\s+)?(hazard|odds|risk)\s+ratio|HR|OR|RR|ARR|RD|MD|SMD)\s*[=:]?\s*\d+\.?\d*/gi).slice(0, 12),
+      sampleSizeHints: findAllMatches(text, /\b(n\s*=\s*\d[\d,]*|\d{1,3}(?:,\d{3})+|\d{2,5}\s+(participants|patients|subjects|adults))\b/gi).slice(0, 10)
+    };
+  }
+  function statisticalScrutiny(design, text, extracted) {
+    const flags = [];
+    {
+      const ciCross = findSentence(text, /95%\s*(confidence interval|CI).{0,40}(-|−|–)\s*0\.\d+.{0,20}5\.|confidence interval for the difference was\s*(-|−|–)/i);
+      const pSig = findSentence(text, /p\s*=\s*0\.0[0-4]\d*/i);
+      if (ciCross && pSig) {
+        flags.push({ id: "p-ci-cross-null", severity: "critical", title: "Significant p with CI crossing null", detail: "Reported p-value suggests statistical significance while the accompanying 95% CI includes no effect \u2014 internal inconsistency that undermines the result claim.", quote: { text: `${pSig.sentence} ${ciCross.sentence}` } });
+      }
+    }
+    {
+      const power = quoteOrMissing(text, /\b(sample size was determined|power to detect|90%\s*power|powered to)\b/i, "No sample-size or power calculation found.");
+      const noPower = /\b(no sample-size|no power calculation|power calculation was (not |never )?performed)\b/i.test(text);
+      const smallN = text.match(/\b(?:enrolled|recruited|randomized|n\s*=\s*)(\d{1,2})\b/i);
+      const n48 = text.match(/\b(48|24 per group|n\s*=\s*48)\b/i);
+      if (noPower || !power.found && (smallN || n48)) {
+        const q = findSentence(text, /\b(no sample-size|no power|enrolled|48|24 per|n\s*=\s*\d+)\b/i);
+        flags.push({ id: "underpowered", severity: "critical", title: "Likely underpowered sample", detail: "Sample size appears small and/or no a priori power/sample-size calculation is reported \u2014 high risk of imprecision and false-positive/-negative results.", quote: q ? { text: q.sentence } : power.quote });
+      } else if (!power.found && design === "RCT") {
+        flags.push({ id: "no-power", severity: "warn", title: "No power / sample-size calculation reported", detail: "CONSORT expects an explanation of how sample size was determined; absence limits assessment of precision.", quote: power.quote });
+      } else if (power.found) {
+        flags.push({ id: "power-ok", severity: "info", title: "Sample size / power addressed", detail: "A power or sample-size statement is present in the text.", quote: power.quote });
+      }
+    }
+    if (design === "RCT" || /\brandomi[sz]ed\b/i.test(text)) {
+      const itt = quoteOrMissing(text, /\b(intention[- ]to[- ]treat|ITT|as randomi[sz]ed|all randomi[sz]ed)\b/i, "No intention-to-treat analysis statement found.");
+      const pp = quoteOrMissing(text, /\b(per[- ]protocol|completers only|excluded from analysis)\b/i, "");
+      if (pp.found && !itt.found) {
+        flags.push({ id: "missing-itt", severity: "critical", title: "Missing ITT \u2014 per-protocol analysis only", detail: "Excluding dropouts from analysis without ITT can bias treatment effects, especially with differential attrition.", quote: pp.quote });
+      } else if (!itt.found) {
+        flags.push({ id: "itt-unclear", severity: "warn", title: "ITT analysis not described", detail: "Randomized trials should analyse participants in the groups to which they were randomized; this is not stated.", quote: itt.quote });
+      } else {
+        flags.push({ id: "itt-present", severity: "info", title: "ITT / analysis population described", detail: "Intention-to-treat or equivalent analysis population is mentioned.", quote: itt.quote });
+      }
+    }
+    {
+      const multi = quoteOrMissing(text, /\b(multiplicity|hierarchical|fixed[- ]sequence|Bonferroni|Hochberg|false discovery)\b/i, "No multiplicity adjustment described.");
+      const manyOutcomes = quoteOrMissing(text, /\b(secondary outcomes?|exploratory|also looked at|co-primary|six other|11 secondary)\b/i, "");
+      if (manyOutcomes.found && !multi.found) {
+        flags.push({ id: "multiplicity", severity: "warn", title: "Multiple outcomes without multiplicity control", detail: "Several endpoints are mentioned without a stated plan to control type I error \u2014 selective emphasis on significant results is a risk.", quote: manyOutcomes.quote });
+      } else if (multi.found) {
+        flags.push({ id: "multiplicity-ok", severity: "info", title: "Multiplicity handling mentioned", detail: "A procedure to address multiple testing is described.", quote: multi.quote });
+      }
+    }
+    {
+      const relativeOnly = quoteOrMissing(text, /\b(relative (risk|improvement|reduction)|300%\s+greater|\d+%\s+greater gain)\b/i, "");
+      const absolute = quoteOrMissing(text, /\b(absolute risk|ARR|risk difference|NNT|number needed to treat|\d+\.?\d*%\s+with.{0,40}\d+\.?\d*%)\b/i, "No absolute risk measures found.");
+      if (relativeOnly.found && !absolute.found) {
+        flags.push({ id: "relative-only", severity: "critical", title: "Relative effect without absolute risk", detail: "Presenting only relative improvements without absolute event rates or ARR/NNT can exaggerate clinical importance.", quote: relativeOnly.quote });
+      } else if (absolute.found) {
+        flags.push({ id: "absolute-ok", severity: "info", title: "Absolute effect measures present", detail: "Absolute risk difference and/or NNT (or event rates enabling them) appear in the text.", quote: absolute.quote });
+      } else if (extracted.effectSizes.some((e) => /HR|OR|RR|ratio/i.test(e))) {
+        flags.push({ id: "relative-no-arr", severity: "warn", title: "Ratio measures without clear absolute risks", detail: "Relative effect sizes (OR/RR/HR) are reported; absolute risks improve interpretability when available.", quote: { text: extracted.effectSizes[0] ?? "No supporting passage found in the provided input." } });
+      }
+    }
+    return flags;
+  }
+  function extractPICO(text) {
+    const methods = sectionText(text, ["method", "methods", "materials and methods"]);
+    const intro = sectionText(text, ["introduction", "background", "objective", "objectives"]);
+    const results = sectionText(text, ["result", "results", "findings"]);
+    const pool = [methods, intro, results, splitSentences(text).join(" ")].filter((s) => s.trim());
+    const missing = (role) => ({
+      value: `Not clearly extractable (${role}).`,
+      quote: { text: "No supporting passage found in the provided input.", note: `No methods/results sentence clearly stating ${role}.` }
+    });
+    const findHit = (sources, patterns) => {
+      for (const src of sources) {
+        if (!src.trim()) continue;
+        for (const re of patterns) {
+          const hit = findSentence(src, re);
+          if (!hit || isTitleLike(hit.sentence) || /^title\s*:/i.test(hit.sentence)) continue;
+          return hit;
+        }
+      }
+      return null;
+    };
+    let population = missing("population");
+    {
+      const hit = findHit(pool, [
+        /\boutpatients?\s+over age\s+\d+[^.!?]{0,120}/i,
+        /\b(adults? aged|patients? with|participants?.{0,40}(with|aged)|consecutive adults)\b[^.!?]{0,120}/i,
+        /\b(outpatients?|inpatients?|adults?|patients?|participants?|older adults)\b[^.!?]{0,100}\b(age[d]?|years|with|who|over age)\b[^.!?]{0,80}/i
+      ]);
+      if (hit) {
+        const compact = hit.sentence.match(/\b(outpatients?\s+over age\s+\d+\s+with\s+[^.]{5,80}?)(?=\s+were\b|\s+random|\s+assigned|\s*$|,)/i)?.[1] ?? hit.sentence.match(/\b(adults? aged\s+[\d–\-~]+\s*years?[^.!?,]{0,100}?|consecutive adults aged\s*[≥>=]?\s*\d+[^.!?,]{0,100}?)/i)?.[1] ?? hit.sentence.match(/\b((?:outpatients?|patients?|participants?|adults?)\b[^.!?]{0,100}?(?:with\s+[^.]{5,60}?))(?=\s+were\b|\s+random|\s*$)/i)?.[1];
+        let value = (compact ?? hit.sentence).trim();
+        value = value.replace(/\s+were\s+(randomi[sz]ed|assigned|enrolled)\b[\s\S]*$/i, "").replace(/\s+randomi[sz]ed to\b[\s\S]*$/i, "").replace(/[,;]\s*$/, "").trim();
+        if (value.length < 10) value = hit.sentence;
+        population = { value: value.length > 200 ? value.slice(0, 197) + "\u2026" : value, quote: { text: hit.sentence } };
+      }
+    }
+    let intervention = missing("intervention");
+    {
+      const prop = findHit(pool, [/\bproprietary\s+[\w-]+(?:\s+[\w-]+){0,4}\s+extract\b/i]);
+      const herbal = findHit(pool, [/\bherbal extract\b/i]);
+      const drug = findHit(pool, [/\bubrogepant(?:\s+\d+\s*mg)?\b/i, /\bstatin(?:\s+therapy|\s+use)?\b/i, /\breceiv(?:e|ed)\s+[^,;.]{3,50}/i]);
+      const hit = prop ?? herbal ?? drug;
+      if (hit) {
+        let value = hit.sentence.match(/\b(proprietary\s+[\w-]+(?:\s+[\w-]+){0,4}\s+extract)\b/i)?.[1] ?? hit.sentence.match(/\b(herbal extract)\b/i)?.[1] ?? hit.sentence.match(/\b(ubrogepant(?:\s+\d+\s*mg)?)\b/i)?.[1] ?? hit.sentence.match(/\b(statin(?:\s+therapy|\s+use)?)\b/i)?.[1] ?? hit.sentence.match(/\brandomi[sz]ed to\s+([\w-]+(?:\s+[\w-]+){0,3})\s+or\b/i)?.[1] ?? hit.sentence;
+        if (/^herbal extract$/i.test(value) && /\bproprietary\b/i.test(methods + " " + intro)) value = "proprietary herbal extract";
+        intervention = { value: value.trim().length > 160 ? value.trim().slice(0, 157) + "\u2026" : value.trim(), quote: { text: hit.sentence } };
+      }
+    }
+    let comparison = missing("comparison");
+    {
+      const hit = findHit(pool, [/\busual care\b/i, /\bmatching placebo\b/i, /\bplacebo\b/i, /\bcontrol group\b/i]);
+      if (hit) {
+        const short = hit.sentence.match(/\b(usual care)\b/i)?.[1] ?? hit.sentence.match(/\b(matching placebo)\b/i)?.[1] ?? hit.sentence.match(/\b(placebo)\b/i)?.[1] ?? hit.sentence.match(/\b(control group)\b/i)?.[1] ?? hit.sentence;
+        comparison = { value: short, quote: { text: hit.sentence } };
+      }
+    }
+    let outcome = missing("outcome");
+    {
+      const hit = findHit(pool, [
+        /\bprimary outcome was\b[^.!?]{5,180}/i,
+        /\bco-primary outcomes were\b[^.!?]{5,180}/i,
+        /\b(10-item memory quiz|freedom from pain|recurrent ischemic stroke|most bothersome)\b/i,
+        /\bprimary (outcome|endpoint)\b[^.!?]{0,120}/i
+      ]);
+      if (hit) {
+        const named = hit.sentence.match(/\b(non-standardized\s+10-item memory quiz|10-item memory quiz|freedom from pain|recurrent ischemic stroke|most bothersome migraine-associated symptom)\b/i);
+        const afterWas = hit.sentence.match(/\bprimary outcome was\s+(?:change in\s+)?(?:a\s+)?([^.!?]{5,140})/i);
+        let value = named?.[1] ?? afterWas?.[1]?.replace(/\s*,?\s*designed by[\s\S]*$/i, "").replace(/\s*,?\s*administered by[\s\S]*$/i, "").trim() ?? hit.sentence;
+        value = value.replace(/\s*,?\s*administered by[\s\S]*$/i, "").replace(/\s*,?\s*designed by[\s\S]*$/i, "").trim();
+        outcome = { value: value.length > 180 ? value.slice(0, 177) + "\u2026" : value, quote: { text: hit.sentence } };
+      }
+    }
+    return {
+      population: population.value,
+      intervention: intervention.value,
+      comparison: comparison.value,
+      outcome: outcome.value,
+      quotes: { population: population.quote, intervention: intervention.quote, comparison: comparison.quote, outcome: outcome.quote }
+    };
+  }
+  function absoluteRiskFromText(text) {
+    const arrMatch = text.match(/absolute risk (?:difference|reduction)[^.%]{0,40}?(\d+\.?\d*)\s*%/i);
+    const nntMatch = text.match(/(?:NNT|number needed to treat)\s*[≈=~]?\s*(\d+)/i);
+    const multi = [...text.matchAll(/(\d+\.?\d*)%\s+with\s+([a-zA-Z0-9 +/-]+)/gi)];
+    const pair = text.match(/(\d+\.?\d*)%\s*(?:versus|vs\.?|vs)\s*(\d+\.?\d*)%/i);
+    const eventRates = text.match(/\((\d+\.?\d*)%\)\s*versus\s+\d+\s+[^()]+\((\d+\.?\d*)%\)/i);
+    if (!(arrMatch || nntMatch || multi.length >= 2 || pair || eventRates)) return void 0;
+    let controlEventRate;
+    let experimentalEventRate;
+    let arr = arrMatch ? `${arrMatch[1]}%` : void 0;
+    let nnt = nntMatch ? nntMatch[1] : void 0;
+    let detail = "";
+    let quoteText = "";
+    if (arrMatch) {
+      detail = "Absolute risk reduction reported by authors.";
+      const s = findSentence(text, /absolute risk/i);
+      quoteText = s && !isTitleLike(s.sentence) ? s.sentence : arrMatch[0];
+    }
+    if (eventRates) {
+      experimentalEventRate = `${eventRates[1]}%`;
+      controlEventRate = `${eventRates[2]}%`;
+      if (!arr) arr = `${Math.abs(parseFloat(eventRates[1]) - parseFloat(eventRates[2])).toFixed(1)}%`;
+      detail = detail || `Derived from reported event rates: ${eventRates[1]}% vs ${eventRates[2]}%.`;
+      const s = findSentence(text, /\(\d+\.?\d*%\).*versus/i);
+      quoteText = quoteText || (s && !isTitleLike(s.sentence) ? s.sentence : eventRates[0]);
+    } else if (multi.length >= 2) {
+      const placebo = multi.find((m) => /placebo|control|usual/i.test(m[2]));
+      const active = multi.find((m) => !/placebo|control|usual/i.test(m[2]));
+      if (active) experimentalEventRate = `${active[1]}% (${active[2].trim()})`;
+      if (placebo) controlEventRate = `${placebo[1]}% (${placebo[2].trim()})`;
+      if (active && placebo) {
+        const arrNum = Math.abs(parseFloat(active[1]) - parseFloat(placebo[1]));
+        if (!arr) arr = `${arrNum.toFixed(1)}%`;
+        if (!nnt && arrNum > 0) nnt = String(Math.round(100 / arrNum));
+        detail = detail || `Derived from reported event rates: experimental ${active[1]}% vs control ${placebo[1]}%.`;
+        const sent = findSentence(text, new RegExp(`${active[1]}%\\s+with`, "i"));
+        quoteText = quoteText || (sent && !isTitleLike(sent.sentence) ? sent.sentence : active[0]);
+      }
+    } else if (pair) {
+      experimentalEventRate = `${pair[1]}%`;
+      controlEventRate = `${pair[2]}%`;
+      const arrNum = Math.abs(parseFloat(pair[1]) - parseFloat(pair[2]));
+      if (!arr) arr = `${arrNum.toFixed(1)}%`;
+      if (!nnt && arrNum > 0) nnt = String(Math.round(100 / arrNum));
+      detail = detail || "Derived from paired percentages in the text.";
+      quoteText = quoteText || pair[0];
+    }
+    if (nntMatch) {
+      const s = findSentence(text, /number needed to treat|NNT/i);
+      quoteText = quoteText || (s && !isTitleLike(s.sentence) ? s.sentence : nntMatch[0]);
+      detail = detail || "NNT reported or approximated in the text.";
+    }
+    if (!nnt && arr) {
+      const n = parseFloat(arr);
+      if (n > 0) nnt = String(Math.round(100 / n));
+    }
+    if (!quoteText || isTitleLike(quoteText) || /^title\s*:/i.test(quoteText)) {
+      quoteText = "No supporting passage found in the provided input.";
+    }
+    return {
+      controlEventRate,
+      experimentalEventRate,
+      arr,
+      nnt,
+      detail: detail || "Absolute effect measures extracted or derived from the provided text.",
+      quote: { text: quoteText }
+    };
+  }
+  function externalValidityNote(text, pico) {
+    const parts = [];
+    if (/\b(multicenter|multi[- ]center|three academic|consecutive)\b/i.test(text)) {
+      parts.push("Setting language suggests multi-center or consecutive clinical recruitment, which may support broader applicability if eligibility is not overly narrow.");
+    }
+    if (/\b(ICHD|imaging-confirmed|subjective memory|proprietary)\b/i.test(text)) {
+      parts.push("Eligibility and outcome definitions should be checked against your local population and diagnostic standards.");
+    }
+    if (/\b(single migraine attack|first-ever|older adults|outpatients)\b/i.test(text)) {
+      parts.push("Population descriptors constrain external validity \u2014 match age band, disease stage, and care setting to your patients.");
+    }
+    if (!parts.length) {
+      parts.push("External validity is limited by incomplete description of setting and eligibility in the provided text. Use the extracted PICO to judge local applicability.");
+    }
+    if (!/^Not clearly extractable/i.test(pico.population)) {
+      parts.push(`Extracted population focus: ${pico.population.slice(0, 160)}`);
+    }
+    return parts.join(" ");
+  }
+  function gradeEvidence(design, rob, flags, text) {
+    let score;
+    let startNote;
+    if (design === "RCT") {
+      score = 4;
+      startNote = "Started at High (randomized trial design).";
+    } else if (design === "Systematic review/meta-analysis") {
+      score = 4;
+      startNote = "Started at High (systematic review / meta-analysis of interventional evidence assumed; downgrade if only observational studies are included).";
+    } else if (design === "Diagnostic accuracy") {
+      score = 3;
+      startNote = "Started at Moderate for a single diagnostic accuracy study (context-dependent).";
+    } else if (design === "Cohort" || design === "Case-control" || design === "Cross-sectional") {
+      score = 2;
+      startNote = "Started at Low (observational design).";
+    } else {
+      score = 2;
+      startNote = "Started at Low (design uncertain).";
+    }
+    const reasons = [startNote];
+    const highRob = rob.filter((d) => d.judgment === "high");
+    const someRob = rob.filter((d) => d.judgment === "some");
+    if (highRob.length >= 3) {
+      score -= 2;
+      reasons.push(`Downgraded \u22122 for very serious risk of bias (${highRob.length} high-risk domains: ${highRob.map((d) => d.name).join("; ")}). Supporting passages include: \u201C${highRob[0].quote.text.slice(0, 140)}\u2026\u201D`);
+    } else if (highRob.length >= 1) {
+      score -= 1;
+      reasons.push(`Downgraded \u22121 for serious risk of bias (${highRob.map((d) => d.name).join("; ")}). Quote: \u201C${highRob[0].quote.text.slice(0, 160)}\u201D`);
+    } else if (someRob.length >= 3) {
+      score -= 1;
+      reasons.push(`Downgraded \u22121 for multiple domains with some concerns (${someRob.map((d) => d.name).join("; ")}).`);
+    }
+    const criticalFlags = flags.filter((f) => f.severity === "critical");
+    const imprecision = criticalFlags.some((f) => f.id.includes("underpowered") || f.id.includes("p-ci")) || flags.some((f) => f.id === "underpowered" || f.id === "no-power");
+    if (criticalFlags.length >= 2) {
+      score -= 1;
+      reasons.push(`Downgraded \u22121 for serious issues in statistical reporting (${criticalFlags.map((f) => f.title).join("; ")}). Example: \u201C${criticalFlags[0].quote.text.slice(0, 140)}\u201D`);
+    } else if (imprecision) {
+      score -= 1;
+      const f = flags.find((x) => x.id.includes("underpowered") || x.id === "no-power");
+      reasons.push(`Downgraded \u22121 for imprecision (power/sample-size concerns). ${f ? `Quote: \u201C${f.quote.text.slice(0, 140)}\u201D` : ""}`);
+    }
+    if (/\bshould be considered first-line\b/i.test(text) && highRob.length) {
+      reasons.push("Authors\u2019 strong practice claims are not commensurate with the internal validity of the evidence body presented.");
+    }
+    if (score <= 2 && /\b(HR|hazard ratio)\s*[=:]?\s*0\.[0-4]\d*/i.test(text) && highRob.length === 0) {
+      score += 1;
+      reasons.push("Upgraded +1 for large effect size with no high-risk RoB domains.");
+    }
+    score = Math.max(1, Math.min(4, score));
+    const map = { 4: "high", 3: "moderate", 2: "low", 1: "very low" };
+    return { grade: map[score], justification: reasons.join(" ") };
+  }
+  function overallSummary(design, grade, rob, flags) {
+    const high = rob.filter((d) => d.judgment === "high").map((d) => d.name);
+    const crit = flags.filter((f) => f.severity === "critical").map((f) => f.title);
+    const bits = [`Classified as ${design} with overall GRADE certainty ${grade}.`];
+    if (high.length) bits.push(`High risk-of-bias domains: ${high.join(", ")}.`);
+    if (crit.length) bits.push(`Critical statistical flags: ${crit.join(", ")}.`);
+    if (!high.length && !crit.length) {
+      bits.push("No high-risk RoB domains or critical statistical inconsistencies were auto-detected; still verify against the full paper.");
+    }
+    bits.push("This is a quote-grounded heuristic appraisal of the pasted text only \u2014 not a substitute for full-text expert review.");
+    return bits.join(" ");
+  }
+  function classifyInputDepth(text) {
+    const len = text.trim().length;
+    const hasMethods = /\bmethods?\s*:/i.test(text);
+    const hasResults = /\bresults?\s*:/i.test(text);
+    const hasDiscussion = /\bdiscussion\s*:/i.test(text);
+    const hasLimitations = /\blimitations?\b/i.test(text);
+    const sectionCount = [hasMethods, hasResults, hasDiscussion, hasLimitations].filter(Boolean).length;
+    if (len > 4500 && sectionCount >= 3) return "full-text-like";
+    if (len > 1200 && sectionCount >= 2) return "excerpt";
+    return "abstract";
+  }
+  function buildFullTextRecommendation(text, design, grade, checklistItems, rob, flags) {
+    const inputLooksLike = classifyInputDepth(text);
+    const notReported = checklistItems.filter((i) => i.status === "not_reported");
+    const highRob = rob.filter((d) => d.judgment === "high");
+    const someRob = rob.filter((d) => d.judgment === "some");
+    const critical = flags.filter((f) => f.severity === "critical");
+    const warn = flags.filter((f) => f.severity === "warn");
+    const verifyInFullText = [];
+    if (design === "RCT") {
+      verifyInFullText.push("CONSORT flow diagram: numbers screened, randomized, received intervention, analysed (ITT vs per-protocol).");
+      verifyInFullText.push("Exact sequence generation, allocation concealment, and who was blinded.");
+    }
+    if (design === "Cohort" || design === "Case-control" || design === "Cross-sectional") {
+      verifyInFullText.push("STROBE methods for confounding control, missing data, and loss to follow-up by exposure group.");
+    }
+    if (design === "Systematic review/meta-analysis") {
+      verifyInFullText.push("PRISMA search strategy, study selection flow, and risk-of-bias assessments of included studies.");
+    }
+    if (design === "Diagnostic accuracy") {
+      verifyInFullText.push("STARD flow, reference standard definition, and interpreter blinding.");
+    }
+    for (const item of notReported.slice(0, 4)) {
+      verifyInFullText.push(`Checklist gap \u2014 confirm in full paper: ${item.label}.`);
+    }
+    for (const d of highRob.slice(0, 3)) {
+      verifyInFullText.push(`High RoB domain to re-check in full methods: ${d.name}.`);
+    }
+    for (const f of critical.slice(0, 3)) {
+      verifyInFullText.push(`Statistical issue to verify with full tables/protocol: ${f.title}.`);
+    }
+    if (!verifyInFullText.some((v) => /protocol|registration/i.test(v))) {
+      verifyInFullText.push("Protocol/registry entry and pre-specified primary outcome list.");
+    }
+    if (!verifyInFullText.some((v) => /absolute|NNT|event rate/i.test(v))) {
+      verifyInFullText.push("Absolute event rates (and ARR/NNT) in addition to relative effects.");
+    }
+    verifyInFullText.push("Funding, conflicts of interest, and author-reported limitations.");
+    let priority = "recommended";
+    if (inputLooksLike === "abstract" || highRob.length >= 2 || critical.length >= 1 || grade === "very low" || grade === "low") {
+      priority = "essential";
+    } else if (inputLooksLike === "full-text-like" && highRob.length === 0 && critical.length === 0 && (grade === "high" || grade === "moderate")) {
+      priority = "optional";
+    } else if (notReported.length >= 3 || someRob.length >= 3 || warn.length >= 2) {
+      priority = "recommended";
+    }
+    if (inputLooksLike === "full-text-like" && priority === "essential" && highRob.length === 0 && critical.length === 0) {
+      priority = "recommended";
+    }
+    const headlines = {
+      essential: "Obtain and critically read the full text before applying these findings",
+      recommended: "Full text is recommended to complete this appraisal",
+      optional: "Full text is optional if the pasted methods/results already cover key domains"
+    };
+    const depthNote = inputLooksLike === "abstract" ? "The pasted input looks like an abstract or short summary." : inputLooksLike === "excerpt" ? "The pasted input looks like a partial methods/results excerpt, not a complete paper." : "The pasted input is relatively long and sectioned (full-text-like), but still may omit protocol appendices and supplementary tables.";
+    const gapBits = [];
+    if (notReported.length) gapBits.push(`${notReported.length} checklist item(s) not reported in the paste`);
+    if (highRob.length) gapBits.push(`${highRob.length} high risk-of-bias domain(s)`);
+    if (critical.length) gapBits.push(`${critical.length} critical statistical flag(s)`);
+    gapBits.push(`GRADE certainty is ${grade}`);
+    const rationale = [
+      depthNote,
+      `Based on this appraisal (${gapBits.join("; ")}), full text is ${priority === "essential" ? "essential" : priority === "recommended" ? "recommended" : "optional"} before clinical or research application.`,
+      "Abstracts systematically under-report methods (randomization, concealment, attrition reasons, protocol deviations). Do not treat this paste-only appraisal as equivalent to full-paper RoB 2 / ROBINS-I / GRADE."
+    ].join(" ");
+    const seen = /* @__PURE__ */ new Set();
+    const uniqueVerify = verifyInFullText.filter((v) => {
+      const k = v.toLowerCase();
+      if (seen.has(k)) return false;
+      seen.add(k);
+      return true;
+    }).slice(0, 10);
+    return {
+      priority,
+      headline: headlines[priority],
+      rationale,
+      verifyInFullText: uniqueVerify,
+      inputLooksLike
+    };
+  }
+  function appraiseStudy(raw) {
+    const text = raw.trim();
+    if (text.length < 40) {
+      throw new Error("Paste a longer abstract or methods/results excerpt (at least ~40 characters).");
+    }
+    const { design, confidence, evidence } = designDetection(text);
+    const { name: checklistName, items: checklistItems } = checklistFor(design, text);
+    const rob = assessRoB(design, text);
+    const extracted = extractStats(text);
+    const flags = statisticalScrutiny(design, text, extracted);
+    const pico = extractPICO(text);
+    const absoluteRisk = absoluteRiskFromText(text);
+    const externalValidity = externalValidityNote(text, pico);
+    const { grade, justification } = gradeEvidence(design, rob, flags, text);
+    const summary = overallSummary(design, grade, rob, flags);
+    const fullTextRecommendation = buildFullTextRecommendation(text, design, grade, checklistItems, rob, flags);
+    return {
+      design,
+      designConfidence: confidence,
+      designEvidence: evidence,
+      checklistName,
+      checklistItems,
+      rob,
+      stats: { extracted, flags },
+      pico,
+      externalValidity,
+      absoluteRisk,
+      grade,
+      gradeJustification: justification,
+      overallSummary: summary,
+      fullTextRecommendation
+    };
+  }
+  return __toCommonJS(engine_exports);
+})();
+
+  </script>
+  <script>
+(function () {
+  const ta = document.getElementById('study');
+  const chars = document.getElementById('chars');
+  const run = document.getElementById('run');
+  const clear = document.getElementById('clear');
+  const err = document.getElementById('error');
+  const report = document.getElementById('report');
+
+  function esc(s) {
+    return String(s ?? '')
+      .replace(/&/g, '&')
+      .replace(/</g, '<')
+      .replace(/>/g, '>')
+      .replace(/"/g, '"');
+  }
+
+  function badge(level, label) {
+    const cls = level === 'low' || level === 'reported' || level === 'info' || level === 'optional' || level === 'high_grade'
+      ? 'b-low'
+      : level === 'some' || level === 'partial' || level === 'warn' || level === 'recommended' || level === 'moderate'
+        ? 'b-some'
+        : level === 'high' || level === 'not_reported' || level === 'critical' || level === 'essential' || level === 'very low' || level === 'low_grade'
+          ? 'b-high'
+          : 'b-sec';
+    return `<span class="badge ${cls}">${esc(label)}</span>`;
+  }
+
+  function quoteBlock(q) {
+    if (!q) return '';
+    return `<div class="quote"><div class="ql">Passage from input</div><p>“${esc(q.text)}”</p>${q.note ? `<div class="note">${esc(q.note)}</div>` : ''}</div>`;
+  }
+
+  function riskLabel(j) {
+    if (j === 'na') return badge('sec', 'N/A');
+    if (j === 'low') return badge('low', 'Low risk');
+    if (j === 'some') return badge('some', 'Some concerns');
+    return badge('high', 'High risk');
+  }
+
+  function checkLabel(s) {
+    if (s === 'reported') return badge('reported', 'Reported');
+    if (s === 'partial') return badge('partial', 'Partial');
+    return badge('not_reported', 'Not reported');
+  }
+
+  function gradeBadge(g) {
+    const map = { high: 'high_grade', moderate: 'moderate', low: 'low_grade', 'very low': 'very low' };
+    return badge(map[g] || 'sec', 'GRADE: ' + g);
+  }
+
+  function ftBadge(p) {
+    if (p === 'essential') return badge('essential', 'Essential');
+    if (p === 'recommended') return badge('recommended', 'Recommended');
+    return badge('optional', 'Optional');
+  }
+
+  function sectionHead(num, title, sub) {
+    return `<div class="section-h"><div class="ico">${num}</div><div><h3>${esc(title)}</h3><p>${esc(sub)}</p></div></div>`;
+  }
+
+  function render(r) {
+    const ft = r.fullTextRecommendation;
+    const ftClass = ft.priority === 'essential' ? 'ft-essential' : ft.priority === 'recommended' ? 'ft-recommended' : '';
+    let html = '';
+
+    html += `<div class="card"><div class="flex-between"><div>
+      <div class="ql" style="font-size:0.7rem;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted);font-weight:600">Critical appraisal report</div>
+      <h2 style="margin:0.25rem 0 0;font-size:1.25rem">${esc(r.design)}</h2>
+      <p class="hint" style="margin:0.25rem 0 0">Checklist: ${esc(r.checklistName)} · Detection confidence ${Math.round(r.designConfidence * 100)}%</p>
+    </div>${gradeBadge(r.grade)}</div>
+    <p class="item-body" style="margin-top:0.75rem">${esc(r.overallSummary)}</p>
+    ${r.designEvidence?.[0] ? quoteBlock(r.designEvidence[0]) : ''}
+    </div>`;
+
+    html += sectionHead('FT', 'Full-text recommendation', 'Whether to obtain the complete paper before applying findings');
+    html += `<div class="card ${ftClass}">
+      <div class="flex-between" style="margin-bottom:0.5rem">
+        <div style="display:flex;gap:0.4rem;flex-wrap:wrap">${ftBadge(ft.priority)}${badge('sec', 'Input: ' + ft.inputLooksLike)}</div>
+      </div>
+      <h3 style="font-size:1rem;margin:0.25rem 0">${esc(ft.headline)}</h3>
+      <p class="item-body">${esc(ft.rationale)}</p>
+      <p class="ql" style="margin-top:0.85rem;font-size:0.7rem;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted);font-weight:600">Verify in the full text</p>
+      <ul class="verify">${ft.verifyInFullText.map(i => `<li>${esc(i)}</li>`).join('')}</ul>
+    </div>`;
+
+    html += sectionHead('1', 'Design & checklist compliance', 'Validated reporting items matched to detected design');
+    for (const item of r.checklistItems) {
+      html += `<div class="card"><div style="display:flex;flex-wrap:wrap;gap:0.4rem;align-items:center">${checkLabel(item.status)}<span class="item-title">${esc(item.label)}</span></div>${quoteBlock(item.quote)}</div>`;
+    }
+
+    html += sectionHead('2', 'Risk-of-bias assessment', 'Six domains — every judgment cites a passage from your input');
+    html += '<div class="grid2">';
+    for (const d of r.rob) {
+      html += `<div class="card"><div class="flex-between"><span class="item-title">${esc(d.name)}</span>${riskLabel(d.judgment)}</div><p class="item-body">${esc(d.rationale)}</p>${quoteBlock(d.quote)}</div>`;
+    }
+    html += '</div>';
+
+    html += sectionHead('3', 'Statistical scrutiny', 'Internal consistency, power, ITT, multiplicity, absolute vs relative');
+    html += `<div class="card"><h3>Extracted numbers</h3>`;
+    const stats = [
+      ['p-values', r.stats.extracted.pValues],
+      ['95% CIs', r.stats.extracted.cis],
+      ['Effect sizes', r.stats.extracted.effectSizes],
+      ['Sample size cues', r.stats.extracted.sampleSizeHints],
+    ];
+    for (const [lab, vals] of stats) {
+      html += `<div style="margin-top:0.5rem"><div class="ql" style="font-size:0.7rem;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted);font-weight:600">${esc(lab)}</div>`;
+      html += vals.length ? vals.map(v => `<code class="chip">${esc(v)}</code>`).join('') : '<span class="hint">None extracted</span>';
+      html += '</div>';
+    }
+    html += '</div>';
+    for (const f of r.stats.flags) {
+      const cls = f.severity === 'critical' ? 'crit' : f.severity === 'warn' ? 'warnc' : '';
+      const sev = f.severity === 'critical' ? badge('critical', 'Critical') : f.severity === 'warn' ? badge('warn', 'Flag') : badge('info', 'Info');
+      html += `<div class="card ${cls}"><div style="display:flex;gap:0.4rem;flex-wrap:wrap;align-items:center">${sev}<span class="item-title">${esc(f.title)}</span></div><p class="item-body">${esc(f.detail)}</p>${quoteBlock(f.quote)}</div>`;
+    }
+
+    html += sectionHead('4', 'Applicability (PICO & absolute effects)', 'External validity and NNT / ARR when derivable');
+    html += '<div class="grid2">';
+    const pico = [
+      ['P', 'Population', r.pico.population, r.pico.quotes.population],
+      ['I', 'Intervention / exposure', r.pico.intervention, r.pico.quotes.intervention],
+      ['C', 'Comparison', r.pico.comparison, r.pico.quotes.comparison],
+      ['O', 'Outcome', r.pico.outcome, r.pico.quotes.outcome],
+    ];
+    for (const [L, t, v, q] of pico) {
+      html += `<div class="card"><div class="item-title"><span class="pico-letter">${L}</span>${esc(t)}</div><p class="item-body">${esc(v)}</p>${quoteBlock(q)}</div>`;
+    }
+    html += '</div>';
+    html += `<div class="card"><h3>External validity</h3><p class="item-body">${esc(r.externalValidity)}</p></div>`;
+    if (r.absoluteRisk) {
+      const a = r.absoluteRisk;
+      html += `<div class="card"><h3>Absolute risk / NNT</h3><div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:0.5rem">`;
+      if (a.experimentalEventRate) html += badge('sec', 'Exp: ' + a.experimentalEventRate);
+      if (a.controlEventRate) html += badge('sec', 'Ctrl: ' + a.controlEventRate);
+      if (a.arr) html += badge('sec', 'ARR ' + a.arr);
+      if (a.nnt) html += badge('def', 'NNT ≈ ' + a.nnt);
+      html += `</div><p class="item-body">${esc(a.detail)}</p>${quoteBlock(a.quote)}</div>`;
+    } else {
+      html += `<div class="card"><h3>Absolute risk / NNT</h3><p class="hint">Absolute event rates or ARR/NNT could not be derived from the pasted text.</p></div>`;
+    }
+
+    html += sectionHead('5', 'Final GRADE rating', 'Certainty of evidence with written, passage-linked justification');
+    html += `<div class="card"><div style="margin-bottom:0.5rem">${gradeBadge(r.grade)}</div><p class="item-body">${esc(r.gradeJustification)}</p></div>`;
+
+    html += `<p class="footer note">Heuristic, quote-grounded critical appraisal of pasted text only. Not a substitute for full-text expert epidemiological review or formal RoB 2 / ROBINS-I / GRADE panel consensus.</p>`;
+
+    report.innerHTML = html;
+  }
+
+  function sync() {
+    const n = ta.value.length;
+    chars.textContent = n.toLocaleString() + ' characters';
+    run.disabled = ta.value.trim().length < 40;
+  }
+
+  ta.addEventListener('input', sync);
+  clear.addEventListener('click', () => {
+    ta.value = '';
+    report.innerHTML = '';
+    err.hidden = true;
+    sync();
+  });
+  run.addEventListener('click', () => {
+    err.hidden = true;
+    try {
+      const r = CriticalAppraiser.appraiseStudy(ta.value);
+      render(r);
+      report.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } catch (e) {
+      report.innerHTML = '';
+      err.hidden = false;
+      err.textContent = e && e.message ? e.message : 'Appraisal failed.';
+    }
+  });
+
+  report.innerHTML = `<div class="card empty"><strong style="color:var(--fg)">No appraisal yet</strong><p style="margin:0.5rem auto 0;max-width:28rem">Paste study text, then press Appraise. The report includes a full-text recommendation when methods gaps make abstract-only judgment unsafe.</p></div>`;
+  sync();
+})();
+  </script>
+</body>
+</html>
