@@ -1,0 +1,2337 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Open-source ebook on Bayesian statistics, decision analysis, and evidence for neurologists and clinician-scientists.">
+      
+      
+        <meta name="author" content="Rizwan Kalani">
+      
+      
+        <link rel="canonical" href="https://rkalani1.github.io/bayesian-clinical-reasoning/curriculum/10-sample-size-adaptive-designs.html">
+      
+      
+        <link rel="prev" href="09-estimation-rope-bayes-factors.html">
+      
+      
+        <link rel="next" href="11-diagnostic-accuracy.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>10. Sample Size and Adaptive Designs - Bayesian Clinical Reasoning</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../stylesheets/page-orientation.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Bayesian Clinical Reasoning">
+  <meta property="og:title" content="10. Sample Size and Adaptive Designs — Bayesian Clinical Reasoning">
+  <meta property="og:description" content="Open-source ebook on Bayesian statistics, decision analysis, and evidence for neurologists and clinician-scientists.">
+  <meta property="og:url" content="https://rkalani1.github.io/bayesian-clinical-reasoning/curriculum/10-sample-size-adaptive-designs.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="10. Sample Size and Adaptive Designs — Bayesian Clinical Reasoning">
+  <meta name="twitter:description" content="Open-source ebook on Bayesian statistics, decision analysis, and evidence for neurologists and clinician-scientists.">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#bayesian-sample-size-sequential-analysis-and-adaptive-platform-designs" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+
+  
+
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="Bayesian Clinical Reasoning" class="md-header__button md-logo" aria-label="Bayesian Clinical Reasoning" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">Bayesian Clinical Reasoning</span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">10. Sample Size and Adaptive Designs</span>
+        </div>
+      </div>
+      <a class="mobile-page-orientation" href="10-sample-size-adaptive-designs.html" aria-label="Bayes, current page: 10. Sample Size and Adaptive Designs">
+        <strong>Bayes</strong><span aria-hidden="true">·</span><span>10. Sample Size and Adaptive Designs</span>
+      </a>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="amber"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="amber"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rkalani1/bayesian-clinical-reasoning" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rkalani1/bayesian-clinical-reasoning
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Bayesian Clinical Reasoning" class="md-nav__button md-logo" aria-label="Bayesian Clinical Reasoning" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Bayesian Clinical Reasoning
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rkalani1/bayesian-clinical-reasoning" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rkalani1/bayesian-clinical-reasoning
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-use.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How to use this book
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../evidence-register.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidence register
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Book
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Book
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part I — Foundations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part I — Foundations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-why-bayesian-thinking-matters.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01. Why Bayesian Thinking Matters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-probability-odds-uncertainty.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02. Probability, Odds, and Uncertainty
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-bayes-theorem.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03. Bayes’ Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-priors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04. Priors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part II — Inference with R
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part II — Inference with R
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-likelihoods-conjugate-models.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05. Likelihoods and Conjugate Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-hierarchical-models.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06. Hierarchical Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-computational-inference.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07. Computational Inference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-model-checking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08. Model Checking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-estimation-rope-bayes-factors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09. Estimation, ROPE, and Bayes Factors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part III — Design and Synthesis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part III — Design and Synthesis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Sample Size and Adaptive Designs
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="10-sample-size-adaptive-designs.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Sample Size and Adaptive Designs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#opening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opening
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clinical-vignette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clinical vignette
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fixed-n-is-a-special-case-of-a-sequential-decision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed \(n\) is a special case of a sequential decision
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#power-assurance-and-the-prior-you-are-willing-to-defend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Power, assurance, and the prior you are willing to defend
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#posterior-probability-stopping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Posterior-probability stopping
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#predictive-probability-of-success" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predictive probability of success
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#platform-trials-arm-drop-arm-add" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Platform trials, arm drop, arm add
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiplicity-in-bayesian-sequential-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiplicity in Bayesian sequential monitoring
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multiplicity in Bayesian sequential monitoring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-the-biostatistician-methodologist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For the biostatistician / methodologist
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#r-monte-carlo-sample-size-for-a-betabinomial-success-probability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R: Monte Carlo sample size for a Beta–Binomial success probability
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worked-solution-to-the-opening-vignette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked solution to the opening vignette
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercises
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-diagnostic-accuracy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Diagnostic Accuracy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-survival-competing-risks.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Survival and Competing Risks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-bayesian-meta-analysis.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Bayesian Meta-Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part IV — Decision and Communication
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part IV — Decision and Communication
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="14-decision-theory-thresholds.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Decision Theory and Thresholds
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="15-decision-curves-voi.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Decision Curves and Value of Information
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="16-bedside-shared-decisions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Bedside and Shared Decisions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="17-communicating-uncertainty.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Communicating Uncertainty
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part V — Synthesis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part V — Synthesis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="18-integrated-case-studies.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Integrated Case Studies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="19-complete-workflow.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. A Complete Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="20-reproducible-pipelines.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. Reproducible Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Appendices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendices/a-r-setup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A. R Setup and Cheatsheet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendices/b-prior-elicitation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    B. Prior Elicitation Worksheets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendices/c-solutions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C. Solutions to Exercises
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendices/d-glossary.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    D. Glossary and Checklists
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#opening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opening
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clinical-vignette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clinical vignette
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fixed-n-is-a-special-case-of-a-sequential-decision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed \(n\) is a special case of a sequential decision
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#power-assurance-and-the-prior-you-are-willing-to-defend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Power, assurance, and the prior you are willing to defend
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#posterior-probability-stopping" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Posterior-probability stopping
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#predictive-probability-of-success" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Predictive probability of success
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#platform-trials-arm-drop-arm-add" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Platform trials, arm drop, arm add
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiplicity-in-bayesian-sequential-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiplicity in Bayesian sequential monitoring
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Multiplicity in Bayesian sequential monitoring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-the-biostatistician-methodologist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For the biostatistician / methodologist
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#r-monte-carlo-sample-size-for-a-betabinomial-success-probability" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R: Monte Carlo sample size for a Beta–Binomial success probability
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worked-solution-to-the-opening-vignette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked solution to the opening vignette
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercises
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="bayesian-sample-size-sequential-analysis-and-adaptive-platform-designs">Bayesian Sample Size, Sequential Analysis, and Adaptive / Platform Designs<a class="headerlink" href="#bayesian-sample-size-sequential-analysis-and-adaptive-platform-designs" title="Permanent link">&para;</a></h1>
+<h2 id="opening">Opening<a class="headerlink" href="#opening" title="Permanent link">&para;</a></h2>
+<p>The trial coordinator wants a number. A single <span class="arithmatex">\(n\)</span>. The DSMB wants a rule for looking early without “spending alpha.” The sponsor wants to know whether a rare-disease program is even feasible. None of those requests is a statistical question until you name the decision it is supposed to serve: start, stop, drop an arm, add an arm, or keep accruing because the current posterior is still too wide to act. Sample size is not a property of a formula. It is a property of a decision under uncertainty.</p>
+<h2 id="learning-objectives">Learning objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">&para;</a></h2>
+<p>After working this chapter you should be able to:</p>
+<ul>
+<li>Distinguish frequentist power at a point alternative from Bayesian assurance (expected power) and say when each number is the honest one to quote.</li>
+<li>Write a posterior-probability stopping rule and a predictive-probability-of-success (PPoS) rule, and explain why they answer different questions.</li>
+<li>Sketch a platform trial in the I-SPY / REMAP-CAP spirit and map the same machinery onto a stroke or neuro-ICU question.</li>
+<li>State what Bayesian sequential monitoring does <em>and does not</em> buy you with respect to multiplicity and type I error.</li>
+<li>Implement a Monte Carlo sample-size calculation for a Beta–Binomial success probability.</li>
+</ul>
+<h2 id="clinical-vignette">Clinical vignette<a class="headerlink" href="#clinical-vignette" title="Permanent link">&para;</a></h2>
+<p>A regional academic consortium wants a randomized trial of adjunctive second-line immunotherapy versus standard first-line care in anti-LGI1 encephalitis. The disease is rare: the three participating centers together see perhaps 18–24 new cases a year that would meet proposed eligibility. The proposed primary endpoint is “good functional recovery,” defined for teaching purposes as modified Rankin Scale (mRS) 0–2 at 6 months <em>or</em> return to the patient’s pre-morbid occupational baseline, whichever is more favorable. Historical observational series — <strong>teaching numbers, not a meta-analysis of the literature</strong> — suggest that under current care the success probability sits somewhere near 0.45, with honest uncertainty spanning 0.30 to 0.60. The investigative therapy is hoped to raise that probability by an absolute 20 points. A senior colleague asks for “80% power.” A junior colleague asks whether you can stop at <span class="arithmatex">\(n = 40\)</span> if the first looks are spectacular. The rare-disease advocate on the steering committee asks whether a platform that can add the next antibody-defined encephalitis cohort later would be more ethical than a one-and-done two-arm trial.</p>
+<p>Do not compute yet. Write down, in one sentence each: (1) what “success” means for a future patient, (2) what would make you stop for futility, and (3) what information you would need before you would let a later, different autoantibody cohort share this control arm.</p>
+<h2 id="fixed-n-is-a-special-case-of-a-sequential-decision">Fixed <span class="arithmatex">\(n\)</span> is a special case of a sequential decision<a class="headerlink" href="#fixed-n-is-a-special-case-of-a-sequential-decision" title="Permanent link">&para;</a></h2>
+<p>Classical sample-size formulae assume a single look, a point null, a point alternative, and a type I / type II pair that someone else chose. Those assumptions are not wrong. They are a <em>policy</em>: we will pretend <span class="arithmatex">\(\theta\)</span> equals <span class="arithmatex">\(\theta_{\text{alt}}\)</span>, we will pretend we look once, and we will pretend that a two-sided <span class="arithmatex">\(p &lt; 0.05\)</span> is the only decision that matters. Neurology trials violate every clause. Patients accrue slowly. The interesting effect is not a point. The DSMB will look. The clinically actionable contrast is often a threshold on a posterior probability, not a <span class="arithmatex">\(p\)</span>-value.</p>
+<p>The general principle is older than any particular software: choose the smallest experiment such that, averaging over the uncertainty you actually have, the decision you intend to make will be correct often enough to justify the cost in patients, time, and opportunity. That sentence is the definition of a Bayesian sample-size problem. Power at a point is the special case in which the prior on the treatment effect is a spike at <span class="arithmatex">\(\theta_{\text{alt}}\)</span> and the decision rule is a frequentist test.</p>
+<pre class="mermaid"><code>flowchart TD
+  A[Prior on effect] --&gt; B[Simulate a trial path]
+  B --&gt; C[Interim posterior]
+  C --&gt; D{Stop?}
+  D --&gt;|efficacy| E[Claim benefit]
+  D --&gt;|futility| F[Stop and redirect]
+  D --&gt;|continue| G[Accrue more]
+  G --&gt; C
+  E --&gt; H[Report posterior and OC]
+  F --&gt; H</code></pre>
+<p>The loop is the design. The sample size is whatever that loop usually stops at.</p>
+<h2 id="power-assurance-and-the-prior-you-are-willing-to-defend">Power, assurance, and the prior you are willing to defend<a class="headerlink" href="#power-assurance-and-the-prior-you-are-willing-to-defend" title="Permanent link">&para;</a></h2>
+<p>Frequentist power is</p>
+<div class="arithmatex">\[
+\text{Power}(\theta) = \Pr\bigl(\text{reject } H_0 \mid \theta\bigr).
+\]</div>
+<p>It is a function, not a number. Quoting “80% power” always smuggles in a <span class="arithmatex">\(\theta\)</span>. In a binary-outcome encephalitis trial, <span class="arithmatex">\(\theta\)</span> might be the difference in success probabilities <span class="arithmatex">\(\delta = p_1 - p_0\)</span>. Power at <span class="arithmatex">\(\delta = 0.20\)</span> can be 80% while power at <span class="arithmatex">\(\delta = 0.08\)</span> — a difference many clinicians would still call worthwhile — is 25%. Patients and funders experience the average of that curve, not its value at the most optimistic slide in the grant.</p>
+<p>Assurance, also called expected power or Bayesian average power, integrates the power curve against a design prior <span class="arithmatex">\(\pi(\theta)\)</span>:</p>
+<div class="arithmatex">\[
+\text{Assurance} = \int \text{Power}(\theta)\, \pi(\theta)\, d\theta = \Pr\bigl(\text{reject } H_0\bigr),
+\]</div>
+<p>where the probability is now joint over data <em>and</em> parameter. If your design prior is a spike, assurance collapses to power. If your design prior is the same skeptical distribution you would use to analyze the trial, assurance is often much lower than the grant’s power number, and that is information, not a defect.</p>
+<p>Two priors can and often should differ. The <em>design prior</em> encodes the uncertainty used to plan: “we think the success rate on control is around 0.45 but we would not be shocked by 0.30 or 0.60.” The <em>analysis prior</em> is what will appear in the primary posterior: often flatter, sometimes weakly informative around a null increment, sometimes a skeptical prior that puts mass near <span class="arithmatex">\(\delta = 0\)</span>. Using an enthusiastic design prior and a skeptical analysis prior is conservative and usually honest. Using the reverse is how protocols acquire 90% power on paper and 40% assurance in the world.</p>
+<div class="admonition warning">
+<p class="admonition-title">Common Pitfall</p>
+<p>Do not report assurance computed under an enthusiastic design prior as if it were power at a clinically minimal effect. Reviewers who know the difference will treat the number as marketing. State the prior, plot the power curve, and give assurance as a second number.</p>
+</div>
+<p>A compact way to talk to a DSMB or a rare-disease steering committee is a small table of <em>operating characteristics</em> (OC) under a handful of truths, plus one row that averages them. Teaching numbers for a two-arm binary trial with 1:1 randomization and a posterior-probability success rule <span class="arithmatex">\(P(\delta &gt; 0 \mid y) &gt; 0.975\)</span>:</p>
+<table>
+<thead>
+<tr>
+<th>Assumed true <span class="arithmatex">\(\delta\)</span></th>
+<th style="text-align: right;">Approx. power / stop-for-efficacy rate</th>
+<th style="text-align: right;">Typical stopping <span class="arithmatex">\(n\)</span> (both arms)</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.00</td>
+<td style="text-align: right;">0.03–0.05</td>
+<td style="text-align: right;">80 (max)</td>
+<td>Type I under this rule and these looks</td>
+</tr>
+<tr>
+<td>0.08</td>
+<td style="text-align: right;">0.28</td>
+<td style="text-align: right;">70</td>
+<td>Minimal interesting effect</td>
+</tr>
+<tr>
+<td>0.20</td>
+<td style="text-align: right;">0.78</td>
+<td style="text-align: right;">52</td>
+<td>Hoped-for effect</td>
+</tr>
+<tr>
+<td>Design prior (mixture)</td>
+<td style="text-align: right;">Assurance 0.51</td>
+<td style="text-align: right;">58</td>
+<td>The number patients actually face</td>
+</tr>
+</tbody>
+</table>
+<p>Those cells are <strong>teaching numbers</strong> generated from the kind of Monte Carlo you will write below. They are not results from any published encephalitis trial. The qualitative lesson is stable: if the hoped-for effect is in the right tail of a defensible prior, assurance sits well below power-at-the-hope, and adaptive stopping buys you more on the typical <span class="arithmatex">\(n\)</span> than on the assurance itself.</p>
+<h2 id="posterior-probability-stopping">Posterior-probability stopping<a class="headerlink" href="#posterior-probability-stopping" title="Permanent link">&para;</a></h2>
+<p>A posterior-probability (PP) rule is a threshold on a statement clinicians already speak:</p>
+<ul>
+<li><strong>Efficacy:</strong> stop and claim benefit if <span class="arithmatex">\(P(\delta &gt; \delta_0 \mid y_{1:t}) &gt; \eta\)</span>, for example <span class="arithmatex">\(\delta_0 = 0\)</span> and <span class="arithmatex">\(\eta = 0.975\)</span>.</li>
+<li><strong>Futility:</strong> stop and abandon if <span class="arithmatex">\(P(\delta &gt; \delta_0 \mid y_{1:t}) &lt; \varepsilon\)</span>, for example <span class="arithmatex">\(\varepsilon = 0.10\)</span>.</li>
+<li><strong>Continue:</strong> otherwise accrue to the next look, or to a pre-declared maximum <span class="arithmatex">\(N\)</span>.</li>
+</ul>
+<p>The threshold <span class="arithmatex">\(\delta_0\)</span> is a <em>clinical</em> object. For thrombolysis or EVT it might be a 3-month utility-weighted mRS increment. For a rare encephalitis trial it might be “any improvement over current care,” <span class="arithmatex">\(\delta_0 = 0\)</span>, or a more demanding “worth the infection risk,” <span class="arithmatex">\(\delta_0 = 0.10\)</span>. Changing <span class="arithmatex">\(\delta_0\)</span> changes the meaning of the trial more than changing <span class="arithmatex">\(\eta\)</span> from 0.97 to 0.98.</p>
+<p>PP rules are not automatically calibrated to a 5% type I error. If you look every 10 patients and stop at <span class="arithmatex">\(\eta = 0.95\)</span>, you will claim benefit under a true null more often than 5% of the time. The posterior at each look is still a correct posterior for that look. What inflates is the <em>trial-wise</em> false-positive rate of the <em>decision procedure</em>. Those are different sentences. Regulators, and any DSMB that has been burned, care about both.</p>
+<div class="admonition tip">
+<p class="admonition-title">Clinical Pearl</p>
+<p>When a colleague says “Bayesian trials can look as often as they want,” translate: the posterior does not require an alpha-spending function to remain a posterior. The <em>claim</em> still has an operating characteristic, and that OC is established by simulation, not by rhetoric.</p>
+</div>
+<h2 id="predictive-probability-of-success">Predictive probability of success<a class="headerlink" href="#predictive-probability-of-success" title="Permanent link">&para;</a></h2>
+<p>Predictive probability of success answers a different question: if we continue this trial along a stated path — to the next look, or to maximum <span class="arithmatex">\(N\)</span>, or through a remaining sequence of adaptive decisions — what is the probability that the <em>eventual</em> analysis will meet the success criterion?</p>
+<p>Let <span class="arithmatex">\(y_{\text{obs}}\)</span> be the data so far and <span class="arithmatex">\(y_{\text{fut}}\)</span> the yet-unseen data. Let <span class="arithmatex">\(S\)</span> be the event that the final posterior (or the final frequentist test, if that is how the protocol is written) crosses the success bar. Then</p>
+<div class="arithmatex">\[
+\text{PPoS} = P\bigl(S \mid y_{\text{obs}}\bigr) = \int P\bigl(S \mid y_{\text{obs}}, y_{\text{fut}}\bigr)\, p(y_{\text{fut}} \mid y_{\text{obs}})\, dy_{\text{fut}}.
+\]</div>
+<p>The inner probability is usually 0 or 1 once <span class="arithmatex">\(y_{\text{fut}}\)</span> is filled in; the outer integral is a posterior predictive average. PPoS is the right number for <em>continuation</em> decisions. A trial can have a current posterior mean that looks promising and a PPoS of 12%, because almost no plausible future sample will push the posterior over a strict bar. Conversely, a trial can sit just short of <span class="arithmatex">\(\eta\)</span> with a PPoS of 80%, because a modest amount of additional data will almost surely finish the job.</p>
+<p>Goldilocks designs (Broglio, Connor, Berry) use this idea to pick a sample size that is neither too small (PPoS still miserable, posterior still too wide) nor too large (the decision is already made). Accrual continues while PPoS lives in a middle band; the trial stops for success, for futility, or at a cap. The name is a joke. The structure is a sequential decision problem with an explicit cost of another patient.</p>
+<div class="admonition note">
+<p class="admonition-title">Mathematical Detail</p>
+<p>PPoS is not the posterior probability of a positive effect. It is the posterior predictive probability of a <em>future decision</em>. If the success criterion is <span class="arithmatex">\(P(\delta &gt; 0 \mid y_{\text{all}}) &gt; 0.975\)</span>, then PPoS can be small even when <span class="arithmatex">\(P(\delta &gt; 0 \mid y_{\text{obs}}) = 0.90\)</span>. Quoting the two numbers as if they were interchangeable is the most common communication failure at a Bayesian DSMB.</p>
+</div>
+<p>A second teaching table, still with invented looks at an encephalitis trial, shows why both numbers belong in the closed session:</p>
+<table>
+<thead>
+<tr>
+<th>Look (<span class="arithmatex">\(n\)</span> per arm)</th>
+<th>Successes Tx / Ctrl</th>
+<th style="text-align: right;"><span class="arithmatex">\(P(\delta &gt; 0 \mid y)\)</span></th>
+<th style="text-align: right;">PPoS to <span class="arithmatex">\(N=40\)</span> per arm</th>
+<th>Action under a Goldilocks rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10 / 10</td>
+<td>7 / 4</td>
+<td style="text-align: right;">0.89</td>
+<td style="text-align: right;">0.41</td>
+<td>Continue (middle band)</td>
+</tr>
+<tr>
+<td>20 / 20</td>
+<td>14 / 8</td>
+<td style="text-align: right;">0.96</td>
+<td style="text-align: right;">0.71</td>
+<td>Continue; efficacy close</td>
+</tr>
+<tr>
+<td>20 / 20</td>
+<td>9 / 9</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">0.06</td>
+<td>Stop for futility</td>
+</tr>
+<tr>
+<td>30 / 30</td>
+<td>22 / 12</td>
+<td style="text-align: right;">0.991</td>
+<td style="text-align: right;">—</td>
+<td>Stop for efficacy</td>
+</tr>
+</tbody>
+</table>
+<p>Again: <strong>teaching numbers</strong>. The pattern is what you carry to the next protocol. Early noisy leads have mediocre PPoS. Clear mid-trial nulls have tiny PPoS. Spectacular late leads have already crossed the PP bar.</p>
+<h2 id="platform-trials-arm-drop-arm-add">Platform trials, arm drop, arm add<a class="headerlink" href="#platform-trials-arm-drop-arm-add" title="Permanent link">&para;</a></h2>
+<p>A two-arm fixed trial asks one question and then dissolves the infrastructure. A platform trial keeps the infrastructure and lets the questions change. I-SPY 2 did this in neoadjuvant breast cancer: shared controls, biomarker signatures, response-adaptive randomization, graduation or dropping of arms against a predictive-probability bar. REMAP-CAP did it in severe pneumonia and then in COVID-19: multiple domains (antibiotics, steroids, antivirals, immunomodulation), response-adaptive randomization, and the ability to add a domain when the science moved. The general principle is not “oncology” or “ICU.” It is <em>perpetual</em> learning with a shared control and pre-declared rules for membership in the experiment.</p>
+<p>Stroke and neuro-ICU are structurally well suited to the same skeleton. Large-vessel occlusion care already has a shared control pathway (alteplase or tenecteplase, EVT yes/no, blood-pressure target, hemicraniectomy threshold). Intracerebral hemorrhage already has competing tactics (intensive lowering of blood pressure, reversal strategy, minimally invasive evacuation, intensive care bundles). Antibody-mediated encephalitis has a natural biomarker partition: LGI1, CASPR2, NMDAR, AMPAR, and the next antigen the lab will name next year. A one-and-done LGI1 trial that cannot accept a CASPR2 arm without a new IND and a new control group will waste the most expensive thing in rare-disease research, which is a running network.</p>
+<pre class="mermaid"><code>flowchart LR
+  S[Shared control] --&gt; R[Randomize within domain]
+  R --&gt; A1[Arm A]
+  R --&gt; A2[Arm B]
+  R --&gt; A3[Arm C]
+  A1 --&gt; P[PPoS / PP look]
+  A2 --&gt; P
+  A3 --&gt; P
+  P --&gt;|graduate| G[Drop to practice]
+  P --&gt;|futile| D[Drop arm]
+  P --&gt;|promising| K[Keep accruing]
+  N[New arm D] --&gt; R</code></pre>
+<p>Several design choices are not optional if the platform is to remain interpretable.</p>
+<p><strong>Shared control.</strong> Borrowing control information across time requires a model for drift. A simple hierarchical exchangeable model on control rates is a start. A time-smoothed control (random walk or spline on the logit) is more honest when supportive care is improving. If you are not willing to model drift, do not borrow ancient controls.</p>
+<p><strong>Response-adaptive randomization (RAR).</strong> Shifting allocation toward the arm that is winning reduces the number of patients assigned to inferior arms. It also complicates estimation and can starve a slowly accruing but eventually superior arm. In a rare encephalitis network, simple equal randomization with drop/add often dominates clever RAR because the binding constraint is total eligible patients, not the allocation ratio.</p>
+<p><strong>Domains versus arms.</strong> REMAP-CAP’s domain structure — independently randomizing steroids and antivirals, say — is a factorial in sequential clothing. Interactions must be declared. In a neuro-ICU platform, “BP target” and “evacuation strategy” are not independent scientific questions; the protocol should say so.</p>
+<p><strong>Graduation.</strong> An arm that crosses a high PP or PPoS threshold can be declared standard and become the new control. That is the ethical point of a platform. It is also the inferential point at which you must freeze a primary analysis for that comparison, or you will keep moving the goalposts.</p>
+<div class="admonition tip">
+<p class="admonition-title">Clinical Pearl</p>
+<p>The scientific unit of a platform is the <em>comparison</em>, not the protocol number. Write the statistical analysis plan per comparison, with a pre-declared control, a pre-declared estimand, and a pre-declared rule for what happens to that comparison when a new arm arrives.</p>
+</div>
+<h2 id="multiplicity-in-bayesian-sequential-monitoring">Multiplicity in Bayesian sequential monitoring<a class="headerlink" href="#multiplicity-in-bayesian-sequential-monitoring" title="Permanent link">&para;</a></h2>
+<p>There is a true statement and a false statement that share vocabulary.</p>
+<p>True: the posterior <span class="arithmatex">\(p(\theta \mid y_{1:t})\)</span> is the posterior given the data observed so far. Optional stopping that depends on the data does not, by itself, invalidate Bayes’ theorem. If you report the posterior and the stopping rule, a Bayesian reader can interpret the result.</p>
+<p>False: therefore type I error is a non-issue, you may use <span class="arithmatex">\(\eta = 0.95\)</span> at every weekly look, and a platform with twelve arms needs no further thought about false graduation.</p>
+<p>The false statement confuses a coherent posterior with a calibrated decision procedure. A decision procedure has operating characteristics under stated truths, including the global null that no arm works. Those OC depend on how often you look, how many arms you compare to the same control, whether you use a hierarchical shrinkage model, and whether “success” is defined marginally or jointly.</p>
+<p>Pragmatic rules that keep both camps in the room:</p>
+<ol>
+<li><strong>Simulate the exact design</strong>, including every look, every drop/add rule, and the analysis prior, under a null, under a single-active-arm alternative, and under a design prior. Report type I, power/assurance, expected <span class="arithmatex">\(n\)</span>, and expected duration.</li>
+<li><strong>Harden the efficacy bar</strong> when you look often. <span class="arithmatex">\(\eta = 0.992\)</span> at each look can be calibrated to a trial-wise one-sided 2.5% false-positive rate for a given look schedule; <span class="arithmatex">\(\eta = 0.95\)</span> usually cannot.</li>
+<li><strong>Shrink across arms</strong> in a platform. A hierarchical model on treatment increments, or a spike-and-slab, is the Bayesian answer to many-arm multiplicity. It is not automatic type I control, but it is the right bias–variance trade.</li>
+<li><strong>Separate confirmation from learning.</strong> An arm that graduates on a PPoS rule can be required to pass a locked, non-adaptive analysis on a pre-declared cohort — the platform analogue of a phase III.</li>
+</ol>
+<p>FDA’s Bayesian device guidance and the later adaptive-design guidance both reduce to this: show the OC. Neurology investigators who treat simulation as a regulatory tax rather than as part of the design will write protocols that neither camp trusts.</p>
+<h3 id="for-the-biostatistician-methodologist">For the biostatistician / methodologist<a class="headerlink" href="#for-the-biostatistician-methodologist" title="Permanent link">&para;</a></h3>
+<p>Let <span class="arithmatex">\(p_0, p_1\)</span> be arm-wise success probabilities with independent Beta analysis priors, <span class="arithmatex">\(p_k \sim \operatorname{Beta}(a_k, b_k)\)</span>. After <span class="arithmatex">\(s_k\)</span> successes in <span class="arithmatex">\(n_k\)</span> trials the posterior is <span class="arithmatex">\(\operatorname{Beta}(a_k + s_k, b_k + n_k - s_k)\)</span>. The posterior probability <span class="arithmatex">\(P(p_1 &gt; p_0 \mid y)\)</span> is available in closed form as a finite sum or by direct Monte Carlo from the two Betas. Predictive success counts are Beta–Binomial. A design-stage Monte Carlo therefore needs no MCMC: draw <span class="arithmatex">\((p_0, p_1)\)</span> from the design prior, draw the sequential data, apply the PP / PPoS rule, and tally decisions.</p>
+<p>PPoS to a fixed maximum <span class="arithmatex">\(N\)</span> is, for each posterior draw of <span class="arithmatex">\((p_0, p_1)\)</span>, the probability that the remaining Beta–Binomial counts push the final <span class="arithmatex">\(P(p_1 &gt; p_0 \mid y_{\text{all}})\)</span> over <span class="arithmatex">\(\eta\)</span>. Nested Monte Carlo is enough at design stage. At an interim analysis you can replace the outer draw with the current posterior.</p>
+<p>Goldilocks and platform rules are the same algorithm with a richer state: current arms, current allocation probabilities, current time-trend model for control. The computational cost is still simulation, not a new theory of sequential analysis. What <em>is</em> a theory question is the estimand after RAR and after a control that has itself been replaced mid-platform. Write the estimand first — a pairwise increment against a contemporaneous control, or a time-averaged increment against a smoothed control — and only then write the stopping rule.</p>
+<p>Frequentist sequential boundaries (O’Brien–Fleming, Pocock, error-spending) can be recast as time-varying <span class="arithmatex">\(\eta_t\)</span>. Doing so is sometimes the shortest path through a regulatory conversation. It does not make the design “less Bayesian.” It makes the OC transparent.</p>
+<h2 id="r-monte-carlo-sample-size-for-a-betabinomial-success-probability">R: Monte Carlo sample size for a Beta–Binomial success probability<a class="headerlink" href="#r-monte-carlo-sample-size-for-a-betabinomial-success-probability" title="Permanent link">&para;</a></h2>
+<p>The encephalitis vignette is a single-arm feasibility question before it is a two-arm trial: how many patients do we need before <span class="arithmatex">\(P(p &gt; 0.45 \mid y)\)</span> is usually large, if the design prior thinks <span class="arithmatex">\(p\)</span> is near 0.65? The code below does not fit a <code>brms</code> model; the conjugate structure is the model. It is copy-paste ready.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Beta-Binomial assurance and typical n for a single-arm success probability.</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># Teaching calculation for an anti-LGI1 encephalitis feasibility cohort.</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># Design prior: p ~ Beta(6.5, 3.5)  (mean 0.65, wide).</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Analysis prior: p ~ Beta(1, 1).</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># Success: P(p &gt; 0.45 | y) &gt; 0.90.</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># Looks: every 10 patients from 20 to 80.</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nf">set.seed</span><span class="p">(</span><span class="m">20260818</span><span class="p">)</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">design_a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">6.5</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">design_b</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">3.5</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="n">analysis_a</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="n">analysis_b</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="n">p0</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">0.45</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="n">eta</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">0.90</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="n">looks</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">seq</span><span class="p">(</span><span class="m">20</span><span class="p">,</span><span class="w"> </span><span class="m">80</span><span class="p">,</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">)</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="n">n_sims</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">4000</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="c1"># Posterior probability P(p &gt; p0 | s, n) under a Beta analysis prior.</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="n">pp_gt</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">analysis_a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">analysis_b</span><span class="p">,</span><span class="w"> </span><span class="n">thresh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">  </span><span class="n">stats</span><span class="o">::</span><span class="nf">pbeta</span><span class="p">(</span><span class="n">thresh</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">lower.tail</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="p">}</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="n">one_path</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">  </span><span class="n">p</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">stats</span><span class="o">::</span><span class="nf">rbeta</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">design_a</span><span class="p">,</span><span class="w"> </span><span class="n">design_b</span><span class="p">)</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">  </span><span class="n">y</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">stats</span><span class="o">::</span><span class="nf">rbinom</span><span class="p">(</span><span class="nf">max</span><span class="p">(</span><span class="n">looks</span><span class="p">),</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">prob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">)</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">  </span><span class="n">stop_n</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kc">NA_integer_</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">  </span><span class="n">stop_pp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kc">NA_real_</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">  </span><span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="n">looks</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">    </span><span class="n">s</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="nf">seq_len</span><span class="p">(</span><span class="n">n</span><span class="p">)])</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">    </span><span class="n">pp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">pp_gt</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">    </span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="n">pp</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">eta</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">      </span><span class="n">stop_n</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">n</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">      </span><span class="n">stop_pp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">pp</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">      </span><span class="kr">break</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">  </span><span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">stop_n</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">    </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">max</span><span class="p">(</span><span class="n">looks</span><span class="p">)</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">    </span><span class="n">s</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">    </span><span class="n">stop_n</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">n</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="w">    </span><span class="n">stop_pp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">pp_gt</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="w">  </span><span class="nf">c</span><span class="p">(</span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">stop_n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stop_n</span><span class="p">,</span><span class="w"> </span><span class="n">stop_pp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">stop_pp</span><span class="p">,</span><span class="w"> </span><span class="n">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">stop_pp</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">eta</span><span class="p">))</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="p">}</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="n">draws</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">replicate</span><span class="p">(</span><span class="n">n_sims</span><span class="p">,</span><span class="w"> </span><span class="nf">one_path</span><span class="p">())</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="n">assurance</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">draws</span><span class="p">[</span><span class="s">"success"</span><span class="p">,</span><span class="w"> </span><span class="p">])</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="n">mean_n</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">draws</span><span class="p">[</span><span class="s">"stop_n"</span><span class="p">,</span><span class="w"> </span><span class="p">])</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="n">q_n</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">stats</span><span class="o">::</span><span class="nf">quantile</span><span class="p">(</span><span class="n">draws</span><span class="p">[</span><span class="s">"stop_n"</span><span class="p">,</span><span class="w"> </span><span class="p">],</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.1</span><span class="p">,</span><span class="w"> </span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="m">0.9</span><span class="p">))</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="n">assurance</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="n">mean_n</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="n">q_n</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="c1"># Power at a point alternative, for the grant table.</span>
+<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="n">power_at</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">p_true</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">60</span><span class="p">,</span><span class="w"> </span><span class="n">n_sims</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="w">  </span><span class="n">s</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">stats</span><span class="o">::</span><span class="nf">rbinom</span><span class="p">(</span><span class="n">n_sims</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">prob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p_true</span><span class="p">)</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="w">  </span><span class="nf">mean</span><span class="p">(</span><span class="nf">pp_gt</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">eta</span><span class="p">)</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a><span class="p">}</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a><span class="nf">c</span><span class="p">(</span><span class="n">p065</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">power_at</span><span class="p">(</span><span class="m">0.65</span><span class="p">),</span><span class="w"> </span><span class="n">p055</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">power_at</span><span class="p">(</span><span class="m">0.55</span><span class="p">),</span><span class="w"> </span><span class="n">p045</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">power_at</span><span class="p">(</span><span class="m">0.45</span><span class="p">))</span>
+</code></pre></div>
+<p>Run it before you quote a number in a protocol. Change the design prior until a skeptical colleague will sign the paragraph that describes it. If assurance at a feasible maximum <span class="arithmatex">\(N\)</span> is 0.40, the honest next sentence is not “we will use a more optimistic prior.” It is “this question is not answerable in a two-year, three-center, single-arm cohort,” which is how platforms earn their keep.</p>
+<div class="admonition example">
+<p class="admonition-title">R Deep Dive</p>
+<p>The two-arm version replaces one Beta with two, replaces <code>pp_gt</code> with the Monte Carlo probability that a draw from <span class="arithmatex">\(\operatorname{Beta}(a_1+s_1, b_1+n_1-s_1)\)</span> exceeds a draw from the control posterior, and accumulates patients in pairs. PPoS is a nested loop: for each current posterior draw, simulate the remaining patients to <span class="arithmatex">\(N\)</span> and ask whether the final PP exceeds <span class="arithmatex">\(\eta\)</span>. A few thousand outer and a few hundred inner draws are enough to design; use more at a live interim.</p>
+</div>
+<h2 id="worked-solution-to-the-opening-vignette">Worked solution to the opening vignette<a class="headerlink" href="#worked-solution-to-the-opening-vignette" title="Permanent link">&para;</a></h2>
+<p><strong>(1) What success means.</strong> For a future patient, success is a 6-month outcome worth the incremental infection and hospitalization risk of second-line immunotherapy: mRS 0–2 <em>or</em> return to pre-morbid occupation. That is an estimand, not a convenience composite. Write it so that a site investigator can assign it without a central committee on every case, then audit a sample.</p>
+<p><strong>(2) When to stop for futility.</strong> Not when the posterior mean increment is “small.” Stop when PPoS to the feasible maximum <span class="arithmatex">\(N\)</span> — say 80 randomized patients over four years, the realistic ceiling of three centers — falls below a pre-declared bar such as 0.10 for the event <span class="arithmatex">\(P(\delta &gt; 0 \mid y_N) &gt; 0.975\)</span>. A PP rule of <span class="arithmatex">\(P(\delta &gt; 0 \mid y) &lt; 0.10\)</span> is an acceptable simpler cousin if you simulate it and accept its OC. Do not stop for futility at <span class="arithmatex">\(n = 20\)</span> on a noisy tie; the table above is the warning.</p>
+<p><strong>(3) Sharing a control with a later autoantibody cohort.</strong> Only with a written model for non-exchangeability. LGI1 and NMDAR encephalitis do not share a natural history, an age distribution, or a background success rate. A platform can still share <em>infrastructure</em>, DSMB, and outcome adjudication. Sharing <em>control patients</em> requires either a stratified control (separate <span class="arithmatex">\(p_0\)</span> by antigen, with hierarchical shrinkage if — and only if — you believe in partial exchangeability) or no sharing at all. The ethical argument for a platform here is the next antigen, not a free lunch in the likelihood.</p>
+<p>On sample size: quote both power at <span class="arithmatex">\(\delta = 0.20\)</span> and assurance under a design prior that puts the control rate at <span class="arithmatex">\(\operatorname{Beta}(9, 11)\)</span> (mean 0.45) and the increment at a truncated distribution with mean 0.15 and a hard lower bound of −0.05. If that assurance is near 50% at the feasible <span class="arithmatex">\(N\)</span>, the design is a pilot that will graduate to a platform or die at a PPoS look, not a definitive two-arm trial. Say so in the protocol. Rare-disease trials that pretend to be phase III consume the world’s eligible patients and still do not answer the question.</p>
+<div class="admonition warning">
+<p class="admonition-title">Common Pitfall</p>
+<p>Do not “rescue” a low-assurance rare-disease trial by switching the primary endpoint after seeing the first twenty outcomes, or by adding a historical control series without a drift model. Both maneuvers have a name in the literature. Neither is a sample-size strategy.</p>
+</div>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><strong>Bedside.</strong> A DSMB closed session shows <span class="arithmatex">\(P(\delta &gt; 0 \mid y) = 0.93\)</span> and PPoS to maximum <span class="arithmatex">\(N\)</span> of 0.18. A voting member says, “We are almost there; continue.” Write the one-paragraph counterargument, as if you were the unblinded statistician.</p>
+</li>
+<li>
+<p><strong>Design prior.</strong> Using the R block, replace the design prior with <span class="arithmatex">\(\operatorname{Beta}(3, 3)\)</span> (mean 0.5, very wide) and with <span class="arithmatex">\(\operatorname{Beta}(20, 11)\)</span> (mean 0.65, tight). How does assurance at a maximum of 80 move? Which prior would you be willing to defend in an encephalitis grant, and why?</p>
+</li>
+<li>
+<p><strong>Calibration.</strong> Keep the analysis prior uniform and the success rule <span class="arithmatex">\(P(p &gt; 0.45 \mid y) &gt; 0.90\)</span>. Estimate the stop-for-efficacy rate when the true <span class="arithmatex">\(p = 0.45\)</span>. That number is a type I analogue. What happens if you look every 5 patients instead of every 10?</p>
+</li>
+<li>
+<p><strong>Platform ethics.</strong> Sketch a two-domain neuro-ICU platform: domain 1 is systolic BP target after ICH (two arms), domain 2 is reversal strategy for anticoagulant-associated ICH (three arms). Where do you expect an interaction, and how does that change randomization and reporting?</p>
+</li>
+<li>
+<p><strong>Estimand.</strong> A Goldilocks design stops at random <span class="arithmatex">\(n\)</span>. The sponsor wants a single reported treatment-effect estimate. Contrast (a) the posterior at the stopping time, (b) a bias-adjusted frequentist estimator, and (c) a pre-declared posterior under a skeptical analysis prior. Which one belongs in the abstract, and which one belongs in the supplement?</p>
+</li>
+<li>
+<p><strong>Historical controls.</strong> You are offered 40 historical LGI1 patients with a 0.42 success rate as an extra control arm. List three mechanisms that would make those 40 non-exchangeable with next year’s concurrent controls, and name one prior (power, commensurate, MAP) you would use if you borrowed at all.</p>
+</li>
+</ol>
+<h2 id="further-reading">Further reading<a class="headerlink" href="#further-reading" title="Permanent link">&para;</a></h2>
+<ul>
+<li>O’Hagan A, Stevens JW, Campbell MJ. Assurance in clinical trial design. <em>Pharmaceutical Statistics</em>. 2005;4:187–201.</li>
+<li>Broglio KR, Connor JT, Berry SM. Not too big, not too small: a goldilocks approach to sample size selection. <em>Journal of Biopharmaceutical Statistics</em>. 2014;24:685–705.</li>
+<li>Berry SM, Carlin BP, Lee JJ, Müller P. <em>Bayesian Adaptive Methods for Clinical Trials</em>. Boca Raton: CRC Press; 2010.</li>
+<li>Saville BR, Berry SM. Efficiencies of platform clinical trials: a vision of the future. <em>Clinical Trials</em>. 2016;13:358–366.</li>
+<li>Adaptive Platform Trials Coalition. Adaptive platform trials: definition, design, conduct and reporting considerations. <em>Nature Reviews Drug Discovery</em>. 2019;18:797–807.</li>
+<li>U.S. Food and Drug Administration. <em>Guidance for the Use of Bayesian Statistics in Medical Device Clinical Trials</em>. 2010. See also FDA. <em>Adaptive Design Clinical Trials for Drugs and Biologics Guidance</em>. 2019.</li>
+<li>Spiegelhalter DJ, Abrams KR, Myles JP. <em>Bayesian Approaches to Clinical Trials and Health-Care Evaluation</em>. Chichester: Wiley; 2004.</li>
+<li>Angus DC et al. The REMAP-CAP (Randomized Embedded Multifactorial Adaptive Platform for Community-acquired Pneumonia) study. <em>Annals of the American Thoracic Society</em>. 2020;17:879–891. For the oncology ancestor: Barker AD et al. I-SPY 2: an adaptive breast cancer trial design in the setting of neoadjuvant chemotherapy. <em>Clinical Pharmacology &amp; Therapeutics</em>. 2009;86:97–100.</li>
+</ul>
+<div class="admonition success">
+<p class="admonition-title">Key Takeaway</p>
+<p>Sample size is the expected stopping time of a decision rule, not the output of a power calculator. Assurance averages power over a design prior you must be willing to defend; posterior-probability thresholds decide <em>now</em>; predictive probability of success decides whether <em>continuing</em> is worth the next patient. Platforms — I-SPY and REMAP-CAP translated to stroke, ICH, and antibody-defined encephalitis — are how rare and fast-moving questions share a control without pretending those controls are immortal. None of this exempts you from simulating type I error, power, and expected <span class="arithmatex">\(n\)</span>. The posterior is coherent at every look. The claim you attach to it is a procedure, and procedures have operating characteristics.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="09-estimation-rope-bayes-factors.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: 09. Estimation, ROPE, and Bayes Factors">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                09. Estimation, ROPE, and Bayes Factors
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="11-diagnostic-accuracy.html" class="md-footer__link md-footer__link--next" aria-label="Next: 11. Diagnostic Accuracy">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                11. Diagnostic Accuracy
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Open-source ebook · CC BY 4.0 content · ISC site code · Educational only — not medical advice.
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/rkalani1/bayesian-clinical-reasoning" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tracking", "navigation.top", "navigation.footer", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../javascripts/header-controls.js"></script>
+      
+    
+  </body>
+</html>

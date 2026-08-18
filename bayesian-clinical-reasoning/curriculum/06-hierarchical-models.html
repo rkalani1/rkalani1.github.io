@@ -1,0 +1,2338 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Open-source ebook on Bayesian statistics, decision analysis, and evidence for neurologists and clinician-scientists.">
+      
+      
+        <meta name="author" content="Rizwan Kalani">
+      
+      
+        <link rel="canonical" href="https://rkalani1.github.io/bayesian-clinical-reasoning/curriculum/06-hierarchical-models.html">
+      
+      
+        <link rel="prev" href="05-likelihoods-conjugate-models.html">
+      
+      
+        <link rel="next" href="07-computational-inference.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>06. Hierarchical Models - Bayesian Clinical Reasoning</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../stylesheets/page-orientation.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Bayesian Clinical Reasoning">
+  <meta property="og:title" content="06. Hierarchical Models — Bayesian Clinical Reasoning">
+  <meta property="og:description" content="Open-source ebook on Bayesian statistics, decision analysis, and evidence for neurologists and clinician-scientists.">
+  <meta property="og:url" content="https://rkalani1.github.io/bayesian-clinical-reasoning/curriculum/06-hierarchical-models.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="06. Hierarchical Models — Bayesian Clinical Reasoning">
+  <meta name="twitter:description" content="Open-source ebook on Bayesian statistics, decision analysis, and evidence for neurologists and clinician-scientists.">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#hierarchical-multilevel-models-for-patients-centers-and-trials" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+
+  
+
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="Bayesian Clinical Reasoning" class="md-header__button md-logo" aria-label="Bayesian Clinical Reasoning" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">Bayesian Clinical Reasoning</span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">06. Hierarchical Models</span>
+        </div>
+      </div>
+      <a class="mobile-page-orientation" href="06-hierarchical-models.html" aria-label="Bayes, current page: 06. Hierarchical Models">
+        <strong>Bayes</strong><span aria-hidden="true">·</span><span>06. Hierarchical Models</span>
+      </a>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="amber"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="amber"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rkalani1/bayesian-clinical-reasoning" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rkalani1/bayesian-clinical-reasoning
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Bayesian Clinical Reasoning" class="md-nav__button md-logo" aria-label="Bayesian Clinical Reasoning" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Bayesian Clinical Reasoning
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rkalani1/bayesian-clinical-reasoning" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rkalani1/bayesian-clinical-reasoning
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-use.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How to use this book
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../evidence-register.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidence register
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Book
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Book
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part I — Foundations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part I — Foundations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-why-bayesian-thinking-matters.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01. Why Bayesian Thinking Matters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-probability-odds-uncertainty.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02. Probability, Odds, and Uncertainty
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-bayes-theorem.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03. Bayes’ Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-priors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04. Priors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part II — Inference with R
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part II — Inference with R
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-likelihoods-conjugate-models.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05. Likelihoods and Conjugate Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06. Hierarchical Models
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="06-hierarchical-models.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06. Hierarchical Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#opening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opening
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clinical-vignette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clinical vignette
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#three-ways-to-ignore-or-not-ignore-clustering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Three ways to ignore, or not ignore, clustering
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-the-two-extremes-fail-in-stroke-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why the two extremes fail in stroke data
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-model-the-vignette-actually-needs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The model the vignette actually needs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interpreting-varying-intercepts-without-building-a-stadium-ranking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interpreting varying intercepts without building a stadium ranking
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nested-versus-crossed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nested versus crossed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-slopes-carefully" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adding slopes, carefully
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Adding slopes, carefully">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-the-biostatistician-methodologist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For the biostatistician / methodologist
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worked-solution-to-the-vignette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked solution to the vignette
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-this-model-is-not" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What this model is not
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercises
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-computational-inference.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07. Computational Inference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-model-checking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08. Model Checking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-estimation-rope-bayes-factors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09. Estimation, ROPE, and Bayes Factors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part III — Design and Synthesis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part III — Design and Synthesis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-sample-size-adaptive-designs.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Sample Size and Adaptive Designs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-diagnostic-accuracy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Diagnostic Accuracy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-survival-competing-risks.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Survival and Competing Risks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-bayesian-meta-analysis.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Bayesian Meta-Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part IV — Decision and Communication
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part IV — Decision and Communication
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="14-decision-theory-thresholds.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Decision Theory and Thresholds
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="15-decision-curves-voi.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Decision Curves and Value of Information
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="16-bedside-shared-decisions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Bedside and Shared Decisions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="17-communicating-uncertainty.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Communicating Uncertainty
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part V — Synthesis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part V — Synthesis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="18-integrated-case-studies.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Integrated Case Studies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="19-complete-workflow.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. A Complete Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="20-reproducible-pipelines.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. Reproducible Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Appendices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendices/a-r-setup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A. R Setup and Cheatsheet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendices/b-prior-elicitation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    B. Prior Elicitation Worksheets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendices/c-solutions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C. Solutions to Exercises
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendices/d-glossary.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    D. Glossary and Checklists
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#opening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opening
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clinical-vignette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clinical vignette
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#three-ways-to-ignore-or-not-ignore-clustering" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Three ways to ignore, or not ignore, clustering
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-the-two-extremes-fail-in-stroke-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why the two extremes fail in stroke data
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-model-the-vignette-actually-needs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The model the vignette actually needs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interpreting-varying-intercepts-without-building-a-stadium-ranking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interpreting varying intercepts without building a stadium ranking
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nested-versus-crossed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nested versus crossed
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-slopes-carefully" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adding slopes, carefully
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Adding slopes, carefully">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-the-biostatistician-methodologist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For the biostatistician / methodologist
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worked-solution-to-the-vignette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked solution to the vignette
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-this-model-is-not" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What this model is not
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercises
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="hierarchical-multilevel-models-for-patients-centers-and-trials">Hierarchical / Multilevel Models for Patients, Centers, and Trials<a class="headerlink" href="#hierarchical-multilevel-models-for-patients-centers-and-trials" title="Permanent link">&para;</a></h1>
+<h2 id="opening">Opening<a class="headerlink" href="#opening" title="Permanent link">&para;</a></h2>
+<p>Eight hospitals in the same stroke network report door-to-needle times. The smallest hospital treated eleven patients last quarter and looks like a miracle. The largest treated two hundred and looks ordinary. Complete pooling would erase the miracle and the ordinary alike. No pooling would put the eleven-patient hospital on a quality slide. Partial pooling is the refusal to do either.</p>
+<h2 id="learning-objectives">Learning objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">&para;</a></h2>
+<p>After working this chapter you should be able to:</p>
+<ul>
+<li>State the exchangeability assumption that justifies a hierarchical prior, and recognize when centers are <em>not</em> exchangeable.</li>
+<li>Contrast complete pooling, no pooling, and partial pooling for a center-level intercept, including the direction and magnitude of shrinkage.</li>
+<li>Write and interpret the <code>brms</code> formula <code>outcome ~ treatment + (1 | center)</code>, including the implied prior on the center standard deviation.</li>
+<li>Distinguish nested from crossed grouping factors, and choose a formula that matches the sampling design of a multi-center stroke registry or a platform trial.</li>
+<li>Plot center-level intercepts with <code>tidybayes</code> and talk about them as adjustments, not as a league table.</li>
+</ul>
+<h2 id="clinical-vignette">Clinical vignette<a class="headerlink" href="#clinical-vignette" title="Permanent link">&para;</a></h2>
+<p>A regional endovascular network includes eight centers. Over twelve months the network recorded <span class="arithmatex">\(1{,}240\)</span> patients with large-vessel occlusion who underwent EVT. The binary outcome for this teaching analysis is successful reperfusion, TICI 2b/3. A new aspiration catheter was adopted at different times; the treatment indicator is <span class="arithmatex">\(1\)</span> if the case used the new catheter and <span class="arithmatex">\(0\)</span> otherwise. Center volumes (teaching numbers) are <span class="arithmatex">\(410\)</span>, <span class="arithmatex">\(265\)</span>, <span class="arithmatex">\(180\)</span>, <span class="arithmatex">\(140\)</span>, <span class="arithmatex">\(95\)</span>, <span class="arithmatex">\(72\)</span>, <span class="arithmatex">\(48\)</span>, and <span class="arithmatex">\(30\)</span>.</p>
+<p>Crude reperfusion proportions range from <span class="arithmatex">\(0.61\)</span> at the smallest center to <span class="arithmatex">\(0.84\)</span> at a mid-volume center. The network quality committee wants a center-adjusted treatment effect and a list of “outlier centers.” A junior analyst has already fit eight separate logistics and an eighth-as-dummy fixed-effects logistic. Both are wrong in opposite directions. Your job is to write the hierarchical model, say what it shrinks, and refuse the league table if the data cannot support one.</p>
+<p>Before any software, write four sentences: (1) what would make these eight centers <em>not</em> exchangeable; (2) whether the catheter was adopted in a way that confounds treatment with center; (3) what a ninth hospital should be told to expect; (4) what you will not print, even if a forest plot is requested.</p>
+<h2 id="three-ways-to-ignore-or-not-ignore-clustering">Three ways to ignore, or not ignore, clustering<a class="headerlink" href="#three-ways-to-ignore-or-not-ignore-clustering" title="Permanent link">&para;</a></h2>
+<p>Patients treated at the same center share protocols, operators, anesthesia culture, and CT-to-puncture logistics. The observations are not independent. That is not a software inconvenience. It is the scientific structure.</p>
+<p>Three default responses exist.</p>
+<p><strong>Complete pooling.</strong> Ignore center. Fit <code>reperfusion ~ treatment</code>. Every patient informs a single intercept. The treatment coefficient is a precision-weighted blend of within-center and between-center contrasts, which is not in general the within-center effect you think you are quoting. Center-level confounding (the catheter arrived first at the best centers) is absorbed into the treatment term.</p>
+<p><strong>No pooling.</strong> Fit a separate intercept for each center with no relationship among them, either as eight separate models or as <code>reperfusion ~ treatment + factor(center)</code> with a flat prior on each dummy. Small centers get noisy intercepts. The smallest center’s <span class="arithmatex">\(0.61\)</span> proportion on <span class="arithmatex">\(30\)</span> patients is treated as a fact. Predictions for a ninth center do not exist, because the model has no place to put a new intercept.</p>
+<p><strong>Partial pooling.</strong> Give the center intercepts a common distribution,</p>
+<div class="arithmatex">\[
+\alpha_j \sim \mathrm{Normal}(\mu_\alpha,\ \tau^2), \qquad j = 1,\ldots,J.
+\]</div>
+<p>Each <span class="arithmatex">\(\alpha_j\)</span> is pulled toward <span class="arithmatex">\(\mu_\alpha\)</span> with a strength that depends on the center’s sample size and on <span class="arithmatex">\(\tau\)</span>. <span class="arithmatex">\(\tau\)</span> is learned from the data, regularized by a prior. A new center can be predicted by drawing a new <span class="arithmatex">\(\alpha_{J+1}\)</span> from the same distribution.</p>
+<pre class="mermaid"><code>flowchart TD
+  Net[Network mean mu-alpha] --&gt; C1[Center 1]
+  Net --&gt; C2[Center 2]
+  Net --&gt; C3[Center 3]
+  Net --&gt; C8[Center 8]
+  C1 --&gt; P1[Patients]
+  C2 --&gt; P2[Patients]
+  C3 --&gt; P3[Patients]
+  C8 --&gt; P8[Patients]</code></pre>
+<p>The hierarchy is a statement about similarity, not about causation. Centers are similar enough to share a distribution. They are not identical. That is the entire philosophical content of a random intercept.</p>
+<p>Exchangeability is the assumption that, before seeing the outcomes, you would not be willing to put a different prior on center 3 than on center 7. If you <em>would</em> — because center 3 is a comprehensive center with 24-hour anesthesia and center 7 is a daytime-only suite — then the intercepts are not exchangeable unconditionally. They may still be exchangeable <em>after</em> you condition on a center-level covariate (comprehensive versus primary, on-site anesthesia, academic affiliation). The repair is not to abandon the hierarchy. The repair is to put those covariates in the linear predictor of <span class="arithmatex">\(\mu_{\alpha j}\)</span> so that the leftover intercepts are the ones you are willing to treat as draws from a common <span class="arithmatex">\(\tau\)</span>.</p>
+<p>Door-to-needle time is the same model with a Gaussian response. A network that ranks spokes on last quarter’s median DTN is running a no-pooling analysis on a noisy median. Eleven patients can produce a 28-minute median by luck. Partial pooling of a log-DTN mean, with a weakly informative prior on <span class="arithmatex">\(\tau\)</span> informed by previous quarters, will pull that 28 toward the network and will widen the interval until the luck is no longer printable. The general principle is identical to the reperfusion logistic; only the family changes.</p>
+<h2 id="why-the-two-extremes-fail-in-stroke-data">Why the two extremes fail in stroke data<a class="headerlink" href="#why-the-two-extremes-fail-in-stroke-data" title="Permanent link">&para;</a></h2>
+<p>Complete pooling fails because stroke care is not a single process that happens to be geographically distributed. Door-to-needle time, anesthetic strategy, and balloon-guide use vary by center more than by patient-level NIHSS. Averaging them produces a treatment effect that no center actually delivers.</p>
+<p>No pooling fails because rare events and small samples are the rule, not the exception. A rural spoke with <span class="arithmatex">\(30\)</span> EVTs and a <span class="arithmatex">\(61\%\)</span> reperfusion rate is compatible with the network mean; it is also compatible with a true problem. Eight separate confidence intervals will declare two or three “outliers” by chance. A hospital executive will then “fix” a center that did not need fixing, which is how quality programs create new harm.</p>
+<p>Partial pooling is the compromise that can be written as an estimator. The posterior mean of <span class="arithmatex">\(\alpha_j\)</span> is approximately</p>
+<div class="arithmatex">\[
+\hat\alpha_j \approx \frac{n_j/\sigma^2}{n_j/\sigma^2 + 1/\tau^2}\,\bar y_j + \frac{1/\tau^2}{n_j/\sigma^2 + 1/\tau^2}\,\mu_\alpha
+\]</div>
+<p>in a Gaussian-response sketch, and a logistic analogue with the same shape. The weight on the center’s own data grows with <span class="arithmatex">\(n_j\)</span>. The weight on the network mean grows as <span class="arithmatex">\(\tau\)</span> shrinks. When <span class="arithmatex">\(\tau \to 0\)</span>, you recover complete pooling. When <span class="arithmatex">\(\tau \to \infty\)</span>, you recover no pooling. Estimating <span class="arithmatex">\(\tau\)</span> lets the data choose a point on that continuum, subject to the prior you placed on <span class="arithmatex">\(\tau\)</span>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Common Pitfall</p>
+<p>Shrinkage is not an accusation that a center is lying. It is the statement that a small sample is a small sample. The <span class="arithmatex">\(30\)</span>-patient center is shrunk hardest <em>because</em> <span class="arithmatex">\(30\)</span> is small, not because the model dislikes rural hospitals. If you do not want that shrinkage, you must defend a no-pooling analysis to a room that understands sampling variation. Most rooms do not.</p>
+</div>
+<h2 id="the-model-the-vignette-actually-needs">The model the vignette actually needs<a class="headerlink" href="#the-model-the-vignette-actually-needs" title="Permanent link">&para;</a></h2>
+<p>Let <span class="arithmatex">\(y_i = 1\)</span> if patient <span class="arithmatex">\(i\)</span> achieved TICI 2b/3, <span class="arithmatex">\(x_i = 1\)</span> if the new catheter was used, and <span class="arithmatex">\(j[i]\)</span> the center. A starting model is</p>
+<div class="arithmatex">\[
+y_i \sim \mathrm{Bernoulli}(\pi_i), \qquad
+\mathrm{logit}(\pi_i) = \alpha_{j[i]} + \beta x_i, \qquad
+\alpha_j \sim \mathrm{Normal}(\mu_\alpha,\ \tau^2).
+\]</div>
+<p>In <code>brms</code> this is</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">reperfusion</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">treatment</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">center</span><span class="p">)</span>
+</code></pre></div>
+<p>with <code>family = bernoulli()</code>. The intercept that <code>brms</code> reports as <code>Intercept</code> is <span class="arithmatex">\(\mu_\alpha\)</span> (population-level). The terms <code>r_center[k, Intercept]</code> are the deviations <span class="arithmatex">\(\alpha_k - \mu_\alpha\)</span>, or, depending on the summary you ask for, the center intercepts themselves. Read the documentation for <code>ranef()</code> versus <code>coef()</code> once and then never confuse them again. <code>ranef()</code> is the deviation. <code>coef()</code> is the center-specific intercept, <span class="arithmatex">\(\mu_\alpha + \alpha_j^{\mathrm{dev}}\)</span>.</p>
+<p>A weakly informative prior on this scale is not a vague Normal(<span class="arithmatex">\(0\)</span>, <span class="arithmatex">\(10\)</span>) on the intercept. On the logit scale, Normal(<span class="arithmatex">\(0\)</span>, <span class="arithmatex">\(10\)</span>) is a prior that thinks success probabilities near <span class="arithmatex">\(0\)</span> or <span class="arithmatex">\(1\)</span> are ordinary. For reperfusion, a Normal(<span class="arithmatex">\(1.4\)</span>, <span class="arithmatex">\(0.5\)</span>) on <span class="arithmatex">\(\mu_\alpha\)</span> (center near <span class="arithmatex">\(80\%\)</span>, with room) and a Half-Normal(<span class="arithmatex">\(0.5\)</span>) or Exponential(<span class="arithmatex">\(2\)</span>) on <span class="arithmatex">\(\tau\)</span> are closer to what a stroke neurologist believes before seeing the spreadsheet.</p>
+<div class="admonition note">
+<p class="admonition-title">Mathematical Detail</p>
+<p>The joint posterior is <span class="arithmatex">\(p(\beta, \mu_\alpha, \tau, \{\alpha_j\} \mid y)\)</span>. Integrating the <span class="arithmatex">\(\alpha_j\)</span> produces a marginal likelihood in which patients at the same center are correlated. That correlation is not a nuisance parameter to be sandwich-estimated away. It is the quantity that makes a new patient at center <span class="arithmatex">\(j\)</span> more predictable than a new patient at a new center. If you only want a robust standard error for <span class="arithmatex">\(\beta\)</span>, a GEE may suffice. If you want a prediction for center <span class="arithmatex">\(9\)</span>, or a center-specific intercept, you need the hierarchy.</p>
+</div>
+<h2 id="interpreting-varying-intercepts-without-building-a-stadium-ranking">Interpreting varying intercepts without building a stadium ranking<a class="headerlink" href="#interpreting-varying-intercepts-without-building-a-stadium-ranking" title="Permanent link">&para;</a></h2>
+<p>A center intercept is a log-odds adjustment after the treatment term. It is not a quality score. It still contains case-mix, anatomy, documentation habits, and luck. The honest use of <span class="arithmatex">\(\{\alpha_j\}\)</span> is:</p>
+<ul>
+<li>to absorb clustering so that <span class="arithmatex">\(\beta\)</span> is closer to a within-center contrast;</li>
+<li>to predict the next patient at a known center;</li>
+<li>to inspect whether <span class="arithmatex">\(\tau\)</span> is large enough that “the network rate” is a fiction.</li>
+</ul>
+<p>The dishonest use is a ranked forest plot sent to a newspaper.</p>
+<p>If the committee insists on identifying outliers, pre-specify a rule that uses the posterior, not the point estimate. Example: flag a center if <span class="arithmatex">\(P(\alpha_j &lt; \mu_\alpha - 0.4 \mid y) &gt; 0.9\)</span>, where <span class="arithmatex">\(0.4\)</span> on the logit scale is a pre-committed minimum important difference (about <span class="arithmatex">\(8\)</span>–<span class="arithmatex">\(10\)</span> percentage points near an <span class="arithmatex">\(80\%\)</span> baseline). Most centers will not flag. That is a successful analysis.</p>
+<table>
+<thead>
+<tr>
+<th>Strategy</th>
+<th>Formula sketch</th>
+<th>Small-center intercept</th>
+<th>New center</th>
+<th>Treatment effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Complete pooling</td>
+<td><code>y ~ x</code></td>
+<td>Forced to network mean</td>
+<td>Same as everyone</td>
+<td>Mixes within- and between-center</td>
+</tr>
+<tr>
+<td>No pooling</td>
+<td><code>y ~ x + factor(center)</code></td>
+<td>Noisy, unshrunk</td>
+<td>Undefined</td>
+<td>Within-center if there is overlap</td>
+</tr>
+<tr>
+<td>Partial pooling</td>
+<td><code>y ~ x + (1 \| center)</code></td>
+<td>Shrunk toward <span class="arithmatex">\(\mu_\alpha\)</span></td>
+<td>Draw from <span class="arithmatex">\(\mathrm{N}(\mu_\alpha,\tau^2)\)</span></td>
+<td>Primarily within-center</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Object in <code>brms</code></th>
+<th>Symbol</th>
+<th>What to say in conference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>b_Intercept</code></td>
+<td><span class="arithmatex">\(\mu_\alpha\)</span></td>
+<td>Network mean log-odds at <span class="arithmatex">\(x=0\)</span></td>
+</tr>
+<tr>
+<td><code>b_treatment</code></td>
+<td><span class="arithmatex">\(\beta\)</span></td>
+<td>Log-odds ratio for the new catheter, after center intercepts</td>
+</tr>
+<tr>
+<td><code>sd_center__Intercept</code></td>
+<td><span class="arithmatex">\(\tau\)</span></td>
+<td>How much centers differ after treatment</td>
+</tr>
+<tr>
+<td><code>ranef(...)$center</code></td>
+<td><span class="arithmatex">\(\alpha_j - \mu_\alpha\)</span></td>
+<td>Center deviation, not a score</td>
+</tr>
+<tr>
+<td><code>coef(...)$center</code></td>
+<td><span class="arithmatex">\(\alpha_j\)</span></td>
+<td>Center-specific intercept</td>
+</tr>
+</tbody>
+</table>
+<h2 id="nested-versus-crossed">Nested versus crossed<a class="headerlink" href="#nested-versus-crossed" title="Permanent link">&para;</a></h2>
+<p>Grouping factors are <strong>nested</strong> when each unit of the inner factor belongs to exactly one unit of the outer factor. Patients nested in centers. Centers nested in regions. The formula <code>(1 | region/center)</code> expands to <code>(1 | region) + (1 | region:center)</code> and is the right default when the nesting is real.</p>
+<p>Grouping factors are <strong>crossed</strong> when the same level of one factor appears inside many levels of the other. Operators who work at two hospitals. A trial protocol used in every center. A year effect shared across the network. The formula is <code>(1 | center) + (1 | operator)</code>, not <code>(1 | center/operator)</code>, unless each operator truly belongs to one center.</p>
+<p>Getting this wrong is not a style error. Nesting an operator inside a center when the operator works at both will invent two fictional people and split their data. Crossing them when they do not travel will estimate a variance component the design cannot identify.</p>
+<p>A trial version of the same distinction: patients nested in sites, sites nested in countries, and a device used in every country, is <code>(1 | country/site)</code> plus a population-level device term. A platform in which the same control arm is shared across two domains is crossed, not nested, and the formula must say so. Chapter 10 returns to platforms. The modeling moral is already here: draw the boxes before you write the pipes.</p>
+<pre class="mermaid"><code>flowchart LR
+  subgraph nested [Nested]
+    R[Region] --&gt; H1[Hospital A]
+    R --&gt; H2[Hospital B]
+    H1 --&gt; PtA[Patients]
+    H2 --&gt; PtB[Patients]
+  end
+  subgraph crossed [Crossed]
+    Op[Operator Q] --&gt; H3[Hospital A]
+    Op --&gt; H4[Hospital B]
+    H3 --&gt; PtC[Patients]
+    H4 --&gt; PtD[Patients]
+  end</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">Clinical Pearl</p>
+<p>If you cannot draw the nesting on a napkin, you cannot write the formula. Draw patients, then the smallest cluster they share (operator, shift, center), then the next cluster up. Every box that could have been a different box is a grouping factor. Every box that is merely a property of the patient (age, NIHSS, ASPECTS) is a population-level covariate.</p>
+</div>
+<h2 id="adding-slopes-carefully">Adding slopes, carefully<a class="headerlink" href="#adding-slopes-carefully" title="Permanent link">&para;</a></h2>
+<p>The vignette model gives every center the same treatment effect <span class="arithmatex">\(\beta\)</span>. That is a strong claim. The more flexible model is</p>
+<div class="arithmatex">\[
+\mathrm{logit}(\pi_i) = \alpha_{j[i]} + \beta_{j[i]} x_i, \qquad
+\begin{pmatrix}\alpha_j \\ \beta_j\end{pmatrix}
+\sim \mathrm{Normal}\left(
+\begin{pmatrix}\mu_\alpha \\ \mu_\beta\end{pmatrix},\ \Sigma\right).
+\]</div>
+<p>In <code>brms</code>: <code>reperfusion ~ treatment + (treatment | center)</code>. The <span class="arithmatex">\(2\times 2\)</span> covariance <span class="arithmatex">\(\Sigma\)</span> includes a correlation between intercept and slope. Centers that already reperfuse at <span class="arithmatex">\(90\%\)</span> have less room for a catheter effect; a negative correlation is scientifically plausible.</p>
+<p>Do not start here. Eight centers, one of them with <span class="arithmatex">\(30\)</span> patients, will not identify a covariance matrix without a tight prior. Fit the intercept-only hierarchy first. Look at <span class="arithmatex">\(\tau\)</span>. Look at the center deviations. If the committee has a pre-specified reason to expect treatment-effect heterogeneity — a new device that requires a learning curve, a protocol that only some centers adopted faithfully — then add the slope and put a prior on the slope SD that does not allow log-odds ratios of <span class="arithmatex">\(\pm 3\)</span> as routine.</p>
+<p>A useful diagnostic that does not require the slope model: plot each center’s <em>within-center</em> treatment contrast, however noisy, against its volume. If the large centers agree and the small centers scatter around them, the common-<span class="arithmatex">\(\beta\)</span> model is doing its job. If the two largest centers disagree by a clinically large amount, <span class="arithmatex">\(\tau\)</span> on the intercept will not absorb that, and a common <span class="arithmatex">\(\beta\)</span> is a scientific claim you can now see failing. That plot belongs in the appendix whether or not you add <code>(treatment | center)</code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Clinical Pearl</p>
+<p>Shrinkage is most aggressive where the quality committee is most excited. The rural spoke with eleven door-to-needle times and a miracle median, the new EVT site with thirty cases and a frightening reperfusion rate — those are the intercepts the model will move. If a meeting cannot tolerate that movement, the meeting is asking for no pooling. Say so, show how wide the unshrunk interval is, and let them choose in public.</p>
+</div>
+<h3 id="for-the-biostatistician-methodologist">For the biostatistician / methodologist<a class="headerlink" href="#for-the-biostatistician-methodologist" title="Permanent link">&para;</a></h3>
+<p>Two identification remarks. First, the treatment coefficient in <code>y ~ x + (1 | center)</code> is identified from <em>within-center</em> variation in <span class="arithmatex">\(x\)</span> plus whatever between-center information the partial pooling of intercepts does not absorb. If the new catheter is almost perfectly collinear with center (adopted fully in four centers, never in the other four), <span class="arithmatex">\(\beta\)</span> is identified mostly by the hierarchical assumption that intercepts are exchangeable, which is then doing causal work it was not hired to do. Check the overlap. A simple cross-tab of treatment by center is more important than the prior on <span class="arithmatex">\(\tau\)</span>.</p>
+<p>Second, the usual “random effects versus fixed effects” debate in econometrics is a debate about the correlation between <span class="arithmatex">\(\alpha_j\)</span> and <span class="arithmatex">\(x\)</span>. If that correlation is the confounding you fear, adding center-level covariates (comprehensive versus primary, academic versus community, on-site anesthesia) or using a Mundlak device — include the center-level mean of <span class="arithmatex">\(x\)</span> as a population-level predictor — is more honest than switching to no pooling and declaring victory. Gelman’s observation still stands: the hierarchical model <em>is</em> a constrained fixed-effects model. The constraint is the prior on <span class="arithmatex">\(\tau\)</span>.</p>
+<p>A third remark for trialists. A multi-center RCT that randomizes patients within centers is the design for which <code>(1 | center)</code> is almost boringly correct. A cluster-randomized trial that randomizes centers needs the treatment term at the correct level and a realistic prior on <span class="arithmatex">\(\tau\)</span>, because <span class="arithmatex">\(\tau\)</span> now governs power. Do not import an ICC from a different outcome. Door-to-needle ICC and 90-day mRS ICC are not interchangeable.</p>
+<h2 id="worked-solution-to-the-vignette">Worked solution to the vignette<a class="headerlink" href="#worked-solution-to-the-vignette" title="Permanent link">&para;</a></h2>
+<p>Write the model as Bernoulli with a logit link, a treatment indicator, and a varying intercept for center. Put a weakly informative prior on <span class="arithmatex">\(\mu_\alpha\)</span> centered near the known high reperfusion rates of modern EVT series (teaching prior: Normal(<span class="arithmatex">\(1.4\)</span>, <span class="arithmatex">\(0.5\)</span>)), a Normal(<span class="arithmatex">\(0\)</span>, <span class="arithmatex">\(0.4\)</span>) prior on <span class="arithmatex">\(\beta\)</span> (skeptical of more than a large log-odds shift), and a Half-Normal(<span class="arithmatex">\(0.5\)</span>) prior on <span class="arithmatex">\(\tau\)</span>.</p>
+<p>Fit it. Before anyone looks at center ranks, report four numbers:</p>
+<ol>
+<li>The posterior of <span class="arithmatex">\(\beta\)</span>, on the odds-ratio scale, with a <span class="arithmatex">\(95\%\)</span> credible interval. This is the network-level association after partial pooling of intercepts.</li>
+<li>The posterior of <span class="arithmatex">\(\tau\)</span>. If <span class="arithmatex">\(\tau\)</span> is around <span class="arithmatex">\(0.15\)</span> on the logit scale, centers barely differ. If it is around <span class="arithmatex">\(0.6\)</span>, “the network rate” is a headline, not a description.</li>
+<li>A posterior predictive reperfusion rate for a <em>new</em> center that has not yet adopted the catheter, obtained by drawing <span class="arithmatex">\(\alpha_{\mathrm{new}} \sim \mathrm{Normal}(\mu_\alpha,\tau)\)</span> and inverting the logit. That number is what a ninth hospital should plan on, not the <span class="arithmatex">\(0.84\)</span> trophy from the mid-volume center.</li>
+<li>The shrunk intercepts for the <span class="arithmatex">\(n=30\)</span> and <span class="arithmatex">\(n=410\)</span> centers. The small center moves toward the network; the large center barely moves. Show that pair and stop. You have taught shrinkage. You have not published a ranking.</li>
+</ol>
+<p>If the quality committee still wants outliers, apply the pre-committed posterior-probability rule above. On typical teaching draws with <span class="arithmatex">\(\tau \approx 0.25\)</span> and these volumes, the <span class="arithmatex">\(n=30\)</span> center with a crude rate of <span class="arithmatex">\(0.61\)</span> will shrink into the pack and will not meet a <span class="arithmatex">\(P(\alpha_j &lt; \mu_\alpha - 0.4) &gt; 0.9\)</span> criterion. That is the analysis working. The junior analyst’s separate logistic had already printed that center in red.</p>
+<div class="admonition example">
+<p class="admonition-title">R Deep Dive</p>
+<p>Simulated teaching data, a full <code>brms</code> specification, and a <code>tidybayes</code> interval plot of center intercepts. The data are invented. Do not treat the printed object names as results until you run the block.</p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Teaching hierarchical logistic: EVT reperfusion by center</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1"># Teaching numbers only. seed for simulation and MCMC.</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nf">library</span><span class="p">(</span><span class="n">brms</span><span class="p">)</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidybayes</span><span class="p">)</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="nf">set.seed</span><span class="p">(</span><span class="m">20260818</span><span class="p">)</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="n">center_n</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">410</span><span class="p">,</span><span class="w"> </span><span class="m">265</span><span class="p">,</span><span class="w"> </span><span class="m">180</span><span class="p">,</span><span class="w"> </span><span class="m">140</span><span class="p">,</span><span class="w"> </span><span class="m">95</span><span class="p">,</span><span class="w"> </span><span class="m">72</span><span class="p">,</span><span class="w"> </span><span class="m">48</span><span class="p">,</span><span class="w"> </span><span class="m">30</span><span class="p">)</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="n">J</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">center_n</span><span class="p">)</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="c1"># True teaching parameters (unknown to the fitted model)</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="n">mu_alpha</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1.25</span><span class="w">          </span><span class="c1"># ~78% at treatment = 0</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="n">tau_true</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">0.28</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="n">beta_true</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">0.35</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="n">alpha_j</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="n">J</span><span class="p">,</span><span class="w"> </span><span class="n">mu_alpha</span><span class="p">,</span><span class="w"> </span><span class="n">tau_true</span><span class="p">)</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="n">dat</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lapply</span><span class="p">(</span><span class="nf">seq_len</span><span class="p">(</span><span class="n">J</span><span class="p">),</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">  </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">center_n</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">  </span><span class="n">treatment</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbinom</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0.45</span><span class="p">)</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">  </span><span class="n">eta</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">alpha_j</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">beta_true</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">treatment</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">  </span><span class="nf">data.frame</span><span class="p">(</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">    </span><span class="n">center</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">factor</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">"C"</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">),</span><span class="w"> </span><span class="n">levels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">paste0</span><span class="p">(</span><span class="s">"C"</span><span class="p">,</span><span class="w"> </span><span class="nf">seq_len</span><span class="p">(</span><span class="n">J</span><span class="p">))),</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">    </span><span class="n">treatment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">treatment</span><span class="p">,</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">    </span><span class="n">reperfusion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rbinom</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="nf">plogis</span><span class="p">(</span><span class="n">eta</span><span class="p">))</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">  </span><span class="p">)</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="p">})</span><span class="w"> </span><span class="o">%&gt;%</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">  </span><span class="nf">bind_rows</span><span class="p">()</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="n">priors</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">  </span><span class="nf">prior</span><span class="p">(</span><span class="nf">normal</span><span class="p">(</span><span class="m">1.4</span><span class="p">,</span><span class="w"> </span><span class="m">0.5</span><span class="p">),</span><span class="w"> </span><span class="n">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Intercept</span><span class="p">),</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">  </span><span class="nf">prior</span><span class="p">(</span><span class="nf">normal</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0.4</span><span class="p">),</span><span class="w"> </span><span class="n">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">coef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">treatment</span><span class="p">),</span>
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">  </span><span class="nf">prior</span><span class="p">(</span><span class="nf">normal</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0.5</span><span class="p">),</span><span class="w"> </span><span class="n">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sd</span><span class="p">)</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="p">)</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>
+<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="c1"># Specification. Uncomment brm() to sample.</span>
+<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="c1"># fit &lt;- brm(</span>
+<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="c1">#   reperfusion ~ treatment + (1 | center),</span>
+<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="c1">#   data = dat,</span>
+<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="c1">#   family = bernoulli(),</span>
+<a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="c1">#   prior = priors,</span>
+<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="c1">#   seed = 20260818,</span>
+<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="c1">#   cores = 4,</span>
+<a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="c1">#   refresh = 0</span>
+<a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="c1"># )</span>
+<a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a>
+<a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a><span class="c1"># After fitting:</span>
+<a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a><span class="c1"># center_draws &lt;- fit %&gt;%</span>
+<a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a><span class="c1">#   spread_draws(b_Intercept, r_center[center, ]) %&gt;%</span>
+<a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a><span class="c1">#   mutate(intercept_j = b_Intercept + r_center)</span>
+<a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a><span class="c1">#</span>
+<a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a><span class="c1"># ggplot(center_draws, aes(y = center, x = plogis(intercept_j))) +</span>
+<a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a><span class="c1">#   stat_pointinterval(.width = c(0.66, 0.95)) +</span>
+<a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a><span class="c1">#   labs(</span>
+<a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a><span class="c1">#     x = "Center intercept on probability scale (treatment = 0)",</span>
+<a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a><span class="c1">#     y = NULL,</span>
+<a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a><span class="c1">#     title = "Partially pooled reperfusion intercepts",</span>
+<a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a><span class="c1">#     subtitle = "Teaching simulation; not a quality ranking"</span>
+<a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a><span class="c1">#   ) +</span>
+<a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a><span class="c1">#   theme_minimal(base_size = 12)</span>
+</code></pre></div>
+<p>The plot, once run, should show narrower intervals at <code>C1</code> than at <code>C8</code>, and <code>C8</code> pulled toward the network more than <code>C1</code>. If it does not, check that <code>center</code> is a factor and that the formula contains <code>(1 | center)</code> rather than <code>factor(center)</code>.</p>
+<p>Read the plot as a statement about information, not as a ranking. The interval at <code>C8</code> is wide because thirty Bernoulli observations cannot pin a logit intercept. The interval at <code>C1</code> is narrow because four hundred can. If a quality officer draws a vertical line at <span class="arithmatex">\(0.70\)</span> and declares every interval that crosses it “acceptable,” they have reinvented a <span class="arithmatex">\(p\)</span>-value for a threshold nobody pre-specified. The plot’s job is to show shrinkage and precision. Caption it that way. Print it without a rank order if the meeting cannot be trusted with one; <code>tidybayes</code> will plot in factor-level order, which you should set by volume, not by posterior mean.</p>
+<h2 id="what-this-model-is-not">What this model is not<a class="headerlink" href="#what-this-model-is-not" title="Permanent link">&para;</a></h2>
+<p>It is not a causal model of the catheter. Treatment was not randomized. Centers that adopted early may be centers that already ran a tighter procedure. Adding <code>(1 | center)</code> removes a particular kind of confounding — time-invariant center baseline — and leaves every other kind. Pre-procedure NIHSS, occlusion site, and time from onset still belong in the linear predictor if they are confounders. They belong there as population-level terms, not as additional grouping factors.</p>
+<p>It is not a substitute for a trial. Hierarchical observation can generate the prior or the control arm for a subsequent stepped-wedge or cluster-randomized evaluation. It cannot, by itself, license a network-wide device mandate.</p>
+<p>It is not automatically better with more grouping factors. <code>(1 | center) + (1 | operator) + (1 | month)</code> is a reasonable scientific story and a demanding likelihood. With eight centers and a year of data, month effects and operator effects compete for the same residual. Fit the simpler hierarchy, check it (Chapter 8), and add a factor when you can name the variation it is supposed to capture.</p>
+<div class="admonition warning">
+<p class="admonition-title">Common Pitfall</p>
+<p>Reporting <code>sd_center__Intercept</code> as “the ICC” without saying on which scale is a standard way to confuse a room. On the logit scale <span class="arithmatex">\(\tau^2/(\tau^2 + \pi^2/3)\)</span> is a latent-scale ICC. On the probability scale the ICC depends on the mean. Pick one, name the scale, and do not compare it to an ICC computed from a linear model of door-to-needle minutes.</p>
+</div>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><strong>Bedside interpretation.</strong> Center C8 has a crude reperfusion rate of <span class="arithmatex">\(0.61\)</span> on <span class="arithmatex">\(30\)</span> patients. After partial pooling its posterior mean intercept corresponds to <span class="arithmatex">\(0.74\)</span>. A chief of staff asks, “So you think our number is wrong?” Write the six-sentence answer.</p>
+</li>
+<li>
+<p><strong>Overlap check.</strong> Construct a teaching table in which four centers used the new catheter in <span class="arithmatex">\(&gt;90\%\)</span> of cases and four used it in <span class="arithmatex">\(&lt;10\%\)</span>. What happens to the interpretation of <span class="arithmatex">\(\beta\)</span> in <code>y ~ treatment + (1 | center)</code>? What term would you add?</p>
+</li>
+<li>
+<p><strong>Nested formula.</strong> Patients are nested in operators, operators are nested in centers. Write the <code>brms</code> formula for a varying intercept at each level, and the formula if operators work at multiple centers.</p>
+</li>
+<li>
+<p><strong>Prior on <span class="arithmatex">\(\tau\)</span>.</strong> Refit the teaching model (once you run it) with <code>prior(exponential(0.1), class = sd)</code> versus <code>prior(exponential(4), class = sd)</code>. Which prior is closer to complete pooling? How would you defend your choice at a network meeting?</p>
+</li>
+<li>
+<p><strong>Slope or not.</strong> A colleague wants <code>(treatment | center)</code> because “centers are different.” There are eight centers. Write the conditions under which you would agree, and the prior you would put on the slope SD.</p>
+</li>
+<li>
+<p><strong>Prediction.</strong> Using posterior draws of <span class="arithmatex">\(\mu_\alpha\)</span> and <span class="arithmatex">\(\tau\)</span>, write the three-line <code>tidybayes</code> pipeline that predicts reperfusion probability for the first twenty patients at a new ninth center, all untreated with the new catheter.</p>
+</li>
+</ol>
+<h2 id="further-reading">Further reading<a class="headerlink" href="#further-reading" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Gelman A, Hill J. <em>Data Analysis Using Regression and Multilevel/Hierarchical Models</em>. Cambridge University Press; 2007. The standard development of partial pooling and varying intercepts.</li>
+<li>McElreath R. <em>Statistical Rethinking</em>. 2nd ed. CRC Press; 2020. Chapters on multilevel models and the “monsters” of complete and no pooling.</li>
+<li>Spiegelhalter DJ, Abrams KR, Myles JP. <em>Bayesian Approaches to Clinical Trials and Health-Care Evaluation</em>. Wiley; 2004. Institutional variation and shrinkage in health-care profiling.</li>
+<li>Bürkner P-C. brms: An R package for Bayesian multilevel models using Stan. <em>J Stat Softw</em>. 2017;80(1):1-28.</li>
+<li>Goldstein H, Spiegelhalter DJ. League tables and their limitations. <em>J R Stat Soc A</em>. 1996;159:385-443. Why ranking institutions on noisy outcomes misleads.</li>
+<li>Goyal M et al. Endovascular thrombectomy after large-vessel ischaemic stroke: a meta-analysis of individual patient data from five randomised trials. <em>Lancet</em>. 2016;387:1723-1731. Public design facts on multi-center EVT outcomes; do not copy tables.</li>
+<li>U.S. Food and Drug Administration. Guidance for the Use of Bayesian Statistics in Medical Device Clinical Trials. 2010. Hierarchical borrowing across centers and studies.</li>
+<li>CONSORT 2010 extension to cluster randomised trials. Reporting the level at which treatment was assigned.</li>
+</ul>
+<div class="admonition success">
+<p class="admonition-title">Key Takeaway</p>
+<p>Partial pooling is the default model for any outcome that is generated inside a center, an operator, or a trial site. Complete pooling pretends the clusters do not exist; no pooling pretends the smallest cluster is a population. The <code>brms</code> formula <code>outcome ~ treatment + (1 | center)</code> writes the compromise, estimates how large the compromise should be, and gives you predictions for the next center. Use the intercepts to absorb clustering and to predict. Do not use them to print a ranking unless you have a pre-committed posterior-probability rule and a room that understands shrinkage.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="05-likelihoods-conjugate-models.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: 05. Likelihoods and Conjugate Models">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                05. Likelihoods and Conjugate Models
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="07-computational-inference.html" class="md-footer__link md-footer__link--next" aria-label="Next: 07. Computational Inference">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                07. Computational Inference
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Open-source ebook · CC BY 4.0 content · ISC site code · Educational only — not medical advice.
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/rkalani1/bayesian-clinical-reasoning" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tracking", "navigation.top", "navigation.footer", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../javascripts/header-controls.js"></script>
+      
+    
+  </body>
+</html>
