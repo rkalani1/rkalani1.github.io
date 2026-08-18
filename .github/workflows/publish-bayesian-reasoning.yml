@@ -1,0 +1,63 @@
+name: Publish Bayesian-Reasoning
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [publish-bayesian-reasoning]
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Pages site
+        uses: actions/checkout@v4
+        with:
+          path: pages
+      - name: Checkout book
+        uses: actions/checkout@v4
+        with:
+          repository: rkalani1/Bayesian-Reasoning
+          path: book
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: book/requirements.txt
+      - name: Build
+        working-directory: book
+        run: |
+          pip install --requirement requirements.txt
+          mkdocs build --strict --clean
+      - name: Publish into /Bayesian-Reasoning/
+        working-directory: pages
+        run: |
+          rm -rf Bayesian-Reasoning
+          cp -a ../book/site Bayesian-Reasoning
+          touch Bayesian-Reasoning/.nojekyll
+          mkdir -p bayesian-clinical-reasoning
+          cat > bayesian-clinical-reasoning/index.html <<'HTML'
+          <!doctype html>
+          <html lang="en">
+            <head>
+              <meta charset="utf-8">
+              <meta http-equiv="refresh" content="0; url=/Bayesian-Reasoning/">
+              <link rel="canonical" href="https://rkalani1.github.io/Bayesian-Reasoning/">
+              <title>Redirecting to Bayesian Clinical Reasoning</title>
+            </head>
+            <body>
+              <p>This book now lives at <a href="/Bayesian-Reasoning/">https://rkalani1.github.io/Bayesian-Reasoning/</a>.</p>
+            </body>
+          </html>
+          HTML
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes"
+            exit 0
+          fi
+          git commit -m "Publish Bayesian-Reasoning from source repo"
+          git push

@@ -1,0 +1,2605 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Bayesian statistics, decision analysis, and evidence for neurologists and clinician-scientists.">
+      
+      
+      
+        <link rel="canonical" href="https://rkalani1.github.io/Bayesian-Reasoning/curriculum/24-missing-data-measurement-error.html">
+      
+      
+        <link rel="prev" href="23-clinical-prediction-models.html">
+      
+      
+        <link rel="next" href="25-grade-evidence-to-decision.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>24. Missing Data and Measurement Error - Bayesian Clinical Reasoning</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../stylesheets/page-orientation.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Bayesian Clinical Reasoning">
+  <meta property="og:title" content="24. Missing Data and Measurement Error — Bayesian Clinical Reasoning">
+  <meta property="og:description" content="Bayesian statistics, decision analysis, and evidence for neurologists and clinician-scientists.">
+  <meta property="og:url" content="https://rkalani1.github.io/Bayesian-Reasoning/curriculum/24-missing-data-measurement-error.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="24. Missing Data and Measurement Error — Bayesian Clinical Reasoning">
+  <meta name="twitter:description" content="Bayesian statistics, decision analysis, and evidence for neurologists and clinician-scientists.">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#missing-data-informative-ascertainment-and-measurement-error" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+
+  
+
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="Bayesian Clinical Reasoning" class="md-header__button md-logo" aria-label="Bayesian Clinical Reasoning" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">Bayesian Clinical Reasoning</span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">24. Missing Data and Measurement Error</span>
+        </div>
+      </div>
+      <a class="mobile-page-orientation" href="24-missing-data-measurement-error.html" aria-label="Bayes, current page: 24. Missing Data and Measurement Error">
+        <strong>Bayes</strong><span aria-hidden="true">·</span><span>24. Missing Data and Measurement Error</span>
+      </a>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="amber"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="amber"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rkalani1/Bayesian-Reasoning" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rkalani1/Bayesian-Reasoning
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Bayesian Clinical Reasoning" class="md-nav__button md-logo" aria-label="Bayesian Clinical Reasoning" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Bayesian Clinical Reasoning
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rkalani1/Bayesian-Reasoning" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rkalani1/Bayesian-Reasoning
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-use.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How to use this book
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../evidence-register.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidence register
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Book
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Book
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part I — Foundations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part I — Foundations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-why-bayesian-thinking-matters.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01. Why Bayesian Thinking Matters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-probability-odds-uncertainty.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02. Probability, Odds, and Uncertainty
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-bayes-theorem.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03. Bayes’ Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-priors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04. Priors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part II — Inference with R
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part II — Inference with R
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-likelihoods-conjugate-models.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05. Likelihoods and Conjugate Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-hierarchical-models.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06. Hierarchical Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-computational-inference.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07. Computational Inference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-model-checking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08. Model Checking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-estimation-rope-bayes-factors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09. Estimation, ROPE, and Bayes Factors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part III — Design and Synthesis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part III — Design and Synthesis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-sample-size-adaptive-designs.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Sample Size and Adaptive Designs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-diagnostic-accuracy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Diagnostic Accuracy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-survival-competing-risks.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Survival and Competing Risks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-bayesian-meta-analysis.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Bayesian Meta-Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part IV — Decision and Communication
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part IV — Decision and Communication
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="14-decision-theory-thresholds.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Decision Theory and Thresholds
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="15-decision-curves-voi.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Decision Curves and Value of Information
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="16-bedside-shared-decisions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Bedside and Shared Decisions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="17-communicating-uncertainty.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Communicating Uncertainty
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part V — Synthesis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part V — Synthesis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="18-integrated-case-studies.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Integrated Case Studies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="19-complete-workflow.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. A Complete Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="20-reproducible-pipelines.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. Reproducible Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part VI — Identification and institutions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part VI — Identification and institutions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="21-transporting-evidence-hte.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. Transporting Evidence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="22-causal-target-trial.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. Causal Models and the Target Trial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="23-clinical-prediction-models.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. Clinical Prediction Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. Missing Data and Measurement Error
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="24-missing-data-measurement-error.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. Missing Data and Measurement Error
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#opening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opening
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clinical-vignette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clinical vignette
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#missingness-is-a-joint-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Missingness is a joint distribution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mcar-mar-mnar-are-statements-about-arrows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MCAR, MAR, MNAR are statements about arrows
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#joint-bayesian-imputation-ipw-and-locf-are-different-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Joint Bayesian imputation, IPW, and LOCF are different models
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification-bias-is-missing-data-with-a-clinical-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verification bias is missing data with a clinical name
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-integers-are-not-the-clinical-states" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The integers are not the clinical states
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#selection-into-perfusion-imaging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Selection into perfusion imaging
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#for-the-biostatistician-methodologist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For the biostatistician / methodologist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#r-mar-imputation-and-a-measurement-submodel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R: MAR imputation and a measurement submodel
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worked-solution-to-the-opening-vignette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked solution to the opening vignette
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercises
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="25-grade-evidence-to-decision.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. GRADE and Evidence-to-Decision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="26-ethics-governance-adaptive.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. Ethics and Adaptive Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Appendices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendices/a-r-setup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A. R Setup and Cheatsheet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendices/b-prior-elicitation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    B. Prior Elicitation Worksheets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendices/c-solutions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C. Solutions to Exercises
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendices/d-glossary.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    D. Glossary and Checklists
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#opening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opening
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clinical-vignette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clinical vignette
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#missingness-is-a-joint-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Missingness is a joint distribution
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mcar-mar-mnar-are-statements-about-arrows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MCAR, MAR, MNAR are statements about arrows
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#joint-bayesian-imputation-ipw-and-locf-are-different-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Joint Bayesian imputation, IPW, and LOCF are different models
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verification-bias-is-missing-data-with-a-clinical-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verification bias is missing data with a clinical name
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-integers-are-not-the-clinical-states" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The integers are not the clinical states
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#selection-into-perfusion-imaging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Selection into perfusion imaging
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#for-the-biostatistician-methodologist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For the biostatistician / methodologist
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#r-mar-imputation-and-a-measurement-submodel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R: MAR imputation and a measurement submodel
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worked-solution-to-the-opening-vignette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked solution to the opening vignette
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercises
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="missing-data-informative-ascertainment-and-measurement-error">Missing Data, Informative Ascertainment, and Measurement Error<a class="headerlink" href="#missing-data-informative-ascertainment-and-measurement-error" title="Permanent link">&para;</a></h1>
+<h2 id="opening">Opening<a class="headerlink" href="#opening" title="Permanent link">&para;</a></h2>
+<p>A complete-case table is a decision to throw patients away. Last observation carried forward is a decision to pretend discharge is day 90. Inverse-probability weights are a decision about whose missingness you believe you understand. None of those decisions is “preprocessing.” Each is a model for why the number is absent, and each writes itself into the posterior you will later quote as if the registry had been fully observed.</p>
+<h2 id="learning-objectives">Learning objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">&para;</a></h2>
+<p>After working this chapter you should be able to:</p>
+<ul>
+<li>Distinguish MCAR, MAR, and MNAR as statements about a joint distribution, not as slogans about how hard you tried to call patients.</li>
+<li>Contrast joint Bayesian imputation, inverse-probability weighting, and last observation carried forward on the same teaching registry, and say which assumption each one is actually making.</li>
+<li>Recognize verification bias as a missing-reference problem and generalize it to any setting in which the expensive measurement is reserved for the people you already think are interesting.</li>
+<li>Write a measurement-error submodel for NIHSS, ASPECTS, or mRS rather than treating the recorded integer as the truth.</li>
+<li>Specify a <code>brms</code> model that uses <code>mi()</code> for missing covariates and a measurement or selection submodel when the missingness or the error is the scientific object.</li>
+</ul>
+<h2 id="clinical-vignette">Clinical vignette<a class="headerlink" href="#clinical-vignette" title="Permanent link">&para;</a></h2>
+<p>A teaching endovascular registry at a comprehensive center has enrolled 400 consecutive patients with anterior-circulation large-vessel occlusion who underwent EVT over three years. The primary scientific question the registry was built to answer is the 90-day ordinal mRS contrast between patients treated 0–6 hours after last known well and patients treated 6–24 hours, adjusted for age, NIHSS, ASPECTS, occlusion site, and reperfusion (TICI 2b–3). The late-window patients are the ones the fellowship wants a paper about.</p>
+<p>Day-90 mRS is missing in 88 of 400 (22%). The coordinator’s note is almost always the same: “went home to another county; no working number; outside hospital will not release the score.” Discharge mRS is complete. NIHSS is complete but was recorded by whoever was in the bay — sometimes a certified attending, sometimes a night float who has taken the video course once. ASPECTS is complete on paper; 140 of the 400 scores are from the on-call resident, the rest from a single attending who later over-read a convenience subset. CT perfusion was obtained in 168 of 274 late-window patients and in 31 of 126 early-window patients. The perfusion-negative late-window patients were usually not taken for EVT and therefore are not in this registry at all.</p>
+<p><strong>Teaching counts, not a published series.</strong> Among the 312 with observed day-90 mRS, 118 are 0–2. Among the 88 with missing day-90 mRS, discharge mRS was 0–2 in 51 (58%), 3 in 19, 4–5 in 14, and 6 (in-hospital death) in 4 — the four deaths should not have been missing, which is your first data-quality finding. Preferred language was not English in 34 of the 88 missing (39%) versus 52 of 312 observed (17%). Transfer-in from another county accounted for 61 of 88 missing (69%) versus 98 of 312 observed (31%). Mean recorded NIHSS was 14.1 in the observed and 12.4 in the missing.</p>
+<p>Do not impute yet. Write three sentences: (1) a mechanism that would make these 88 missing completely at random, (2) a mechanism that would make them missing at random given the covariates you already have, and (3) a mechanism that would make them missing not at random even after those covariates. Then write the estimand the fellowship thinks it is estimating.</p>
+<h2 id="missingness-is-a-joint-distribution">Missingness is a joint distribution<a class="headerlink" href="#missingness-is-a-joint-distribution" title="Permanent link">&para;</a></h2>
+<p>Let <span class="arithmatex">\(Y\)</span> be the scientific outcome (day-90 mRS), <span class="arithmatex">\(X\)</span> the covariates you intend to condition on, and <span class="arithmatex">\(R\)</span> the response indicator: <span class="arithmatex">\(R = 1\)</span> if <span class="arithmatex">\(Y\)</span> is observed, <span class="arithmatex">\(R = 0\)</span> if not. The object you wish you had is <span class="arithmatex">\(p(Y \mid X)\)</span>, or <span class="arithmatex">\(p(Y \mid X, A)\)</span> if <span class="arithmatex">\(A\)</span> is an exposure such as early versus late window. The object the complete cases give you is <span class="arithmatex">\(p(Y \mid X, R = 1)\)</span>. Those are the same distribution if and only if <span class="arithmatex">\(Y \perp R \mid X\)</span>. That independence is not a vibe. It is a restriction on the joint <span class="arithmatex">\(p(Y, R \mid X)\)</span>.</p>
+<p>Every analysis of a registry with holes is an analysis of that joint, whether or not the paper writes <span class="arithmatex">\(R\)</span>. Complete-case logistic regression assumes the restriction. Multiple imputation assumes a model for <span class="arithmatex">\(Y \mid X\)</span> and, usually, the same restriction. Inverse-probability weighting assumes a model for <span class="arithmatex">\(R \mid X\)</span> and the same restriction. A selection model writes <span class="arithmatex">\(p(R \mid Y, X)\)</span> explicitly. A pattern-mixture model writes <span class="arithmatex">\(p(Y \mid R, X)\)</span> explicitly. Last observation carried forward assumes that discharge mRS <em>is</em> day-90 mRS for anyone with <span class="arithmatex">\(R = 0\)</span>. That last assumption is a degenerate pattern-mixture model with a point-mass bridge from discharge to day 90. It is not “conservative.” It is a story about recovery that nobody who has walked a stroke clinic would sign.</p>
+<pre class="mermaid"><code>flowchart TD
+  subgraph observed [What the registry recorded]
+    X[Age NIHSS ASPECTS window TICI]
+    D[Discharge mRS]
+    P[CTP obtained]
+  end
+  subgraph latent [What you actually want]
+    Y[Day-90 mRS]
+    Nstar[True NIHSS]
+    Astar[True ASPECTS]
+    S[Would have been imaged]
+  end
+  Nstar --&gt; X
+  Astar --&gt; X
+  X --&gt; Y
+  X --&gt; D
+  D --&gt; Y
+  Y --&gt; R{R: day-90 ascertained?}
+  X --&gt; R
+  L[Language county transfer] --&gt; R
+  X --&gt; P
+  S --&gt; P
+  P --&gt; Reg[In the EVT registry]
+  Y -.-&gt;|missing if R = 0| Hole[Hole in the table]</code></pre>
+<p>The figure is the chapter. Arrows into <span class="arithmatex">\(R\)</span> are why the 88 are gone. Arrows into the recorded NIHSS and ASPECTS are why the integers in the spreadsheet are not the clinical states. The arrow from “would have been imaged” into the registry is why late-window contrasts estimated in treated patients are not contrasts in presenting patients.</p>
+<div class="admonition tip">
+<p class="admonition-title">Clinical Pearl</p>
+<p>Before you pick a package, draw <span class="arithmatex">\(Y\)</span>, <span class="arithmatex">\(R\)</span>, and every variable that a coordinator would use to decide whether to keep calling. If a cause of missingness is not in the diagram, it will not be in the imputation model, and calling the procedure “MAR” will not put it there.</p>
+</div>
+<h2 id="mcar-mar-mnar-are-statements-about-arrows">MCAR, MAR, MNAR are statements about arrows<a class="headerlink" href="#mcar-mar-mnar-are-statements-about-arrows" title="Permanent link">&para;</a></h2>
+<p>Rubin’s taxonomy is a partition of assumptions about <span class="arithmatex">\(p(R \mid Y, X)\)</span>.</p>
+<p><strong>Missing completely at random (MCAR).</strong> <span class="arithmatex">\(R \perp (Y, X)\)</span>. The 88 are a simple random sample of the 400. The coordinator’s county story already refutes this. Transfer-in, language, and discharge mRS all move the missingness rate. A Little MCAR test would reject; you do not need one. What you need is to stop writing “data were assumed MCAR” in a limitation paragraph as if the phrase were a courtesy.</p>
+<p><strong>Missing at random (MAR).</strong> <span class="arithmatex">\(R \perp Y \mid X\)</span>. Given the covariates in the model — and <em>only</em> those — missingness does not still depend on the unobserved day-90 score. MAR is not a property of the world. It is a property of the variables you condition on. Add preferred language, transfer status, discharge mRS, and window, and a story that “we lose people who go home well to another county” can be MAR: going home well is in <span class="arithmatex">\(X\)</span> via discharge mRS, and county is in <span class="arithmatex">\(X\)</span> via transfer. The same story is MNAR if the people who go home well and then <em>worsen</em> are harder to find than the people who go home well and stay well, and you have no variable that captures the worsening.</p>
+<p><strong>Missing not at random (MNAR).</strong> <span class="arithmatex">\(R \not\perp Y \mid X\)</span>. Residual dependence on the unobserved value. Classic stroke versions: the patient who is devastated and in a nursing home whose staff will not come to the phone; the patient who has recovered completely and screens the unknown number; the patient who died at home and whose death is not in your EHR. Those three mechanisms pull <span class="arithmatex">\(Y\)</span> in opposite directions. A single “MNAR sensitivity parameter” that shifts every missing mRS toward worse is a policy, not a description of the three.</p>
+<div class="admonition warning">
+<p class="admonition-title">Common Pitfall</p>
+<p>Do not diagnose MAR by showing that missingness is associated with <span class="arithmatex">\(X\)</span>. That association is compatible with MAR <em>and</em> with MNAR. The association of <span class="arithmatex">\(R\)</span> with <em>observed</em> <span class="arithmatex">\(Y\)</span> is not identifiable. What you can do is (i) condition on a richer <span class="arithmatex">\(X\)</span>, (ii) write the MNAR mechanism you actually fear, and (iii) report how the posterior on the estimand moves when that mechanism is allowed.</p>
+</div>
+<p>A compact teaching table for the vignette, still invented:</p>
+<table>
+<thead>
+<tr>
+<th>Assumed mechanism</th>
+<th>What you are claiming</th>
+<th>Estimand if the claim is wrong</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MCAR</td>
+<td>The 88 are a coin flip</td>
+<td>Complete-case mRS 0–2 rate is unbiased — it is not</td>
+</tr>
+<tr>
+<td>MAR given discharge mRS, language, transfer, window, NIHSS</td>
+<td>Those variables soak up every reason a score is missing</td>
+<td>Residual MNAR still biases the late-window contrast</td>
+</tr>
+<tr>
+<td>MNAR, “missing are worse”</td>
+<td>Unobserved day-90 mRS stochastically worse than predicted</td>
+<td>Over-correction if the missing are mostly well transfers</td>
+</tr>
+<tr>
+<td>MNAR, “missing are better”</td>
+<td>The opposite tilt</td>
+<td>Under-correction if nursing-home nonresponse dominates</td>
+</tr>
+<tr>
+<td>LOCF</td>
+<td>Discharge mRS equals day-90 mRS</td>
+<td>Recovery after discharge is defined out of existence</td>
+</tr>
+</tbody>
+</table>
+<p>The complete-case day-90 mRS 0–2 rate is <span class="arithmatex">\(118/312 \approx 0.38\)</span>. If the 88 followed the same distribution as the observed, the registry rate would be the same. If the 88 followed their discharge distribution (LOCF), you would add 51 extra 0–2 scores and the rate would be <span class="arithmatex">\(169/400 = 0.42\)</span>. If the 84 living missing patients were systematically one mRS step worse than a MAR imputation from discharge and covariates would predict, the rate falls back toward 0.36. Those three numbers — 0.38, 0.42, 0.36 — are <strong>teaching functionals</strong> of three different joints. Quoting one of them as “the registry’s 90-day independence rate” without naming the joint is how posters get written.</p>
+<h2 id="joint-bayesian-imputation-ipw-and-locf-are-different-models">Joint Bayesian imputation, IPW, and LOCF are different models<a class="headerlink" href="#joint-bayesian-imputation-ipw-and-locf-are-different-models" title="Permanent link">&para;</a></h2>
+<p>Three procedures dominate clinical papers. They are not robust cousins. They answer different questions under different restrictions.</p>
+<p><strong>Last observation carried forward.</strong> Replace missing day-90 mRS with discharge mRS. No posterior uncertainty for the filled values. No model for recovery. In stroke, discharge to day 90 is when most of the interesting improvement <em>and</em> most of the post-discharge death happens. LOCF freezes both. It also creates a spuriously precise likelihood: 400 “observed” ordinal outcomes, 88 of which are copies. Interval estimates shrink. That shrinkage is fiction.</p>
+<p><strong>Inverse-probability weighting.</strong> Estimate <span class="arithmatex">\(e(X) = P(R = 1 \mid X)\)</span>, then analyze the complete cases with weights <span class="arithmatex">\(1/\hat{e}(X)\)</span>. Under MAR and a correct model for <span class="arithmatex">\(e(X)\)</span>, the weighted estimating equation is consistent for the parameter of <span class="arithmatex">\(p(Y \mid X)\)</span> (or of a marginal contrast). The method discards the missing <span class="arithmatex">\(Y\)</span> entirely and up-weights the observed people who looked like the missing. It does not use discharge mRS as an <em>outcome</em> bridge except insofar as discharge sits in <span class="arithmatex">\(X\)</span>. Stabilized weights and truncation at the 1st/99th percentile are engineering. They do not repair a missing predictor of <span class="arithmatex">\(R\)</span>. In the vignette, a logistic model for <span class="arithmatex">\(R\)</span> that omitted language would treat a non-English-speaking transfer as exchangeable with an English-speaking local of the same NIHSS, and then overweight the wrong complete cases.</p>
+<p><strong>Joint Bayesian imputation.</strong> Write a model for the full data, including the missing <span class="arithmatex">\(Y\)</span>, and sample the missing values from their posterior predictive distribution given everything you believe is relevant. Under MAR this is</p>
+<div class="arithmatex">\[
+p(Y_{\text{mis}} \mid Y_{\text{obs}}, X, R) = p(Y_{\text{mis}} \mid Y_{\text{obs}}, X),
+\]</div>
+<p>so you can ignore the missingness model once <span class="arithmatex">\(X\)</span> is rich enough. Under MNAR you cannot; you need <span class="arithmatex">\(p(R \mid Y, X)\)</span> or <span class="arithmatex">\(p(Y \mid R, X)\)</span>. The Bayesian part is not a branding exercise. It is the bookkeeping that carries uncertainty about the filled-in scores into the posterior for the scientific estimand. Rubin’s combining rules for multiple imputation are a special case: <span class="arithmatex">\(M\)</span> draws of the missing data, <span class="arithmatex">\(M\)</span> completed-data analyses, then a between-plus-within variance. A single joint MCMC that updates parameters and missing values together <em>is</em> the combining rule, and it does not require <span class="arithmatex">\(M = 5\)</span> as a ritual.</p>
+<div class="admonition note">
+<p class="admonition-title">Mathematical Detail</p>
+<p>Pattern-mixture and selection models are reparameterizations of the same joint. Selection: <span class="arithmatex">\(p(Y \mid X)\, p(R \mid Y, X)\)</span>. Pattern-mixture: <span class="arithmatex">\(p(Y \mid R, X)\, p(R \mid X)\)</span>. Identification always fails without a restriction that reaches into the missing pattern. On an outcome where higher is worse (mRS), a typical restriction is a shift of the latent linear predictor, <span class="arithmatex">\(\eta_{R=0} = \eta_{R=1} + \delta\)</span>, with <span class="arithmatex">\(\delta &gt; 0\)</span> meaning the missing are worse. Equivalently, on the <code>brms</code> cumulative logit <span class="arithmatex">\(P(Y \le k) = \operatorname{logit}^{-1}(\tau_k - \eta)\)</span>, that same “missing are worse” story is a <em>negative</em> increment to <span class="arithmatex">\(\operatorname{logit} P(Y \le k \mid R = 0, X)\)</span>. Adding a positive <span class="arithmatex">\(\delta_k\)</span> to the cumulative logit would tilt the missing toward <em>better</em> scores — the opposite of the elicitation question. The sensitivity parameter is not estimable from the observed data. You either elicit <span class="arithmatex">\(\delta\)</span> on the latent scale (“how many logit steps worse do we fear the missing are?”) or you report a curve of posteriors against <span class="arithmatex">\(\delta\)</span>.</p>
+</div>
+<p>Which procedure for the vignette? LOCF is not a candidate unless you are writing a sensitivity row labeled “if nobody changed after discharge.” IPW is a candidate if you trust a model for <span class="arithmatex">\(R\)</span> more than a model for <span class="arithmatex">\(Y\)</span>, and if you only care about a low-dimensional contrast. Joint imputation is the candidate if you have a scientifically defensible model for ordinal mRS given age, NIHSS, ASPECTS, window, TICI, discharge mRS, and language, and if you want a posterior that knows the 88 scores were not seen. In a teaching analysis the two honest numbers to put side by side are a MAR joint imputation and one MNAR shift. IPW belongs in a third column as a check that the imputation model is not doing all the work.</p>
+<p>A second teaching table, still invented, for the late-versus-early contrast on the utility-weighted mRS (UW-mRS; teaching scale with death at 0 and mRS 0 at 1):</p>
+<table>
+<thead>
+<tr>
+<th>Procedure</th>
+<th style="text-align: right;">Posterior mean increment (late − early), teaching</th>
+<th>95% ET interval</th>
+<th>What the interval pretends not to know</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Complete cases</td>
+<td style="text-align: right;">−0.04</td>
+<td>−0.11 to 0.03</td>
+<td>The 88, and measurement error</td>
+</tr>
+<tr>
+<td>LOCF</td>
+<td style="text-align: right;">−0.01</td>
+<td>−0.07 to 0.05</td>
+<td>Recovery and death after discharge</td>
+</tr>
+<tr>
+<td>IPW, MAR for <span class="arithmatex">\(R \mid X\)</span></td>
+<td style="text-align: right;">−0.05</td>
+<td>−0.13 to 0.04</td>
+<td>Outcome-model misspecification; residual MNAR</td>
+</tr>
+<tr>
+<td>Joint MAR imputation</td>
+<td style="text-align: right;">−0.05</td>
+<td>−0.12 to 0.03</td>
+<td>Residual MNAR; NIHSS/ASPECTS error</td>
+</tr>
+<tr>
+<td>Joint MNAR, <span class="arithmatex">\(\delta = +0.4\)</span> logit steps worse if missing</td>
+<td style="text-align: right;">−0.08</td>
+<td>−0.16 to 0.00</td>
+<td>The value of <span class="arithmatex">\(\delta\)</span></td>
+</tr>
+<tr>
+<td>Joint MAR + NIHSS/ASPECTS measurement submodel</td>
+<td style="text-align: right;">−0.04</td>
+<td>−0.13 to 0.05</td>
+<td>Residual MNAR</td>
+</tr>
+</tbody>
+</table>
+<p>The qualitative lesson is the one you carry to the next registry meeting: the point can move by a few hundredths, and the interval can widen by a third, once you stop treating the spreadsheet as fully observed truth. That movement is often larger than the “adjusted versus unadjusted” movement the fellowship was arguing about.</p>
+<h2 id="verification-bias-is-missing-data-with-a-clinical-name">Verification bias is missing data with a clinical name<a class="headerlink" href="#verification-bias-is-missing-data-with-a-clinical-name" title="Permanent link">&para;</a></h2>
+<p>Chapter 11 treated verification bias as the problem of a reference standard obtained only in the transferred. The general pattern is identical to <span class="arithmatex">\(R\)</span> above. Let <span class="arithmatex">\(T\)</span> be an index test (spoke CTA, CTP profile, an automated LVO flag) and <span class="arithmatex">\(D\)</span> the reference (DSA, 90-day infarct territory, a core-lab ASPECTS). If <span class="arithmatex">\(D\)</span> is ascertained only when <span class="arithmatex">\(T\)</span> is positive, or only when someone already wants the procedure, then <span class="arithmatex">\(p(T \mid D, \text{verified})\)</span> is not <span class="arithmatex">\(p(T \mid D)\)</span>. Sensitivity computed in the verified is flattered; specificity is unidentified or worse.</p>
+<p>The EVT registry is a verification-bias machine for perfusion. CTP is the index profile. “EVT performed” is a collider on the path from the perfusion map to the outcome. Patients with a large estimated core and a small penumbra are less often taken for EVT, especially after hour six, and therefore never enter a <em>treated</em> registry. Estimating “the effect of a favorable CTP profile on 90-day mRS among EVT patients” conditions on a variable downstream of the profile. A favorable map looks less prognostic than it is in presenting patients, because the unfavorable maps that would have done badly were never treated — or, conversely, the few unfavorable maps that <em>were</em> treated were treated for unrecorded reasons that also affect outcome (young, dominant hemisphere, family insistence). This is not a subtlety of causal graphs. It is the reason DAWN and DEFUSE-3 cannot be read as “CTP is required” and cannot be read as “CTP is irrelevant” from a treated-only series.</p>
+<p>The honest moves are the same as in the missing-outcome problem:</p>
+<ol>
+<li><strong>Change the estimand.</strong> “Among patients who received EVT” is a different question from “among patients who presented with LVO in a late window.” Write the one you mean.</li>
+<li><strong>Get the denominator.</strong> A presentation registry — every LVO CTA, treated or not — lets you model selection into EVT and into CTP. The treated-only file cannot.</li>
+<li><strong>Model the missing reference.</strong> If the scientific object is the accuracy of CTP against a core-lab tissue fate, and tissue fate is missing in the untreated, that is a latent-class or imperfect-reference problem, not a complete-case ROC.</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Common Pitfall</p>
+<p>Do not compute the sensitivity of “favorable CTP” for “good outcome after EVT” and then call it a diagnostic accuracy paper. Outcome after treatment is not a reference standard for the map. It is a joint of the map, the treatment decision, the reperfusion, and the missingness.</p>
+</div>
+<p>Generalized verification bias is everywhere in neurology once you look. Who gets an EEG after a first seizure. Who gets a lumbar puncture for possible encephalitis. Who gets a formal neuropsychological battery after a “recovered” ICU stay. Who gets a 90-day mRS from a certified rater rather than a telephone score from a coordinator. In each case the expensive measurement is reserved for a selected slice, and the paper then reports the measurement’s properties as if the slice were the population.</p>
+<h2 id="the-integers-are-not-the-clinical-states">The integers are not the clinical states<a class="headerlink" href="#the-integers-are-not-the-clinical-states" title="Permanent link">&para;</a></h2>
+<p>NIHSS, ASPECTS, and mRS are recorded as integers. They are measurements of latent clinical states. Treating the integer as the state is a measurement-error model with noise variance fixed at zero.</p>
+<p><strong>NIHSS.</strong> Inter-rater disagreement of two to three points is ordinary, larger in aphasia and neglect, larger still when one rater is a night-float intern and the other is a certified research coordinator. The error is not classical white noise. It is differential: more error in the sick and the aphasic, and sometimes systematic (the fellow who never scores anosognosia). If NIHSS is a covariate in the outcome model, classical error flattens its coefficient and can spill bias into the window coefficient if late-window patients are scored by a different mix of raters. If NIHSS is an inclusion criterion — “NIHSS ≥ 6” — measurement error is also misclassification into and out of the cohort.</p>
+<p><strong>ASPECTS.</strong> The step from 8 to 7 is not the step from 5 to 4. Resident–attending kappa in the 0.6 range is a <strong>teaching order of magnitude</strong>, not a citation. Early ischemic change is harder on a 3 a.m. scanner with motion. A late-window patient with a true ASPECTS of 5 who is scored 7 enters EVT; the reverse patient may not, and if this is a treated registry you will never see them. That is measurement error <em>and</em> selection.</p>
+<p><strong>mRS.</strong> The scale’s scientific career is a history of boundary arguments: 1 versus 2, 2 versus 3, 3 versus 4. Structured interviews and certification improve agreement; they do not make it 1. Telephone mRS versus in-person mRS is a different instrument. A day-90 score obtained from a spouse is not the same random variable as a score obtained from the patient. If missingness is filled by a telephone call to a family member in another county, the imputation model and the measurement model are the same object: you are inferring a latent functional state from a noisy, sometimes biased, sometimes absent instrument.</p>
+<p>A usable measurement submodel is</p>
+<div class="arithmatex">\[
+W = Y^{\star} + U, \qquad U \mid Y^{\star}, V \sim F_{\psi},
+\]</div>
+<p>where <span class="arithmatex">\(W\)</span> is what was written down, <span class="arithmatex">\(Y^{\star}\)</span> is the latent state, and <span class="arithmatex">\(V\)</span> may include rater identity, language, and whether the score was in person. For an ordinal truth, a more natural version is a cumulative probit for <span class="arithmatex">\(W\)</span> given <span class="arithmatex">\(Y^{\star}\)</span>, or a discrete-error matrix <span class="arithmatex">\(P(W = k \mid Y^{\star} = j)\)</span> with most mass on the diagonal and the adjacent cells. Replicate ratings — the attending over-read of 140 ASPECTS, dual-scored NIHSS on a research subset — identify <span class="arithmatex">\(\psi\)</span> without heroics. A single rating plus a prior on the error matrix is weaker and should be reported as such.</p>
+<div class="admonition tip">
+<p class="admonition-title">Clinical Pearl</p>
+<p>If you have any dual-scored subset, that subset is worth more than another hundred singly scored rows. It is the likelihood for the error model. A registry that never dual-scores NIHSS or mRS has decided, silently, that measurement error is zero.</p>
+</div>
+<h2 id="selection-into-perfusion-imaging">Selection into perfusion imaging<a class="headerlink" href="#selection-into-perfusion-imaging" title="Permanent link">&para;</a></h2>
+<p>Return to the 168 of 274 late-window patients who received CTP. The 106 who did not are not MCAR with respect to creatinine, age, time, “the scanner was down,” or “the fellow thought the ASPECTS already answered the question.” A model for 90-day outcome given a CTP target-mismatch indicator, fit only in the imaged, describes imaged patients. Transporting that description to the next late-window arrival requires either (i) a claim that imaging was effectively randomized given the covariates you have, or (ii) a model for selection into imaging and a statement of the population you are predicting for.</p>
+<p>Let <span class="arithmatex">\(S = 1\)</span> if CTP is obtained. A selection-into-imaging model is a probit or logit for <span class="arithmatex">\(S\)</span> given age, time, creatinine, ASPECTS, NIHSS, and site. Under MAR — imaging depends on those variables but not on the unobserved perfusion map or on the potential outcome — you can impute maps or, more often, simply refuse to report map-based coefficients as if they applied to the unimaged. Under MNAR — the fellow skips CTP when the patient “looks futile,” and “looks futile” is a function of a gestalt that also predicts a large core — the map is missing for reasons that a recorded ASPECTS only partly captures.</p>
+<p>The registry has a deeper selection layer. Patients with unfavorable maps who were <em>not</em> taken for EVT are absent entirely. This is not missing data in the file. It is missing data in the sampling frame. No imputation model run inside the treated file resurrects them. The only Bayesian move that helps is to change files: analyze the presentation cohort, with EVT as a treatment and CTP as a covariate or a mediator, and write the missing maps and missing outcomes with the same joint-model honesty this chapter applies to the 88.</p>
+<div class="admonition info">
+<p class="admonition-title">What the fellowship paper can honestly say</p>
+<p>A treated-only, 22%-missing, singly scored registry can support a descriptive posterior for <em>observed</em> 90-day mRS among <em>treated</em> patients, under a named MAR or MNAR assumption, with a measurement submodel if you have any replicates. It cannot support “late-window EVT works when CTP is favorable” as a causal or even as a transportable prognostic claim. The limitation is not a paragraph. It is the estimand.</p>
+</div>
+<h2 id="for-the-biostatistician-methodologist">For the biostatistician / methodologist<a class="headerlink" href="#for-the-biostatistician-methodologist" title="Permanent link">&para;</a></h2>
+<p>Write the joint. A practical factorization for the vignette is</p>
+<div class="arithmatex">\[
+p(Y^{\star}, W_Y, N^{\star}, W_N, A^{\star}, W_A, R, S \mid X_0)
+\]</div>
+<p>where starred quantities are latent states, <span class="arithmatex">\(W\)</span> are recorded scores, <span class="arithmatex">\(X_0\)</span> are things you are willing to treat as error-free (age, clock time, occlusion site, recorded language), <span class="arithmatex">\(R\)</span> is day-90 ascertainment, and <span class="arithmatex">\(S\)</span> is CTP-obtained. Outcome, measurement, and selection are three likelihood pieces. Priors that matter are the MNAR shift (or the coefficient on <span class="arithmatex">\(Y^{\star}\)</span> in a selection model for <span class="arithmatex">\(R\)</span>), the error-matrix diagonals, and any hierarchical piece on raters.</p>
+<p>In <code>brms</code>, missing <em>covariates</em> are handled by <code>mi()</code> on the right-hand side plus a submodel <code>x | mi() ~ ...</code>. Missing <em>outcomes</em> under MAR are handled by the ordinary likelihood: rows with <code>NA</code> in <span class="arithmatex">\(Y\)</span> simply do not contribute an outcome term, and if you want those rows to contribute through a joint covariate model you include them in the imputation submodels. Measurement error with a known standard deviation uses <code>me(x, sdx)</code>. Measurement error with an unknown error and replicate readings is a multilevel measurement model: the latent state is a varying intercept, the readings are the observations. MNAR is not a <code>brms</code> flag. It is an extra linear predictor for <span class="arithmatex">\(R\)</span> that includes <span class="arithmatex">\(Y\)</span>, or a pattern-mixture shift you impose on the imputed <span class="arithmatex">\(Y\)</span>.</p>
+<p>Do not run <code>mice</code> with the default CART stack, feed the five completed files to five frequentist ordinal logits, and call the result a Bayesian missing-data analysis. That pipeline can be a decent MAR sensitivity. It is not a joint posterior, it does not know about ordinal measurement error, and it will not refuse an MNAR question.</p>
+<p>Identification is the constraint, not computation. A selection model with a free coefficient of <span class="arithmatex">\(Y\)</span> on <span class="arithmatex">\(R\)</span> and no exclusion restriction is weakly identified; the posterior will wander unless the prior on that coefficient is doing scientific work. State the prior as a clinical sentence: “we put a Normal(0.4, 0.2) prior on the logit effect of a one-step-worse mRS on the probability of being missing, encoding the belief that worse outcomes are somewhat harder to ascertain.” Then show the posterior under a tighter and a flatter version.</p>
+<h2 id="r-mar-imputation-and-a-measurement-submodel">R: MAR imputation and a measurement submodel<a class="headerlink" href="#r-mar-imputation-and-a-measurement-submodel" title="Permanent link">&para;</a></h2>
+<p>The first block builds a teaching registry and fits a joint model in which discharge mRS, window, NIHSS, language, and transfer predict day-90 mRS, and the same variables predict missingness only through the outcome model (MAR given those covariates). The second block sketches a measurement submodel for NIHSS using a dual-scored subset. Both are specifications you should run locally; they are not cached results.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Teaching EVT registry: MAR joint model for missing day-90 mRS.</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># 400 rows. 22% missing Y. Teaching coefficients, not a fit to real patients.</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nf">set.seed</span><span class="p">(</span><span class="m">20260818</span><span class="p">)</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nf">library</span><span class="p">(</span><span class="n">brms</span><span class="p">)</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">n</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">400</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">lang_ne</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbinom</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0.22</span><span class="p">)</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">transfer</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbinom</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0.40</span><span class="p">)</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="n">window_late</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbinom</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0.68</span><span class="p">)</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="n">age</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="nf">rnorm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="m">71</span><span class="p">,</span><span class="w"> </span><span class="m">12</span><span class="p">))</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="n">nihss_true</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">pmin</span><span class="p">(</span><span class="m">42</span><span class="p">,</span><span class="w"> </span><span class="nf">pmax</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="nf">rnorm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="m">15</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1.2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">transfer</span><span class="p">,</span><span class="w"> </span><span class="m">6</span><span class="p">))))</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="n">dc_mrs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">pmin</span><span class="p">(</span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="nf">pmax</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="m">0.35</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">nihss_true</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="m">2.2</span><span class="p">,</span><span class="w"> </span><span class="m">1.1</span><span class="p">))))</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="c1"># Latent day-90 mRS: some recovery from discharge, late window a bit worse.</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="n">eta</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">-0.4</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">0.85</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dc_mrs</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">0.25</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">window_late</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">0.03</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">nihss_true</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="n">y_star</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">pmin</span><span class="p">(</span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="nf">pmax</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">eta</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0.8</span><span class="p">))))</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="c1"># Missingness depends on language, transfer, and discharge (MAR given these).</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="n">psi</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">-1.6</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1.1</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">lang_ne</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1.3</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">transfer</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">0.25</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">dc_mrs</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="n">r</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbinom</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="nf">plogis</span><span class="p">(</span><span class="n">psi</span><span class="p">))</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="n">y_obs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ifelse</span><span class="p">(</span><span class="n">r</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">y_star</span><span class="p">,</span><span class="w"> </span><span class="kc">NA_real_</span><span class="p">)</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="n">reg</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">  </span><span class="n">y90</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y_obs</span><span class="p">,</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">  </span><span class="n">dc_mrs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dc_mrs</span><span class="p">,</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">  </span><span class="n">window_late</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">window_late</span><span class="p">,</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">  </span><span class="n">nihss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nihss_true</span><span class="p">,</span><span class="w">          </span><span class="c1"># first pass: pretend NIHSS is error-free</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">  </span><span class="n">lang_ne</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lang_ne</span><span class="p">,</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">  </span><span class="n">transfer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">transfer</span><span class="p">,</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">  </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="p">)</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="c1"># Ordinal outcome under MAR: NA rows drop from the outcome likelihood.</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="c1"># Include predictors of missingness so the complete-case restriction is</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="c1"># closer to MAR. For a fully joint imputation of covariates, see mi() below.</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="n">priors_y</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">  </span><span class="nf">prior</span><span class="p">(</span><span class="nf">normal</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">),</span><span class="w"> </span><span class="n">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"b"</span><span class="p">),</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">  </span><span class="nf">prior</span><span class="p">(</span><span class="nf">normal</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="n">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Intercept"</span><span class="p">)</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="p">)</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="n">fit_mar</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">brm</span><span class="p">(</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">  </span><span class="n">y90</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">dc_mrs</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">window_late</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">nihss</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">lang_ne</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">transfer</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">age</span><span class="p">,</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="w">  </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reg</span><span class="p">,</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="w">  </span><span class="n">family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">cumulative</span><span class="p">(</span><span class="s">"logit"</span><span class="p">),</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="w">  </span><span class="n">prior</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">priors_y</span><span class="p">,</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="w">  </span><span class="n">chains</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="n">iter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2000</span><span class="p">,</span><span class="w"> </span><span class="n">seed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20260818</span><span class="p">,</span><span class="w"> </span><span class="n">refresh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="p">)</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="c1"># Contrast: posterior of P(Y &lt;= 2 | late) - P(Y &lt;= 2 | early)</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="c1"># at representative covariates. Teaching functional only.</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="n">nd</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="w">  </span><span class="n">dc_mrs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">nihss</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">14</span><span class="p">,</span><span class="w"> </span><span class="n">lang_ne</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">transfer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">71</span><span class="p">,</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="w">  </span><span class="n">window_late</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="p">)</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="c1"># posterior_epred(fit_mar, newdata = nd)  # then difference column 1+2+3</span>
+</code></pre></div>
+<p>A <code>mi()</code> specification becomes relevant when a <em>covariate</em> is missing — for example, if ASPECTS is absent in 40 patients and you refuse to complete-case them:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># Joint imputation of missing ASPECTS, then use the imputations in the outcome.</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1"># aspects | mi()  is the imputation submodel.</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># mi(aspects)     puts the imputed values on the right-hand side of Y.</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># Specification only. Uncomment after you have built `reg` with an aspects column:</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1"># reg$aspects &lt;- pmin(10, pmax(0, round(rnorm(n, 8 - 0.4 * window_late, 1.6))))</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># reg$aspects[sample.int(n, 40)] &lt;- NA_real_</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1"># fit_mi &lt;- brm(</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="c1">#   bf(y90 ~ dc_mrs + window_late + nihss + mi(aspects) + lang_ne + transfer) +</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="c1">#     bf(aspects | mi() ~ nihss + window_late + age) +</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="c1">#     set_rescor(FALSE),</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="c1">#   data = reg,</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="c1">#   family = list(cumulative("logit"), gaussian()),</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="c1">#   prior = c(</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="c1">#     prior(normal(0, 1), class = "b", resp = "y90"),</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="c1">#     prior(normal(0, 1), class = "b", resp = "aspects"),</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="c1">#     prior(normal(8, 2), class = "Intercept", resp = "aspects")</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="c1">#   ),</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="c1">#   chains = 4, iter = 2000, seed = 20260818, refresh = 0</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="c1"># )</span>
+</code></pre></div>
+<p>Measurement error on NIHSS, when a dual-scored subset exists, is a multilevel model for the readings rather than <code>me()</code> with a made-up SD:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Long file: two NIHSS readings on 80 patients, one reading on the rest.</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># nihss_read ~ 1 + (1 | id)  treats the patient intercept as latent NIHSS.</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># That intercept then enters the outcome model as a generated quantity,</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># or, in a fully joint specification, as a shared latent.</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1">#</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># fit_me &lt;- brm(</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1">#   bf(nihss_read ~ 1 + (1 | id)) +</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1">#     bf(y90 ~ dc_mrs + window_late + lang_ne + transfer),</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="c1">#   data = readings_long,</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1">#   family = list(gaussian(), cumulative("logit"))</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="c1"># )</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="c1"># Sharing the latent NIHSS across formulas requires a custom Stan block</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="c1"># or a two-stage draw: sample the intercepts, then feed them forward.</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="c1"># Two-stage understates uncertainty unless you draw many times.</span>
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">R Deep Dive</p>
+<p>An MNAR sensitivity in the same stack: after drawing MAR imputations of <span class="arithmatex">\(Y_{\text{mis}}\)</span>, shift the latent linear predictor for those rows by <span class="arithmatex">\(\delta \in \{0, 0.2, 0.4, 0.8\}\)</span> logit units toward worse scores, reconstruct the ordinal category, and recompute the late-versus-early contrast. Plot the posterior mean and interval against <span class="arithmatex">\(\delta\)</span>. The figure is the sensitivity analysis. A single “MNAR-adjusted” number is a press release.</p>
+</div>
+<h2 id="worked-solution-to-the-opening-vignette">Worked solution to the opening vignette<a class="headerlink" href="#worked-solution-to-the-opening-vignette" title="Permanent link">&para;</a></h2>
+<p><strong>(1) An MCAR mechanism.</strong> The 88 scores were lost because a coordinator was on leave in a particular month and the calendar, not the patients, determined who was not called. The vignette already contradicts this: language, transfer, and discharge mRS all move <span class="arithmatex">\(R\)</span>.</p>
+<p><strong>(2) An MAR mechanism.</strong> Patients who go home to another county, who prefer a language other than English, and who look well at discharge are harder to reach, and <em>given those variables</em> the unobserved day-90 mRS does not further change the chance of a completed score. Conditioning on transfer, language, discharge mRS, window, and NIHSS then makes <span class="arithmatex">\(R \perp Y \mid X\)</span>. This is the most optimistic defensible story, and it is the story a joint MAR imputation or a well-specified IPW model assumes.</p>
+<p><strong>(3) An MNAR mechanism.</strong> Among transfers who looked well at discharge, the ones who later worsened — readmission, delayed hemorrhage, depression, a fall — are less likely to answer an unknown number than the ones who stayed well. Discharge mRS does not capture the worsening, so <span class="arithmatex">\(R\)</span> still depends on <span class="arithmatex">\(Y\)</span>. A second MNAR mechanism runs the other way: nursing-home residents with mRS 4–5 have staff who will not bring them to the phone. The two mechanisms do not cancel just because they have opposite signs.</p>
+<p><strong>The estimand the fellowship thinks it is estimating.</strong> Usually, an adjusted contrast in 90-day functional outcome between late- and early-window EVT, spoken as if it were the effect of treating late rather than early, in presenting LVO patients. What the file can support is closer to: a descriptive, missingness-model-dependent contrast in recorded (or imputed) 90-day mRS among patients who already received EVT at this center, with singly scored NIHSS and ASPECTS treated either as error-free or as noisy readings. Those are not the same sentence. The CTP-selected late-window subset is one selection layer further from the presenting population.</p>
+<p>On the numbers: do not quote <span class="arithmatex">\(118/312 = 38\%\)</span> independence as the registry result. Quote a MAR-imputed posterior for the marginal 90-day mRS distribution, an MNAR sensitivity, and a complete-case row so a reader can see the movement. Do not fill the 88 with discharge mRS and then run an ordinal regression as if you had 400 outcomes. Do not drop the four in-hospital deaths that were coded as missing; recode them as 6 and audit how they became missing.</p>
+<div class="admonition warning">
+<p class="admonition-title">Common Pitfall</p>
+<p>A “multiple imputation” that uses only age, sex, and NIHSS, while the coordinator’s notes mention county and language, is an MAR analysis for a world you do not work in. The imputation model must include the causes of missingness you already wrote down in the three sentences. Variables that predict <span class="arithmatex">\(R\)</span> belong in the imputer even if they do not belong in the scientific estimand.</p>
+</div>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><strong>Bedside / board.</strong> A reviewer writes: “22% missing is acceptable; analysis was complete-case, so no imputation bias.” Draft a six-sentence reply that names the estimand, the MAR assumption the reviewer just made, and one MNAR mechanism the complete-case table cannot rule out. Do not mention software.</p>
+</li>
+<li>
+<p><strong>Mechanisms.</strong> Using the teaching counts, compute the complete-case and LOCF estimates of <span class="arithmatex">\(P(\text{mRS } 0\text{–}2)\)</span>. Then invent a third estimate under the assumption that the 84 living missing patients have the same discharge distribution shifted one category worse (mRS 6 stays 6; mRS 5 stays 5). Which of the three would you put in an abstract, and what would the other two be called?</p>
+</li>
+<li>
+<p><strong>Verification.</strong> A late-window paper reports that favorable CTP predicts independence after EVT with posterior mean risk difference 0.18, estimated in the 168 imaged and treated patients. List the selection steps between “presented with LVO after 6 hours” and “in this likelihood,” and write the estimand that 0.18 actually belongs to.</p>
+</li>
+<li>
+<p><strong>Measurement and <code>brms</code>.</strong> You have attending over-reads of ASPECTS on 140 of 400 scans; the resident score is present on all 400. Sketch a <code>brms</code> formula block that treats true ASPECTS as latent, uses both readings where available, and puts the latent score into an ordinal model for day-90 mRS. What prior would you put on the resident’s extra error variance, and what sentence would you write if the over-read subset was a convenience sample of “interesting” scans?</p>
+</li>
+</ol>
+<h2 id="further-reading">Further reading<a class="headerlink" href="#further-reading" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Rubin DB. Inference and missing data. <em>Biometrika</em>. 1976;63:581–592.</li>
+<li>Little RJA, Rubin DB. <em>Statistical Analysis with Missing Data</em>. 3rd ed. Hoboken: Wiley; 2019.</li>
+<li>National Research Council. <em>The Prevention and Treatment of Missing Data in Clinical Trials</em>. Washington, DC: National Academies Press; 2010.</li>
+<li>Carpenter JR, Kenward MG. <em>Multiple Imputation and its Application</em>. Chichester: Wiley; 2013.</li>
+<li>Begg CB, Greenes RA. Assessment of diagnostic tests when disease verification is subject to selection bias. <em>Biometrics</em>. 1983;39:207–215.</li>
+<li>Carroll RJ, Ruppert D, Stefanski LA, Crainiceanu CM. <em>Measurement Error in Nonlinear Models</em>. 2nd ed. Boca Raton: Chapman &amp; Hall/CRC; 2006.</li>
+<li>Keogh RH, White IR. A toolkit for measurement error correction, with a focus on nutritional epidemiology. <em>Statistics in Medicine</em>. 2014;33:2137–2155.</li>
+<li>Bürkner P-C. brms: an R package for Bayesian multilevel models using Stan. <em>Journal of Statistical Software</em>. 2017;80(1):1–28. See the <code>mi()</code> and <code>me()</code> vignettes.</li>
+<li>van Buuren S. <em>Flexible Imputation of Missing Data</em>. 2nd ed. Boca Raton: CRC Press; 2018.</li>
+<li>Saver JL et al. Standardizing the structure of stroke clinical and epidemiologic research data: the NINDS Stroke Common Data Element project. <em>Stroke</em>. 2012;43:967–973. For why mRS, NIHSS, and ASPECTS are not interchangeable instruments across modes of administration.</li>
+</ul>
+<div class="admonition success">
+<p class="admonition-title">Key Takeaway</p>
+<p>A hole in a stroke registry is a parameter. MCAR is almost never true; MAR is a claim about the covariates you actually modeled; MNAR is the leftover dependence on the unseen score, and it is not one-directional. Joint Bayesian imputation carries the uncertainty of the hole into the posterior; IPW is a model for who was found, not for what their mRS was; LOCF is a recovery model you would not defend in clinic. Verification bias, selection into perfusion, and NIHSS/ASPECTS/mRS measurement error are the same joint-model problem with different clinical names. Write <span class="arithmatex">\(Y\)</span>, <span class="arithmatex">\(R\)</span>, the latent state, and the sampling frame before you write <code>brms</code>. The complete-case table is a posterior under the assumption that the missing are a coin flip. They went home to another county.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="23-clinical-prediction-models.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: 23. Clinical Prediction Models">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                23. Clinical Prediction Models
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="25-grade-evidence-to-decision.html" class="md-footer__link md-footer__link--next" aria-label="Next: 25. GRADE and Evidence-to-Decision">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                25. GRADE and Evidence-to-Decision
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Bayesian Clinical Reasoning
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/rkalani1/Bayesian-Reasoning" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tracking", "navigation.top", "navigation.footer", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../javascripts/header-controls.js"></script>
+      
+    
+  </body>
+</html>

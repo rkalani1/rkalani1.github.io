@@ -1,0 +1,2599 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Bayesian statistics, decision analysis, and evidence for neurologists and clinician-scientists.">
+      
+      
+      
+        <link rel="canonical" href="https://rkalani1.github.io/Bayesian-Reasoning/curriculum/11-diagnostic-accuracy.html">
+      
+      
+        <link rel="prev" href="10-sample-size-adaptive-designs.html">
+      
+      
+        <link rel="next" href="12-survival-competing-risks.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>11. Diagnostic Accuracy - Bayesian Clinical Reasoning</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../stylesheets/page-orientation.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Bayesian Clinical Reasoning">
+  <meta property="og:title" content="11. Diagnostic Accuracy — Bayesian Clinical Reasoning">
+  <meta property="og:description" content="Bayesian statistics, decision analysis, and evidence for neurologists and clinician-scientists.">
+  <meta property="og:url" content="https://rkalani1.github.io/Bayesian-Reasoning/curriculum/11-diagnostic-accuracy.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="11. Diagnostic Accuracy — Bayesian Clinical Reasoning">
+  <meta name="twitter:description" content="Bayesian statistics, decision analysis, and evidence for neurologists and clinician-scientists.">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#bayesian-approaches-to-diagnostic-accuracy-roc-and-continuous-markers" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+
+  
+
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="Bayesian Clinical Reasoning" class="md-header__button md-logo" aria-label="Bayesian Clinical Reasoning" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">Bayesian Clinical Reasoning</span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">11. Diagnostic Accuracy</span>
+        </div>
+      </div>
+      <a class="mobile-page-orientation" href="11-diagnostic-accuracy.html" aria-label="Bayes, current page: 11. Diagnostic Accuracy">
+        <strong>Bayes</strong><span aria-hidden="true">·</span><span>11. Diagnostic Accuracy</span>
+      </a>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="amber"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="amber"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rkalani1/Bayesian-Reasoning" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rkalani1/Bayesian-Reasoning
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Bayesian Clinical Reasoning" class="md-nav__button md-logo" aria-label="Bayesian Clinical Reasoning" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Bayesian Clinical Reasoning
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rkalani1/Bayesian-Reasoning" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rkalani1/Bayesian-Reasoning
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-use.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How to use this book
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../evidence-register.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidence register
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Book
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Book
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part I — Foundations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part I — Foundations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-why-bayesian-thinking-matters.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01. Why Bayesian Thinking Matters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-probability-odds-uncertainty.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02. Probability, Odds, and Uncertainty
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-bayes-theorem.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03. Bayes’ Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-priors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04. Priors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part II — Inference with R
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part II — Inference with R
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-likelihoods-conjugate-models.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05. Likelihoods and Conjugate Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-hierarchical-models.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06. Hierarchical Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-computational-inference.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07. Computational Inference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-model-checking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08. Model Checking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-estimation-rope-bayes-factors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09. Estimation, ROPE, and Bayes Factors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part III — Design and Synthesis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part III — Design and Synthesis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-sample-size-adaptive-designs.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Sample Size and Adaptive Designs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Diagnostic Accuracy
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="11-diagnostic-accuracy.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Diagnostic Accuracy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#opening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opening
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clinical-vignette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clinical vignette
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sensitivity-and-specificity-are-random" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sensitivity and specificity are random
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spectrum-bias-sesp-are-not-portable-constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spectrum bias: Se/Sp are not portable constants
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hierarchical-models-for-multi-center-diagnostic-studies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hierarchical models for multi-center diagnostic studies
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#roc-auc-and-continuous-markers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ROC, AUC, and continuous markers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#no-gold-standard-latent-class-not-wishful-dsa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        No gold standard: latent class, not wishful DSA
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-stard-mindset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A STARD mindset
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A STARD mindset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-the-biostatistician-methodologist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For the biostatistician / methodologist
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#r-posterior-of-sensitivity-and-specificity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R: posterior of sensitivity and specificity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worked-solution-to-the-opening-vignette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked solution to the opening vignette
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercises
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-survival-competing-risks.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Survival and Competing Risks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-bayesian-meta-analysis.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Bayesian Meta-Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part IV — Decision and Communication
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part IV — Decision and Communication
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="14-decision-theory-thresholds.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Decision Theory and Thresholds
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="15-decision-curves-voi.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Decision Curves and Value of Information
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="16-bedside-shared-decisions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Bedside and Shared Decisions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="17-communicating-uncertainty.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Communicating Uncertainty
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part V — Synthesis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part V — Synthesis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="18-integrated-case-studies.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Integrated Case Studies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="19-complete-workflow.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. A Complete Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="20-reproducible-pipelines.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. Reproducible Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part VI — Identification and institutions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part VI — Identification and institutions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="21-transporting-evidence-hte.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. Transporting Evidence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="22-causal-target-trial.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. Causal Models and the Target Trial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="23-clinical-prediction-models.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. Clinical Prediction Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="24-missing-data-measurement-error.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. Missing Data and Measurement Error
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="25-grade-evidence-to-decision.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. GRADE and Evidence-to-Decision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="26-ethics-governance-adaptive.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. Ethics and Adaptive Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Appendices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendices/a-r-setup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A. R Setup and Cheatsheet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendices/b-prior-elicitation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    B. Prior Elicitation Worksheets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendices/c-solutions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C. Solutions to Exercises
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendices/d-glossary.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    D. Glossary and Checklists
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#opening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opening
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clinical-vignette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clinical vignette
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sensitivity-and-specificity-are-random" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sensitivity and specificity are random
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spectrum-bias-sesp-are-not-portable-constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Spectrum bias: Se/Sp are not portable constants
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hierarchical-models-for-multi-center-diagnostic-studies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hierarchical models for multi-center diagnostic studies
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#roc-auc-and-continuous-markers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ROC, AUC, and continuous markers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#no-gold-standard-latent-class-not-wishful-dsa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        No gold standard: latent class, not wishful DSA
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-stard-mindset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A STARD mindset
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="A STARD mindset">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-the-biostatistician-methodologist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For the biostatistician / methodologist
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#r-posterior-of-sensitivity-and-specificity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R: posterior of sensitivity and specificity
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worked-solution-to-the-opening-vignette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked solution to the opening vignette
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercises
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="bayesian-approaches-to-diagnostic-accuracy-roc-and-continuous-markers">Bayesian Approaches to Diagnostic Accuracy, ROC, and Continuous Markers<a class="headerlink" href="#bayesian-approaches-to-diagnostic-accuracy-roc-and-continuous-markers" title="Permanent link">&para;</a></h1>
+<h2 id="opening">Opening<a class="headerlink" href="#opening" title="Permanent link">&para;</a></h2>
+<p>A telestroke physician is staring at a CTA that a night-shift resident called “probably an M1.” The receiving comprehensive center is 90 minutes by air. The prior probability of a large-vessel occlusion, given this NIHSS and this last-known-well, is not 50%. Sensitivity is not a single number printed on a vendor slide. Specificity is not independent of who reads the scan. The decision to launch the helicopter is a threshold on a posterior, and the scan is a likelihood that has its own uncertainty.</p>
+<h2 id="learning-objectives">Learning objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">&para;</a></h2>
+<p>After working this chapter you should be able to:</p>
+<ul>
+<li>Treat sensitivity and specificity as unknown quantities with posteriors, not as fixed handbook constants.</li>
+<li>Specify a Beta or binomial model for a single study and a hierarchical model for a multi-center diagnostic study.</li>
+<li>Put a posterior on an ROC curve and on AUC for a continuous or ordinal marker (D-dimer analogue, serum NfL, ASPECTS).</li>
+<li>Recognize when the reference standard is missing or imperfect and sketch a latent-class model rather than pretending DSA was done on everyone.</li>
+<li>Read a diagnostic paper with a STARD mindset: who was enrolled, who got the index test, who got the reference, and what was done with the indeterminate scans.</li>
+</ul>
+<h2 id="clinical-vignette">Clinical vignette<a class="headerlink" href="#clinical-vignette" title="Permanent link">&para;</a></h2>
+<p>You cover a spoke hospital by video. A 71-year-old with atrial fibrillation, last known well 3.5 hours ago, has an NIHSS of 12 (forced gaze, aphasia, right arm drift). Non-contrast CT is unremarkable. The spoke CT angiogram is read locally as “possible left M2 cutoff; M1 patent.” Your own read, on lossy pixels, is “probable distal M1.” There is no on-site radiologist who regularly reads LVO studies. DSA at the hub is the reference standard you wish you had; you will not have it unless you transfer. The helicopter is on standby. The family wants a number: “How sure are you that this is a large-vessel occlusion worth transferring for?”</p>
+<p><strong>Teaching numbers for the local CTA-for-LVO pathway</strong>, labeled as such and not taken from any one trial: among the last 80 transferred patients who went to DSA, 52 had an LVO (ICA, M1, or proximal M2) and 28 did not. Spoke CTA, using the local overnight read, was positive in 46 of the 52 LVO cases and in 6 of the 28 without LVO. Your own telestroke reads on the same 80, locked before DSA, were positive in 48 of 52 and in 8 of 28. The spoke’s pre-transfer population is not the DSA population: many NIHSS 3–5 patients are never sent. Serum NfL is not available in time. ASPECTS on the non-contrast CT is 9.</p>
+<p>Before any model, write three quantities on paper: the prior probability of LVO in <em>this</em> patient, the likelihood ratio of the spoke read, and the action that would change if the posterior moved from 0.70 to 0.40.</p>
+<h2 id="sensitivity-and-specificity-are-random">Sensitivity and specificity are random<a class="headerlink" href="#sensitivity-and-specificity-are-random" title="Permanent link">&para;</a></h2>
+<p>Sensitivity is <span class="arithmatex">\(P(\text{test}^+ \mid \text{disease})\)</span>. Specificity is <span class="arithmatex">\(P(\text{test}^- \mid \text{no disease})\)</span>. Both are probabilities, so both are parameters, so both have posteriors once you have counts. The widespread habit of quoting “CTA is 96% sensitive for LVO” is a point estimate wearing a lab coat. It hides the study’s case mix, the definition of LVO, the reader, and the width of the interval.</p>
+<p>Given a single 2 × 2 table the conjugate analysis is immediate. Let <span class="arithmatex">\(s\)</span> be true positives out of <span class="arithmatex">\(n_D\)</span> diseased patients and <span class="arithmatex">\(r\)</span> be true negatives out of <span class="arithmatex">\(n_{\overline{D}}\)</span> non-diseased. With independent analysis priors <span class="arithmatex">\(\operatorname{Se} \sim \operatorname{Beta}(a_s, b_s)\)</span> and <span class="arithmatex">\(\operatorname{Sp} \sim \operatorname{Beta}(a_r, b_r)\)</span>,</p>
+<div class="arithmatex">\[
+\operatorname{Se} \mid \text{data} \sim \operatorname{Beta}(a_s + s,\ b_s + n_D - s), \qquad
+\operatorname{Sp} \mid \text{data} \sim \operatorname{Beta}(a_r + r,\ b_r + n_{\overline{D}} - r).
+\]</div>
+<p>A uniform prior is <span class="arithmatex">\(\operatorname{Beta}(1,1)\)</span>. A weakly informative prior that shrinks a small study toward “better than a coin, worse than magic,” for example <span class="arithmatex">\(\operatorname{Beta}(4,2)\)</span> on each, is often more honest than uniformity when <span class="arithmatex">\(n_D = 12\)</span>. The posterior for the positive likelihood ratio <span class="arithmatex">\(\operatorname{LR}^+ = \operatorname{Se}/(1-\operatorname{Sp})\)</span> does not have a named distribution you should memorize; draw from the two Betas and form the ratio.</p>
+<p>Bayes at the bedside is then the same move as in Chapter 2:</p>
+<div class="arithmatex">\[
+\frac{P(D \mid +)}{P(\overline{D} \mid +)} = \operatorname{LR}^+ \times \frac{P(D)}{P(\overline{D})}.
+\]</div>
+<p>What changes in this chapter is that <span class="arithmatex">\(\operatorname{LR}^+\)</span> is itself uncertain, and that <span class="arithmatex">\(P(D)\)</span> is not the prevalence in a published CTA series. It is <em>this</em> patient’s pre-test probability, built from NIHSS, last-known-well, atrial fibrillation, and the fact that someone already thought the scan was worth doing.</p>
+<div class="admonition tip">
+<p class="admonition-title">Clinical Pearl</p>
+<p>Separate the population that generated the 2 × 2 table from the patient in front of you. A CTA series restricted to NIHSS ≥ 10 will overstate the pre-test probability for a telestroke NIHSS 5, and may also overstate sensitivity if subtle M2 occlusions never entered the series.</p>
+</div>
+<p>The vignette’s spoke-read table, under uniform priors, gives <span class="arithmatex">\(\operatorname{Se} \sim \operatorname{Beta}(47, 7)\)</span> and <span class="arithmatex">\(\operatorname{Sp} \sim \operatorname{Beta}(23, 7)\)</span>. Those posteriors have means near 0.87 and 0.77 and are not interchangeable with “87% and 77%.” Draw them. The implied posterior on <span class="arithmatex">\(\operatorname{LR}^+\)</span> is wide. Combined with a pre-test probability of, say, 0.55 in this NIHSS-12 / AF patient — a <strong>teaching prior</strong>, not a published calibration — the posterior probability of LVO after a positive spoke read sits in a band, not on a point. That band is what you discuss with the family, not a single percentage pulled from a review article.</p>
+<table>
+<thead>
+<tr>
+<th>Reader (teaching 2 × 2)</th>
+<th style="text-align: right;">TP / <span class="arithmatex">\(n_D\)</span></th>
+<th style="text-align: right;">TN / <span class="arithmatex">\(n_{\overline{D}}\)</span></th>
+<th style="text-align: right;">Posterior mean Se (uniform)</th>
+<th style="text-align: right;">Posterior mean Sp (uniform)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Spoke overnight</td>
+<td style="text-align: right;">46 / 52</td>
+<td style="text-align: right;">22 / 28</td>
+<td style="text-align: right;">0.87</td>
+<td style="text-align: right;">0.77</td>
+</tr>
+<tr>
+<td>Telestroke over-read</td>
+<td style="text-align: right;">48 / 52</td>
+<td style="text-align: right;">20 / 28</td>
+<td style="text-align: right;">0.91</td>
+<td style="text-align: right;">0.70</td>
+</tr>
+<tr>
+<td>Both called positive</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">not a third test</td>
+<td style="text-align: right;">not independent</td>
+</tr>
+</tbody>
+</table>
+<p>The last row is the reminder. Two reads of one CTA are repeated measurements, not two assays. If you need a single likelihood ratio for the pair, model the agreement, or pick the read that will actually drive the transfer and put a reader random effect on it.</p>
+<h2 id="spectrum-bias-sesp-are-not-portable-constants">Spectrum bias: Se/Sp are not portable constants<a class="headerlink" href="#spectrum-bias-sesp-are-not-portable-constants" title="Permanent link">&para;</a></h2>
+<p>Ransohoff and Feinstein named the error; telestroke lives it. Sensitivity and specificity are not properties of a scanner. They are properties of a scanner <em>in a spectrum of disease and non-disease</em>. Change who is enrolled and you change both numbers, and you change the likelihood ratio you are about to multiply by the wrong prior.</p>
+<p>The <strong>teaching</strong> pathway in the vignette is already a selected spectrum: 80 patients who were transferred and then catheterized. NIHSS 12 with gaze and aphasia is inside that spectrum. NIHSS 5 with a drifting arm and a questionable M2 is not. A CTA series built on NIHSS <span class="arithmatex">\(\ge 10\)</span> is enriched for long-segment M1 and ICA occlusions — lesions a night reader can see — and depleted of short M2 cutoffs, reconstituted distal clots, and the mimic-heavy left tail of the NIHSS. Sensitivity estimated in that series is the sensitivity for the lesions that series admitted. It is not the sensitivity for the lesion you are afraid of missing in an NIHSS-5 patient who may never have been sent.</p>
+<p>Specificity moves too, and not always in the same direction. A high-NIHSS cohort has few hemiplegic mimics and many true occlusions; false positives are expensive in the denominator of specificity. A low-NIHSS spoke cohort is full of seizures, migraines, and small-vessel syndromes that a liberal overnight reader will call “possible M2.” Specificity falls. A conservative reader who almost never calls an M2 will raise specificity and drop sensitivity. The LR+ that leaves that shop is not the LR+ on the vendor slide, and it is not the LR+ from the NIHSS <span class="arithmatex">\(\ge 10\)</span> hub series.</p>
+<p>So the CTA likelihood ratio estimated among NIHSS <span class="arithmatex">\(\ge 10\)</span> transfers is the wrong multiplier for an NIHSS-5 activation. It is the wrong multiplier twice: the test is a different test (different lesion mix, different reader behavior), and the prior it will be asked to update is a different prior (Chapter 2’s last two rows). Using one published LR for both patients is how a service launches helicopters it cannot justify and withholds launches it should not.</p>
+<p>Teaching arithmetic, labeled as such. Suppose the NIHSS <span class="arithmatex">\(\ge 10\)</span> DSA series gives Se <span class="arithmatex">\(0.92\)</span>, Sp <span class="arithmatex">\(0.80\)</span>, so <span class="arithmatex">\(\operatorname{LR}^+ = 4.6\)</span> and <span class="arithmatex">\(\operatorname{LR}^- = 0.10\)</span>. In a milder spectrum the same overnight call is Se <span class="arithmatex">\(0.68\)</span>, Sp <span class="arithmatex">\(0.86\)</span>, so <span class="arithmatex">\(\operatorname{LR}^+ = 4.9\)</span> — almost the same multiplier, which is a coincidence you must not rely on — while <span class="arithmatex">\(\operatorname{LR}^- = 0.37\)</span>. The negative CTA, not the positive one, is where spectrum bias usually bites in mild stroke: a “clean” read that was excellent at clearing large M1s is mediocre at clearing a possible M3, and an LR− of 0.37 applied to a pre-test of 0.12 leaves a posterior near 0.048, whereas the borrowed LR− of 0.10 would have talked you down to 0.013. Those two posteriors sit on opposite sides of some hubs’ stay-and-repeat threshold.</p>
+<p>A second <strong>teaching</strong> pair, so the coincidence does not comfort you. Same high-severity Se/Sp, but now a liberal spoke reader in the mild spectrum: Se <span class="arithmatex">\(0.78\)</span>, Sp <span class="arithmatex">\(0.62\)</span>, <span class="arithmatex">\(\operatorname{LR}^+ = 2.1\)</span>. Applied to a pre-test of 0.12 the posterior is 0.22, not the 0.39 you would have quoted from the NIHSS <span class="arithmatex">\(\ge 10\)</span> LR+ of 4.6. The helicopter decision at 0.22 and at 0.39 is not the same sentence to the family.</p>
+<pre class="mermaid"><code>flowchart TD
+  Pop[Who entered the 2 by 2] --&gt; Sev[NIHSS 10 or more: large M1 ICA]
+  Pop --&gt; Mild[NIHSS 5: distal M2 and mimics]
+  Sev --&gt;|Se 0.92 Sp 0.80| LR1[LR-plus 4.6 / LR-minus 0.10]
+  Mild --&gt;|Se 0.68 Sp 0.86| LR2[LR-plus 4.9 / LR-minus 0.37]
+  Mild --&gt;|liberal reader Se 0.78 Sp 0.62| LR3[LR-plus 2.1 / LR-minus 0.35]
+  LR1 --&gt; Wrong[Wrong multiplier for the NIHSS-5 patient]
+  LR2 --&gt; Right[Use with a 0.12 prior not a 0.55 prior]
+  LR3 --&gt; Right</code></pre>
+<p>Two practical moves follow, and neither is “find a better point estimate.” First, stratify the 2 × 2 by the same cuts you use to build the prior — NIHSS band, last-known-well, atrial fibrillation — and put a Beta on each slice, or a hierarchical model that lets Se/Sp vary with severity (the next section). Second, when you have only the severe-spectrum paper, shrink the borrowed LR toward 1 for the mild patient and say so. That is not theatrical humility. It is refusing to treat a selected M1 series as a constant of nature.</p>
+<p>The vignette’s family question is an NIHSS-12 question. Do not answer it with an NIHSS-5 disclaimer, and do not answer the next, milder activation with this vignette’s 0.55 prior and this vignette’s spoke LR. Spectrum bias is the habit of recycling both. STARD already asked who was enrolled. Spectrum bias is what happens when you ignore the answer and still multiply.</p>
+<div class="admonition warning">
+<p class="admonition-title">Common Pitfall</p>
+<p>Importing an LR from an NIHSS <span class="arithmatex">\(\ge 10\)</span> CTA-for-LVO paper and applying it to a telestroke NIHSS 5 is not conservative. It is a change of both the prior and the test, hidden inside one familiar number.</p>
+</div>
+<h2 id="hierarchical-models-for-multi-center-diagnostic-studies">Hierarchical models for multi-center diagnostic studies<a class="headerlink" href="#hierarchical-models-for-multi-center-diagnostic-studies" title="Permanent link">&para;</a></h2>
+<p>A single 2 × 2 table is a start. A telestroke network is not a single table. Each spoke has a different scanner, a different overnight reader, a different habit of calling “possible M2,” and a different threshold for launching transfer. Sensitivity and specificity vary. Ignoring that variation and pooling the raw counts produces intervals that are too narrow and a point estimate that describes no actual hospital.</p>
+<p>A minimal hierarchical model on the logit scale is</p>
+<div class="arithmatex">\[
+\begin{aligned}
+s_j &amp;\sim \operatorname{Binomial}(n_{D,j},\ \operatorname{Se}_j), \\
+\operatorname{logit}(\operatorname{Se}_j) &amp;= \mu_s + u_j, \qquad u_j \sim \mathcal{N}(0, \tau_s^2),
+\end{aligned}
+\]</div>
+<p>and the same structure for specificity, with its own <span class="arithmatex">\(\mu_r, \tau_r\)</span>, and preferably a correlation between <span class="arithmatex">\(u_j\)</span> and the specificity random effect. Threshold effects predict that correlation: a liberal spoke that calls every maybe-M2 positive will raise sensitivity and lower specificity together.</p>
+<p>Priors on <span class="arithmatex">\(\tau_s\)</span> and <span class="arithmatex">\(\tau_r\)</span> are not decoration. With five spokes they are weakly identified. A half-normal or half-Cauchy prior that expects between-spoke SDs of 0.3–0.6 on the logit scale is a starting point, not a law. The quantity you report for <em>this</em> spoke is the spoke-level posterior, partially pooled. The quantity you report for a <em>new</em> spoke is the posterior predictive of a new <span class="arithmatex">\(u_j\)</span>. Those are different widths. Networks that quote only the pooled <span class="arithmatex">\(\mu_s\)</span> will be surprised when the next spoke comes online.</p>
+<pre class="mermaid"><code>flowchart TD
+  P[Pre-test: NIHSS AF LKW] --&gt; D{CTA at spoke}
+  D --&gt;|positive| L1[LR plus, uncertain]
+  D --&gt;|negative| L0[LR minus, uncertain]
+  D --&gt;|nondiagnostic| I[No likelihood: say so]
+  L1 --&gt; Q[Posterior P LVO]
+  L0 --&gt; Q
+  I --&gt; Q
+  Q --&gt; T{Transfer threshold}
+  T --&gt;|above| H[Launch helicopter]
+  T --&gt;|below| K[Stay and repeat exam]
+  T --&gt;|between| C[Discuss time risk]</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Common Pitfall</p>
+<p>Do not drop indeterminate CTAs from the 2 × 2 table. An unreadable scan is a result. STARD asks you to report how many were uninterpretable and to analyze them as a third category or as “not positive.” A sensitivity computed only on pretty scans describes a test you do not have at 02:00.</p>
+</div>
+<h2 id="roc-auc-and-continuous-markers">ROC, AUC, and continuous markers<a class="headerlink" href="#roc-auc-and-continuous-markers" title="Permanent link">&para;</a></h2>
+<p>Many of the markers that actually change neurologic decisions are not binary. D-dimer (the PE/DVT analogue; in stroke, think “a lab that moves a threshold”), serum neurofilament light (NfL) as a marker of axonal injury, ASPECTS as an ordinal 0–10 CT score, NIHSS itself. For a continuous or ordinal marker <span class="arithmatex">\(T\)</span> and disease <span class="arithmatex">\(D\)</span>, each threshold <span class="arithmatex">\(c\)</span> induces a sensitivity and a specificity. The ROC curve is the plot of <span class="arithmatex">\(\operatorname{Se}(c)\)</span> against <span class="arithmatex">\(1 - \operatorname{Sp}(c)\)</span>. The area under that curve is</p>
+<div class="arithmatex">\[
+\operatorname{AUC} = P(T_D &gt; T_{\overline{D}}),
+\]</div>
+<p>the probability that a randomly chosen diseased patient has a higher marker than a randomly chosen non-diseased patient (with a tie-breaking convention for ordinal scores).</p>
+<p>A Bayesian analysis can take several forms, in increasing commitment:</p>
+<ol>
+<li><strong>Threshold-wise Betas.</strong> Pick the clinically used cut (ASPECTS ≤ 5, NfL above a lab’s 95th percentile, D-dimer above 500 ng/mL). Reduce to the previous section. Honest, limited.</li>
+<li><strong>Two-group sampling models.</strong> Model <span class="arithmatex">\(T \mid D = 1\)</span> and <span class="arithmatex">\(T \mid D = 0\)</span> as, say, log-normal or Student-<span class="arithmatex">\(t\)</span>, put priors on the parameters, and induce a posterior on the entire ROC and on AUC. Good when the marker is continuous and the two densities are plausible.</li>
+<li><strong>Ordinal regression.</strong> For ASPECTS or an imaging score, a cumulative logit or probit model for <span class="arithmatex">\(T\)</span> given <span class="arithmatex">\(D\)</span> (and given covariates such as time from onset and scanner vendor) produces a ROC that respects the discrete support.</li>
+<li><strong>Direct AUC models.</strong> Rank-based or placement-value models put a posterior on AUC without a full density for <span class="arithmatex">\(T\)</span>. Useful when you do not trust a parametric shape.</li>
+</ol>
+<p>Uncertainty on AUC is the point. An AUC of 0.78 with a 95% credible interval of 0.61 to 0.90 is not “good discrimination.” It is “we have not yet distinguished this marker from a coin in a sample this size,” or at best “promising and unstable.” Neurology papers that report a point AUC from a derivation cohort of 40 patients, then pick the Youden cut, then report Se/Sp at that cut as if they were pre-declared, have spent the same data three times. A posterior does not make that maneuver honest. A pre-declared cut, or a fully reported ROC-with-bands, does.</p>
+<table>
+<thead>
+<tr>
+<th>Marker (teaching frame)</th>
+<th>Natural scale</th>
+<th>Typical clinical cut</th>
+<th>What the ROC is being asked to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Spoke CTA read</td>
+<td>Binary / three-level</td>
+<td>Positive vs not</td>
+<td>Rule <em>in</em> LVO for transfer</td>
+</tr>
+<tr>
+<td>ASPECTS</td>
+<td>Ordinal 0–10</td>
+<td>historically ≥ 6 for EVT eligibility; ≤ 5 marks large core</td>
+<td>Quantify completed infarct, not a standalone futility veto</td>
+</tr>
+<tr>
+<td>Serum NfL</td>
+<td>Continuous, ng/L, right-skewed</td>
+<td>Lab 95th percentile or a modeled threshold</td>
+<td>Separate recent axonal injury from mimics</td>
+</tr>
+<tr>
+<td>D-dimer analogue</td>
+<td>Continuous</td>
+<td>Rule-out cut at high sensitivity</td>
+<td>Send home vs image (PE logic; same math)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Mathematical Detail</p>
+<p>If <span class="arithmatex">\(T \mid D=1 \sim \mathcal{N}(\mu_1, \sigma_1^2)\)</span> and <span class="arithmatex">\(T \mid D=0 \sim \mathcal{N}(\mu_0, \sigma_0^2)\)</span>, then
+<span class="arithmatex">\(\operatorname{AUC} = \Phi\bigl((\mu_1 - \mu_0)/\sqrt{\sigma_1^2 + \sigma_0^2}\bigr)\)</span>.
+Draw <span class="arithmatex">\((\mu, \sigma)\)</span> from the posterior and you have a posterior for AUC. The binormal model is a workhorse. It is also wrong in the tails, which is exactly where rule-out cuts live. Check a posterior predictive histogram of <span class="arithmatex">\(T\)</span> before you trust a claimed 98% sensitivity.</p>
+</div>
+<p>For ASPECTS specifically, treat the score as ordinal, not as a number with a linear meaning. The step from 10 to 9 is not the step from 6 to 5. A cumulative model with disease as a covariate, and with time-to-CT as a second covariate, will show you that “ASPECTS 6” at 90 minutes is not “ASPECTS 6” at 8 hours. That is a clinical fact the likelihood should be allowed to express.</p>
+<h2 id="no-gold-standard-latent-class-not-wishful-dsa">No gold standard: latent class, not wishful DSA<a class="headerlink" href="#no-gold-standard-latent-class-not-wishful-dsa" title="Permanent link">&para;</a></h2>
+<p>The vignette’s reference standard is DSA, and only transferred patients get DSA. That is verification bias. It is also a missing-data problem. If you compute Se/Sp only in the DSA subset, you are conditioning on a collider: transfer. Spoke-positive, high-NIHSS patients are over-represented. Spoke-negative, low-NIHSS patients never appear. Sensitivity is flattered; specificity is untrustworthy.</p>
+<pre class="mermaid"><code>flowchart TD
+  Spoke["Spoke CTA read"] --&gt; Pos{"Spoke positive?"}
+  Pos --&gt;|yes, high NIHSS| Xfer["Transfer"]
+  Pos --&gt;|no, low NIHSS| Stay["Stay — never verified"]
+  Xfer --&gt; DSA["DSA = reference standard"]
+  Stay --&gt; Missing["Se/Sp computed only on DSA rows&lt;br/&gt;collider: transfer"]
+  DSA --&gt; TwoByTwo["2 x 2 looks excellent&lt;br/&gt;because the hard negatives never arrived"]</code></pre>
+<p>Two honest responses:</p>
+<p><strong>Imperfect-but-observed reference.</strong> Use a composite (DSA if done; otherwise expert consensus plus 24-hour clinical course plus follow-up imaging) and <em>model its error</em> rather than calling it truth. That is an errors-in-variables problem on the disease label.</p>
+<p><strong>Latent class.</strong> Disease status <span class="arithmatex">\(D_i\)</span> is a latent Bernoulli with prevalence <span class="arithmatex">\(\pi\)</span> (possibly a function of NIHSS). Each test <span class="arithmatex">\(k\)</span> — spoke CTA, telestroke over-read, automated LVO flag, later DSA in a subset — is a fallible indicator with its own Se/Sp, optionally dependent within class (Dendukuri–Joseph). The likelihood is the mixture</p>
+<div class="arithmatex">\[
+P(\mathbf{t}_i) = \pi \prod_k P(t_{ik} \mid D_i = 1) + (1-\pi) \prod_k P(t_{ik} \mid D_i = 0)
+\]</div>
+<p>under conditional independence, or the analogous expression with a copula or a random reader effect if you do not believe independence. Hui and Walter showed that two tests in two populations with different prevalences can identify Se/Sp without a gold standard. Bayesian latent-class models extend that identification with priors and with more tests.</p>
+<p>Latent class does not create truth. It creates a coherent story about unobserved class membership that can be checked against the subset who <em>did</em> get DSA, against 24-hour infarct territory, and against whether the patient improved after EVT. If the latent “LVO” class does not line up with those external anchors, the model is a clustering algorithm wearing a diagnostic badge.</p>
+<pre class="mermaid"><code>flowchart LR
+  X[Covariates NIHSS AF] --&gt; D[Latent LVO]
+  D --&gt; T1[Spoke CTA]
+  D --&gt; T2[Telestroke read]
+  D --&gt; T3[Auto flag]
+  D --&gt; T4[DSA if transferred]
+  T4 -.-&gt;|missing if no transfer| M[Not at random]</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Common Pitfall</p>
+<p>A latent-class model that assumes conditional independence of spoke CTA and the telestroke over-read of the <em>same</em> pixels will overstate the information in the pair. They share the image. Put a reader-level or image-level random effect in, or treat the over-read as a second read of one test, not as a second test.</p>
+</div>
+<h2 id="a-stard-mindset">A STARD mindset<a class="headerlink" href="#a-stard-mindset" title="Permanent link">&para;</a></h2>
+<p>STARD 2015 is a reporting guideline, not a model. It is also a checklist for whether you should believe anyone’s Se/Sp, including your own. Read a diagnostic accuracy paper — or write one — asking:</p>
+<ul>
+<li>Was the study cohort consecutive telestroke activations, or a convenience sample of pretty scans?</li>
+<li>Did everyone get the index test and the reference, and if not, was verification related to the index result?</li>
+<li>Were readers blinded to the reference, and was the reference blinded to the index?</li>
+<li>How were indeterminates handled?</li>
+<li>Was the cut pre-declared, or chosen to maximize Youden on the same data?</li>
+<li>Is there a pre-test probability, or only Se/Sp floating in space?</li>
+</ul>
+<p>TRIPOD, for prediction models, is the sibling document when the “test” is a score (a telestroke LVO prediction score, an NfL-plus-age rule). The Bayesian contribution is not a new checklist item. It is refusing to report a point Se, a point cut, and a point AUC as if the sample were the population.</p>
+<h3 id="for-the-biostatistician-methodologist">For the biostatistician / methodologist<a class="headerlink" href="#for-the-biostatistician-methodologist" title="Permanent link">&para;</a></h3>
+<p>The Beta / binomial model is the Bernoulli GLM with a logit link and no covariates. In <code>brms</code> that is <code>family = bernoulli()</code> or, on grouped counts, <code>family = binomial()</code>. A Beta regression (<code>family = Beta()</code>) is the wrong default for a 2 × 2 table: you do not observe a continuous proportion for each patient. Beta regression becomes relevant when the <em>unit</em> is a center-level proportion already aggregated, or when you model AUC estimates across studies. For a multi-center 2 × 2, prefer the binomial GLM with a varying intercept on spoke.</p>
+<p>ROC uncertainty from a binormal or bigamma model is a derived quantity: generate posterior predicted <span class="arithmatex">\(T\)</span> for a diseased and a non-diseased patient and compute the pairwise order, or use the closed-form <span class="arithmatex">\(\Phi\)</span> expression when you trust normality. For ordinal ASPECTS, <code>family = cumulative()</code> with disease as a predictor yields category probabilities; Se and Sp at each cut are sums of those probabilities.</p>
+<p>Identification in latent-class models is fragile. Label switching (the “diseased” class flipping) is a real Stan/brms problem; constrain <span class="arithmatex">\(\pi\)</span> or constrain <span class="arithmatex">\(\operatorname{Se} &gt; 1 - \operatorname{Sp}\)</span> for at least one test. Dependence between tests within class is the usual source of overconfident Se/Sp. A probit latent-variable representation with a residual correlation is the standard repair.</p>
+<h2 id="r-posterior-of-sensitivity-and-specificity">R: posterior of sensitivity and specificity<a class="headerlink" href="#r-posterior-of-sensitivity-and-specificity" title="Permanent link">&para;</a></h2>
+<p>The block fits a joint binomial model for Se and Sp on the vignette’s spoke-read counts, using <code>brms</code>, and plots the posterior in the Se–Sp plane. The two-row teaching table is in the chunk; the <code>brm()</code> call will sample if you run it.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Posterior of spoke-CTA Se and Sp from the telestroke teaching table.</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># 52 LVO: 46 TP, 6 FN.  28 no LVO: 6 FP, 22 TN.</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># Weakly informative priors on the intercepts: Normal(1, 1) on the logit,</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># i.e. a gentle push toward Se, Sp &gt; 0.5 without pretending we know the vendor slide.</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nf">set.seed</span><span class="p">(</span><span class="m">20260818</span><span class="p">)</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nf">library</span><span class="p">(</span><span class="n">brms</span><span class="p">)</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidybayes</span><span class="p">)</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="n">dx</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">  </span><span class="n">k</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">46</span><span class="p">,</span><span class="w"> </span><span class="m">22</span><span class="p">),</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">  </span><span class="n">n</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">52</span><span class="p">,</span><span class="w"> </span><span class="m">28</span><span class="p">),</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">  </span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"Se"</span><span class="p">,</span><span class="w"> </span><span class="s">"Sp"</span><span class="p">)</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="p">)</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="n">priors</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">  </span><span class="nf">prior</span><span class="p">(</span><span class="nf">normal</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">),</span><span class="w"> </span><span class="n">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Intercept"</span><span class="p">),</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">  </span><span class="nf">prior</span><span class="p">(</span><span class="nf">normal</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0.5</span><span class="p">),</span><span class="w"> </span><span class="n">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"b"</span><span class="p">)</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="p">)</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="c1"># Two-row teaching table. Run locally to fill fit_dx (seconds).</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="n">fit_dx</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">brm</span><span class="p">(</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">  </span><span class="n">k</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nf">trials</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">stat</span><span class="p">,</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">  </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dx</span><span class="p">,</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">  </span><span class="n">family</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">binomial</span><span class="p">(),</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">  </span><span class="n">prior</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">priors</span><span class="p">,</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">  </span><span class="n">seed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20260818</span><span class="p">,</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">  </span><span class="n">refresh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="p">)</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="c1"># Posterior draws of Se and Sp (statSe is the intercept; statSp = intercept + b).</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="n">post</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">fit_dx</span><span class="w"> </span><span class="o">%&gt;%</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">  </span><span class="nf">spread_draws</span><span class="p">(</span><span class="n">b_Intercept</span><span class="p">,</span><span class="w"> </span><span class="n">b_statSp</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">    </span><span class="n">Se</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">plogis</span><span class="p">(</span><span class="n">b_Intercept</span><span class="p">),</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">    </span><span class="n">Sp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">plogis</span><span class="p">(</span><span class="n">b_Intercept</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b_statSp</span><span class="p">),</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">    </span><span class="n">LRplus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Se</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Sp</span><span class="p">)</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">  </span><span class="p">)</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="nf">ggplot</span><span class="p">(</span><span class="n">post</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">Se</span><span class="p">,</span><span class="w"> </span><span class="n">Sp</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="w">  </span><span class="nf">geom_density_2d_filled</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.85</span><span class="p">,</span><span class="w"> </span><span class="n">show.legend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="w">    </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">summarise</span><span class="p">(</span><span class="n">post</span><span class="p">,</span><span class="w"> </span><span class="n">Se</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">median</span><span class="p">(</span><span class="n">Se</span><span class="p">),</span><span class="w"> </span><span class="n">Sp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">median</span><span class="p">(</span><span class="n">Sp</span><span class="p">)),</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="w">    </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"white"</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="w">  </span><span class="nf">coord_equal</span><span class="p">(</span><span class="n">xlim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.6</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">),</span><span class="w"> </span><span class="n">ylim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="w">  </span><span class="nf">labs</span><span class="p">(</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Sensitivity"</span><span class="p">,</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="w">    </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Specificity"</span><span class="p">,</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="w">    </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Posterior of spoke CTA (teaching counts)"</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="w">  </span><span class="nf">theme_minimal</span><span class="p">()</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>
+<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="c1"># Use the same draws for a bedside posterior.</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="c1"># Teaching pre-test of 0.55 for the NIHSS-12 AF patient:</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="n">pre</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">0.55</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a><span class="n">post</span><span class="w"> </span><span class="o">%&gt;%</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a><span class="w">    </span><span class="n">odds</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">pre</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">pre</span><span class="p">))</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">LRplus</span><span class="p">,</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a><span class="w">    </span><span class="n">p_lvo</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">odds</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">odds</span><span class="p">)</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a><span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a><span class="w">  </span><span class="nf">median_qi</span><span class="p">(</span><span class="n">p_lvo</span><span class="p">,</span><span class="w"> </span><span class="n">.width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="m">0.95</span><span class="p">))</span>
+</code></pre></div>
+<p>The last block is the family conversation, in numbers: a posterior distribution on <em>this</em> patient’s LVO probability after a positive spoke read, with the uncertainty in Se and Sp left in. If you instead plug in point estimates, you will quote a single 0.8-something and have nowhere to put the night-shift reader.</p>
+<div class="admonition example">
+<p class="admonition-title">R Deep Dive</p>
+<p>To add a second reader (your telestroke over-read), stack the counts with a <code>reader</code> factor and a <code>stat:reader</code> interaction, or move to patient-level Bernoulli rows with a reader random effect. To add spokes, give each spoke its own rows and <code>(stat | spoke)</code>. The plot then becomes a fan of spoke-level Se–Sp clouds around a pooled center.</p>
+</div>
+<h2 id="worked-solution-to-the-opening-vignette">Worked solution to the opening vignette<a class="headerlink" href="#worked-solution-to-the-opening-vignette" title="Permanent link">&para;</a></h2>
+<p><strong>Prior.</strong> This is not a screening patient. NIHSS 12 with gaze and aphasia, atrial fibrillation, 3.5 hours from last known well, already selected for CTA. A teaching pre-test of 0.50–0.60 for LVO (ICA/M1/proximal M2) is defensible; 0.20 is base-rate neglect; 0.90 is anchoring on the most vivid syndrome. Use 0.55 as the working number and state that it would be lower at NIHSS 6.</p>
+<p><strong>Likelihood.</strong> The spoke overnight read, on the teaching table, is a test with posterior mean Se near 0.87 and Sp near 0.77 under a uniform prior — and wider, more skeptical intervals under a weakly informative prior or once you admit between-spoke variation. A “possible M2, patent M1” is not even a clean positive. Treat it as a weak positive or as a third category. Your own over-read (“probable distal M1”) is not independent of the pixels the resident already called abnormal. It is a second read, correlated, slightly more sensitive and slightly less specific in the teaching table (48/52 and 20/28). The likelihood ratio of the <em>pair</em> is not the product of the two LR<span class="arithmatex">\(^+\)</span>.</p>
+<p><strong>Decision.</strong> Transfer for possible EVT is the action. The relevant threshold is not 0.50. It is the probability at which the expected harm of a futile launch (cost, weather risk, denying the helicopter to someone else, false hope) equals the expected harm of a missed LVO (untreated ischemia). For most hubs that threshold sits well below 0.50; a posterior of 0.40 still launches. A posterior of 0.15, after a truly negative high-quality CTA, stays. The family question “how sure are you?” should be answered with a range that includes reader uncertainty — “more likely than not, not a sure thing; the scan is consistent with a treatable occlusion, and waiting for a perfect read is the one option that is definitely harmful.”</p>
+<p>ASPECTS 9 at 3.5 hours does not lower the LVO probability much; it lowers the probability of <em>futile</em> reperfusion. That is a different parameter. Do not fold it into Se/Sp of CTA.</p>
+<p>If you later analyze the network, do not compute Se/Sp only among the 80 who reached DSA. Use the spoke’s full activation cohort, treat non-transfer as missing-not-at-random, and put a latent class or a selection model on LVO. The 80-row table is a biased likelihood.</p>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><strong>Bedside.</strong> Recalculate, by Monte Carlo from the two Betas, the posterior LVO probability for the vignette patient if you treat the spoke read as negative rather than weakly positive. At what pre-test would you still launch?</p>
+</li>
+<li>
+<p><strong>Verification bias.</strong> Suppose 40 additional spoke-negative, NIHSS 4–7 patients were never transferred. Invent a plausible range for how many of those 40 had LVO (teaching numbers). How does including them as unverified negatives move Sp, and in which direction is the DSA-only Sp biased?</p>
+</li>
+<li>
+<p><strong>ASPECTS ROC.</strong> Sketch, without fitting, why an AUC for ASPECTS as a predictor of “mRS 0–2 after EVT” is a different object from an AUC for ASPECTS as a predictor of LVO. Which one belongs in a transfer decision?</p>
+</li>
+<li>
+<p><strong>Hierarchical Se.</strong> Five spokes have Se point estimates of 0.95, 0.91, 0.88, 0.80, and 0.72, each from 20–40 DSA-confirmed cases. Why is the pooled raw Se the wrong number to quote for the fifth spoke, and what prior on <span class="arithmatex">\(\tau_s\)</span> would you defend?</p>
+</li>
+<li>
+<p><strong>STARD audit.</strong> Take any published CTA-for-LVO paper you have on your hard drive. Score it against four STARD items: consecutive enrollment, indeterminates, blinding, and pre-declared cut. Do not use this textbook as a source of those data.</p>
+</li>
+<li>
+<p><strong>Latent class.</strong> Write the complete-data likelihood for two binary tests and a latent <span class="arithmatex">\(D\)</span>, then say which parameter is not identified from a single population if the tests are conditionally independent. What second population, in a telestroke network, would supply the Hui–Walter contrast?</p>
+</li>
+</ol>
+<h2 id="further-reading">Further reading<a class="headerlink" href="#further-reading" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Bossuyt PM et al. STARD 2015: an updated list of essential items for reporting diagnostic accuracy studies. <em>BMJ</em>. 2015;351:h5527.</li>
+<li>Pepe MS. <em>The Statistical Evaluation of Medical Tests for Classification and Prediction</em>. Oxford: Oxford University Press; 2003.</li>
+<li>Zhou XH, Obuchowski NA, McClish DK. <em>Statistical Methods in Diagnostic Medicine</em>. 2nd ed. Hoboken: Wiley; 2011.</li>
+<li>Hui SL, Walter SD. Estimating the error rates of diagnostic tests. <em>Biometrics</em>. 1980;36:167–171.</li>
+<li>Dendukuri N, Joseph L. Bayesian approaches to modeling the conditional dependence between multiple diagnostic tests. <em>Biometrics</em>. 2001;57:158–167.</li>
+<li>Collins GS et al. TRIPOD+AI statement: updated guidance for reporting clinical prediction models. <em>BMJ</em>. 2024;385:e078378. (Companion to the original TRIPOD statement, <em>Ann Intern Med</em> / <em>BMJ</em> 2015.)</li>
+<li>Gelman A, Carlin JB, Stern HS, Dunson DB, Vehtari A, Rubin DB. <em>Bayesian Data Analysis</em>. 3rd ed. Boca Raton: CRC Press; 2013. Chapters on hierarchical models and posterior predictive checks.</li>
+<li>Sox HC, Higgins MC, Owens DK. <em>Medical Decision Making</em>. 2nd ed. Chichester: Wiley-Blackwell; 2013. For thresholds and likelihood ratios at the bedside.</li>
+</ul>
+<div class="admonition success">
+<p class="admonition-title">Key Takeaway</p>
+<p>Sensitivity and specificity are parameters. Give them posteriors, and when centers or readers differ, give them a hierarchy. An ROC and an AUC without uncertainty are marketing; a continuous marker (NfL, a D-dimer analogue, ASPECTS) earns a curve with bands and a pre-declared cut. When DSA is missing by design, the honest model is latent class or selection, not a 2 × 2 table on the transferred subset. STARD is the habit of saying who was scanned, who was verified, and what happened to the unreadable study. The helicopter launches on a posterior, not on a vendor’s point estimate.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="10-sample-size-adaptive-designs.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: 10. Sample Size and Adaptive Designs">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                10. Sample Size and Adaptive Designs
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="12-survival-competing-risks.html" class="md-footer__link md-footer__link--next" aria-label="Next: 12. Survival and Competing Risks">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                12. Survival and Competing Risks
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Bayesian Clinical Reasoning
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/rkalani1/Bayesian-Reasoning" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tracking", "navigation.top", "navigation.footer", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../javascripts/header-controls.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2614 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Bayesian statistics, decision analysis, and evidence for neurologists and clinician-scientists.">
+      
+      
+      
+        <link rel="canonical" href="https://rkalani1.github.io/Bayesian-Reasoning/curriculum/25-grade-evidence-to-decision.html">
+      
+      
+        <link rel="prev" href="24-missing-data-measurement-error.html">
+      
+      
+        <link rel="next" href="26-ethics-governance-adaptive.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>25. GRADE and Evidence-to-Decision - Bayesian Clinical Reasoning</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../stylesheets/page-orientation.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Bayesian Clinical Reasoning">
+  <meta property="og:title" content="25. GRADE and Evidence-to-Decision — Bayesian Clinical Reasoning">
+  <meta property="og:description" content="Bayesian statistics, decision analysis, and evidence for neurologists and clinician-scientists.">
+  <meta property="og:url" content="https://rkalani1.github.io/Bayesian-Reasoning/curriculum/25-grade-evidence-to-decision.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="25. GRADE and Evidence-to-Decision — Bayesian Clinical Reasoning">
+  <meta name="twitter:description" content="Bayesian statistics, decision analysis, and evidence for neurologists and clinician-scientists.">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#from-posteriors-to-guidelines-grade-certainty-and-evidence-to-decision" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+
+  
+
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="Bayesian Clinical Reasoning" class="md-header__button md-logo" aria-label="Bayesian Clinical Reasoning" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">Bayesian Clinical Reasoning</span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">25. GRADE and Evidence-to-Decision</span>
+        </div>
+      </div>
+      <a class="mobile-page-orientation" href="25-grade-evidence-to-decision.html" aria-label="Bayes, current page: 25. GRADE and Evidence-to-Decision">
+        <strong>Bayes</strong><span aria-hidden="true">·</span><span>25. GRADE and Evidence-to-Decision</span>
+      </a>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="amber"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="amber"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rkalani1/Bayesian-Reasoning" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rkalani1/Bayesian-Reasoning
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Bayesian Clinical Reasoning" class="md-nav__button md-logo" aria-label="Bayesian Clinical Reasoning" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Bayesian Clinical Reasoning
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rkalani1/Bayesian-Reasoning" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rkalani1/Bayesian-Reasoning
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-use.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How to use this book
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../evidence-register.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidence register
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Book
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Book
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part I — Foundations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part I — Foundations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-why-bayesian-thinking-matters.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01. Why Bayesian Thinking Matters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-probability-odds-uncertainty.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02. Probability, Odds, and Uncertainty
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-bayes-theorem.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03. Bayes’ Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-priors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04. Priors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part II — Inference with R
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part II — Inference with R
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-likelihoods-conjugate-models.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05. Likelihoods and Conjugate Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-hierarchical-models.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06. Hierarchical Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-computational-inference.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07. Computational Inference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-model-checking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08. Model Checking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-estimation-rope-bayes-factors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09. Estimation, ROPE, and Bayes Factors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part III — Design and Synthesis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part III — Design and Synthesis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-sample-size-adaptive-designs.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Sample Size and Adaptive Designs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-diagnostic-accuracy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Diagnostic Accuracy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-survival-competing-risks.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Survival and Competing Risks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-bayesian-meta-analysis.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Bayesian Meta-Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part IV — Decision and Communication
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part IV — Decision and Communication
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="14-decision-theory-thresholds.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Decision Theory and Thresholds
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="15-decision-curves-voi.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Decision Curves and Value of Information
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="16-bedside-shared-decisions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Bedside and Shared Decisions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="17-communicating-uncertainty.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Communicating Uncertainty
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part V — Synthesis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part V — Synthesis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="18-integrated-case-studies.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Integrated Case Studies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="19-complete-workflow.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. A Complete Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="20-reproducible-pipelines.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. Reproducible Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part VI — Identification and institutions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part VI — Identification and institutions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="21-transporting-evidence-hte.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. Transporting Evidence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="22-causal-target-trial.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. Causal Models and the Target Trial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="23-clinical-prediction-models.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. Clinical Prediction Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="24-missing-data-measurement-error.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. Missing Data and Measurement Error
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. GRADE and Evidence-to-Decision
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="25-grade-evidence-to-decision.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. GRADE and Evidence-to-Decision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#opening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opening
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clinical-vignette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clinical vignette
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-guideline-sentence-is-a-decision-not-a-summary-of-p-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A guideline sentence is a decision, not a summary of \(p\)-values
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grade-domains-as-bayesian-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GRADE domains as Bayesian objects
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#certainty-is-not-pdelta-0-mid-y" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Certainty is not \(P(\delta &gt; 0 \mid y)\)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evidence-to-decision-is-expected-utility-with-more-arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evidence-to-decision is expected utility with more arguments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diagnostic-and-prognostic-grade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagnostic and prognostic GRADE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-the-recommendation-from-prediction-intervals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing the recommendation from prediction intervals
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing the recommendation from prediction intervals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-the-biostatistician-methodologist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For the biostatistician / methodologist
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worked-solution-to-the-opening-vignette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked solution to the opening vignette
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercises
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="26-ethics-governance-adaptive.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. Ethics and Adaptive Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Appendices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendices/a-r-setup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A. R Setup and Cheatsheet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendices/b-prior-elicitation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    B. Prior Elicitation Worksheets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendices/c-solutions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C. Solutions to Exercises
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendices/d-glossary.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    D. Glossary and Checklists
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#opening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opening
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clinical-vignette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clinical vignette
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-guideline-sentence-is-a-decision-not-a-summary-of-p-values" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A guideline sentence is a decision, not a summary of \(p\)-values
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grade-domains-as-bayesian-objects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GRADE domains as Bayesian objects
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#certainty-is-not-pdelta-0-mid-y" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Certainty is not \(P(\delta &gt; 0 \mid y)\)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evidence-to-decision-is-expected-utility-with-more-arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Evidence-to-decision is expected utility with more arguments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diagnostic-and-prognostic-grade" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Diagnostic and prognostic GRADE
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-the-recommendation-from-prediction-intervals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing the recommendation from prediction intervals
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing the recommendation from prediction intervals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#for-the-biostatistician-methodologist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        For the biostatistician / methodologist
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worked-solution-to-the-opening-vignette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked solution to the opening vignette
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercises
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="from-posteriors-to-guidelines-grade-certainty-and-evidence-to-decision">From Posteriors to Guidelines: GRADE, Certainty, and Evidence-to-Decision<a class="headerlink" href="#from-posteriors-to-guidelines-grade-certainty-and-evidence-to-decision" title="Permanent link">&para;</a></h1>
+<h2 id="opening">Opening<a class="headerlink" href="#opening" title="Permanent link">&para;</a></h2>
+<p>A guideline sentence is a decision under a loss function that the panel almost never writes down. “Class I, Level A” is not a posterior probability. “We suggest” is not a credible interval. Certainty of evidence is not <span class="arithmatex">\(P(\delta &gt; 0 \mid y)\)</span>. The panel that treats those four objects as synonyms will write a recommendation that no posterior, and no patient, can cash.</p>
+<h2 id="learning-objectives">Learning objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">&para;</a></h2>
+<p>After working this chapter you should be able to:</p>
+<ul>
+<li>Map each GRADE domain — risk of bias, inconsistency, indirectness, imprecision, publication bias — onto a Bayesian object you could, in principle, put a posterior on.</li>
+<li>Explain why a large posterior probability of benefit is compatible with low certainty of evidence, and why a modest posterior mean can still support a strong recommendation.</li>
+<li>Write an evidence-to-decision (EtD) row as an expected-utility comparison, including values, resources, equity, and acceptability, not only the effect posterior.</li>
+<li>Apply the same discipline to diagnostic and prognostic questions, where the estimand is a likelihood ratio or a calibration slope rather than a treatment increment.</li>
+<li>Draft a class-of-recommendation sentence from prediction intervals and a named utility, and refuse to draft one from a <span class="arithmatex">\(p\)</span>-value or from <span class="arithmatex">\(P(\delta &gt; 0 \mid y)\)</span> alone.</li>
+</ul>
+<h2 id="clinical-vignette">Clinical vignette<a class="headerlink" href="#clinical-vignette" title="Permanent link">&para;</a></h2>
+<p>You are the methodologist on a national stroke guideline panel. The question, locked last year, is: in adults with anterior-circulation LVO last known well 6–24 hours earlier, should EVT plus usual care be used rather than usual care alone? The panel has agreed to talk in 90-day utility-weighted mRS and in the simpler contrast <span class="arithmatex">\(P(\text{mRS } 0\text{–}2)\)</span>. Three posteriors sit in the evidence profile. They are <strong>teaching posteriors</strong>, built to look like the shape of the late-window literature without being a meta-analysis of named trials.</p>
+<table>
+<thead>
+<tr>
+<th>Source (teaching)</th>
+<th>Population</th>
+<th style="text-align: right;">Posterior mean <span class="arithmatex">\(\delta\)</span> on UW-mRS (EVT − control)</th>
+<th>95% ET interval</th>
+<th style="text-align: right;"><span class="arithmatex">\(P(\delta &gt; 0 \mid y)\)</span></th>
+<th style="text-align: right;"><span class="arithmatex">\(P(\delta &gt; 0.03 \mid y)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A: tightly selected, imaging-rich RCT analogue</td>
+<td>Age ≤ 80, NIHSS ≥ 10, core &lt; 50 mL, mismatch</td>
+<td style="text-align: right;">0.14</td>
+<td>0.07 to 0.21</td>
+<td style="text-align: right;">0.999</td>
+<td style="text-align: right;">0.99</td>
+</tr>
+<tr>
+<td>B: less selected RCT analogue</td>
+<td>Broader core, some perfusion-ineligible</td>
+<td style="text-align: right;">0.08</td>
+<td>0.01 to 0.15</td>
+<td style="text-align: right;">0.98</td>
+<td style="text-align: right;">0.91</td>
+</tr>
+<tr>
+<td>C: target-trial emulation in a national registry</td>
+<td>Consecutive late-window LVO, treated and not</td>
+<td style="text-align: right;">0.04</td>
+<td>−0.03 to 0.11</td>
+<td style="text-align: right;">0.86</td>
+<td style="text-align: right;">0.61</td>
+</tr>
+</tbody>
+</table>
+<p>Source A looks like the trials that made late-window EVT standard in selected patients. Source B looks like the next trial, the one that loosened imaging. Source C looks like the patients the guideline will actually meet at 02:00, including the ones A never enrolled. A voting member says, “A and B both have posterior probabilities above 0.95; that is high certainty; write Class I.” Another member says, “C includes zero; we cannot recommend this.” The chair asks you for one sentence in the house style: class of recommendation, level of evidence, and a qualifying clause that a night-shift fellow can act on.</p>
+<p>Do not write the sentence yet. Write, in four bullets, what would lower your certainty in A, what would raise your certainty in C, whose values are missing from the table, and whether the recommendation is allowed to differ by imaging stratum.</p>
+<h2 id="a-guideline-sentence-is-a-decision-not-a-summary-of-p-values">A guideline sentence is a decision, not a summary of <span class="arithmatex">\(p\)</span>-values<a class="headerlink" href="#a-guideline-sentence-is-a-decision-not-a-summary-of-p-values" title="Permanent link">&para;</a></h2>
+<p>The American Heart Association class of recommendation (I, IIa, IIb, III: no benefit, III: harm) and the GRADE language (strong / conditional; high / moderate / low / very low certainty) are two dialects of the same act: choose an action for a described patient, and say how sure you are that the action is the right one. Certainty is a property of the <em>body of evidence for a specified estimand</em>. Strength is a property of the <em>recommendation</em>, which also depends on values, costs, equity, and the shape of the loss. Collapsing them into “the evidence is strong” is the original sin of guideline prose.</p>
+<p>A Bayesian panel does not escape this. It inherits a cleaner language for one piece — the posterior on the effect in a defined population — and a temptation to treat that posterior as the whole EtD. <span class="arithmatex">\(P(\delta &gt; 0 \mid y) = 0.999\)</span> in population A is a functional of one likelihood, one prior, and one estimand. It is not a warrant for a Class I sentence aimed at population C. It is not a warrant for ignoring symptomatic intracranial hemorrhage, futile reperfusion, or the fact that half the panel’s hospitals cannot offer on-call perfusion reconstruction at 02:00.</p>
+<p>The object you owe the chair is</p>
+<div class="arithmatex">\[
+a^{\star}(x) = \arg\max_{a} \mathbb{E}\bigl[U(a, \theta, x) \mid \text{evidence}\bigr],
+\]</div>
+<p>where <span class="arithmatex">\(x\)</span> is the patient stratum (imaging-selected or consecutive late-window; age; prestroke mRS), <span class="arithmatex">\(\theta\)</span> collects every uncertain input (effect, harm, baseline risk, resource use), and <span class="arithmatex">\(U\)</span> is the panel’s explicit, contested utility. The class of recommendation is a discretization of <span class="arithmatex">\(a^{\star}\)</span> and of the expected-utility gap. The level of evidence is a discretization of how much the posterior on that gap would move if the most fragile assumptions were relaxed. Those are different discretizations.</p>
+<div class="admonition tip">
+<p class="admonition-title">Clinical Pearl</p>
+<p>When a member says “the posterior probability is 0.99, so Class I,” ask: probability of <em>what</em>, in <em>whom</em>, under <em>which prior</em>, and <em>valued how</em>? If any of the four is missing, you do not have a recommendation. You have a slide.</p>
+</div>
+<h2 id="grade-domains-as-bayesian-objects">GRADE domains as Bayesian objects<a class="headerlink" href="#grade-domains-as-bayesian-objects" title="Permanent link">&para;</a></h2>
+<p>GRADE’s five downgrading domains were written in a frequentist dialect. Each one is already a Bayesian object. Naming the object does not make the judgment automatic. It makes the judgment a functional you can argue about.</p>
+<p><strong>Risk of bias.</strong> A design defect is a threat that the likelihood you wrote is not the likelihood that generated the data. Unblinded mRS, incomplete day-90 ascertainment, post-randomization imaging exclusions, and registry confounding are not “limitations.” They are missing arrows in the model (Chapter 24). The Bayesian version is a bias parameter <span class="arithmatex">\(b\)</span> with a prior, and a posterior on <span class="arithmatex">\(\delta_{\text{target}} = \delta_{\text{study}} - b\)</span>. If you refuse to put a prior on <span class="arithmatex">\(b\)</span>, you are not being rigorous. You are setting <span class="arithmatex">\(b = 0\)</span> with probability 1. A panel that downgrades for risk of bias without saying how far <span class="arithmatex">\(\delta\)</span> might move has performed a ritual. A panel that reports <span class="arithmatex">\(p(\delta_{\text{target}} \mid y)\)</span> under a skeptical bias prior and under <span class="arithmatex">\(b = 0\)</span> has performed an analysis.</p>
+<p><strong>Inconsistency.</strong> Heterogeneity is a posterior on <span class="arithmatex">\(\tau\)</span>, or on a discrete difference between populations A, B, and C. It is not an <span class="arithmatex">\(I^2\)</span>. If the three teaching posteriors above are treated as exchangeable draws from a common mean, a hierarchical posterior on that mean and a naive inverse-variance pool <em>agree</em>: A, B, and C have the same 95% ET width (<span class="arithmatex">\(\pm 0.07\)</span>), so they have the same sampling variance, and both estimators sit at <span class="arithmatex">\((0.14+0.08+0.04)/3 = 0.087\)</span>. Hierarchical reweighting toward the noisier study happens only when the widths differ — random-effects weights <span class="arithmatex">\(1/(\sigma_i^2+\tau^2)\)</span> are more equal than inverse-variance weights <span class="arithmatex">\(1/\sigma_i^2\)</span>. The teaching table was built so that C is <em>not</em> noisier; it is a different estimand with the same precision. Refusing exchangeability is often the right scientific act: A is not a noisy version of C. GRADE “inconsistency” then splits into two questions. Are the studies estimating the same <span class="arithmatex">\(\delta\)</span>? If yes, what is the posterior on <span class="arithmatex">\(\tau\)</span>? If no, you do not have inconsistency. You have several questions, and the recommendation may have to split.</p>
+<p><strong>Indirectness.</strong> The study population, intervention, comparator, or outcome is not the one in the recommendation question. Bayesian name: a transport or extrapolation parameter. Source A’s <span class="arithmatex">\(\delta = 0.14\)</span> is not indirect for the imaging-selected question; it is indirect for the consecutive late-window question. The gap between 0.14 and 0.04 is partly sampling noise and partly a different causal estimand. A prior on the transport increment — “we expect the effect in consecutive patients to be 30–70% of the effect in DAWN-like patients” — is an elicitable object. Pretending A answers the consecutive question and then “downgrading for indirectness” by one categorical notch is a lossy compression of that prior.</p>
+<p><strong>Imprecision.</strong> GRADE operationalizes imprecision with confidence-interval location relative to decision thresholds, and with information size. The Bayesian object is the posterior mass between the thresholds the panel has already named, or the posterior expected utility gap’s interval. A 95% ET interval of 0.07 to 0.21 that lives entirely above a pre-declared worthwhile increment of 0.03 is precise <em>for that threshold</em>. The same interval is imprecise for a threshold of 0.20. Imprecision is not a property of an interval’s width in the abstract. It is a property of an interval relative to the utility the recommendation will use.</p>
+<p><strong>Publication bias.</strong> A selection model on the study-level reporting process. The Bayesian version is older than GRADE: a model for <span class="arithmatex">\(P(\text{published} \mid \hat{\delta}, \text{se})\)</span>, or a selection function in a hierarchical meta-analysis. For late-window EVT the threat is not a file drawer of null RCTs so much as a file drawer of null registries and a literature of positive single-arm series. The teaching source C is the attempt to put that world on the table. Downgrading A and B for “possible publication bias” while ignoring C is backwards.</p>
+<div class="admonition note">
+<p class="admonition-title">Mathematical Detail</p>
+<p>A compact GRADE-as-posterior setup for a single contrast: <span class="arithmatex">\(\delta_{\text{target}} = \delta_{\text{obs}} - b_{\text{bias}} - b_{\text{indirect}} + u\)</span>, <span class="arithmatex">\(u \sim \mathcal{N}(0, \tau^2)\)</span>, with priors on <span class="arithmatex">\((b_{\text{bias}}, b_{\text{indirect}}, \tau)\)</span> elicited from the panel <em>before</em> they see the pooled number. The certainty rating then corresponds to a pre-declared functional — for example, whether the 95% ET interval for <span class="arithmatex">\(\delta_{\text{target}}\)</span> lies entirely on one side of a threshold — not to a separate qualitative vote. The qualitative vote is how you set the priors when the panel will not sign a number for <span class="arithmatex">\(b\)</span>.</p>
+</div>
+<p>Upgrading domains in GRADE (large effect, dose–response, residual confounding against the observed effect) have the same translation. A “large effect” is posterior mass far from a null <em>and</em> a bias prior that cannot eat the gap. Residual confounding that would have pushed against the observed benefit is a signed prior on <span class="arithmatex">\(b_{\text{bias}}\)</span>. None of this requires the panel to become a Stan workshop. It requires the panel to stop using “large effect” as a synonym for “we were impressed.”</p>
+<table>
+<thead>
+<tr>
+<th>GRADE domain</th>
+<th>Bayesian object</th>
+<th>What the panel must still judge</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Risk of bias</td>
+<td>Prior and posterior on <span class="arithmatex">\(b_{\text{bias}}\)</span></td>
+<td>How broken is the likelihood, in <span class="arithmatex">\(\delta\)</span> units</td>
+</tr>
+<tr>
+<td>Inconsistency</td>
+<td>Posterior on <span class="arithmatex">\(\tau\)</span>, or a decision that estimands differ</td>
+<td>Exchangeable or not</td>
+</tr>
+<tr>
+<td>Indirectness</td>
+<td>Transport parameter from study <span class="arithmatex">\(x\)</span> to target <span class="arithmatex">\(x'\)</span></td>
+<td>How much of A is allowed to speak about C</td>
+</tr>
+<tr>
+<td>Imprecision</td>
+<td>Posterior mass relative to a utility threshold</td>
+<td>Where the threshold sits</td>
+</tr>
+<tr>
+<td>Publication bias</td>
+<td>Selection model on the evidence base</td>
+<td>What is missing, and in which direction</td>
+</tr>
+<tr>
+<td>Large effect (upgrade)</td>
+<td>Mass far from null after a hostile bias prior</td>
+<td>Whether “large” survives <span class="arithmatex">\(b \ne 0\)</span></td>
+</tr>
+</tbody>
+</table>
+<h2 id="certainty-is-not-pdelta-0-mid-y">Certainty is not <span class="arithmatex">\(P(\delta &gt; 0 \mid y)\)</span><a class="headerlink" href="#certainty-is-not-pdelta-0-mid-y" title="Permanent link">&para;</a></h2>
+<p>This is the sentence the vignette’s first voting member got wrong, and it is the sentence Bayesian enthusiasts get wrong in print.</p>
+<p><span class="arithmatex">\(P(\delta &gt; 0 \mid y)\)</span> is the posterior probability that a defined increment is positive, under a defined model and prior. Certainty of evidence is a qualitative or semi-quantitative judgment about how much that posterior — or the recommendation that uses it — would move if the model, the prior, the missing studies, the missing patients, and the mismatched population were allowed to be as hostile as a reasonable critic would allow. You can have <span class="arithmatex">\(P(\delta &gt; 0 \mid y) = 0.999\)</span> in A and low-to-moderate certainty that <em>late-window EVT benefits consecutive presenting patients</em>, because the 0.999 does not attach to that estimand. You can have <span class="arithmatex">\(P(\delta &gt; 0 \mid y) = 0.86\)</span> in C and moderate certainty about a small effect in consecutive patients, if C’s design is the one that matches the question and its bias prior is not catastrophic.</p>
+<p>A second, independent confusion is with the strength of recommendation. GRADE already insists that a strong recommendation can rest on low-certainty evidence (a cheap, harmless intervention for a disastrous outcome) and that a conditional recommendation can rest on high-certainty evidence (a close trade-off that depends on values). Expected utility makes the same point without the theology. If the harm of withholding EVT from a patient who would have benefited is much larger than the harm of offering it to one who will not, the treatment threshold sits low (Chapter 14), and a modest posterior mean with a wide interval can still put most of the posterior above that threshold. Conversely, if the procedure is expensive, inequitably distributed, and harmful when futile, the threshold sits higher, and even a 0.999 in a selected trial may not clear it for the unselected.</p>
+<div class="admonition warning">
+<p class="admonition-title">Common Pitfall</p>
+<p>Do not write “high certainty of benefit because the posterior probability was 0.99.” Write the estimand, the threshold, the bias and transport assumptions, and then a certainty word that tracks those assumptions. Journals that have started to accept Bayesian trials are already filling with the first sentence. Guideline panels do not have to copy them.</p>
+</div>
+<p>Teaching translation of the three posteriors, before any EtD:</p>
+<table>
+<thead>
+<tr>
+<th>Question the posterior is allowed to answer</th>
+<th>Best source</th>
+<th style="text-align: right;"><span class="arithmatex">\(P(\delta &gt; 0.03 \mid y)\)</span></th>
+<th>Certainty for <em>that</em> question (teaching judgment)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Imaging-selected late-window LVO, trial-like patients</td>
+<td>A</td>
+<td style="text-align: right;">0.99</td>
+<td>Moderate-to-high: residual concern is transport to less expert systems, not the sign of <span class="arithmatex">\(\delta\)</span></td>
+</tr>
+<tr>
+<td>Intermediate imaging, RCT-like care</td>
+<td>B</td>
+<td style="text-align: right;">0.91</td>
+<td>Moderate: one analogue, looser selection, still not consecutive</td>
+</tr>
+<tr>
+<td>Consecutive late-window LVO in ordinary systems</td>
+<td>C, with A/B as priors on a transport increment</td>
+<td style="text-align: right;">0.61</td>
+<td>Low-to-moderate: confounding, missing data, measurement, and a small mean</td>
+</tr>
+</tbody>
+</table>
+<p>The 0.999, the 0.98, and the 0.86 do not appear in the last column. They answered a different question.</p>
+<h2 id="evidence-to-decision-is-expected-utility-with-more-arguments">Evidence-to-decision is expected utility with more arguments<a class="headerlink" href="#evidence-to-decision-is-expected-utility-with-more-arguments" title="Permanent link">&para;</a></h2>
+<p>The GRADE EtD framework asks the panel to walk through: desirable effects, undesirable effects, certainty, values, balance, resources, cost-effectiveness, equity, acceptability, feasibility. That list is a utility function written as a committee agenda. A Bayesian panel should treat it as such, not as a set of twelve unstructured votes.</p>
+<p>Let <span class="arithmatex">\(\theta = (\delta^{+}, \delta^{-}, c, e)\)</span> collect the benefit increment, the harm increment, the incremental resource cost, and an equity index (for example, the difference in expected benefit between a comprehensive center and a spoke that has to transfer). Let <span class="arithmatex">\(v\)</span> collect value weights — how the panel, or the patients the panel claims to represent, trade mRS utility against hemorrhage, against time in transfer, against money. Then</p>
+<div class="arithmatex">\[
+EU(a = \text{recommend EVT}; x) = \mathbb{E}\bigl[v^{\top} f(\theta, x) \mid \text{evidence}\bigr],
+\]</div>
+<p>and the same for <span class="arithmatex">\(a = \text{recommend against}\)</span> and <span class="arithmatex">\(a = \text{recommend in a stratum}\)</span>. The “balance of effects” row is the first two components. The “resources” row is <span class="arithmatex">\(c\)</span>. The “equity” row is <span class="arithmatex">\(e\)</span>. Acceptability and feasibility are constraints or additional penalties: a recommendation that cannot be enacted at the spoke is a different action, not the same action with a footnote.</p>
+<p>Two consequences follow.</p>
+<p>First, the panel must name <span class="arithmatex">\(v\)</span>. A room of interventionalists, vascular neurologists, emergency physicians, a rehabilitation voice, and a patient representative will not share <span class="arithmatex">\(v\)</span>. That disagreement is not noise to be averaged away in a straw poll. It is the reason GRADE has a values row. Record the range. If the recommendation flips inside that range, the recommendation is conditional on values and should say so.</p>
+<p>Second, equity is not a qualitative afterthought. Late-window EVT given only at comprehensive centers, only when CTP is available, only when the fellow can reconstruct the map, is a recommendation that allocates benefit to people who already live near those centers. Source A’s 0.14 increment, transported without an equity term, will produce a Class I sentence that widens a geographic gap. Source C’s 0.04, if concentrated in the same centers, may still widen it. An EtD that does not put a number — even a rough, elicited one — on the spoke-versus-hub difference has decided that the difference has weight zero.</p>
+<div class="admonition info">
+<p class="admonition-title">What ‘conditional’ actually means</p>
+<p>A conditional (weak, Class IIa/IIb) recommendation is not a failed Class I. It is a statement that the expected-utility gap is small, or that it changes sign inside the range of reasonable <span class="arithmatex">\(v\)</span>, or that feasibility and equity constrain the action to a stratum. Writing “we suggest” and then using Class I verbs in the remarks is how panels smuggle a strong recommendation past a weak vote.</p>
+</div>
+<p>A teaching EtD slice for the vignette, still invented:</p>
+<table>
+<thead>
+<tr>
+<th>EtD criterion</th>
+<th>Teaching judgment</th>
+<th>How it enters <span class="arithmatex">\(U\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Desirable effects</td>
+<td>Meaningful in A; small in C</td>
+<td>Posterior on <span class="arithmatex">\(\delta^{+}\)</span> by stratum</td>
+</tr>
+<tr>
+<td>Undesirable effects</td>
+<td>sICH and futile reperfusion, both uncommon but severe</td>
+<td>Posterior on <span class="arithmatex">\(\delta^{-}\)</span>; heavier weight if prestroke mRS ≥ 3</td>
+</tr>
+<tr>
+<td>Certainty</td>
+<td>High-ish for A’s estimand; lower for C’s</td>
+<td>Width of the EU gap under hostile bias/transport priors</td>
+</tr>
+<tr>
+<td>Values</td>
+<td>Most patients weight independence and survival well above procedural risk; some weight survival-with-mRS-5 as worse than death</td>
+<td>Range of <span class="arithmatex">\(v\)</span>; check for flip</td>
+</tr>
+<tr>
+<td>Resources</td>
+<td>Procedure, transfer, ICU bed</td>
+<td><span class="arithmatex">\(c\)</span>; not zero at a capacity-constrained hub</td>
+</tr>
+<tr>
+<td>Equity</td>
+<td>Benefit currently accrues to imaged, transferable, urban patients</td>
+<td><span class="arithmatex">\(e\)</span>; a recommendation that <em>requires</em> CTP hardens this</td>
+</tr>
+<tr>
+<td>Feasibility</td>
+<td>24/7 EVT is not universal; 24/7 CTP is less so</td>
+<td>Constraint: do not write a sentence that is impossible at the spoke</td>
+</tr>
+</tbody>
+</table>
+<h2 id="diagnostic-and-prognostic-grade">Diagnostic and prognostic GRADE<a class="headerlink" href="#diagnostic-and-prognostic-grade" title="Permanent link">&para;</a></h2>
+<p>The same machinery applies when the question is not “treat or not” but “test or not” or “believe this predictor.” GRADE for diagnosis and the GRADE approach to prognosis change the estimand. They do not change the logic.</p>
+<p><strong>Diagnostic.</strong> The evidence profile’s primary objects are sensitivity, specificity, likelihood ratios, and downstream consequences of true and false results (Chapter 11, Chapter 14). Certainty domains attach to those objects. Indirectness is especially common: a CTA-for-LVO accuracy study done at a comprehensive center with dedicated readers is indirect for the spoke overnight read. Imprecision is posterior width on the LR, or on the post-test probability at the pre-test the recommendation assumes. A “strong recommendation to test” is an expected-utility statement that the test–treat threshold and the test threshold of Pauker–Kassirer are both crossed for the named pre-test range. <span class="arithmatex">\(P(\operatorname{Se} &gt; 0.90 \mid y) = 0.97\)</span> is not that statement.</p>
+<p><strong>Prognostic.</strong> The objects are calibration, discrimination, and the increment in decisions when the predictor is added (Chapter 15’s decision-curve language). A model that predicts 90-day mRS after late-window presentation can have a gorgeous AUC in derivation and low certainty for use at a new hub, because transport of a predictor is a different problem from transport of a treatment effect. GRADE-style downgrading for “validation in a single center” is a transport prior. Write it that way: the posterior predictive distribution in a <em>new</em> center is wider than the posterior in the development center by an amount governed by <span class="arithmatex">\(\tau_{\text{center}}\)</span>. If you have no second center, <span class="arithmatex">\(\tau_{\text{center}}\)</span> is a prior, and the certainty word should track that prior, not the derivation C-statistic.</p>
+<div class="admonition warning">
+<p class="admonition-title">Common Pitfall</p>
+<p>Do not certify a prognostic score as “high-certainty” because a Bayesian hierarchical model produced tight intervals in the development sample. Tight intervals are what overfitting looks like when you have not left any data out. Certainty for a prognostic recommendation lives in the posterior <em>predictive</em> at a new site, not in the posterior mean of an AUC.</p>
+</div>
+<h2 id="writing-the-recommendation-from-prediction-intervals">Writing the recommendation from prediction intervals<a class="headerlink" href="#writing-the-recommendation-from-prediction-intervals" title="Permanent link">&para;</a></h2>
+<p>A class-of-recommendation sentence should be a function of (i) the predictive distribution of benefit and harm in the <em>target</em> patient, (ii) the panel’s thresholds, and (iii) the EtD constraints. A posterior interval for a trial estimand is an input. A prediction interval — or a posterior predictive interval — for the next patient, or the next hospital, is closer to what the fellow at 02:00 needs.</p>
+<p>For a new imaging-selected patient in a trial-like system, the predictive distribution of the UW-mRS increment, using source A and a modest between-system <span class="arithmatex">\(\tau\)</span>, might still live above 0.03. For a new consecutive late-window patient at an ordinary hub, drawing from a hierarchical combination of A, B, and C that <em>refuses</em> to treat A as exchangeable with C and instead uses A to inform a transport prior, the predictive interval might be −0.04 to 0.12, with 0.64 of the mass above 0.03. Those two intervals justify two sentences, not one.</p>
+<p>House-style templates that keep the posterior honest:</p>
+<ul>
+<li><strong>Class I / strong, a named stratum.</strong> “In patients who meet [imaging and clinical criteria], we recommend EVT. The panel’s posterior predictive interval for the UW-mRS increment in this stratum lies entirely above the pre-declared worthwhile difference of 0.03 under the stated bias prior. Values do not flip the decision. Feasibility is limited to centers that can offer the procedure.”</li>
+<li><strong>Class IIa / conditional, broader stratum.</strong> “In consecutive late-window LVO, we suggest EVT when transfer and procedural risk are acceptable to the patient. The predictive increment is probably positive and possibly small; the interval includes values below the worthwhile threshold. The recommendation is sensitive to values placed on survival with severe disability and to local feasibility.”</li>
+<li><strong>Class IIb / more conditional.</strong> “In patients outside imaging-selection criteria, the panel judged the predictive interval too wide, and too dependent on a hostile confounding prior, to do more than say that EVT may be considered in the context of a shared decision.”</li>
+<li><strong>Class III.</strong> Reserved for a predictive interval that lives below a harm threshold, or for an action the equity and feasibility rows make actively damaging (for example, mandating a test that only a subset of hospitals can perform and that delays transfer).</li>
+</ul>
+<pre class="mermaid"><code>flowchart TD
+  Q[Locked PICO question] --&gt; Est[Estimand per stratum]
+  Est --&gt; Post[Study posteriors A B C]
+  Post --&gt; Dom[GRADE domains as priors on bias tau transport]
+  Dom --&gt; Targ[Posterior on target increment]
+  Targ --&gt; Pred[Predictive interval for the next patient]
+  Pred --&gt; EU[Expected utility under named v]
+  V[Values resources equity feasibility] --&gt; EU
+  EU --&gt; Gap{EU gap vs thresholds}
+  Gap --&gt;|well above, stable to v| I[Class I in that stratum]
+  Gap --&gt;|above, flips with v or feasibility| --&gt; IIa[Class IIa]
+  Gap --&gt;|straddles, hostile prior eats it| IIb[Class IIb]
+  Gap --&gt;|below a harm threshold| III[Class III]
+  Pred --&gt; Sent[One sentence: class, certainty, stratum, fellow can act]
+  EU --&gt; Sent</code></pre>
+<p>The figure is the whole panel meeting. Skipping from “study posteriors” to “Class I” is the move the first voting member wanted. Everything between those two nodes is the methodologist’s job.</p>
+<h3 id="for-the-biostatistician-methodologist">For the biostatistician / methodologist<a class="headerlink" href="#for-the-biostatistician-methodologist" title="Permanent link">&para;</a></h3>
+<p>Do not pool A, B, and C as three estimates of one <span class="arithmatex">\(\delta\)</span>. Write a model with a target estimand <span class="arithmatex">\(\delta_x\)</span> for each stratum <span class="arithmatex">\(x\)</span>, a within-study posterior (or a likelihood) for each source, and a transport map <span class="arithmatex">\(g(\delta_A \to \delta_C)\)</span> with an elicited prior. A hierarchical model with partial pooling is appropriate only after the panel has agreed that the sources are noisy versions of one thing.</p>
+<p>Certainty ratings can be pre-declared as functionals. Example: “moderate certainty” if, under the pre-elicited hostile bias prior, at least 0.75 of the posterior mass on <span class="arithmatex">\(\delta_{\text{target}}\)</span> lies above the worthwhile threshold; “high” if that remains true under a still more hostile prior that the panel named in the protocol of the meeting. This is arbitrary. So is the four-word GRADE scale. The gain is that the arbitrary rule is written before the 0.999 is on the screen.</p>
+<p>When the outcome is ordinal, do not let the panel vote on a binary mRS 0–2 posterior and then write remarks about “shift.” Give them the posterior on the UW-mRS, the posterior on <span class="arithmatex">\(P(\text{mRS } 5\text{–}6)\)</span>, and the predictive distribution of the next patient’s category under treat and under not. Strength of recommendation often turns on the tail, not on the independence cut.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Teaching combination of three late-window posteriors.</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># Each source is summarized as a normal approximation on the UW-mRS</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># increment. This is a communication device for a panel, not a</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># substitute for a joint individual-patient model.</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nf">set.seed</span><span class="p">(</span><span class="m">20260818</span><span class="p">)</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1"># Source-level posterior means and SDs (teaching).</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">src</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"A_selected"</span><span class="p">,</span><span class="w"> </span><span class="s">"B_intermediate"</span><span class="p">,</span><span class="w"> </span><span class="s">"C_consecutive"</span><span class="p">),</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span><span class="n">mu</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.14</span><span class="p">,</span><span class="w"> </span><span class="m">0.08</span><span class="p">,</span><span class="w"> </span><span class="m">0.04</span><span class="p">),</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span><span class="n">sd</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.036</span><span class="p">,</span><span class="w"> </span><span class="m">0.036</span><span class="p">,</span><span class="w"> </span><span class="m">0.036</span><span class="p">)</span><span class="w">   </span><span class="c1"># 95% intervals ~ mu ± 0.07</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">)</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="c1"># Draws from each source posterior.</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="n">S</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">8000</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="n">draws</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sapply</span><span class="p">(</span><span class="nf">seq_len</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">src</span><span class="p">)),</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">  </span><span class="nf">rnorm</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="w"> </span><span class="n">src</span><span class="o">$</span><span class="n">mu</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">src</span><span class="o">$</span><span class="n">sd</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="p">})</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="nf">colnames</span><span class="p">(</span><span class="n">draws</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">src</span><span class="o">$</span><span class="n">name</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="c1"># Functionals the chair can read.</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="n">worthwhile</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">0.03</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="nf">apply</span><span class="p">(</span><span class="n">draws</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">  </span><span class="nf">c</span><span class="p">(</span><span class="n">mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">d</span><span class="p">),</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">    </span><span class="n">lo95</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">quantile</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="m">0.025</span><span class="p">),</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">    </span><span class="n">hi95</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">quantile</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="m">0.975</span><span class="p">),</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">    </span><span class="n">p_gt0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">d</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="p">),</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">    </span><span class="n">p_gt_w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">d</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">worthwhile</span><span class="p">))</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="p">})</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="c1"># Transport model for the consecutive-patient estimand:</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="c1"># delta_C = alpha * delta_A + epsilon, with an elicited alpha.</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="c1"># Teaching prior: alpha ~ Beta(4, 4) (mean 0.5, mass from ~0.15 to 0.85),</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="c1"># epsilon ~ Normal(0, 0.03^2). Use source C as additional likelihood.</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="n">alpha</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbeta</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">)</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="n">eps</span><span class="w">   </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0.03</span><span class="p">)</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="n">delta_C_from_A</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">draws</span><span class="p">[,</span><span class="w"> </span><span class="s">"A_selected"</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">eps</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="c1"># Combine with source C by a simple product-of-experts on a grid,</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="c1"># here replaced by a precision-weighted blend of the two Gaussians</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="c1"># after matching moments. Teaching only.</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="n">mu_tr</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">delta_C_from_A</span><span class="p">)</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="n">sd_tr</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sd</span><span class="p">(</span><span class="n">delta_C_from_A</span><span class="p">)</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="n">prec_c</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">src</span><span class="o">$</span><span class="n">sd</span><span class="p">[</span><span class="m">3</span><span class="p">]</span><span class="o">^</span><span class="m">2</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="n">prec_t</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">sd_tr</span><span class="o">^</span><span class="m">2</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="n">mu_tgt</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="p">(</span><span class="n">prec_c</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">src</span><span class="o">$</span><span class="n">mu</span><span class="p">[</span><span class="m">3</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">prec_t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mu_tr</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">prec_c</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">prec_t</span><span class="p">)</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="n">sd_tgt</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sqrt</span><span class="p">(</span><span class="m">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">prec_c</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">prec_t</span><span class="p">))</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="n">delta_target</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="w"> </span><span class="n">mu_tgt</span><span class="p">,</span><span class="w"> </span><span class="n">sd_tgt</span><span class="p">)</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="nf">c</span><span class="p">(</span><span class="n">mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">delta_target</span><span class="p">),</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="w">  </span><span class="n">lo95</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="nf">quantile</span><span class="p">(</span><span class="n">delta_target</span><span class="p">,</span><span class="w"> </span><span class="m">0.025</span><span class="p">)),</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="w">  </span><span class="n">hi95</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="nf">quantile</span><span class="p">(</span><span class="n">delta_target</span><span class="p">,</span><span class="w"> </span><span class="m">0.975</span><span class="p">)),</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="w">  </span><span class="n">p_gt0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">delta_target</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="p">),</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="w">  </span><span class="n">p_gt_w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">delta_target</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">worthwhile</span><span class="p">))</span>
+<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>
+<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="c1"># Value sensitivity: EU gap flips if v_harm / v_benefit exceeds</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="c1"># the posterior mean of delta_plus / delta_minus.</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a><span class="c1"># Teaching harms: sICH increment ~ Normal(0.02, 0.01^2).</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a><span class="n">harm</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="w"> </span><span class="m">0.02</span><span class="p">,</span><span class="w"> </span><span class="m">0.01</span><span class="p">)</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a><span class="n">ratio</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">delta_target</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nf">pmax</span><span class="p">(</span><span class="n">harm</span><span class="p">,</span><span class="w"> </span><span class="m">1e-4</span><span class="p">)</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a><span class="nf">quantile</span><span class="p">(</span><span class="n">ratio</span><span class="p">,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.1</span><span class="p">,</span><span class="w"> </span><span class="m">0.5</span><span class="p">,</span><span class="w"> </span><span class="m">0.9</span><span class="p">))</span>
+</code></pre></div>
+<div class="admonition example">
+<p class="admonition-title">R Deep Dive</p>
+<p>Replace the normal approximations with draws from the actual trial and registry models before a real meeting. The structure does not change: name the target estimand, refuse naive pooling, elicit the transport prior <em>in the closed session before the combined number is shown</em>, and pre-declare the functional that will map the target posterior onto a certainty word.</p>
+</div>
+<h2 id="worked-solution-to-the-opening-vignette">Worked solution to the opening vignette<a class="headerlink" href="#worked-solution-to-the-opening-vignette" title="Permanent link">&para;</a></h2>
+<p><strong>What would lower certainty in A.</strong> Transport. A is not biased toward a false positive for <em>its own</em> estimand in any way the teaching table can see; <span class="arithmatex">\(P(\delta &gt; 0.03 \mid y) = 0.99\)</span> and the interval is away from the threshold. Certainty falls when the question silently becomes “all late-window LVO,” when the mRS was unblinded, when imaging exclusion happened after randomization, or when the next hospital is not a trial site. Those are indirectness and risk-of-bias priors, not a smaller <span class="arithmatex">\(P(\delta &gt; 0 \mid y)\)</span>.</p>
+<p><strong>What would raise certainty in C.</strong> A pre-registered target-trial protocol, a richer confounder model with a bias analysis that does not eat the 0.04, better day-90 ascertainment (Chapter 24), and either a second registry that replicates the increment or a transport prior from A/B that the panel is willing to sign. The interval including zero is not, by itself, low certainty. It is imprecision relative to a threshold near zero. Relative to a worthwhile increment of 0.03 it is more serious: only 0.61 of the mass clears that bar.</p>
+<p><strong>Whose values are missing.</strong> Every patient’s, until you elicit them. The table has no row for survival-with-mRS-5 versus death, no row for transfer time, no row for a prestroke mRS of 3. The interventionalists’ <span class="arithmatex">\(v\)</span> is not a substitute. The patient representative’s single <span class="arithmatex">\(v\)</span> is not a substitute for the range.</p>
+<p><strong>May the recommendation differ by imaging stratum?</strong> Yes. It should. A and C are different estimands. A single Class I sentence for “late-window EVT” erases the only distinction the evidence actually supports. A split recommendation — strong in the imaging-selected stratum, conditional in consecutive unselected patients, more conditional still when imaging is unfavorable or unavailable — is the honest discretization of the three predictive intervals.</p>
+<p><strong>The sentence.</strong> One version a night-shift fellow can act on, teaching language, not a society’s official text:</p>
+<p>“In adults with anterior-circulation LVO last known well 6–24 hours who meet trial-like imaging-selection criteria and who can be treated at a capable center, we recommend EVT plus usual care (Class I; moderate-to-high certainty for this stratum). In patients who do not meet those imaging criteria, or in whom perfusion imaging is not available, we suggest EVT only after a values-sensitive discussion of a probably small and possibly null increment (Class IIa; low-to-moderate certainty). We do not recommend making perfusion imaging a requirement for transfer to a capable center (equity and feasibility).”</p>
+<p>The first voting member’s “A and B are 0.95, write Class I” produced a sentence that would have required CTP and would have overstated certainty for the patient C actually describes. The second member’s “C includes zero, we cannot recommend” produced no action for the patients A actually describes. Both members were answering a different PICO than the one the chair asked.</p>
+<div class="admonition tip">
+<p class="admonition-title">Clinical Pearl</p>
+<p>Lock the strata before you show the combined number. A panel that sees 0.999 first will not write a split recommendation. A panel that writes the strata first will treat the 0.999 as the answer to one of the questions, which is all it ever was.</p>
+</div>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><strong>Rewrite.</strong> Take the first voting member’s sentence — “A and B both have posterior probabilities above 0.95; that is high certainty; write Class I” — and rewrite it as four true sentences, one each for estimand, certainty, strength, and stratum. Which of the four is the 0.95 allowed to support?</p>
+</li>
+<li>
+<p><strong>Thresholds.</strong> Using the teaching table, compute (by eye or by the R block) whether each source’s posterior interval lies entirely above <span class="arithmatex">\(\delta = 0\)</span>, entirely above <span class="arithmatex">\(\delta = 0.03\)</span>, and entirely above <span class="arithmatex">\(\delta = 0.10\)</span>. Draft the imprecision domain for each threshold. Why is “the interval is wide” not a complete answer?</p>
+</li>
+<li>
+<p><strong>Diagnostic EtD.</strong> A panel is writing a recommendation for automated LVO detection on CTA at spokes. Sensitivity posterior mean 0.88 (95% ET 0.78–0.95), specificity 0.82 (0.70–0.91), in comprehensive-center scans. Map risk of bias, indirectness, and imprecision onto Bayesian objects, and say whether a strong recommendation to <em>transfer on a positive flag</em> can coexist with a conditional recommendation to <em>withhold transfer on a negative flag</em>.</p>
+</li>
+<li>
+<p><strong>Values flip.</strong> Suppose the posterior predictive increment on UW-mRS in consecutive patients is 0.04 (95% ET −0.03 to 0.11) and the incremental harm (a constructed severe-hemorrhage utility) is 0.02 (0.01 to 0.04). For what range of <span class="arithmatex">\(B/H\)</span> does the treatment threshold of Chapter 14 sit inside that predictive interval? What does the panel owe the fellow in that range?</p>
+</li>
+</ol>
+<h2 id="further-reading">Further reading<a class="headerlink" href="#further-reading" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Guyatt GH, Oxman AD, Vist GE, et al. GRADE: an emerging consensus on rating quality of evidence and strength of recommendations. <em>BMJ</em>. 2008;336:924–926.</li>
+<li>Alonso-Coello P, Schünemann HJ, Moberg J, et al. GRADE Evidence to Decision (EtD) frameworks: a systematic and transparent approach to making well informed healthcare choices. 1: Introduction. <em>BMJ</em>. 2016;353:i2016.</li>
+<li>Hultcrantz M, Rind D, Akl EA, et al. The GRADE Working Group clarifies the construct of certainty of evidence. <em>Journal of Clinical Epidemiology</em>. 2017;87:4–13.</li>
+<li>Schünemann HJ, Mustafa RA, Brozek J, et al. GRADE guidelines: 21. Part 1. Study design, risk of bias, and indirectness in rating the certainty across a body of evidence for test accuracy. <em>Journal of Clinical Epidemiology</em>. 2020;122:129–141.</li>
+<li>Iorio A, Spencer FA, Falavigna M, et al. Use of GRADE for assessment of evidence about prognosis: rating confidence in estimates of event rates in broad categories of patients. <em>BMJ</em>. 2015;350:h870.</li>
+<li>Spiegelhalter DJ, Abrams KR, Myles JP. <em>Bayesian Approaches to Clinical Trials and Health-Care Evaluation</em>. Chichester: Wiley; 2004. Chapters on policy and decision.</li>
+<li>Parmelli E, Amato L, Oxman AD, et al. GRADE Evidence to Decision frameworks for adoption, adaptation, and de novo development of trustworthy recommendations: GRADE-ADOLOPMENT. <em>Journal of Clinical Epidemiology</em>. 2017;81:101–110.</li>
+<li>American Heart Association / American Stroke Association. Guideline methodology manuals and the current late-window EVT recommendation text. Read as a <em>genre</em>, then rewrite the sentence with the objects in this chapter named.</li>
+<li>Sutton AJ, Abrams KR. Bayesian methods in meta-analysis and evidence synthesis. <em>Statistical Methods in Medical Research</em>. 2001;10:277–303.</li>
+<li>Claxton K. The irrelevance of inference: a decision-making approach to the stochastic evaluation of health care technologies. <em>Journal of Health Economics</em>. 1999;18:341–364.</li>
+</ul>
+<div class="admonition success">
+<p class="admonition-title">Key Takeaway</p>
+<p>A guideline sentence is an expected-utility decision for a named stratum, discretized into a class of recommendation and a certainty word. GRADE domains are priors and models — bias, <span class="arithmatex">\(\tau\)</span>, transport, threshold, selection — not a separate qualitative universe. Certainty is not <span class="arithmatex">\(P(\delta &gt; 0 \mid y)\)</span>; strength is not certainty; source A’s 0.999 is not an answer about source C’s patients. Write the estimand, the predictive interval for the next patient, the values that could flip the decision, and the equity cost of requiring a test only some hospitals have. Then write one sentence a fellow can act on. If the sentence would be unchanged after deleting the posteriors, it was never using them.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="24-missing-data-measurement-error.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: 24. Missing Data and Measurement Error">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                24. Missing Data and Measurement Error
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="26-ethics-governance-adaptive.html" class="md-footer__link md-footer__link--next" aria-label="Next: 26. Ethics and Adaptive Governance">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                26. Ethics and Adaptive Governance
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Bayesian Clinical Reasoning
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/rkalani1/Bayesian-Reasoning" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tracking", "navigation.top", "navigation.footer", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../javascripts/header-controls.js"></script>
+      
+    
+  </body>
+</html>

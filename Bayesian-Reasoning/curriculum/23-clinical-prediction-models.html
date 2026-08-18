@@ -1,0 +1,2510 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Bayesian statistics, decision analysis, and evidence for neurologists and clinician-scientists.">
+      
+      
+      
+        <link rel="canonical" href="https://rkalani1.github.io/Bayesian-Reasoning/curriculum/23-clinical-prediction-models.html">
+      
+      
+        <link rel="prev" href="22-causal-target-trial.html">
+      
+      
+        <link rel="next" href="24-missing-data-measurement-error.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>23. Clinical Prediction Models - Bayesian Clinical Reasoning</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../stylesheets/page-orientation.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Bayesian Clinical Reasoning">
+  <meta property="og:title" content="23. Clinical Prediction Models — Bayesian Clinical Reasoning">
+  <meta property="og:description" content="Bayesian statistics, decision analysis, and evidence for neurologists and clinician-scientists.">
+  <meta property="og:url" content="https://rkalani1.github.io/Bayesian-Reasoning/curriculum/23-clinical-prediction-models.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="23. Clinical Prediction Models — Bayesian Clinical Reasoning">
+  <meta name="twitter:description" content="Bayesian statistics, decision analysis, and evidence for neurologists and clinician-scientists.">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#bayesian-clinical-prediction-models-derivation-validation-updating-and-tripod" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+
+  
+
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="Bayesian Clinical Reasoning" class="md-header__button md-logo" aria-label="Bayesian Clinical Reasoning" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">Bayesian Clinical Reasoning</span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">23. Clinical Prediction Models</span>
+        </div>
+      </div>
+      <a class="mobile-page-orientation" href="23-clinical-prediction-models.html" aria-label="Bayes, current page: 23. Clinical Prediction Models">
+        <strong>Bayes</strong><span aria-hidden="true">·</span><span>23. Clinical Prediction Models</span>
+      </a>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="amber"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="amber"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rkalani1/Bayesian-Reasoning" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rkalani1/Bayesian-Reasoning
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Bayesian Clinical Reasoning" class="md-nav__button md-logo" aria-label="Bayesian Clinical Reasoning" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Bayesian Clinical Reasoning
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rkalani1/Bayesian-Reasoning" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rkalani1/Bayesian-Reasoning
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-use.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How to use this book
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../evidence-register.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidence register
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Book
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Book
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part I — Foundations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part I — Foundations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-why-bayesian-thinking-matters.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01. Why Bayesian Thinking Matters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-probability-odds-uncertainty.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02. Probability, Odds, and Uncertainty
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-bayes-theorem.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03. Bayes’ Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-priors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04. Priors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part II — Inference with R
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part II — Inference with R
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-likelihoods-conjugate-models.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05. Likelihoods and Conjugate Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-hierarchical-models.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06. Hierarchical Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-computational-inference.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07. Computational Inference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-model-checking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08. Model Checking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-estimation-rope-bayes-factors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09. Estimation, ROPE, and Bayes Factors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part III — Design and Synthesis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part III — Design and Synthesis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-sample-size-adaptive-designs.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Sample Size and Adaptive Designs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-diagnostic-accuracy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Diagnostic Accuracy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-survival-competing-risks.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Survival and Competing Risks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-bayesian-meta-analysis.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Bayesian Meta-Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part IV — Decision and Communication
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part IV — Decision and Communication
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="14-decision-theory-thresholds.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Decision Theory and Thresholds
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="15-decision-curves-voi.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Decision Curves and Value of Information
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="16-bedside-shared-decisions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Bedside and Shared Decisions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="17-communicating-uncertainty.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Communicating Uncertainty
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part V — Synthesis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part V — Synthesis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="18-integrated-case-studies.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Integrated Case Studies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="19-complete-workflow.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. A Complete Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="20-reproducible-pipelines.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. Reproducible Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part VI — Identification and institutions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part VI — Identification and institutions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="21-transporting-evidence-hte.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. Transporting Evidence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="22-causal-target-trial.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. Causal Models and the Target Trial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. Clinical Prediction Models
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="23-clinical-prediction-models.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. Clinical Prediction Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#opening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opening
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clinical-vignette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clinical vignette
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prognosis-is-not-diagnosis-is-not-treatment-benefit-prediction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prognosis is not diagnosis is not treatment-benefit prediction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specifying-the-family-the-nonlinear-nihssagetime-surface-and-shrinkage-priors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Specifying the family, the nonlinear NIHSS–age–time surface, and shrinkage priors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#psis-loo-is-not-a-new-hospital" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PSIS-LOO is not a new hospital
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calibration-discrimination-and-a-decision-curve-of-the-same-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calibration, discrimination, and a decision curve of the same model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#external-validation-and-intercept-recalibration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        External validation and intercept recalibration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tripod-as-writing-discipline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TRIPOD as writing discipline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-brms-tidybayes-pipeline-on-a-teaching-ich-score-analogue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A brms + tidybayes pipeline on a teaching ICH-score analogue
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worked-solution-to-the-vignette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked solution to the vignette
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercises
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="24-missing-data-measurement-error.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. Missing Data and Measurement Error
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="25-grade-evidence-to-decision.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. GRADE and Evidence-to-Decision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="26-ethics-governance-adaptive.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. Ethics and Adaptive Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Appendices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendices/a-r-setup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A. R Setup and Cheatsheet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendices/b-prior-elicitation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    B. Prior Elicitation Worksheets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendices/c-solutions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C. Solutions to Exercises
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendices/d-glossary.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    D. Glossary and Checklists
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#opening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opening
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clinical-vignette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clinical vignette
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prognosis-is-not-diagnosis-is-not-treatment-benefit-prediction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prognosis is not diagnosis is not treatment-benefit prediction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specifying-the-family-the-nonlinear-nihssagetime-surface-and-shrinkage-priors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Specifying the family, the nonlinear NIHSS–age–time surface, and shrinkage priors
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#psis-loo-is-not-a-new-hospital" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PSIS-LOO is not a new hospital
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calibration-discrimination-and-a-decision-curve-of-the-same-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Calibration, discrimination, and a decision curve of the same model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#external-validation-and-intercept-recalibration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        External validation and intercept recalibration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tripod-as-writing-discipline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TRIPOD as writing discipline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-brms-tidybayes-pipeline-on-a-teaching-ich-score-analogue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A brms + tidybayes pipeline on a teaching ICH-score analogue
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#worked-solution-to-the-vignette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worked solution to the vignette
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercises
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="bayesian-clinical-prediction-models-derivation-validation-updating-and-tripod">Bayesian Clinical Prediction Models: Derivation, Validation, Updating, and TRIPOD<a class="headerlink" href="#bayesian-clinical-prediction-models-derivation-validation-updating-and-tripod" title="Permanent link">&para;</a></h1>
+<h2 id="opening">Opening<a class="headerlink" href="#opening" title="Permanent link">&para;</a></h2>
+<p>A probability printed on an admission note is a promise. The network that wants a 90-day mRS <span class="arithmatex">\(0\)</span>–<span class="arithmatex">\(2\)</span> calculator is asking you to sign that promise under every name on the board. Derivation is how you write it. Internal checking is how you find out whether the writing is coherent. External updating is how you find out whether a new hospital can use it. TRIPOD is how you refuse to hide the seams. An AUC of <span class="arithmatex">\(0.84\)</span> from a GUI logistic is none of those things.</p>
+<h2 id="learning-objectives">Learning objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">&para;</a></h2>
+<p>After working this chapter you should be able to:</p>
+<ul>
+<li>Separate three estimands that share predictors and destroy each other when mixed: prognosis, diagnosis, and treatment-benefit prediction.</li>
+<li>Specify a family, a nonlinear NIHSS–age–time surface, and shrinkage priors for a binary or ordinal functional-outcome model, and say which predictors are illegal because they are not known when the note is signed.</li>
+<li>Treat PSIS-LOO as an internal, same-hospital check, and refuse to call it external validation.</li>
+<li>Report calibration, discrimination, and a decision curve of the <em>same</em> model on the <em>same</em> sample, and say which of the three licenses an admission-note probability.</li>
+<li>Recalibrate an intercept on a new hospital, recognize when a slope failure means you must revise rather than patch, and write the paper as TRIPOD discipline rather than as a trophy statistic.</li>
+</ul>
+<h2 id="clinical-vignette">Clinical vignette<a class="headerlink" href="#clinical-vignette" title="Permanent link">&para;</a></h2>
+<p>A seven-hospital stroke network wants a 90-day mRS <span class="arithmatex">\(0\)</span>–<span class="arithmatex">\(2\)</span> probability on every admission note, ischemic and ICH, available at the moment the attending signs. The intended user is a resident counseling a family at 08:00. The two comprehensive centers have three years of teaching-quality registry data: <span class="arithmatex">\(920\)</span> patients with a locked 90-day mRS, plus the usual cemetery of incomplete rows. Legal at signature: age, pre-morbid mRS, NIHSS or GCS, last-known-well to door, systolic pressure, glucose, anticoagulant use, ICH volume and location when already measured, receiving hospital. Illegal: 24-hour NIHSS, TICI grade, hematoma expansion, aspiration pneumonia, later rehab destination.</p>
+<p>A fellow has already fit a 14-predictor frequentist logistic in a point-and-click tool. The printed AUC is <span class="arithmatex">\(0.84\)</span>. Two of the fourteen predictors are day-2 variables. The fellow wants the equation in the EHR next month and has drafted a title that begins “Externally validated predictor of favorable outcome.” The quality committee asks whether the product is “TRIPOD-compliant.” The CMIO asks for a single number, not a posterior.</p>
+<p>Before any software, write four sentences and do not soften them. (1) The estimand: prognosis under the <em>observed</em> care policy, diagnosis of a present state, or predicted benefit of a treatment the patient has not yet received. (2) The prediction time: which columns are legal. (3) The action the number is allowed to change, and the action it is forbidden to change. (4) What would make you refuse go-live even if the AUC were <span class="arithmatex">\(0.90\)</span>.</p>
+<pre class="mermaid"><code>flowchart TD
+  Derive[Derive: family, NIHSS-age-time surface, shrinkage] --&gt; Intern[Internal check: PPC, LOO, calibration, DCA]
+  Intern --&gt; Extern[External update: new hospital, intercept]
+  Extern --&gt; Note[Admission-note calculator]
+  Derive -.-&gt;|leaked future or wrong family| FD[Failure: likelihood cannot generate y]
+  Intern -.-&gt;|treat LOO as transport| FI[Failure: optimistic new-site claim]
+  Intern -.-&gt;|AUC without calibration| FC[Failure: ranks well, probabilities lie]
+  Extern -.-&gt;|skip intercept update| FE[Failure: miscalibrated go-live]
+  Extern -.-&gt;|slope collapse| FS[Failure: revise, do not patch]</code></pre>
+<p>The rest of the chapter walks that path. Each dashed arrow is a way the calculator reaches a note without earning it.</p>
+<h2 id="prognosis-is-not-diagnosis-is-not-treatment-benefit-prediction">Prognosis is not diagnosis is not treatment-benefit prediction<a class="headerlink" href="#prognosis-is-not-diagnosis-is-not-treatment-benefit-prediction" title="Permanent link">&para;</a></h2>
+<p>Three questions share a covariate list and almost never share an estimand.</p>
+<p><strong>Prognosis</strong> asks what will happen to this patient by a named horizon under a named care policy. <span class="arithmatex">\(P(\mathrm{mRS}_{90}\in\{0,1,2\} \mid x_{\mathrm{adm}},\ \text{usual care in this network})\)</span> is a prognostic functional. Counseling, expected length of stay, and the family’s request for “a percentage” live here. The policy is part of the definition. A network that recanalizes more, that sends more patients to intensive rehab, or that withdraws care earlier will have a different prognostic map from the same admission NIHSS.</p>
+<p><strong>Diagnosis</strong> asks what is already true. <span class="arithmatex">\(P(\text{LVO} \mid \text{NIHSS},\ \text{AF},\ \text{CTA read})\)</span> is Chapter 11. The clock on the state has already run. Sensitivity and specificity are properties of a test for a present class, not properties of a 90-day outcome. Printing a prognostic mRS probability on the note does not diagnose a vessel, and a CTA likelihood ratio does not forecast independence.</p>
+<p><strong>Treatment-benefit prediction</strong> asks who gains from an action not yet taken. The object is a contrast, <span class="arithmatex">\(P(Y^{a=1}=1 \mid x) - P(Y^{a=0}=1 \mid x)\)</span>. You cannot read it off a model fitted only on treated patients, only on untreated patients, or on a mixture whose assignment was itself a function of <span class="arithmatex">\(x\)</span>. Randomization, a credible instrument, or an explicit causal model is the price of admission. A logistic that includes “EVT yes/no” estimates an association under the observed rule. It does not estimate the benefit of sending <em>this</em> patient.</p>
+<p>The admission-note calculator in the vignette is a prognostic object. That is allowed. What is not allowed is promoting it into the other two jobs. A resident who sees <span class="arithmatex">\(0.12\)</span> and withholds a medically appropriate transfer is using a mixed-policy forecast as a treatment rule. A fellow who sees <span class="arithmatex">\(0.12\)</span> and tells the family “this is not an LVO” is using a future functional state as a diagnosis. Both errors are easier once the number is printed in bold. Quieter still: a calculator trained on last year’s policy becomes part of this year’s policy the moment it is printed. If low probabilities start to produce earlier withdrawal, the calibration plot in your office is a historical document. Models that are allowed to change care must be scheduled for re-estimation.</p>
+<div class="admonition warning">
+<p class="admonition-title">Common Pitfall</p>
+<p>“The model includes treatment, so it can tell us who to treat” is a category error. Conditioning on the observed treatment answers a different question from intervening on treatment. If the note is allowed to change an action, you need a benefit model, or you need a protocol that forbids the prognostic number from gating that action. Write the prohibition on the same screen as the percentage.</p>
+</div>
+<p>A compact map:</p>
+<table>
+<thead>
+<tr>
+<th>Estimand</th>
+<th>Target</th>
+<th>Needs</th>
+<th>Legal on the admission note?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prognosis</td>
+<td><span class="arithmatex">\(P(Y_{90}\mid x_{\mathrm{adm}},\ \text{policy})\)</span></td>
+<td>Outcome at a horizon; predictors known at <span class="arithmatex">\(t_0\)</span></td>
+<td>Yes, as counseling, if calibrated</td>
+</tr>
+<tr>
+<td>Diagnosis</td>
+<td><span class="arithmatex">\(P(\text{state now}\mid \text{test},\ x)\)</span></td>
+<td>A present class and a reference</td>
+<td>No; that is a different model</td>
+</tr>
+<tr>
+<td>Benefit</td>
+<td><span class="arithmatex">\(P(Y^{1}-Y^{0}\mid x)\)</span></td>
+<td>A contrast and an identification story</td>
+<td>Only if you built that model on purpose</td>
+</tr>
+</tbody>
+</table>
+<p>The ICH-score analogue later in the chapter is prognostic. The classic published ICH score was built for 30-day mortality, not for independence, and not for choosing surgery. Teaching with an analogue does not license treating the analogue as a treatment rule.</p>
+<h2 id="specifying-the-family-the-nonlinear-nihssagetime-surface-and-shrinkage-priors">Specifying the family, the nonlinear NIHSS–age–time surface, and shrinkage priors<a class="headerlink" href="#specifying-the-family-the-nonlinear-nihssagetime-surface-and-shrinkage-priors" title="Permanent link">&para;</a></h2>
+<p>A prediction model is a family, a linear predictor, and a prior. Software will happily accept a worse triple than the one you meant.</p>
+<p><strong>Family.</strong> Ninety-day mRS <span class="arithmatex">\(0\)</span>–<span class="arithmatex">\(2\)</span> is a Bernoulli functional of an ordinal scale. <code>family = bernoulli(link = "logit")</code> is honest if the clinical claim is about independence and you accept the information you throw away. <code>family = cumulative()</code> on the seven-level mRS is the better default when you can defend proportional odds, or a relaxation of it, and then <em>derive</em> <span class="arithmatex">\(P(\mathrm{mRS}\le 2)\)</span> as a posterior functional. A Gaussian on the raw mRS treats the gap from <span class="arithmatex">\(0\)</span> to <span class="arithmatex">\(1\)</span> as the gap from <span class="arithmatex">\(5\)</span> to <span class="arithmatex">\(6\)</span> and will predict impossible values. A Cox model for “time to independence” that censors the dead is the Chapter 12 error in a new coat. Choose the family that can generate the outcome you will display.</p>
+<p><strong>Surface.</strong> NIHSS, age, and last-known-well time do not enter a logit as three straight lines. The step from NIHSS <span class="arithmatex">\(4\)</span> to <span class="arithmatex">\(8\)</span> is not the step from <span class="arithmatex">\(18\)</span> to <span class="arithmatex">\(22\)</span>. An NIHSS of <span class="arithmatex">\(8\)</span> in a 52-year-old is not an NIHSS of <span class="arithmatex">\(8\)</span> in an 88-year-old. Time to door is a decaying curve, not a coefficient per minute, and it interacts with whether reperfusion is even on the table. Linear main effects miscalibrate the tails, where families ask the hardest questions. Dummy-coding NIHSS into ten bins memorizes empty cells. A kitchen-sink <code>nihss * age * time * glucose * sbp</code> on <span class="arithmatex">\(200\)</span> events is a prior the sample cannot update.</p>
+<p>A teaching specification that matches the claim is a smooth surface plus a small set of pre-declared modifiers:</p>
+<div class="arithmatex">\[
+\begin{aligned}
+y_i &amp;\sim \operatorname{Bernoulli}(\pi_i),\\
+\operatorname{logit}(\pi_i) &amp;= \alpha_{j[i]} + f(\mathrm{NIHSS}_i,\ \mathrm{age}_i) + g(\mathrm{time}_i) + \mathbf{w}_i^{\top}\boldsymbol{\gamma}.
+\end{aligned}
+\]</div>
+<p>In <code>brms</code>, <span class="arithmatex">\(f\)</span> is <code>t2(nihss, age)</code> or paired <code>s()</code> terms plus a planned <code>nihss:age</code> product; <span class="arithmatex">\(g\)</span> is <code>s(log_time)</code> with a tight prior on wiggliness; <span class="arithmatex">\(\mathbf{w}\)</span> holds the other legal admission variables; <span class="arithmatex">\(\alpha_j\)</span> is a hospital intercept (Chapter 6). The ICH analogue replaces NIHSS with GCS, but volume has the same problem: 12 mL and 72 mL are not two points on a slope you should trust without looking.</p>
+<p><strong>Shrinkage priors.</strong> A 14-predictor logistic on <span class="arithmatex">\(920\)</span> rows with <span class="arithmatex">\(300\)</span> events can look identified and still be too flexible in the corners. After scaling continuous predictors to mean <span class="arithmatex">\(0\)</span> and SD <span class="arithmatex">\(1\)</span>, <span class="arithmatex">\(\gamma_k \sim \operatorname{Normal}(0, 0.5)\)</span> says that odds ratios beyond about <span class="arithmatex">\(e^{1}\)</span> per SD are unusual, not impossible. That is shrinkage, not a claim that NIHSS does not matter. A regularized horseshoe on optional laboratory toys keeps the pre-declared surface (NIHSS, age, time) in the model and asks the extras to earn their keep. Hospital intercepts get a hierarchical prior, not fourteen fixed dummies. Spline smoothness in <code>brms</code> already carries a prior on the wiggliness SD; look at <code>get_prior()</code> and tighten it if the surface scribbles through six points. Shrinkage is not a substitute for a prediction-time rule. A coefficient shrunk toward zero is still illegal if the variable is “aspiration on day 4.”</p>
+<div class="admonition tip">
+<p class="admonition-title">Clinical Pearl</p>
+<p>Write the prediction time as a timestamp, not as a vibe. “Admission” is not a time. “Values known when the attending signs the history, before 24-hour imaging and before the angiogram is coded” is a time. Anything later is leakage. Leakage is the most reliable way to buy an AUC you will not have tomorrow morning.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Mathematical Detail</p>
+<p>After standardizing a continuous predictor, <span class="arithmatex">\(\operatorname{Normal}(0, 0.5)\)</span> on its logit coefficient puts most prior mass on an odds ratio of about <span class="arithmatex">\(0.4\)</span> to <span class="arithmatex">\(2.7\)</span> per SD. Combined with a spline, that prior keeps the average slope out of the circus while the smoothness prior keeps the wiggles from interpolating noise. Prior predictive draws of <span class="arithmatex">\(\pi\)</span> against NIHSS, at fixed ages, are the check that the pair is not jointly absurd. Do them before you fit.</p>
+</div>
+<h2 id="psis-loo-is-not-a-new-hospital">PSIS-LOO is not a new hospital<a class="headerlink" href="#psis-loo-is-not-a-new-hospital" title="Permanent link">&para;</a></h2>
+<p>Chapter 8 treated PSIS-LOO as a comparative estimate of pointwise out-of-sample log predictive density, with Pareto <span class="arithmatex">\(k\)</span> as a diagnostic. That use stands. This chapter’s claim is narrower and more often violated: <strong>leave-one-patient-out on the derivation hospitals is not transport to a hospital that has never been seen.</strong></p>
+<p>LOO asks, approximately, how well the model predicts a patient who could have been in this file but was left out. The left-out patient shares the network’s coding of mRS, the network’s rehab access, the network’s habit of withdrawing care, and the network’s missingness. A new hospital shares none of those by default. Leave-one-<em>center</em>-out is a stricter internal check and is the right LOO variant when the derivation file is clustered (Chapter 6). It is still not a future calendar year, a new country, or a spoke that codes pre-morbid mRS differently.</p>
+<p>The fellow’s draft title — “externally validated” — is therefore already false if the only out-of-sample number is a LOO AUC computed on the same <span class="arithmatex">\(920\)</span> rows. TRIPOD calls that internal validation, and even that name is optimistic when the same analyst used the same file to choose the 14 predictors. Apparent performance, optimism-corrected performance, and external performance are three different numbers. Reporting the first with the third’s adjective is the most common way a calculator reaches an EHR.</p>
+<p>Use LOO inside derivation the way Chapter 8 taught: to compare linear NIHSS against a spline, or hospital intercepts against none, after looking at Pareto <span class="arithmatex">\(k\)</span>. Do not tour twenty specifications. Do not treat a LOO win as a transport certificate. If several <span class="arithmatex">\(k &gt; 0.7\)</span> land on the same corner — the young cerebellar ICH, the 92-year-old with NIHSS <span class="arithmatex">\(3\)</span> — that corner is where the note will be most confident and most wrong. Exact LOO for those points, or a pre-specified restriction of intended use, is the repair. Deleting them is how you launch a dashboard that has never met its hardest patients. <span class="arithmatex">\(K\)</span>-fold by <em>time</em> (train on years 1–2, test on year 3) is still internal, but it rehearses drift better than shuffled LOO. If year 3 is already miscalibrated, plan updating; do not announce external validity.</p>
+<h2 id="calibration-discrimination-and-a-decision-curve-of-the-same-model">Calibration, discrimination, and a decision curve of the same model<a class="headerlink" href="#calibration-discrimination-and-a-decision-curve-of-the-same-model" title="Permanent link">&para;</a></h2>
+<p>Dashboards display probabilities. Ranking statistics do not know what a probability is. Decision curves do not care how elegant the spline was. The same fitted model must survive all three, on the same locked sample, or the sample is being used as a costume shop.</p>
+<p><strong>Discrimination</strong> is whether patients who had mRS <span class="arithmatex">\(0\)</span>–<span class="arithmatex">\(2\)</span> received higher <span class="arithmatex">\(\hat\pi\)</span> than patients who did not. The c-statistic (AUC of the predicted probability) summarizes that ranking. It is useful and incomplete. A model can rank perfectly while saying <span class="arithmatex">\(0.40\)</span> in a world that produces events at <span class="arithmatex">\(0.18\)</span>. Families do not need a rank. They need a percentage that means itself.</p>
+<p><strong>Calibration</strong> is whether, among patients with <span class="arithmatex">\(\hat\pi \approx 0.25\)</span>, about one in four is independent at 90 days. Calibration-in-the-large compares the mean prediction to the event rate. The calibration slope compares the spread of the linear predictor to the spread the sample can support. A Bayesian plot bins on the posterior mean and shows a posterior predictive band for the observed rate (Chapter 8). Name the bins clinically and populate them. Ten deciles of <span class="arithmatex">\(180\)</span> ICH patients with <span class="arithmatex">\(50\)</span> good outcomes produce empty right-hand bins and a false local failure.</p>
+<p><strong>Decision-curve analysis</strong> asks whether acting on the model at a threshold <span class="arithmatex">\(p_t\)</span> has higher net benefit than treating all or treating none (Chapter 15). Name the action or the curve is decoration. Reasonable: a longer family meeting, earlier goals-of-care, a specialist rehab alert. Forbidden, unless you built a benefit model: withholding indicated reperfusion because <span class="arithmatex">\(\hat\pi\)</span> is low. Compute the curve on the same patients as the calibration plot. If the useful interval of <span class="arithmatex">\(p_t\)</span> does not meet the thresholds the service will actually use, the model can rank well and still have no business on the note.</p>
+<p>Report the trio as one object.</p>
+<table>
+<thead>
+<tr>
+<th>Claim</th>
+<th>Number or graph</th>
+<th>Licenses</th>
+<th>Does not license</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Discrimination</td>
+<td>c-statistic with a posterior interval</td>
+<td>“The model ranks”</td>
+<td>A printed probability</td>
+</tr>
+<tr>
+<td>Calibration</td>
+<td>Reliability plot with predictive bands</td>
+<td>“This percentage means itself, here”</td>
+<td>A treatment rule</td>
+</tr>
+<tr>
+<td>Decision curve</td>
+<td>NB versus <span class="arithmatex">\(p_t\)</span>, with treat-all / treat-none</td>
+<td>“Acting at these thresholds beats the defaults”</td>
+<td>Use outside that interval</td>
+</tr>
+</tbody>
+</table>
+<p>A model that wins on AUC, misses the top calibration bin, and loses to treat-all on the only <span class="arithmatex">\(p_t\)</span> the service endorses is not “good except for a small intercept problem.” It is not ready. Recalibrating the intercept may fix the second column and will not automatically fix the third.</p>
+<div class="admonition tip">
+<p class="admonition-title">Clinical Pearl</p>
+<p>Put the calibration plot on the same screen as the percentage, in the units the family hears — “about 1 in 4,” not a logit. If the top bin is uncalibrated, gray out probabilities above that edge rather than rounding them to a false precision.</p>
+</div>
+<h2 id="external-validation-and-intercept-recalibration">External validation and intercept recalibration<a class="headerlink" href="#external-validation-and-intercept-recalibration" title="Permanent link">&para;</a></h2>
+<p>External validation is a new place, a new time, or a prospectively registered cohort whose patients were not used to choose the surface. A random split of the derivation file is not external. A second comprehensive center in the same network is a start; a spoke with different imaging and different rehab access is a stricter test; a different country a year later is the test TRIPOD has in mind when it says “external.”</p>
+<p>What usually fails first is calibration-in-the-large. The new hospital’s independence rate is not the derivation rate, even at the same NIHSS, because withdrawal culture, transfer-in fraction, and missing-mRS mechanisms differ. The linear predictor still ranks. The intercept does not travel.</p>
+<p><strong>Intercept recalibration</strong> freezes the derived surface and re-estimates only the intercept on the new sample:</p>
+<div class="arithmatex">\[
+\operatorname{logit}(\pi_i^{\mathrm{new}}) = \alpha^{\mathrm{new}} + \eta_i^{\mathrm{old}},
+\]</div>
+<p>where <span class="arithmatex">\(\eta_i^{\mathrm{old}}\)</span> is the locked linear predictor (old intercept removed) and <span class="arithmatex">\(\alpha^{\mathrm{new}}\)</span> has a prior centered on the old intercept with enough width for the new baseline to move. You are using the old intercept as a prior location, not as data. If the new hospital is a new hierarchical center, the same idea is a draw of <span class="arithmatex">\(\alpha_{J+1}\)</span> — partial pooling rather than a hard freeze (Chapter 6).</p>
+<p><strong>Slope failure</strong> is a different disease. If low-risk patients are over-predicted and high-risk patients under-predicted, or the reverse, the surface is wrong for that case-mix. An intercept patch will not fix a missing interaction or a stiff spline. A second-stage logistic of <span class="arithmatex">\(y\)</span> on <span class="arithmatex">\(\operatorname{logit}(\hat\pi)\)</span> that re-estimates a slope can make a dashboard less dangerous; it is not a new derivation. If the slope posterior at the new hospital excludes <span class="arithmatex">\(1\)</span> by a wide margin, stop. Revise, restrict intended use, or do not go live. An external “validation” on <span class="arithmatex">\(40\)</span> patients with <span class="arithmatex">\(11\)</span> good outcomes can move an intercept and cannot test a slope. TRIPOD would rather read “intercept updated on <span class="arithmatex">\(n=40\)</span>; slope untested” than a new AUC whose interval runs from <span class="arithmatex">\(0.58\)</span> to <span class="arithmatex">\(0.88\)</span>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Common Pitfall</p>
+<p>Refitting every coefficient on the new hospital and calling the result “validated” is derivation in a smaller room. External validation uses the locked model. Updating, if you do it, is a named subsequent step with its own sample and its own TRIPOD sentence. Do not launder the refit into the validation paragraph.</p>
+</div>
+<h2 id="tripod-as-writing-discipline">TRIPOD as writing discipline<a class="headerlink" href="#tripod-as-writing-discipline" title="Permanent link">&para;</a></h2>
+<p>TRIPOD (Collins, Reitsma, Altman, Moons, 2015) and its TRIPOD+AI update are reporting guidelines. They are also a writing order. If you cannot fill an item, you do not have a model you should print. The guideline will not fit the model for you. It will not convert an AUC into a calibrated probability. It will make it embarrassing to hide what you did.</p>
+<p>Items that stroke-network calculators most often skip, and that this vignette is designed to force:</p>
+<ul>
+<li><strong>Title and intended use.</strong> Development, validation, or both — in the title. User, prediction time, and the action the number may change. “A predictor of favorable outcome” is not a use.</li>
+<li><strong>Participants.</strong> Hospitals, years, who was dropped for missing mRS, and whether missingness tracks severity.</li>
+<li><strong>Predictors.</strong> The legal list at <span class="arithmatex">\(t_0\)</span>, the illegal list you did <em>not</em> use, missing-NIHSS handling. Complete-case analysis is a hidden inclusion criterion.</li>
+<li><strong>Outcome.</strong> mRS <span class="arithmatex">\(0\)</span>–<span class="arithmatex">\(2\)</span> at 90 days, who scored it, whether the scorer saw the predictors. Deaths are mRS <span class="arithmatex">\(6\)</span>, not missing.</li>
+<li><strong>Sample size.</strong> Events per planned coefficient, or prior-predictive assurance that the named surface can be updated at all.</li>
+<li><strong>Specification.</strong> Family, link, nonlinear terms, hierarchy, priors, seed, software. A nomogram without an intercept is a poster.</li>
+<li><strong>Performance.</strong> Calibration <em>and</em> discrimination, in the slices a decision will use, with intervals. A decision curve if you recommend a cutoff.</li>
+<li><strong>External performance and updating.</strong> Named, or an honest “none.” Intercept recalibration belongs in the abstract, not only a supplement.</li>
+<li><strong>How to get a prediction.</strong> Formula, intercept, spline basis, centering of age.</li>
+</ul>
+<p>Write the Bayesian extras anyway: the prior, a prior-predictive check of <span class="arithmatex">\(\pi\)</span> against NIHSS, prior sensitivity of a <em>patient-level</em> probability, <span class="arithmatex">\(\widehat{R}\)</span>, divergences, Pareto <span class="arithmatex">\(k\)</span>. Chapter 19 and Appendix D are the short form. TRIPOD+AI adds the training/tuning/test cut, whether the test file was touched during selection, fairness slices, and the shift you actually looked for. A Bayesian GLM does not get a moral exemption. It gets a shorter appendix if you pre-declared the surface.</p>
+<h2 id="a-brms-tidybayes-pipeline-on-a-teaching-ich-score-analogue">A brms + tidybayes pipeline on a teaching ICH-score analogue<a class="headerlink" href="#a-brms-tidybayes-pipeline-on-a-teaching-ich-score-analogue" title="Permanent link">&para;</a></h2>
+<p>The vignette’s network will eventually need two surfaces, one ischemic and one ICH. The computational object below is the ICH analogue: a five-component teaching structure in the spirit of the classical ICH score, aimed at 90-day mRS <span class="arithmatex">\(0\)</span>–<span class="arithmatex">\(2\)</span> rather than at 30-day death, with teaching coefficients and a teaching sample. It is not the published score, not a meta-analysis, and not a calculator you may paste into a chart.</p>
+<p>Predictors known at ICH admission, in teaching names: GCS, hematoma volume in mL, IVH (yes/no), infratentorial origin (yes/no), age. Outcome: <code>mrs02</code> at 90 days. Six hospitals, <span class="arithmatex">\(n = 480\)</span>, so that a hierarchical intercept is not a cartoon.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Teaching ICH-score analogue: 90-day mRS 0-2 from admission predictors.</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># Teaching pipeline. Uncomment brm() to sample locally.</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># seed used for simulation and for brm().</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nf">library</span><span class="p">(</span><span class="n">brms</span><span class="p">)</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidybayes</span><span class="p">)</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nf">library</span><span class="p">(</span><span class="n">loo</span><span class="p">)</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nf">set.seed</span><span class="p">(</span><span class="m">20260818</span><span class="p">)</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="n">n</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">480</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="n">hospital</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">factor</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="n">length.out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">))</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="n">age</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="nf">pmin</span><span class="p">(</span><span class="nf">pmax</span><span class="p">(</span><span class="nf">rnorm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="m">68</span><span class="p">,</span><span class="w"> </span><span class="m">12</span><span class="p">),</span><span class="w"> </span><span class="m">22</span><span class="p">),</span><span class="w"> </span><span class="m">95</span><span class="p">))</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="n">gcs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">pmin</span><span class="p">(</span><span class="nf">pmax</span><span class="p">(</span><span class="nf">round</span><span class="p">(</span><span class="nf">rnorm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="m">11</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)),</span><span class="w"> </span><span class="m">3</span><span class="p">),</span><span class="w"> </span><span class="m">15</span><span class="p">)</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="n">volume</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">pmax</span><span class="p">(</span><span class="nf">round</span><span class="p">(</span><span class="nf">rgamma</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2.2</span><span class="p">,</span><span class="w"> </span><span class="n">scale</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">12</span><span class="p">)),</span><span class="w"> </span><span class="m">1</span><span class="p">)</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="n">ivh</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbinom</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0.38</span><span class="p">)</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="n">infra</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbinom</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0.16</span><span class="p">)</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="n">alpha_h</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rnorm</span><span class="p">(</span><span class="m">6</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0.35</span><span class="p">)</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="n">linpred</span><span class="w"> </span><span class="o">&lt;-</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">  </span><span class="m">-0.35</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">alpha_h</span><span class="p">[</span><span class="nf">as.integer</span><span class="p">(</span><span class="n">hospital</span><span class="p">)]</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">  </span><span class="m">0.22</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">gcs</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">11</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">  </span><span class="m">-0.035</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">volume</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">20</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">  </span><span class="m">-0.85</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">ivh</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">  </span><span class="m">-0.70</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">infra</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">  </span><span class="m">-0.028</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">age</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">68</span><span class="p">)</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="n">ich</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">tibble</span><span class="p">(</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">  </span><span class="n">hospital</span><span class="p">,</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">gcs</span><span class="p">,</span><span class="w"> </span><span class="n">volume</span><span class="p">,</span><span class="w"> </span><span class="n">ivh</span><span class="p">,</span><span class="w"> </span><span class="n">infra</span><span class="p">,</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">  </span><span class="n">mrs02</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rbinom</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="nf">plogis</span><span class="p">(</span><span class="n">linpred</span><span class="p">))</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="p">)</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="n">priors_ich</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">  </span><span class="nf">prior</span><span class="p">(</span><span class="nf">normal</span><span class="p">(</span><span class="m">-0.4</span><span class="p">,</span><span class="w"> </span><span class="m">0.6</span><span class="p">),</span><span class="w"> </span><span class="n">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Intercept</span><span class="p">),</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">  </span><span class="nf">prior</span><span class="p">(</span><span class="nf">normal</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0.4</span><span class="p">),</span><span class="w"> </span><span class="n">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">),</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">  </span><span class="nf">prior</span><span class="p">(</span><span class="nf">normal</span><span class="p">(</span><span class="m">-0.03</span><span class="p">,</span><span class="w"> </span><span class="m">0.02</span><span class="p">),</span><span class="w"> </span><span class="n">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">coef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">age</span><span class="p">),</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">  </span><span class="nf">prior</span><span class="p">(</span><span class="nf">exponential</span><span class="p">(</span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="n">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sd</span><span class="p">),</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">  </span><span class="nf">prior</span><span class="p">(</span><span class="nf">exponential</span><span class="p">(</span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="n">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sds</span><span class="p">)</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="p">)</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="c1"># fit_ich &lt;- brm(</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="c1">#   mrs02 ~ s(gcs, k = 5) + s(volume, k = 5) + ivh + infra +</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="c1">#     age + (1 | hospital),</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="c1">#   data = ich,</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="c1">#   family = bernoulli(),</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="c1">#   prior = priors_ich,</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="c1">#   seed = 20260818,</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="c1">#   iter = 4000,</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="c1">#   warmup = 1000,</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="c1">#   chains = 4,</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="c1">#   cores = 4,</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="c1">#   refresh = 0</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="c1"># )</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>
+<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="c1"># Internal checks (Chapter 8), then the trio this chapter requires.</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="c1"># loo_ich &lt;- loo(fit_ich)</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="c1"># plot(loo_ich)</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a><span class="c1"># pp_check(fit_ich, type = "bars_grouped", group = "ivh")</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>
+<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a><span class="c1"># new &lt;- tibble(</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a><span class="c1">#   age = 74, gcs = 9, volume = 28, ivh = 1, infra = 0,</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a><span class="c1">#   hospital = "7"</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a><span class="c1"># )</span>
+<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a><span class="c1"># fit_ich %&gt;%</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a><span class="c1">#   add_epred_draws(newdata = new, allow_new_levels = TRUE) %&gt;%</span>
+<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a><span class="c1">#   median_qi(.epred, .width = c(0.5, 0.95))</span>
+</code></pre></div>
+<p>Read the pipeline in lifecycle order. Generate only legal predictors. Put a hierarchical intercept on hospital before you congratulate yourself on a pooled AUC. Spline GCS and volume; keep IVH, infratentorial origin, and age as pre-declared modifiers, with a tight prior on age and default shrinkage on the binaries. Fit. Then: grouped PPCs by IVH and volume band; LOO with Pareto <span class="arithmatex">\(k\)</span>; calibration in four named bins of posterior-mean <span class="arithmatex">\(\hat\pi\)</span>; a c-statistic as a posterior functional, not a single <code>pROC</code> number; a decision curve whose action is “open an early goals-of-care meeting,” not “cancel surgery.” For hospital 7, do not refit <span class="arithmatex">\(\boldsymbol{\gamma}\)</span>. Draw a new intercept.</p>
+<div class="admonition example">
+<p class="admonition-title">R Deep Dive</p>
+<p><code>add_epred_draws()</code> is the expected probability <span class="arithmatex">\(\pi_i\)</span>, which is what the note should display. <code>add_predicted_draws()</code> is a posterior predictive <span class="arithmatex">\(0/1\)</span>, which is what a PPC wants. Do not show the family a single posterior predictive draw and call it their forecast. Do not show them <span class="arithmatex">\(\operatorname{logit}(\hat\pi)\)</span> and call it English. For a new hospital, <code>allow_new_levels = TRUE</code> uses the hierarchical prior predictive for <span class="arithmatex">\(\alpha_{J+1}\)</span>. That interval is wider than the interval at hospital 1, and the width is the point.</p>
+</div>
+<h2 id="worked-solution-to-the-vignette">Worked solution to the vignette<a class="headerlink" href="#worked-solution-to-the-vignette" title="Permanent link">&para;</a></h2>
+<p><strong>(1) Estimand.</strong> Prognosis under the network’s observed care policy. Not diagnosis of LVO or of hematoma expansion. Not the benefit of EVT or of surgical evacuation.</p>
+<p><strong>(2) Prediction time.</strong> Columns known when the attending signs: age, pre-morbid mRS, admission NIHSS or GCS, last-known-well to door, systolic pressure, glucose, anticoagulant, ICH volume and location if already measured, hospital. Day-2 NIHSS, TICI grade, expansion, pneumonia, and discharge destination are illegal. The fellow’s 14-predictor fit is already disqualified, before anyone discusses AUC.</p>
+<p><strong>(3) Allowed action; forbidden action.</strong> Allowed: a calibrated percentage for counseling, with a band, and perhaps an earlier goals-of-care conversation if the decision curve supports that threshold. Forbidden: withholding a transfer or a procedure that would have been offered in the absence of the number. The prohibition belongs on the note.</p>
+<p><strong>(4) Reasons to refuse go-live at any AUC.</strong> Illegal predictors; no calibration plot in clinical bins; LOO sold as external validation; no new-hospital intercept check; a decision curve that loses to treat-all on every threshold the service will use; a missing-mRS mechanism that silently drops the dead or the discharged-to-nowhere. An AUC of <span class="arithmatex">\(0.90\)</span> with two of those failures is a ranking toy.</p>
+<p>What you will actually build is smaller than the fellow’s GUI: an ischemic surface (<code>t2(nihss, age) + s(log_time) + legal w + (1 | hospital)</code>) and the ICH analogue above, each with shrinkage priors, Chapter 8 checks, and the trio of calibration, discrimination, and a named decision curve. External performance starts as leave-one-center-out plus a locked-model evaluation at hospitals that did not dominate derivation, then intercept recalibration when the next spoke comes online. The title will say “development and internal validation; intercept updated at site <span class="arithmatex">\(k\)</span>” and will not say “externally validated” until a site that never touched the surface has been evaluated. TRIPOD is that outline, written before the first <code>brm()</code> call. The CMIO’s single number is refused. The note may show a posterior median and a 95% interval, or it may show nothing.</p>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p><strong>Illegal columns.</strong> The fellow’s 14-predictor fit includes 24-hour NIHSS and TICI 2b/3. Explain, in four sentences, why the apparent AUC is not the AUC the admission note will have, and name the TRIPOD item that should have made the leakage visible in the paper even if the software never complained.</p>
+</li>
+<li>
+<p><strong>Leave-one-out versus leave-one-hospital-out.</strong> PSIS-LOO ELPD favors a spline on NIHSS over a linear term (difference <span class="arithmatex">\(+6\)</span>, SE <span class="arithmatex">\(4\)</span>). Leave-one-hospital-out, on the same two models, favors the linear term at two of seven sites. What are you allowed to claim about nonlinearity, and what must you do before the spline reaches the note?</p>
+</li>
+<li>
+<p><strong>Intercept only.</strong> At a new spoke, <span class="arithmatex">\(n = 90\)</span> with <span class="arithmatex">\(28\)</span> mRS <span class="arithmatex">\(0\)</span>–<span class="arithmatex">\(2\)</span> events, the locked model’s mean predicted probability is <span class="arithmatex">\(0.41\)</span> and the observed rate is <span class="arithmatex">\(0.31\)</span>. The calibration slope posterior is <span class="arithmatex">\(0.94\)</span> (<span class="arithmatex">\(95\%\)</span> interval <span class="arithmatex">\(0.61\)</span> to <span class="arithmatex">\(1.28\)</span>). Do you recalibrate the intercept, re-estimate the slope, or refuse the go-live? Write the sentence that belongs in the abstract.</p>
+</li>
+<li>
+<p><strong>Same model, three graphs.</strong> You are handed an AUC of <span class="arithmatex">\(0.81\)</span>, a calibration plot whose top bin sits above the predictive band, and a decision curve that beats treat-all only for <span class="arithmatex">\(p_t &lt; 0.08\)</span>. The service will not open a goals-of-care meeting below a predicted dependence risk of <span class="arithmatex">\(0.30\)</span> (that is, they will not act unless <span class="arithmatex">\(\hat\pi\)</span> for mRS <span class="arithmatex">\(0\)</span>–<span class="arithmatex">\(2\)</span> is below <span class="arithmatex">\(0.70\)</span>). What do you tell the quality committee, in five sentences, about putting this model on the admission note?</p>
+</li>
+</ol>
+<h2 id="further-reading">Further reading<a class="headerlink" href="#further-reading" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Collins GS, Reitsma JB, Altman DG, Moons KGM. Transparent reporting of a multivariable prediction model for individual prognosis or diagnosis (TRIPOD). <em>Ann Intern Med</em>. 2015;162:55-63.</li>
+<li>Collins GS, Moons KGM, Dhiman P, et al. TRIPOD+AI statement: updated guidance for reporting clinical prediction models with machine learning. <em>BMJ</em>. 2024;385:e078378.</li>
+<li>Steyerberg EW. <em>Clinical Prediction Models</em>. 2nd ed. Springer; 2019.</li>
+<li>Harrell FE. <em>Regression Modeling Strategies</em>. 2nd ed. Springer; 2015. Restricted cubic splines; hostility to unpenalized stepwise selection.</li>
+<li>Riley RD, Ensor J, Snell KIE, et al. Calculating the sample size required for developing a clinical prediction model. <em>BMJ</em>. 2020;368:m441.</li>
+<li>Van Calster B, McLernon DJ, van Smeden M, Wynants L, Steyerberg EW. Calibration: the Achilles heel of predictive analytics. <em>BMC Med</em>. 2019;17:230.</li>
+<li>Vickers AJ, Elkin EB. Decision curve analysis: a novel method for evaluating prediction models. <em>Med Decis Making</em>. 2006;26:565-574.</li>
+<li>Vehtari A, Gelman A, Gabry J. Practical Bayesian model evaluation using leave-one-out cross-validation and WAIC. <em>Stat Comput</em>. 2017;27:1413-1432.</li>
+<li>Bürkner P-C. brms: an R package for Bayesian multilevel models using Stan. <em>J Stat Softw</em>. 2017;80:1-28.</li>
+<li>Hemphill JC, Bonovich DC, Besmertis L, Manley GT, Johnston SC. The ICH score. <em>Stroke</em>. 2001;32:891-897. Design context for the teaching analogue only; do not copy tables or coefficients.</li>
+</ul>
+<div class="admonition success">
+<p class="admonition-title">Key Takeaway</p>
+<p>An admission-note probability is a prognostic promise under a named policy, not a diagnosis and not a treatment rule. Derive a family that can generate the outcome, a nonlinear NIHSS–age–time (or GCS–volume) surface, and shrinkage priors that keep illegal flexibility out of the tails. Check internally with PPCs, calibration, a decision curve, and LOO — and remember that PSIS-LOO is not a new hospital. Validate externally; update the intercept when the baseline moves; revise rather than patch when the slope collapses. TRIPOD is the writing order that makes those steps visible. A single AUC, however large, is not a go-live.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="22-causal-target-trial.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: 22. Causal Models and the Target Trial">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                22. Causal Models and the Target Trial
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="24-missing-data-measurement-error.html" class="md-footer__link md-footer__link--next" aria-label="Next: 24. Missing Data and Measurement Error">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                24. Missing Data and Measurement Error
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Bayesian Clinical Reasoning
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/rkalani1/Bayesian-Reasoning" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tracking", "navigation.top", "navigation.footer", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../javascripts/header-controls.js"></script>
+      
+    
+  </body>
+</html>

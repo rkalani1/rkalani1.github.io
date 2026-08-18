@@ -1,0 +1,2600 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Bayesian statistics, decision analysis, and evidence for neurologists and clinician-scientists.">
+      
+      
+      
+        <link rel="canonical" href="https://rkalani1.github.io/Bayesian-Reasoning/curriculum/21-transporting-evidence-hte.html">
+      
+      
+        <link rel="prev" href="20-reproducible-pipelines.html">
+      
+      
+        <link rel="next" href="22-causal-target-trial.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>21. Transporting Evidence - Bayesian Clinical Reasoning</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CIBM+Plex+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"IBM Plex Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../stylesheets/page-orientation.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Bayesian Clinical Reasoning">
+  <meta property="og:title" content="21. Transporting Evidence — Bayesian Clinical Reasoning">
+  <meta property="og:description" content="Bayesian statistics, decision analysis, and evidence for neurologists and clinician-scientists.">
+  <meta property="og:url" content="https://rkalani1.github.io/Bayesian-Reasoning/curriculum/21-transporting-evidence-hte.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="21. Transporting Evidence — Bayesian Clinical Reasoning">
+  <meta name="twitter:description" content="Bayesian statistics, decision analysis, and evidence for neurologists and clinician-scientists.">
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#transporting-trial-evidence-to-this-patient-effect-modification-shrinkage-and-the-individual-posterior" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+
+  
+
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../index.html" title="Bayesian Clinical Reasoning" class="md-header__button md-logo" aria-label="Bayesian Clinical Reasoning" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">Bayesian Clinical Reasoning</span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">21. Transporting Evidence</span>
+        </div>
+      </div>
+      <a class="mobile-page-orientation" href="21-transporting-evidence-hte.html" aria-label="Bayes, current page: 21. Transporting Evidence">
+        <strong>Bayes</strong><span aria-hidden="true">·</span><span>21. Transporting Evidence</span>
+      </a>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="amber"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="amber"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rkalani1/Bayesian-Reasoning" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rkalani1/Bayesian-Reasoning
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Bayesian Clinical Reasoning" class="md-nav__button md-logo" aria-label="Bayesian Clinical Reasoning" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Bayesian Clinical Reasoning
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rkalani1/Bayesian-Reasoning" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    rkalani1/Bayesian-Reasoning
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-use.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How to use this book
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../evidence-register.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Evidence register
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Book
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Book
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part I — Foundations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part I — Foundations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="01-why-bayesian-thinking-matters.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01. Why Bayesian Thinking Matters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="02-probability-odds-uncertainty.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02. Probability, Odds, and Uncertainty
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="03-bayes-theorem.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03. Bayes’ Theorem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="04-priors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04. Priors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part II — Inference with R
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part II — Inference with R
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="05-likelihoods-conjugate-models.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05. Likelihoods and Conjugate Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="06-hierarchical-models.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06. Hierarchical Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="07-computational-inference.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07. Computational Inference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="08-model-checking.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08. Model Checking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="09-estimation-rope-bayes-factors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09. Estimation, ROPE, and Bayes Factors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part III — Design and Synthesis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part III — Design and Synthesis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="10-sample-size-adaptive-designs.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10. Sample Size and Adaptive Designs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="11-diagnostic-accuracy.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    11. Diagnostic Accuracy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="12-survival-competing-risks.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    12. Survival and Competing Risks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="13-bayesian-meta-analysis.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    13. Bayesian Meta-Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part IV — Decision and Communication
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part IV — Decision and Communication
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="14-decision-theory-thresholds.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    14. Decision Theory and Thresholds
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="15-decision-curves-voi.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    15. Decision Curves and Value of Information
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="16-bedside-shared-decisions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    16. Bedside and Shared Decisions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="17-communicating-uncertainty.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    17. Communicating Uncertainty
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part V — Synthesis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part V — Synthesis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="18-integrated-case-studies.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    18. Integrated Case Studies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="19-complete-workflow.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    19. A Complete Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="20-reproducible-pipelines.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    20. Reproducible Pipelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Part VI — Identification and institutions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Part VI — Identification and institutions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. Transporting Evidence
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="21-transporting-evidence-hte.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    21. Transporting Evidence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#opening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opening
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clinical-vignette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clinical vignette
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#three-questions-the-ate-the-subgroup-and-this-patients-posterior-predictive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Three questions: the ATE, the subgroup, and this patient's posterior predictive
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#effect-modifiers-you-actually-believe-versus-fishing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Effect modifiers you actually believe versus fishing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hierarchical-shrinkage-of-subgroups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hierarchical shrinkage of subgroups
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#g-computation-and-posterior-standardization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        G-computation and posterior standardization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transport-assumptions-in-stroke-english" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transport assumptions in stroke English
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#r-deep-dive-an-ordinal-model-pre-specified-interactions-and-her-posterior-predictive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R Deep Dive: an ordinal model, pre-specified interactions, and her posterior predictive
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-may-not-say-to-the-family-after-an-interaction-plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What you may not say to the family after an interaction plot
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercises
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="22-causal-target-trial.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    22. Causal Models and the Target Trial
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="23-clinical-prediction-models.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    23. Clinical Prediction Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="24-missing-data-measurement-error.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    24. Missing Data and Measurement Error
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="25-grade-evidence-to-decision.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    25. GRADE and Evidence-to-Decision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="26-ethics-governance-adaptive.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    26. Ethics and Adaptive Governance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Appendices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Appendices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendices/a-r-setup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    A. R Setup and Cheatsheet
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendices/b-prior-elicitation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    B. Prior Elicitation Worksheets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendices/c-solutions.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C. Solutions to Exercises
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../appendices/d-glossary.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    D. Glossary and Checklists
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#opening" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opening
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clinical-vignette" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clinical vignette
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Learning objectives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#three-questions-the-ate-the-subgroup-and-this-patients-posterior-predictive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Three questions: the ATE, the subgroup, and this patient's posterior predictive
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#effect-modifiers-you-actually-believe-versus-fishing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Effect modifiers you actually believe versus fishing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hierarchical-shrinkage-of-subgroups" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hierarchical shrinkage of subgroups
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#g-computation-and-posterior-standardization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        G-computation and posterior standardization
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transport-assumptions-in-stroke-english" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transport assumptions in stroke English
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#r-deep-dive-an-ordinal-model-pre-specified-interactions-and-her-posterior-predictive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R Deep Dive: an ordinal model, pre-specified interactions, and her posterior predictive
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-may-not-say-to-the-family-after-an-interaction-plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What you may not say to the family after an interaction plot
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercises" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercises
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-reading" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Further reading
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="transporting-trial-evidence-to-this-patient-effect-modification-shrinkage-and-the-individual-posterior">Transporting trial evidence to this patient: effect modification, shrinkage, and the individual posterior<a class="headerlink" href="#transporting-trial-evidence-to-this-patient-effect-modification-shrinkage-and-the-individual-posterior" title="Permanent link">&para;</a></h1>
+<h2 id="opening">Opening<a class="headerlink" href="#opening" title="Permanent link">&para;</a></h2>
+<p>The whiteboard number is an average treatment effect, or a close cousin of one, computed in a sampling frame that rejected prestroke disability and barely saw her age. The daughter is asking what will happen to <em>her</em> mother. Those are different functionals of different distributions. Pretending they are the same object is how “the trial was positive” becomes a transfer order.</p>
+<h2 id="clinical-vignette">Clinical vignette<a class="headerlink" href="#clinical-vignette" title="Permanent link">&para;</a></h2>
+<p>A teaching posterior for a DAWN-eligible patient sits on the workroom whiteboard: late window, clinical-core mismatch, prestroke modified Rankin score of 0 or 1, large-vessel occlusion, a large shift of the 90-day mRS toward better states with endovascular therapy. The fellow points at it, then at the bed. “She is DAWN-positive. We take her.”</p>
+<p>She is not. She is 89. Prestroke mRS is 3: cane, help to bathe, still recognizes faces and eats independently. ASPECTS is 7. NIHSS is 18. Last known well was at dinner; it is now 02:10. CTA shows a left M1 cutoff. CT perfusion, for teaching, shows a small estimated core and a large penumbra. The photograph that made the trial famous was not taken of a woman who already lived at 3.</p>
+<p>Write, before any model: (1) what the whiteboard posterior is actually the posterior <em>of</em>; (2) which of her covariates are effect modifiers you believed yesterday, and which you are tempted to discover tonight; (3) whether anyone like her was randomized; (4) the sentence you will not say even if an interaction plot later looks dramatic.</p>
+<h2 id="learning-objectives">Learning objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">&para;</a></h2>
+<p>After working this chapter you should be able to:</p>
+<ul>
+<li>Name three nested questions — the average treatment effect, a subgroup contrast, and this patient’s posterior predictive — and say which one a family is asking.</li>
+<li>Separate effect modifiers you would have written into a protocol on Monday from interactions found after staring at a forest plot.</li>
+<li>Shrink noisy subgroup contrasts toward the average effect with a hierarchical prior, and say when that shrinkage is a feature rather than a political act.</li>
+<li>Standardize a fitted outcome model to a new mix of patients (g-computation) and contrast that average with a single-patient prediction.</li>
+<li>Recite consistency, positivity, and exchangeability in stroke English, and recognize when prestroke mRS 3 has already broken positivity.</li>
+<li>Refuse the sentences that turn an interaction plot into a false individual prognosis.</li>
+</ul>
+<h2 id="three-questions-the-ate-the-subgroup-and-this-patients-posterior-predictive">Three questions: the ATE, the subgroup, and this patient's posterior predictive<a class="headerlink" href="#three-questions-the-ate-the-subgroup-and-this-patients-posterior-predictive" title="Permanent link">&para;</a></h2>
+<p>Every late-window EVT conversation collapses three questions into one adjective. Separate them on paper or you will transport the wrong object.</p>
+<p><strong>Question 1 — the average treatment effect (ATE).</strong> In the trial’s sampling frame, what is the expected contrast in 90-day mRS if everyone is assigned EVT versus everyone is assigned medical care? Write <span class="arithmatex">\(\mathbb{E}[Y(1) - Y(0)]\)</span>, or, better for an ordinal outcome, a small set of contrasts such as <span class="arithmatex">\(\mathbb{E}[\mathbf{1}(Y(1) \le 2) - \mathbf{1}(Y(0) \le 2)]\)</span> and the corresponding contrasts for death and for return to prestroke state. This is what a well-designed individually randomized trial estimates, in the people it enrolled. “DAWN was positive” is a slogan pointing at Question 1.</p>
+<p><strong>Question 2 — a subgroup contrast, or CATE.</strong> In a slice of that frame defined by a covariate — age <span class="arithmatex">\(\ge 80\)</span>, ASPECTS 7, right-hemisphere occlusion — what is <span class="arithmatex">\(\mathbb{E}[Y(1) - Y(0) \mid X \in \mathcal{S}]\)</span>? This is still an <em>average</em>, just a smaller one. It is not her. A forest plot of eight pre-specified subgroups is eight attempts at Question 2. An unadjusted hunt through twenty slices is eight attempts plus twelve acts of fiction.</p>
+<p><strong>Question 3 — this patient’s posterior predictive.</strong> Given her covariate vector <span class="arithmatex">\(x^\star\)</span> — 89 years, prestroke mRS 3, ASPECTS 7, NIHSS 18, left M1, late clock — and given the data and a model, what is</p>
+<div class="arithmatex">\[
+p(Y \mid X = x^\star,\ A = a,\ \text{data})
+= \int p(Y \mid X = x^\star,\ A = a,\ \theta)\, p(\theta \mid \text{data})\, d\theta
+\]</div>
+<p>under <span class="arithmatex">\(a =\)</span> EVT and under <span class="arithmatex">\(a =\)</span> medical care? This is the object Chapter 16 turns into frequencies for a daughter. It is not a p-value. It is not a subgroup odds ratio. It is a pair of distributions over an ordinal scale, already integrating parameter uncertainty.</p>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Formal object</th>
+<th>Who it is about</th>
+<th>What usually impersonates it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. ATE</td>
+<td><span class="arithmatex">\(\mathbb{E}[Y(1)-Y(0)]\)</span> in the trial frame</td>
+<td>The enrolled population</td>
+<td>“The trial was positive.”</td>
+</tr>
+<tr>
+<td>2. Subgroup CATE</td>
+<td><span class="arithmatex">\(\mathbb{E}[Y(1)-Y(0) \mid X \in \mathcal{S}]\)</span></td>
+<td>A slice of that population</td>
+<td>A forest-plot row, often unshrunk</td>
+</tr>
+<tr>
+<td>3. This patient</td>
+<td><span class="arithmatex">\(p(Y \mid X=x^\star, A=a, \text{data})\)</span></td>
+<td>The woman in the bed</td>
+<td>“She is DAWN-eligible.”</td>
+</tr>
+</tbody>
+</table>
+<p>The fellow’s sentence answered Question 1, borrowed the eligibility language of Question 2, and offered the result to the family as if it were Question 3. The transport problem is the move from 1 (or 2) to 3 when <span class="arithmatex">\(x^\star\)</span> is not a draw from the trial’s <span class="arithmatex">\(X\)</span>.</p>
+<pre class="mermaid"><code>flowchart TD
+  Q1["Question 1 — ATE&lt;br/&gt;E[Y(1)-Y(0)] in the trial frame"]
+  Q2["Question 2 — CATE&lt;br/&gt;E[Y(1)-Y(0) | X in S]"]
+  Q3["Question 3 — this patient&lt;br/&gt;p(Y | X=x-star, A=a, data)"]
+  Q1 --&gt;|"shrink a pre-specified slice"| Q2
+  Q1 --&gt;|"x-star is a draw from trial X"| Q3
+  Q2 --&gt;|"x-star sits in S and positivity holds"| Q3
+  Q1 --&gt;|"prestroke 3 was excluded"| Fail["Stop: transport problem, not a forest-plot row"]
+  Fail --&gt; Name["Name the missing overlap before naming a device"]</code></pre>
+<p>A <strong>teaching</strong> contrast, invented so the arithmetic can be seen and <em>not</em> copied from any late-window paper: in a DAWN-like teaching cohort the modeled probability of mRS 0–2 at 90 days is 0.44 with EVT and 0.18 without. That 26-point difference is a Question-1 number. It is already the wrong endpoint for a woman whose prestroke state is 3, because mRS 0–2 is a state she did not occupy last week. Even if you switch the endpoint to “return to prestroke 3 or better,” you still do not have <em>her</em> number. You have an average among people who were allowed into the cohort.</p>
+<div class="admonition tip">
+<p class="admonition-title">Clinical Pearl</p>
+<p>If the trial’s case-report form would have ticked “exclude” at prestroke mRS 3, you do not have a subgroup analysis waiting in a supplement. You have a transport problem, and positivity may already have failed. Name that before you name a device.</p>
+</div>
+<h2 id="effect-modifiers-you-actually-believe-versus-fishing">Effect modifiers you actually believe versus fishing<a class="headerlink" href="#effect-modifiers-you-actually-believe-versus-fishing" title="Permanent link">&para;</a></h2>
+<p>An effect modifier is a covariate for which the contrast <span class="arithmatex">\(Y(1)-Y(0)\)</span> changes with <span class="arithmatex">\(X\)</span>. That is a causal claim about treatment-effect heterogeneity, not a claim that <span class="arithmatex">\(X\)</span> predicts outcome. Age predicts 90-day mRS under either action. Age is an effect modifier of EVT only if the <em>contrast</em> between actions changes with age.</p>
+<p>You do not learn that distinction by starring every row of a forest plot. You learn it by writing, on Monday, the short list of modifiers your stroke service actually believes, for reasons that would survive a null interaction.</p>
+<p><strong>Modifiers a stroke attending already believed, before seeing tonight’s plot.</strong> Core and ASPECTS: a larger established infarct leaves less penumbra; this is why late-window trials gated on mismatch, and why ASPECTS 7 is nearer the edge than ASPECTS 10. Clock, given imaging: time is a modifier when the image is crude and is partly already in the image when the core is reliable. Prestroke disability: not only a change of utility (Chapter 16) but a change of what the outcome <em>is</em> — a shift from 4 to 3 is not a shift from 2 to 1. Age: partly a marker of the previous two, partly of hemorrhage, withdrawal culture, and tortuosity; treat it as continuous, because an “age <span class="arithmatex">\(\ge 80\)</span>” box erases 80 versus 89. NIHSS and occlusion site: a left M1 with NIHSS 18 is not an NIHSS 8 M2.</p>
+<p><strong>Modifiers you are tempted to discover at 02:10.</strong> Laterality, after the last right-hemisphere case did poorly. Every laboratory cut as a treatment interaction rather than a prognostic adjustment. Weekend as a modifier of the device rather than of door-to-puncture. Hour-by-hour clock bins in a sample that has twelve patients after hour 20. “Women over 85 with ASPECTS 7 and atrial fibrillation,” which is not a modifier. It is a description of the bed.</p>
+<p>The test is chronological. Would you have written the interaction into the statistical analysis plan last year, with a skeptical prior, because the biology demanded it? Then it belongs in the model. Did it become interesting after a software package printed twenty interaction p-values? Then it is a fishing expedition wearing a forest plot.</p>
+<div class="admonition warning">
+<p class="admonition-title">Common Pitfall</p>
+<p>“No significant interaction” is not evidence of a homogeneous effect. It is a statement that the data could not distinguish the interaction you happened to test from zero, at a threshold nobody should be using for this decision. A wide posterior on an age interaction that includes both harm and large benefit is <em>uncertainty</em>, not reassurance that the ATE applies at 89.</p>
+</div>
+<p>Pre-specification is not a ritual for journals. It is how you keep Question 2 from eating the prior you need for Question 3. Every extra interaction is a bid to spend residual information on a slope instead of on the intercept that the next patient still needs. With a teaching cohort of a few hundred ordinal outcomes you can defend three or four pre-specified treatment interactions. You cannot defend fifteen.</p>
+<p>A second, quieter error is to treat a strong <em>prognostic</em> factor as if it were automatically a modifier. NIHSS will dominate a main-effects model of mRS. That does not tell you whether EVT’s contrast is larger at NIHSS 20 than at NIHSS 10. Risk-based heterogeneity — people at intermediate untreated risk having more absolute gain — is a reason to <em>look</em>, with a model that lets the contrast vary smoothly with predicted untreated outcome. It is not a license to slice the trial at every NIHSS point and declare a sweet spot.</p>
+<h2 id="hierarchical-shrinkage-of-subgroups">Hierarchical shrinkage of subgroups<a class="headerlink" href="#hierarchical-shrinkage-of-subgroups" title="Permanent link">&para;</a></h2>
+<p>Suppose, as a <strong>teaching</strong> partition and not as a protocol, you cut the teaching cohort into four age bands and also isolate the handful of patients with prestroke mRS 3. Separate logistics (or separate ordinal models) in each slice are <em>no pooling</em>. The slice with twelve patients and a noisy odds ratio of 1.1 is treated as a fact. The slice with ninety patients and an odds ratio of 2.4 is treated as a fact of equal dignity. A journalist, or a fellow, will quote the 1.1.</p>
+<p>Complete pooling — one EVT coefficient, no interactions — is the opposite failure. It announces that the contrast does not move with age or prestroke state, which is exactly the claim you do not believe about the woman in the bed.</p>
+<p>Partial pooling is the same compromise Chapter 6 made for hospitals, now applied to subgroup contrasts. Write the treatment effect in slice <span class="arithmatex">\(j\)</span> as</p>
+<div class="arithmatex">\[
+\beta_j \sim \mathrm{Normal}(\mu_\beta,\ \tau_\beta^2).
+\]</div>
+<p><span class="arithmatex">\(\mu_\beta\)</span> is the ATE on the model’s scale. <span class="arithmatex">\(\tau_\beta\)</span> is how much genuine modification you are willing to believe exists across the slices you pre-specified. The posterior mean of <span class="arithmatex">\(\beta_j\)</span> is pulled toward <span class="arithmatex">\(\mu_\beta\)</span> with a force that grows as <span class="arithmatex">\(n_j\)</span> shrinks and as <span class="arithmatex">\(\tau_\beta\)</span> shrinks. The twelve-patient prestroke-mRS-3 slice moves almost to the average. The ninety-patient late-sixties slice barely moves.</p>
+<p>In a model with continuous modifiers you do not need literal slices. A skeptical prior on an interaction coefficient <em>is</em> shrinkage toward no modification:</p>
+<div class="arithmatex">\[
+\beta_{\text{EVT} \times \text{age}} \sim \mathrm{Normal}(0,\ 0.25^2)
+\]</div>
+<p>on a logit or cumulative-logit scale says that a decade of age is very unlikely to flip a large EVT benefit into harm, and still allows the contrast to tilt. That is a scientific claim. Defend it as one. A <span class="arithmatex">\(\mathrm{Normal}(0,\ 10^2)\)</span> prior on the same interaction is not “letting the data speak.” It is a prior that treats an order-of-magnitude change in the odds ratio per decade as ordinary.</p>
+<p>When should you <em>refuse</em> to shrink a slice toward the ATE? When the slice is not a noisy version of the same question. Prestroke mRS 3 is the live example. If the trial’s sampling frame contained almost no such patients, the issue is not that <span class="arithmatex">\(\beta_{j}\)</span> is noisy. The issue is that <span class="arithmatex">\(\beta_{j}\)</span> is barely identified, and shrinking it toward a <span class="arithmatex">\(\mu_\beta\)</span> estimated from mRS 0–1 patients is a decision to <em>export</em> the ATE into a phenotype the trial declined to study. Shrinkage cannot manufacture overlap. It can only keep you from worshipping a cell of size twelve.</p>
+<div class="admonition note">
+<p class="admonition-title">Mathematical Detail</p>
+<p>In the Gaussian sketch the shrunk slice effect is <span class="arithmatex">\(\hat\beta_j \approx w_j \hat\beta_j^{\text{local}} + (1-w_j)\mu_\beta\)</span> with <span class="arithmatex">\(w_j = v_j^{-1} / (v_j^{-1} + \tau_\beta^{-2})\)</span>, where <span class="arithmatex">\(v_j\)</span> is the local sampling variance. Logistic and cumulative-logit analogues have the same shape. As <span class="arithmatex">\(v_j \to \infty\)</span> (tiny <span class="arithmatex">\(n_j\)</span>), <span class="arithmatex">\(\hat\beta_j \to \mu_\beta\)</span>. As <span class="arithmatex">\(\tau_\beta \to 0\)</span>, every slice collapses to the ATE. Estimating <span class="arithmatex">\(\tau_\beta\)</span> from four slices is barely possible; the prior on <span class="arithmatex">\(\tau_\beta\)</span> is then part of the result, exactly as the prior on a meta-analytic <span class="arithmatex">\(\tau\)</span> was in Chapter 13. Report both.</p>
+</div>
+<p>A practical architecture in <code>brms</code> is therefore not eight separate models. It is one ordinal model, main effects for the prognostic factors you believe, treatment, and a short list of pre-specified treatment interactions with skeptical priors. If you truly have many exchangeable slices — sites, or a long list of pre-committed strata — a term such as <code>(0 + evt | stratum)</code> puts a hierarchical prior on the stratum-specific treatment increments and lets <span class="arithmatex">\(\tau_\beta\)</span> be shared. Do not reach for that term to rescue an interaction you found at 01:50.</p>
+<h2 id="g-computation-and-posterior-standardization">G-computation and posterior standardization<a class="headerlink" href="#g-computation-and-posterior-standardization" title="Permanent link">&para;</a></h2>
+<p>Fitting the outcome model is not the last step. The model’s coefficients live on a cumulative-logit scale and are mixed with interactions. Nobody in the room wants <span class="arithmatex">\(\beta_{\text{EVT} \times \text{age}}\)</span>. They want a contrast in probability units, for a population or for a person.</p>
+<p>G-computation (posterior standardization) is the move that produces those contrasts from a fitted outcome model.</p>
+<ol>
+<li>Fit <span class="arithmatex">\(p(Y \mid X, A, \theta)\)</span> — here, a cumulative logit for 90-day mRS.</li>
+<li>For each posterior draw <span class="arithmatex">\(\theta^{(s)}\)</span>, and for each person <span class="arithmatex">\(i\)</span> in a <em>target</em> sample, compute <span class="arithmatex">\(\hat p_i^{(s)}(a) = P(Y \in \mathcal{A} \mid X_i,\ A=a,\ \theta^{(s)})\)</span> under both actions, for the sets <span class="arithmatex">\(\mathcal{A}\)</span> you care about (death; return to prestroke state; mRS <span class="arithmatex">\(\le 3\)</span>).</li>
+<li>Average over people: <span class="arithmatex">\(\hat\Delta^{(s)} = N^{-1}\sum_i \bigl(\hat p_i^{(s)}(1) - \hat p_i^{(s)}(0)\bigr)\)</span>.</li>
+<li>The collection <span class="arithmatex">\(\{\hat\Delta^{(s)}\}\)</span> is the posterior of the standardized contrast in the target mix.</li>
+</ol>
+<p>If the target sample is the trial’s own patients, you have recovered a model-based ATE (Question 1). If the target sample is last year’s admissions at <em>this</em> hospital — older, more prestroke disability, worse ASPECTS — you have transported the contrast to a new mix, <em>provided</em> the transport assumptions below hold. If the target “sample” is one row, <span class="arithmatex">\(x^\star\)</span>, you have Question 3 and you should stop averaging.</p>
+<p>The distinction matters because a hospital can have a smaller standardized effect than the trial without any single coefficient being “nonsignificant.” The mix moved.</p>
+<p>A <strong>teaching</strong> four-row world, invented so the weighted sums can be done by hand. “Good” here means return to prestroke function or better — already a more honest endpoint for mixed baselines than mRS 0–2.</p>
+<table>
+<thead>
+<tr>
+<th>Phenotype (teaching)</th>
+<th style="text-align: right;">P(good | EVT)</th>
+<th style="text-align: right;">P(good | medical)</th>
+<th style="text-align: right;">Risk difference</th>
+<th style="text-align: right;">Weight in trial</th>
+<th style="text-align: right;">Weight at this hospital</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>70 years, prestroke 0, ASPECTS 9</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">0.22</td>
+<td style="text-align: right;">0.28</td>
+<td style="text-align: right;">0.40</td>
+<td style="text-align: right;">0.15</td>
+</tr>
+<tr>
+<td>80 years, prestroke 1, ASPECTS 8</td>
+<td style="text-align: right;">0.36</td>
+<td style="text-align: right;">0.16</td>
+<td style="text-align: right;">0.20</td>
+<td style="text-align: right;">0.35</td>
+<td style="text-align: right;">0.25</td>
+</tr>
+<tr>
+<td>85 years, prestroke 1, ASPECTS 7</td>
+<td style="text-align: right;">0.24</td>
+<td style="text-align: right;">0.12</td>
+<td style="text-align: right;">0.12</td>
+<td style="text-align: right;">0.20</td>
+<td style="text-align: right;">0.35</td>
+</tr>
+<tr>
+<td>89 years, prestroke 3, ASPECTS 7</td>
+<td style="text-align: right;">0.11</td>
+<td style="text-align: right;">0.07</td>
+<td style="text-align: right;">0.04</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: right;">0.25</td>
+</tr>
+</tbody>
+</table>
+<p>The trial ATE is the trial-weighted sum of the risk differences:</p>
+<div class="arithmatex">\[
+0.40\times 0.28 + 0.35\times 0.20 + 0.20\times 0.12 + 0.05\times 0.04 = 0.208.
+\]</div>
+<p>The hospital-standardized effect is</p>
+<div class="arithmatex">\[
+0.15\times 0.28 + 0.25\times 0.20 + 0.35\times 0.12 + 0.25\times 0.04 = 0.144.
+\]</div>
+<p>This patient’s contrast is the last row: 0.04. All three numbers are <strong>teaching</strong> numbers. None is a DAWN cell count. The arithmetic is the lesson. The 4-row trial-weighted ATE of 0.21 (return-to-prestroke) and her 0.04 can both be true of the same surface. The 26-point mRS 0–2 contrast is a different endpoint and is already the wrong one for prestroke 3. Quoting the 0.21 at 02:10 is a standardization to the wrong mix. Quoting the 0.14 is a standardization to the hospital, which is closer and still not her. Question 3 does not average.</p>
+<p>Do the average on the <em>probability</em> scale, from posterior draws, not by plugging posterior-mean coefficients into the inverse link. The nonlinear link makes those operations differ, and the second hides uncertainty. And name the mix. Standardizing to “all 89-year-olds with prestroke mRS 3 in the county” is a sentence about a population. Predicting for the woman in the bed is a sentence about a person. They license different words to a daughter.</p>
+<div class="admonition warning">
+<p class="admonition-title">Common Pitfall</p>
+<p>A fitted interaction plotted as a smooth CATE-versus-age curve is still Question 2 along a line. The point on that curve at age 89 is not her posterior predictive. It has marginalized the rest of <span class="arithmatex">\(X\)</span> in whatever way the plotter chose — often, at the sample means of NIHSS and ASPECTS, which she does not have, and at prestroke mRS 0, which she does not have. Read the footnote of the plot before you read the plot.</p>
+</div>
+<h2 id="transport-assumptions-in-stroke-english">Transport assumptions in stroke English<a class="headerlink" href="#transport-assumptions-in-stroke-english" title="Permanent link">&para;</a></h2>
+<p>Moving a contrast from a trial frame to <span class="arithmatex">\(x^\star\)</span> is not a software option. It is a set of assumptions. The causal literature names them consistency, positivity, and exchangeability (conditional, and here with respect to selection as well as treatment). Stroke English is plainer.</p>
+<pre class="mermaid"><code>flowchart TD
+  subgraph measured ["Measured modifiers X"]
+    Age[Age]
+    NIHSS[NIHSS]
+    ASP[ASPECTS and core]
+    Clock[Hours from last known well]
+    pRS[Prestroke mRS]
+  end
+  U["Unmeasured U: frailty, collaterals, tracheostomy and withdrawal culture"]
+  S["S = 1 if enrolled in the DAWN-like teaching trial"]
+  T["T = EVT or medical care"]
+  Y["Y = 90-day ordinal mRS"]
+  Star["Bedside x*: 89 years, prestroke mRS 3, ASPECTS 7"]
+
+  Age --&gt; S
+  NIHSS --&gt; S
+  ASP --&gt; S
+  Clock --&gt; S
+  pRS --&gt; S
+  U --&gt; S
+  Age --&gt; Y
+  NIHSS --&gt; Y
+  ASP --&gt; Y
+  Clock --&gt; Y
+  pRS --&gt; Y
+  U --&gt; Y
+  S --&gt; T
+  T --&gt; Y
+  Star -.-&gt;|her value sits on pRS, Age, ASP| pRS</code></pre>
+<p>The diagram is a selection DAG, not a slogan. Arrows from <span class="arithmatex">\(X\)</span> and from <span class="arithmatex">\(U\)</span> into both selection <span class="arithmatex">\(S\)</span> and outcome <span class="arithmatex">\(Y\)</span> are the transport problem. The arrow <span class="arithmatex">\(S \to T\)</span> is the gate: only the enrolled are randomized. There is no arrow from <span class="arithmatex">\(X\)</span> into <span class="arithmatex">\(T\)</span> inside the trial, because randomization, if it happened, cut that path. The dashed line from the bedside patient into prestroke mRS is the warning: her value of a modifier that also determined enrollment may have no counterpart among the randomized.</p>
+<p><strong>Consistency, in stroke English.</strong> The EVT in the likelihood has to be the EVT you are about to offer. Trial EVT was a selected-center thrombectomy with a device generation, an anesthesia style, and a culture about tracheostomy. At 02:10 you are offering a transfer, whoever is on call, and a family that has already said “vegetable.” If those are not the same operation, the trial’s <span class="arithmatex">\(Y(1)\)</span> is not the <span class="arithmatex">\(Y(1)\)</span> you are about to generate. The outcome can fail consistency too: transporting an mRS 0–2 contrast and speaking it as return-to-3 changes <span class="arithmatex">\(Y\)</span> in the sentence without changing <span class="arithmatex">\(Y\)</span> in the model.</p>
+<p><strong>Positivity, in stroke English.</strong> People like her must have had a chance of both actions <em>in the data you are using</em>. Treatment positivity: inside the trial, given <span class="arithmatex">\(X\)</span>, both arms occurred — randomization usually buys this, except in empty cells you created by slicing. Selection positivity: people with her <span class="arithmatex">\(X\)</span> must have been allowed in. DAWN-like protocols required prestroke mRS 0–1. Hers is 3. Enrollment at <span class="arithmatex">\(x^\star\)</span> is zero by design. There is no empirical CATE for prestroke mRS 3 in that likelihood. There is an extrapolation, which is a prior wearing a model’s clothes.</p>
+<p>ASPECTS 7 is softer: if the teaching trial enrolled across 7–10 she is on that margin; if almost everyone had ASPECTS 9–10, she is a thin tail and the prediction is prior-dominated even if software returns a number. Age 89 is usually the thin tail rather than a hard exclusion. A trial that enrolled “up to 90” with a median of 70 permitted 89-year-olds. Permission is not information.</p>
+<p><strong>Exchangeability, in stroke English.</strong> After you condition on measured modifiers, selection is not still entangled with outcome through something unmeasured. The open fork <span class="arithmatex">\(U \to S\)</span>, <span class="arithmatex">\(U \to Y\)</span> is the failure. <span class="arithmatex">\(U\)</span> is physiologic reserve, collaterals beyond the perfusion summary, appetite for a feeding tube, the unmeasured reasons a frail 89-year-old was or was not offered randomization. Randomization buys <span class="arithmatex">\(Y(a) \perp T \mid S=1\)</span>. It does not buy <span class="arithmatex">\(Y(a) \perp S \mid X\)</span>. That last independence is a hope about <span class="arithmatex">\(U\)</span>. You cannot test it with the trial file alone.</p>
+<div class="admonition tip">
+<p class="admonition-title">Clinical Pearl</p>
+<p>When you cannot name a patient in the trial file who looks like her on the modifiers that determined enrollment, do not say “based on DAWN.” Say “we are extrapolating past the trial’s sampling frame, and the uncertainty is wider than the whiteboard interval.” That sentence is the transport assumption made audible.</p>
+</div>
+<p>A fourth word, used more by epidemiologists than by night-float neurologists, is <strong>generalizability versus transportability</strong>. Generalizing is reweighting a trial to a new mix of patients who would have been <em>eligible</em>. Transporting is moving to a population that would not have been eligible — her, tonight. Software will do both if you ask. Only the second requires you to invent a response surface off the support of <span class="arithmatex">\(X\)</span>. Be honest about which one you are doing. The fellow’s “DAWN-positive” claimed generalizability. The eligibility form already forbade it.</p>
+<div class="admonition info">
+<p class="admonition-title">For the biostatistician</p>
+<p>The transported mean contrast in a target <span class="arithmatex">\(P^\star\)</span> is the g-formula <span class="arithmatex">\(\mathbb{E}_{P^\star}\bigl[\mathbb{E}(Y \mid A=1, X, S=1) - \mathbb{E}(Y \mid A=0, X, S=1)\bigr]\)</span>, equal to <span class="arithmatex">\(\mathbb{E}_{P^\star}[Y(1)-Y(0)]\)</span> under consistency, positivity of <span class="arithmatex">\(A\)</span> given <span class="arithmatex">\(X\)</span> in the trial, positivity of <span class="arithmatex">\(S\)</span> on the support of <span class="arithmatex">\(P^\star\)</span>, and <span class="arithmatex">\(Y(a) \perp S \mid X\)</span>. If <span class="arithmatex">\(P^\star\)</span> puts mass where <span class="arithmatex">\(P(S=1 \mid X)=0\)</span>, the inner expectation is not identified; a parametric model will still return a number by extending a surface. Report that as a prior-and-model extrapolation, or refuse it. Hierarchical shrinkage of interactions is a prior on the <em>shape</em> of the surface, not a repair for empty support. Inverse-odds-of-selection weights need overlap; they do not apply at <span class="arithmatex">\(x^\star\)</span> with <span class="arithmatex">\(P(S=1 \mid x^\star)=0\)</span>. The bedside object is the posterior predictive at <span class="arithmatex">\(x^\star\)</span>, not a weighted ATE. Proportional odds is an extra restriction — one shift at every mRS cut — convenient and often false, because EVT may move death more than the 0–1 versus 2 cut. Check it before you export a single shift into an 89-year-old’s tail.</p>
+</div>
+<h2 id="r-deep-dive-an-ordinal-model-pre-specified-interactions-and-her-posterior-predictive">R Deep Dive: an ordinal model, pre-specified interactions, and her posterior predictive<a class="headerlink" href="#r-deep-dive-an-ordinal-model-pre-specified-interactions-and-her-posterior-predictive" title="Permanent link">&para;</a></h2>
+<p>The block below builds a <strong>teaching</strong> individual-patient data set, writes the cumulative-logit model this chapter has been describing, puts skeptical priors on the pre-specified interactions, and shows how to extract (i) a trial-frame standardized contrast, (ii) a hospital-mix standardized contrast, and (iii) the vignette patient’s posterior predictive under both actions. The patients are invented. The coefficients that generate them are invented. They are not an extract from DAWN, DEFUSE-3, or any registry.</p>
+<p>Stan sampling is illustrative. The <code>brm()</code> call is commented so the chapter does not pretend a sampler ran while the book was typeset. Uncomment it on a machine with a working toolchain. The seed is fixed.</p>
+<div class="admonition example">
+<p class="admonition-title">R Deep Dive</p>
+<p>Teaching IPD, a cumulative logit with three pre-specified treatment interactions, and the three functionals from the opening. Shrinkage lives in the <span class="arithmatex">\(\mathrm{Normal}(0, 0.25)\)</span> priors on the interaction terms.</p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># Teaching IPD for transporting an EVT effect to one patient.</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># Invented rows. Not DAWN, not DEFUSE-3, not a registry extract.</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># Stan sampling is illustrative: brm() is commented so typesetting</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># does not pretend a chain ran.</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nf">library</span><span class="p">(</span><span class="n">brms</span><span class="p">)</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidybayes</span><span class="p">)</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nf">set.seed</span><span class="p">(</span><span class="m">20260818</span><span class="p">)</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="n">n</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">480</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="n">dat</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">tibble</span><span class="p">(</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">  </span><span class="n">age</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nf">pmin</span><span class="p">(</span><span class="nf">pmax</span><span class="p">(</span><span class="nf">rnorm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="m">70</span><span class="p">,</span><span class="w"> </span><span class="m">12</span><span class="p">),</span><span class="w"> </span><span class="m">40</span><span class="p">),</span><span class="w"> </span><span class="m">90</span><span class="p">),</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">  </span><span class="n">nihss</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nf">pmin</span><span class="p">(</span><span class="nf">pmax</span><span class="p">(</span><span class="nf">round</span><span class="p">(</span><span class="nf">rnorm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="m">16</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">)),</span><span class="w"> </span><span class="m">6</span><span class="p">),</span><span class="w"> </span><span class="m">25</span><span class="p">),</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">  </span><span class="n">aspects</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nf">pmin</span><span class="p">(</span><span class="nf">pmax</span><span class="p">(</span><span class="nf">round</span><span class="p">(</span><span class="nf">rnorm</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="m">1.5</span><span class="p">)),</span><span class="w"> </span><span class="m">3</span><span class="p">),</span><span class="w"> </span><span class="m">10</span><span class="p">),</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">  </span><span class="n">prestroke</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sample</span><span class="p">(</span><span class="m">0</span><span class="o">:</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w"> </span><span class="n">prob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0.55</span><span class="p">,</span><span class="w"> </span><span class="m">0.25</span><span class="p">,</span><span class="w"> </span><span class="m">0.15</span><span class="p">,</span><span class="w"> </span><span class="m">0.05</span><span class="p">)),</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">  </span><span class="n">evt</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nf">rbinom</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0.50</span><span class="p">)</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="n">age_c</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">age</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">70</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">10</span><span class="p">,</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">    </span><span class="n">nihss_c</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">nihss</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">16</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">5</span><span class="p">,</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">    </span><span class="n">aspects_c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">aspects</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">8</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">2</span><span class="p">,</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="c1"># Teaching latent scale: lower is better mRS.</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">    </span><span class="n">eta</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.15</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">age_c</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">0.45</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">nihss_c</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">0.35</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">aspects_c</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">      </span><span class="m">0.55</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">prestroke</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">0.70</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">evt</span><span class="w"> </span><span class="o">-</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">      </span><span class="m">0.10</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">evt</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">age_c</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">0.08</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">evt</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">prestroke</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">      </span><span class="m">0.12</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">evt</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">aspects_c</span><span class="w"> </span><span class="o">+</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">      </span><span class="nf">rlogis</span><span class="p">(</span><span class="nf">n</span><span class="p">()),</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">    </span><span class="n">mrs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">case_when</span><span class="p">(</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">      </span><span class="n">eta</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">-2.2</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="m">0L</span><span class="p">,</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">      </span><span class="n">eta</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">-1.2</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="m">1L</span><span class="p">,</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">      </span><span class="n">eta</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">-0.3</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="m">2L</span><span class="p">,</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">      </span><span class="n">eta</span><span class="w"> </span><span class="o">&lt;</span><span class="w">  </span><span class="m">0.5</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="m">3L</span><span class="p">,</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">      </span><span class="n">eta</span><span class="w"> </span><span class="o">&lt;</span><span class="w">  </span><span class="m">1.4</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="m">4L</span><span class="p">,</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">      </span><span class="n">eta</span><span class="w"> </span><span class="o">&lt;</span><span class="w">  </span><span class="m">2.3</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="m">5L</span><span class="p">,</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">      </span><span class="kc">TRUE</span><span class="w">       </span><span class="o">~</span><span class="w"> </span><span class="m">6L</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">    </span><span class="p">)</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">  </span><span class="p">)</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="c1"># How much support does prestroke 3 actually have?</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="n">dat</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="nf">count</span><span class="p">(</span><span class="n">prestroke</span><span class="p">,</span><span class="w"> </span><span class="n">evt</span><span class="p">)</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="c1"># The bedside patient, both actions, same other covariates.</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="n">her</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">tibble</span><span class="p">(</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="w">  </span><span class="n">age_c</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="m">89</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">70</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">10</span><span class="p">,</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="w">  </span><span class="n">nihss_c</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="m">18</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">16</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">5</span><span class="p">,</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="w">  </span><span class="n">aspects_c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="m">7</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">8</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="m">2</span><span class="p">,</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="w">  </span><span class="n">prestroke</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">,</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="w">  </span><span class="n">evt</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0L</span><span class="p">,</span><span class="w"> </span><span class="m">1L</span><span class="p">)</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="p">)</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="c1"># A crude "this hospital" mix: older, more disabled, lower ASPECTS.</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="c1"># Teaching weights, not an audit.</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="n">hospital</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dat</span><span class="w"> </span><span class="o">%&gt;%</span>
+<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="w">  </span><span class="nf">mutate</span><span class="p">(</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="w">    </span><span class="n">age_c</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">age_c</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">0.8</span><span class="p">,</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="w">    </span><span class="n">aspects_c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">aspects_c</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">0.4</span><span class="p">,</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a><span class="w">    </span><span class="n">prestroke</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">pmin</span><span class="p">(</span><span class="n">prestroke</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">1L</span><span class="p">,</span><span class="w"> </span><span class="m">3L</span><span class="p">)</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a><span class="w">  </span><span class="p">)</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>
+<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a><span class="n">priors</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a><span class="w">  </span><span class="nf">prior</span><span class="p">(</span><span class="nf">normal</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">1.5</span><span class="p">),</span><span class="w"> </span><span class="n">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Intercept</span><span class="p">),</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a><span class="w">  </span><span class="nf">prior</span><span class="p">(</span><span class="nf">normal</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0.5</span><span class="p">),</span><span class="w"> </span><span class="n">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">),</span>
+<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a><span class="w">  </span><span class="c1"># Skeptical shrinkage of modification toward zero.</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a><span class="w">  </span><span class="nf">prior</span><span class="p">(</span><span class="nf">normal</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0.25</span><span class="p">),</span><span class="w"> </span><span class="n">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">coef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"evt:age_c"</span><span class="p">),</span>
+<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a><span class="w">  </span><span class="nf">prior</span><span class="p">(</span><span class="nf">normal</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0.25</span><span class="p">),</span><span class="w"> </span><span class="n">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">coef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"evt:prestroke"</span><span class="p">),</span>
+<a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a><span class="w">  </span><span class="nf">prior</span><span class="p">(</span><span class="nf">normal</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0.25</span><span class="p">),</span><span class="w"> </span><span class="n">class</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">coef</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"evt:aspects_c"</span><span class="p">)</span>
+<a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a><span class="p">)</span>
+<a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a>
+<a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a><span class="c1"># fit &lt;- brm(</span>
+<a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a><span class="c1">#   mrs ~ evt * (age_c + nihss_c + aspects_c + prestroke),</span>
+<a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a><span class="c1">#   data   = dat,</span>
+<a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a><span class="c1">#   family = cumulative("logit"),</span>
+<a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a><span class="c1">#   prior  = priors,</span>
+<a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a><span class="c1">#   seed   = 20260818,</span>
+<a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a><span class="c1">#   chains = 4,</span>
+<a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a><span class="c1">#   iter   = 2000,</span>
+<a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a><span class="c1">#   refresh = 0</span>
+<a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a><span class="c1"># )</span>
+<a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a>
+<a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a><span class="c1"># After fitting, three functionals from the same draws.</span>
+<a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a><span class="c1"># Use posterior_epred, not add_epred_draws + .category:</span>
+<a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a><span class="c1"># integer mrs 0:6 is coded internally as categories 1:7, so</span>
+<a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a><span class="c1"># as.integer(as.character(.category)) &lt;= 3 would select mRS 0-2 —</span>
+<a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a><span class="c1"># the independence cut this chapter exists to refuse.</span>
+<a id="__codelineno-0-88" name="__codelineno-0-88" href="#__codelineno-0-88"></a><span class="c1">#</span>
+<a id="__codelineno-0-89" name="__codelineno-0-89" href="#__codelineno-0-89"></a><span class="c1"># 1) Trial-frame standardized P(mRS &lt;= 3) contrast (Question 1, model-based).</span>
+<a id="__codelineno-0-90" name="__codelineno-0-90" href="#__codelineno-0-90"></a><span class="c1"># trial_grid &lt;- bind_rows(</span>
+<a id="__codelineno-0-91" name="__codelineno-0-91" href="#__codelineno-0-91"></a><span class="c1">#   mutate(dat, evt = 0L),</span>
+<a id="__codelineno-0-92" name="__codelineno-0-92" href="#__codelineno-0-92"></a><span class="c1">#   mutate(dat, evt = 1L)</span>
+<a id="__codelineno-0-93" name="__codelineno-0-93" href="#__codelineno-0-93"></a><span class="c1"># )</span>
+<a id="__codelineno-0-94" name="__codelineno-0-94" href="#__codelineno-0-94"></a><span class="c1"># trial_epred &lt;- posterior_epred(fit, newdata = trial_grid)</span>
+<a id="__codelineno-0-95" name="__codelineno-0-95" href="#__codelineno-0-95"></a><span class="c1"># # Array: draws x rows x categories (1:7 = mRS 0:6). Sum categories 1-4 (mRS 0-3)</span>
+<a id="__codelineno-0-96" name="__codelineno-0-96" href="#__codelineno-0-96"></a><span class="c1"># # within action, then subtract.</span>
+<a id="__codelineno-0-97" name="__codelineno-0-97" href="#__codelineno-0-97"></a><span class="c1">#</span>
+<a id="__codelineno-0-98" name="__codelineno-0-98" href="#__codelineno-0-98"></a><span class="c1"># 2) Hospital-mix standardized contrast (transported ATE, if assumptions hold).</span>
+<a id="__codelineno-0-99" name="__codelineno-0-99" href="#__codelineno-0-99"></a><span class="c1"># hospital_grid &lt;- bind_rows(</span>
+<a id="__codelineno-0-100" name="__codelineno-0-100" href="#__codelineno-0-100"></a><span class="c1">#   mutate(hospital, evt = 0L),</span>
+<a id="__codelineno-0-101" name="__codelineno-0-101" href="#__codelineno-0-101"></a><span class="c1">#   mutate(hospital, evt = 1L)</span>
+<a id="__codelineno-0-102" name="__codelineno-0-102" href="#__codelineno-0-102"></a><span class="c1"># )</span>
+<a id="__codelineno-0-103" name="__codelineno-0-103" href="#__codelineno-0-103"></a><span class="c1"># hospital_epred &lt;- posterior_epred(fit, newdata = hospital_grid)</span>
+<a id="__codelineno-0-104" name="__codelineno-0-104" href="#__codelineno-0-104"></a><span class="c1">#</span>
+<a id="__codelineno-0-105" name="__codelineno-0-105" href="#__codelineno-0-105"></a><span class="c1"># 3) This patient: do not average (Question 3).</span>
+<a id="__codelineno-0-106" name="__codelineno-0-106" href="#__codelineno-0-106"></a><span class="c1"># add_epred_draws(fit, newdata = her) %&gt;%</span>
+<a id="__codelineno-0-107" name="__codelineno-0-107" href="#__codelineno-0-107"></a><span class="c1">#   group_by(evt, .category) %&gt;%</span>
+<a id="__codelineno-0-108" name="__codelineno-0-108" href="#__codelineno-0-108"></a><span class="c1">#   summarise(p = mean(.epred), .groups = "drop") %&gt;%</span>
+<a id="__codelineno-0-109" name="__codelineno-0-109" href="#__codelineno-0-109"></a><span class="c1">#   pivot_wider(names_from = evt, values_from = p, names_prefix = "evt_")</span>
+<a id="__codelineno-0-110" name="__codelineno-0-110" href="#__codelineno-0-110"></a><span class="c1">#</span>
+<a id="__codelineno-0-111" name="__codelineno-0-111" href="#__codelineno-0-111"></a><span class="c1"># her_epred &lt;- posterior_epred(fit, newdata = her)</span>
+<a id="__codelineno-0-112" name="__codelineno-0-112" href="#__codelineno-0-112"></a><span class="c1"># # her_epred[, 1, ] medical; [, 2, ] EVT; columns mRS 0..6.</span>
+<a id="__codelineno-0-113" name="__codelineno-0-113" href="#__codelineno-0-113"></a><span class="c1"># back &lt;- function(a) rowSums(her_epred[, a, 1:4])  # mRS 0-3</span>
+<a id="__codelineno-0-114" name="__codelineno-0-114" href="#__codelineno-0-114"></a><span class="c1"># die  &lt;- function(a) her_epred[, a, 7]             # mRS 6</span>
+<a id="__codelineno-0-115" name="__codelineno-0-115" href="#__codelineno-0-115"></a><span class="c1"># quantile(back(2) - back(1), c(0.10, 0.50, 0.90))</span>
+<a id="__codelineno-0-116" name="__codelineno-0-116" href="#__codelineno-0-116"></a><span class="c1"># quantile(die(1)  - die(2),  c(0.10, 0.50, 0.90))</span>
+</code></pre></div>
+<p>Once a chain has run on these teaching draws, the lesson is qualitative. The trial-frame contrast on “mRS <span class="arithmatex">\(\le 3\)</span>” is large. The hospital-mix contrast is smaller. Her row is smaller still, and the 80% interval should be wide enough that a preference-sensitive conversation (Chapter 16) is mandatory. If her interval is <em>not</em> wide, you have understated extrapolation: check <code>count(prestroke, evt)</code> and the posterior of <code>evt:prestroke</code>. A tight posterior on an interaction identified by a handful of rows is a warning, not a finding. Tiny prestroke-3 cells mean positivity is a sentence in the note, not a problem the sampler can fix. <code>family = cumulative("logit")</code> imposes proportional odds. For teaching, one shift keeps the surface inspectable. For a service model, check category-specific residuals (Chapter 8) before you export the shift to <span class="arithmatex">\(x^\star\)</span>.</p>
+<h2 id="what-you-may-not-say-to-the-family-after-an-interaction-plot">What you may not say to the family after an interaction plot<a class="headerlink" href="#what-you-may-not-say-to-the-family-after-an-interaction-plot" title="Permanent link">&para;</a></h2>
+<p>Return to 02:10. Suppose a colleague has already plotted CATE versus age from a model like the one above, or worse, from eight separate slices, and the band for age <span class="arithmatex">\(\ge 80\)</span> crosses the null. The plot is glowing on a phone. The daughter is in the room. The following sentences are not available to you, no matter how clean the ggplot is.</p>
+<p><strong>You may not say “she is too old to benefit.”</strong> Age entered as a continuous interaction or as a noisy slice. You have a <em>tilt</em> of an average, not a property of this woman. The plot marginalized the rest of her <span class="arithmatex">\(X\)</span>. She is also prestroke 3 and ASPECTS 7.</p>
+<p><strong>You may not say “the interaction was (not) significant, so the trial does (not) apply.”</strong> A hypothesis test is not a transport theorem. Positivity does not become true because <span class="arithmatex">\(p &gt; 0.05\)</span>.</p>
+<p><strong>You may not quote an unshrunk subgroup odds ratio.</strong> A teaching cell of twelve prestroke-mRS-3 patients with an odds ratio of 1.1 (interval 0.2 to 6) is a confession of ignorance. Reading it as “no benefit in disabled patients” is how small cells colonize practice.</p>
+<p><strong>You may not collapse her posterior predictive into “the data show we should” or “should not.”</strong> Those are utility sentences (Chapters 14 and 16). A 4-point <strong>teaching</strong> difference in return-to-3 can be worth a puncture to one family and not to another.</p>
+<p><strong>You may not say “based on DAWN” if the eligibility form would have rejected her.</strong> You may say the trials showed that late-window EVT can work in selected, previously independent mismatch patients, and that her scan rhymes with that mechanism. You may not launder the rhyme into an enrollment.</p>
+<p>What you may say is the Chapter 16 script, with the transport named and the endpoint moved to her baseline.</p>
+<p>“She has a clot in a large artery on the left. We can try to pull it out, or we can care for her without that procedure.”</p>
+<p>“The best evidence we have is from people who were more independent than she was, and a bit younger. We are borrowing that evidence and adjusting for her age, her scan, and the cane and the help she already needed. That borrowing is imperfect.”</p>
+<p>“In people we can model as something like her, without the procedure many do not survive three months, and only a small number get back to the life she already had. With the procedure those numbers move, less than the poster in the hallway, and we could put her through a transfer and a puncture for no gain.”</p>
+<p>Then stop. The daughter names the values. You do not name them from an interaction plot.</p>
+<p>The chart should add four things to Chapter 16’s note: the functional (her posterior predictive, not the ATE); the modifiers you conditioned on; the assumption you could not defend (positivity at prestroke mRS 3; unmeasured frailty); and that the interaction plot was not shown as a prognosis.</p>
+<div class="admonition warning">
+<p class="admonition-title">Common Pitfall</p>
+<p>Printing a color interaction plot in the family meeting is not transparency. It is a transfer of a Question-2 object to an audience that asked Question 3, in a visual language trained on weather maps. Speak frequencies for the states she named. Leave the plot in the workroom.</p>
+</div>
+<p>A last discipline, because this chapter will be misread as a reason to deny EVT to the old and the already-disabled. A smaller transported contrast does not set her threshold. Hiding the transport problem in order to keep the ATE is how services over-treat. Hiding the utility problem in order to keep the shrunk CATE is how they under-treat. Both fail to finish the loop.</p>
+<h2 id="exercises">Exercises<a class="headerlink" href="#exercises" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>The fellow says “She is DAWN-positive. We take her.” Name which of the three questions that sentence answered, which it pretended to answer, and write six sentences to the daughter that do not smuggle the trial ATE across a failed positivity condition at prestroke mRS 3.</p>
+</li>
+<li>
+<p>Using only the teaching four-row table, compute the trial-weighted ATE and the hospital-standardized contrast by hand. A colleague wants to quote the hospital number at the bedside because “it is closer to our patients.” Why is it still not Question 3? What single change to the table would make the hospital number <em>equal</em> her number?</p>
+</li>
+<li>
+<p>A supplement reports an unshrunk odds ratio of 1.05 (interval 0.22 to 5.1) in “patients aged <span class="arithmatex">\(\ge 85\)</span>” from a teaching slice with <span class="arithmatex">\(n = 16\)</span>. Write the hierarchical estimator in words, including what <span class="arithmatex">\(\tau_\beta\)</span> is doing. Then write the sentence you put in the note if you <em>refuse</em> to shrink this slice toward the ATE. Which assumption are you declining to make?</p>
+</li>
+<li>
+<p>Uncomment the <code>brm()</code> call and, once it runs, extract her posterior predictive probabilities for mRS 0–3 and for death under both actions. Report the 80% interval on each contrast. Then refit with <code>prior(normal(0, 2), class = b, coef = "evt:prestroke")</code> in place of the skeptical <span class="arithmatex">\(0.25\)</span> prior. What happens to her interval, and what does that tell you about whether the data or the prior is doing the transport past prestroke mRS 3?</p>
+</li>
+</ol>
+<h2 id="further-reading">Further reading<a class="headerlink" href="#further-reading" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Dahabreh IJ, Robertson SE, Steingrimsson JA, Stuart EA, Hernán MA. Extending inferences from a randomized trial to a new target population. <em>Stat Med.</em> 2020;39(14):1999–2014. The g-formula, the identification assumptions, and the difference between a new mix and a new person.</li>
+<li>Cole SR, Stuart EA. Generalizing evidence from randomized clinical trials to target populations: the ACTG 320 trial. <em>Am J Epidemiol.</em> 2010;172(1):107–115. Standardization and inverse-probability weighting as two routes to the same transported mean.</li>
+<li>Pearl J, Bareinboim E. External validity: from do-calculus to transportability across populations. <em>Stat Sci.</em> 2014;29(4):579–595. Selection diagrams; why an open fork through unmeasured <span class="arithmatex">\(U\)</span> is not repaired by randomization inside the trial.</li>
+<li>Kent DM, Steyerberg E, van Klaveren D. Personalized evidence based medicine: predictive approaches to heterogeneous treatment effects. <em>BMJ.</em> 2018;363:k4245. Risk-based HTE done on purpose, versus subgroup fishing.</li>
+<li>Nogueira RG, Jadhav AP, Haussen DC, et al. Thrombectomy 6 to 24 hours after stroke with a mismatch between deficit and infarct. <em>N Engl J Med.</em> 2018;378(1):11–21. Cite for eligibility and design (prestroke independence, mismatch, late window). Do not scrape its cells into this chapter’s teaching tables.</li>
+</ul>
+<div class="admonition success">
+<p class="admonition-title">Key Takeaway</p>
+<p>The whiteboard posterior is an average in a sampling frame. The daughter asked for a posterior predictive at <span class="arithmatex">\(x^\star\)</span>. Getting from one to the other is a transport problem, not a change of caption. Pre-specify the modifiers you actually believe, shrink the rest, standardize on the probability scale to the mix you mean, and stop averaging when the mix is one woman. Consistency, positivity, and exchangeability have stroke translations: same operation, people like her actually randomized, no leftover frailty fork. Prestroke mRS 3 in a DAWN-like frame fails positivity by design; a number you still compute is an extrapolation and must be spoken as one. An interaction plot is not a sentence a family can use.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="20-reproducible-pipelines.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: 20. Reproducible Pipelines">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                20. Reproducible Pipelines
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="22-causal-target-trial.html" class="md-footer__link md-footer__link--next" aria-label="Next: 22. Causal Models and the Target Trial">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                22. Causal Models and the Target Trial
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Bayesian Clinical Reasoning
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/rkalani1/Bayesian-Reasoning" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.tracking", "navigation.top", "navigation.footer", "navigation.indexes", "search.suggest", "search.highlight", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../javascripts/katex.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../javascripts/header-controls.js"></script>
+      
+    
+  </body>
+</html>
